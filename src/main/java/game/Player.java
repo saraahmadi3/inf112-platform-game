@@ -10,8 +10,8 @@ public class Player {
 	private static int v;
 	
 	public Player() {
-		x = 0;
-		y = 0;
+		x = 200;
+		y = 200;
 		v = 3;
 	}
 	
@@ -29,13 +29,13 @@ public class Player {
 	
 	public static void move() {
 	
-		if(Gdx.input.isKeyPressed(Keys.DPAD_LEFT)) 
+		if(Gdx.input.isKeyPressed(Keys.A)) 
 			x -= Gdx.graphics.getDeltaTime() * v;
-		if(Gdx.input.isKeyPressed(Keys.DPAD_RIGHT)) 
+		if(Gdx.input.isKeyPressed(Keys.D)) 
+			x += Gdx.graphics.getDeltaTime() * v;
+		if(Gdx.input.isKeyPressed(Keys.W)) 
 			y += Gdx.graphics.getDeltaTime() * v;
-		if(Gdx.input.isKeyPressed(Keys.DPAD_UP)) 
-			y += Gdx.graphics.getDeltaTime() * v;
-		if(Gdx.input.isKeyPressed(Keys.DPAD_DOWN)) 
-			x -= Gdx.graphics.getDeltaTime() * v;
+		if(Gdx.input.isKeyPressed(Keys.S)) 
+			y -= Gdx.graphics.getDeltaTime() * v;
 	}
 }

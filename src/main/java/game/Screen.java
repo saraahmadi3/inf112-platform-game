@@ -16,6 +16,7 @@ public class Screen implements ApplicationListener {
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
+        Player player = new Player();
     }
 
     @Override
@@ -26,11 +27,12 @@ public class Screen implements ApplicationListener {
 
     @Override
     public void render() {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Player.move();
+    	Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        font.draw(batch, "Hei på deg!", 200, 200);
+        font.draw(batch, "O", Player.getX(), Player.getY());
         batch.end();
     }
 
