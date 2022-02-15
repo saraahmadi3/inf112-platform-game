@@ -27,7 +27,7 @@ public class Player {
 		return y;
 	}
 	
-	public static void move() {
+	public void move() {
 	
 		if(Gdx.input.isKeyPressed(Keys.A)) 
 			x -= Gdx.graphics.getDeltaTime() * v;
