@@ -28,7 +28,7 @@ public class Player {
 	}
 	
 	public void move() {
-		System.out.println(Gdx.graphics.getDeltaTime());
+		//coordinates must be double, if not Java will round the movement down to -1 for left/down, or 0 for up/right 
 		if(Gdx.input.isKeyPressed(Keys.A)) 
 			x -= Gdx.graphics.getDeltaTime() * v;
 		if(Gdx.input.isKeyPressed(Keys.D)) 
