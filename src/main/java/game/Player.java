@@ -19,11 +19,11 @@ public class Player {
 		return v;
 	}
 	
-	public static int getX() {
+	public int getX() {
 		return x;
 	}
 	
-	public static int getY() {
+	public int getY() {
 		return y;
 	}
 	

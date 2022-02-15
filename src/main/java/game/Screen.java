@@ -10,13 +10,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Screen implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
+    private Player player;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
-        Player player = new Player();
+        player = new Player();
     }
 
     @Override
@@ -32,7 +33,7 @@ public class Screen implements ApplicationListener {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
         batch.begin();
-        font.draw(batch, "O", Player.getX(), Player.getY());
+        font.draw(batch, "O", player.getX(), player.getY());
         batch.end();
     }
 
