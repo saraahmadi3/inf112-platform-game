@@ -5,30 +5,30 @@ import com.badlogic.gdx.Input.Keys;
 
 
 public class Player {
-	private static int x;
-	private static int y;
-	private static int v;
+	private static double x;
+	private static double y;
+	private static double v;
 	
 	public Player() {
 		x = 200;
 		y = 200;
-		v = 3;
+		v = 60;
 	}
 	
 	public static int getSpeed() {
-		return v;
+		return (int) v;
 	}
 	
 	public int getX() {
-		return x;
+		return (int) x;
 	}
 	
 	public int getY() {
-		return y;
+		return (int) y;
 	}
 	
 	public void move() {
-	
+		System.out.println(Gdx.graphics.getDeltaTime());
 		if(Gdx.input.isKeyPressed(Keys.A)) 
 			x -= Gdx.graphics.getDeltaTime() * v;
 		if(Gdx.input.isKeyPressed(Keys.D)) 
