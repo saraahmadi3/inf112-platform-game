@@ -2,9 +2,11 @@ package game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 //TODO: Make interface that Player should implement. F.ex. an interface for any object which has coordinates.
-public class Player {
+public class Player implements Sprite {
 	
 
 	//coordinates must be double, if not Java will round the movement down to -1 for left/down, or 0 for up/right
@@ -39,6 +41,10 @@ public class Player {
 	
 	public int getY() {
 		return (int) y;
+	}
+	
+	public void draw(SpriteBatch batch, BitmapFont font) {
+		font.draw(batch, getSymbol(), getX(), getY());
 	}
 	
 	//TODO Collision detection with platforms and other sprites
