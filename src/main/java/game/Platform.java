@@ -36,7 +36,7 @@ public class Platform implements Sprite {
 		font.draw(batch, getSymbol(), getX(), getY());
 	}
 
-	@Override
+	@Override 
 	public void move() {
 		return;
 
