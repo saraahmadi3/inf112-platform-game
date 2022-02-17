@@ -41,6 +41,10 @@ public class Tips implements Sprite {
 		return (int) y;
 	}
 	
+	public void update() {
+		move();
+	}
+	
 	public void move() {
 		double delta = Gdx.graphics.getDeltaTime(); //The time passed since last frame
 		x -= V*delta; //Scrolling

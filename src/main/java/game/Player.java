@@ -47,6 +47,10 @@ public class Player implements Sprite {
 		font.draw(batch, getSymbol(), getX(), getY());
 	}
 	
+	public void update() {
+		move();
+	}
+	
 	//TODO Collision detection with platforms and other sprites
 	public void move() {
 		

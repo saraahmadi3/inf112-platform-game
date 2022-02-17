@@ -54,14 +54,14 @@ public class Screen implements ApplicationListener {
      */
     public void render() {
         clearScreen();
-        moveAll();
+        updateAll();
         drawAll();
     }
     
     //This method should iterate over all movable sprites and call the move() method for each one.
-    private void moveAll() {
+    private void updateAll() {
     	for (Sprite sprite : sprites) {
-    		sprite.move();
+    		sprite.update();
     	}
     }
     

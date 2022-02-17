@@ -15,5 +15,7 @@ public interface Sprite {
 	
 	public void draw(SpriteBatch batch, BitmapFont font);
 	
+	public void update();
+	
 	public void move();
 }
