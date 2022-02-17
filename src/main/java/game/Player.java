@@ -97,11 +97,16 @@ public class Player implements GameObjects {
 		
 		for (Platform p : game.getAllPlatforms()) {
 			if (p.checkForHit(this)) {
+				if (oldY<y) {
+					gV = G*delta*5; //Increase downwards momentum a little extra after hitting head on platform.
+				} else { 
+					//This should only happen when the player lands on top of the platform.
+					isGrounded = true;
+					canDoubleJump = false;
+				} 
+				
 				y=oldY;
-				isGrounded = true;
-				canDoubleJump = false; 
 				gV = G*delta;
-				System.out.println("Y Hit");
 				break;
 			}
 		}
@@ -153,7 +158,6 @@ public class Player implements GameObjects {
 		
 		for (Platform p : game.getAllPlatforms()) {
 			if (p.checkForHit(this)) {
-				System.out.println("X Hit");
 				x=oldX;
 				break;
 			}
