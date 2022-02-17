@@ -11,15 +11,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 //TODO: Make interface that Player should implement. F.ex. an interface for any object which has coordinates.
 public class Player implements GameObjects {
 	
-	private static Sprite playerSprite;
-	private static int width;
-	private static int height;
+	private Sprite playerSprite;
+	private int width;
+	private int height;
 	
 	//coordinates must be double, if not Java will round the movement down to -1 for left/down, or 0 for up/right
-	private static double x; //X-coordinate for player
-	private static double y; //Y-coordinate for player
+	private double x; //X-coordinate for player
+	private double y; //Y-coordinate for player
 	
-	private static final double V = 100; //Running velocity/speed for player
+	private static final double V = 100; //Running velocity/speed for player	//later not static (powerups)
 	private static final double J = 150; //Jump strength
 	private static final double G = 150; //Gravity acceleration
 	private static final double FLOOR = 12.5; //The Y-coordinate at which there is a floor
