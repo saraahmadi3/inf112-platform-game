@@ -27,7 +27,7 @@ public class Platform implements Sprite {
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
+
 		return (int) y;
 	}
 
@@ -42,4 +42,10 @@ public class Platform implements Sprite {
 
 	}
 
+	@Override
+	public void update() {
+		// TODO add collision detection later on possibly here
+		
+	}
+	
 }
