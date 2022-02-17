@@ -98,6 +98,7 @@ public class Player implements GameObjects {
 		for (Platform p : game.getAllPlatforms()) {
 			if (p.checkForHit(this)) {
 				y=oldY;
+				System.out.println("Y Hit");
 				break;
 			}
 		}
@@ -149,6 +150,7 @@ public class Player implements GameObjects {
 		
 		for (Platform p : game.getAllPlatforms()) {
 			if (p.checkForHit(this)) {
+				System.out.println("X Hit");
 				x=oldX;
 				break;
 			}

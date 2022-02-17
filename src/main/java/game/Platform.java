@@ -71,9 +71,9 @@ public class Platform implements GameObjects {
 
 	public boolean checkForHit(Player player) {
 		boolean checkForLeftXOverlap = player.getX() < getX() && (player.getX()+player.getWidth()>getX());
-		boolean checkForRightXOverlap = player.getX() < getX() && (player.getX()+player.getWidth()>getX()+getWidth());
-		boolean checkForTopYOverlap = player.getY() < getY()+getHeight() && (player.getY()>getY()+getHeight());
-		boolean checkForBottomYOverlap = player.getY()+player.getHeight() < getY()+getHeight() && (player.getY()+player.getHeight()>getY());
+		boolean checkForRightXOverlap = player.getX() < getX()+getWidth() && (player.getX()+player.getWidth()>getX()+getWidth());
+		boolean checkForTopYOverlap = player.getY() < getY()+getHeight() && (player.getY()+player.getHeight()>getY()+getHeight());
+		boolean checkForBottomYOverlap = player.getY() < getY() && (player.getY()+player.getHeight()>getY());
 		
 		if ((checkForLeftXOverlap || checkForRightXOverlap) && (checkForTopYOverlap || checkForBottomYOverlap)) {
 			return true;
