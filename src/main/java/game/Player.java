@@ -100,7 +100,7 @@ public class Player implements GameObjects {
 				y=oldY;
 				isGrounded = true;
 				canDoubleJump = false; 
-				gV = 0;
+				gV = G*delta;
 				System.out.println("Y Hit");
 				break;
 			}
