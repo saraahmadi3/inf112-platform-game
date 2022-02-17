@@ -95,6 +95,12 @@ public class Player implements GameObjects {
 			gV = 0;
 		}
 		
+		for (Platform p : game.getAllPlatforms()) {
+			if (p.checkForHit(this)) {
+				y=oldY;
+				break;
+			}
+		}
 				
 		//Moves the player to the left, slower while in the air
 		if(Gdx.input.isKeyPressed(Keys.A) || Gdx.input.isKeyPressed(Keys.LEFT)) {
@@ -139,6 +145,13 @@ public class Player implements GameObjects {
 			x = 1068;
 		} else if (x<0) {
 			x = 0;
+		}
+		
+		for (Platform p : game.getAllPlatforms()) {
+			if (p.checkForHit(this)) {
+				x=oldX;
+				break;
+			}
 		}
 		
 	}
