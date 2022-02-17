@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  * @author saraa
  *
  */
-public interface Sprite {
+public interface GameObjects {
 	/**
 	 * @return the string symbol that represents the sprite
 	 */

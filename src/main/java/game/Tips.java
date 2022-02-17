@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Tips implements Sprite {
+public class Tips implements GameObjects {
 	private static double x; //X-coordinate for text
 	private static double y; //Y-coordinate for text		
 	private static final double V = 75; //Velocity for text

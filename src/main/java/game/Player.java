@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 //TODO: Make interface that Player should implement. F.ex. an interface for any object which has coordinates.
-public class Player implements Sprite {
+public class Player implements GameObjects {
 	
 
 	//coordinates must be double, if not Java will round the movement down to -1 for left/down, or 0 for up/right

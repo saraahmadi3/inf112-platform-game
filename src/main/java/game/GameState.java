@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class GameState {
 	
 	private Player player;
-	private ArrayList<Sprite> allSprites;
+	private ArrayList<GameObjects> allSprites;
 	
 	public GameState() {
-		allSprites = new ArrayList<Sprite>();
+		allSprites = new ArrayList<GameObjects>();
 		
 		Tips tip = new Tips();
 		player = new Player();
@@ -20,15 +20,15 @@ public class GameState {
 	}
 	
 	
-	public void addSprite(Sprite s) {
+	public void addSprite(GameObjects s) {
 		allSprites.add(s);
 	}
 	
-	public void killSprite(Sprite s) {
+	public void killSprite(GameObjects s) {
 		allSprites.remove(s);
 	}
 	
-	public ArrayList<Sprite> getAllSprites() {
+	public ArrayList<GameObjects> getAllSprites() {
 		return allSprites; 
 	}
 }
