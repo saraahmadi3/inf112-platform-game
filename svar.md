@@ -4,11 +4,6 @@ Vi har delt inn dette dokumentet i fem deler, på samme måte som selve oppgaven
 er delt inn i fem deloppgaver. Det er likevel en del overlapp i oppgaveteksten
 mellom ulike oppgavedeler, og vi har forsøkt å unngå å svare to ulike steder på de samme tingene.
 
-
-
-Dette har vi ikke gjort ennå:
-Project board.
-
 ## Deloppgave 1:
 Gruppenavn: antsy-antonym
 
@@ -41,7 +36,9 @@ Git-sjef: Sara: Ansvar for Git, arbeidsfordeling.
 Organisering:
 Her vil vi gjøre en løpende vurdering underveis i prosjektet, men vi vil forsøke å ha en metodikk 
 med utgangspunkt i Kanban-metoden. Vi møtes ukentlig og oppdaterer hverandre på fullførte oppgaver,
-løpende oppgaver og hvordan arbeidsoppgavene skal fordeles. Vi har ikke bestemt oss for noe plott til spillet 
+løpende oppgaver og hvordan arbeidsoppgavene skal fordeles. Vi vil også benytte av Trello-verktøyet som en visuell hjelp til Kanban-metoden.
+
+Vi har ikke bestemt oss for noe plott til spillet 
 ennå, men vi ser for oss plattformer som tar opp et skjermbilde. Karakteren vår skal kunne bevege seg frem og tilbake,
 hoppe - og til og med dobbelthoppe! - i tillegg til at tyngdekraften gjør at karakteren faller ned. Vi ser 
 for oss et spillbrett hvor karakteren skal bevege seg oppover mot et mål på toppen av skjermen. På denne måten
@@ -95,12 +92,15 @@ Akseptansekriterier: Det skal være lett å skjønne hvordan spilleren kan beveg
 
 ## Deloppgave 5 
 Oppsummering
+
 Gruppen har en fin dynamikk, god kommunikasjon og en god størrelse. Vi har klart å fordele oppgaver, slik at ingen blir sittende arbeidsløs.
 Takket være Kristians tidligere erfaring med å lage spill, har vi også kommet godt i gang med selve spillutviklingen (selv om det inntil videre bare innfrir de tre første kravene til mvp). Vi fulgte ikke den test-drevne utviklingen i begynnelsen, men gjorde heller ting i motsatt rekkefølge; vi begynte med utvikling, og begynte deretter med testing. Vi oppdaget også at det blir vanskelig å teste bevegelsene til spillkarakteren. Spillkarakteren beveger seg med utgangspunkt i x- og y-koordinater, men det er vanskelig å fastslå hvor langt et tastetrykk skal flytte karakteren. Det er derfor vanskelig å lage en test, som tester om karakteren flytter seg nøyaktig fra a til b. 
 
 I fortsettelsen må vi fordype oss i lib-gdx/Tiling og dets muligheter med tanke på spillkarakter og spillbrett. Vår foreløpige tanke er et plattformspill hvor hvert enkelt nivå er et eget spillbrett, og vi treger derfor flere spillbrett. Spillopplevelsen til det ferdige produktet vårt avhenger derfor av hvor flink vi blir til å utvikle spillbrett.
 
 Vi må også bli flinkere til å utnytte mulighetene git gir oss. Inntil videre har vi fordelt oppgaver slik at vi ikke skriver i samme filer. Ulike medlemmer har derfor fått i oppgave å jobbe med enkeltklasser, slik at vi kan committe uten at vi har måttet bekymre oss for merging-konflikter. Dette har fungert til nå, men vi ser at det vil bli en utfordring når prosjektet blir mer komplisert.
+
+Til tross for at vi har valgt å benytte oss av Kanban-metoden har vi ikke kommet skikkelig i gang med å benytte oss av  det visuelle aspektet med denne metoden ennå. Vi har ikke kommet i gang med Trello ennå, og har tatt alt muntlig, da vi har møttes ofte. Dette vil vil endre på til neste gang. Den muntlige dialogen vi har hatt har fungert fint, men det er nok lettere å glemme ting vi har blitt enig om, når det ikke er notert en plass.
 
 ![Klassediagram](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/raw/67f497b2b0c8d12f5aa9e5a377cb41f8f4cf262b/IMG_1061.jpg)
 
