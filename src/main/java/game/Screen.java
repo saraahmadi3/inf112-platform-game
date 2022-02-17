@@ -16,7 +16,7 @@ public class Screen implements ApplicationListener {
      
     //TODO Sprites should probably be kept track of by another class, not here.
     private List<Sprite> sprites;
-    private Player player; 
+    private Player player;  
     private Tips tip;
     private Platform platform;
 

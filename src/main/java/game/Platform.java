@@ -7,7 +7,7 @@ public class Platform implements Sprite {
 	
 	private static double x; //X-coordinate for platform
 	private static double y; //Y-coordinate for platform
-
+ 
 	public Platform() {
 		 x=300;
 		 y=50;
