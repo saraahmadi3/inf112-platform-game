@@ -1,3 +1,9 @@
+Vi har delt inn dette dokumentet i fem deler, på samme måte som selve oppgaven
+er delt inn i fem deloppgaver. Det er likevel en del overlapp i oppgaveteksten
+mellom ulike oppgavedeler, og vi har unngått å svare to ulike steder på de samme tingene.
+
+
+
 Dette har vi ikke gjort ennå:
 Project board.
 
@@ -32,18 +38,21 @@ Deloppgave 2:
 Organisering:
 Her vil vi gjøre en løpende vurdering underveis i prosjektet, men vi vil forsøke å ha en metodikk 
 med utgangspunkt i Kanban-metoden. Vi møtes ukentlig og oppdaterer hverandre på fullførte oppgaver,
-løpende oppgaver og hvordan arbeidsoppgavene skal fordeles. Vi har ikke bestemt oss for hvilket 
-prosjektbrett vi skal ha ennå, da vi ikke har utviklet selve plottet for spillet ennå.
+løpende oppgaver og hvordan arbeidsoppgavene skal fordeles. Vi har ikke bestemt oss for noe plott til spillet 
+ennå, men vi ser for oss plattformer som tar opp et skjermbilde. Karakteren vår skal kunne bevege seg frem og tilbake,
+hoppe - og til og med dobbelthoppe! - i tillegg til at tyngdekraften gjør at karakteren faller ned. Vi ser 
+for oss et spillbrett hvor karakteren skal bevege seg oppover mot et mål på toppen av skjermen. På denne måten
+kan vi utvikle hvert nivå som et eget spillbrett. Fordelen med dette er at selve spillbrettet da blir statisk, 
+og at ulike gruppemedlemmer kan lage spillbrett uavhengig av hverandre.
 
 Vi vil benytte oss av testdrevet utvikling, og koble dette sammen med parprogrammering. Dette håper
 vi skal passe oss veldig bra, da vi består av fire personer. Hvorvidt vi har faste par, eller om vi 
-bytter underveis, vil vi ta stilling til når vi begynner med arbeidet.
+bytter underveis, vil vi ta stilling til når vi begynner med arbeidet. 
 
-Tirsdag: Vi har mulighet for overlapping 10-14 
-Torsdag: Alle medlemmene er ledig 12-14.
+Vi møtes fast hver tirsdag fra 12:15-14:00, men gruppen har også mulighet til å møtes allerede klokken 10 denne
+dagen. Gruppen har også mulighet til å treffes om torsdagen fra 12-14. Dersom vi skal treffes utenfor disse tidpsunktene,
+i forbindelse med innleveringer eller lignende, møtes vi i subgrupper, da timeplanene våre kolliderer.
 
-Dersom det blir nødvendig å møtes utenfor disse oppsatte tidpsunktene i forbindelse med innleveringer eller 
-lignende, vil vi møtes i subgrupper slik at det passer med resten av timeplanen vår.
 
 
 Deloppgave 3:
