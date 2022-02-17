@@ -12,7 +12,7 @@ public class GameState {
 		
 		Tips tip = new Tips();
 		player = new Player();
-		Platform platform = new Platform();
+		Platform platform = new Platform(300,50,200,8);
 		
 		addSprite(platform);
 		addSprite(tip);

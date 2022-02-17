@@ -15,12 +15,12 @@ public class Platform implements GameObjects {
 	private static int width;
 	private static int height;
  
-	public Platform() {
-		 x=300;
-		 y=50;
+	public Platform(int x, int y, int width, int height) {
+		 this.x = x;
+		 this.y = y;
 		 
-		 width = 200;
-		 height = 8;
+		 this.width = width;
+		 this.height = height;
 		 
 		 FileHandle platformFileHandle = Gdx.files.internal("game/img/platform.png"); 
 		 Texture platformTexture = new Texture(platformFileHandle);
