@@ -11,12 +11,14 @@ public class GameState {
 		allSprites = new ArrayList<GameObjects>();
 		
 		Tips tip = new Tips();
-		player = new Player();
-		Platform platform = new Platform(300,50,200,8);
+		player = new Player(50,15);
 		
+		Platform platform = new Platform(300,50,200,8);
+		Platform platform2 = new Platform(50,15,4,4);
 		addSprite(platform); 
+		addSprite(platform2); 
 		addSprite(tip);
-		addSprite(player);
+		addSprite(player); 
 	}
 	
 	
