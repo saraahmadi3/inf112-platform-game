@@ -102,6 +102,12 @@ I fortsettelsen må vi fordype oss i lib-gdx/Tiling og dets muligheter med tanke
 Vi må også bli flinkere til å utnytte mulighetene git gir oss. Inntil videre har vi fordelt oppgaver slik at vi ikke skriver i samme filer. Ulike medlemmer har derfor fått i oppgave å jobbe med enkeltklasser, slik at vi kan committe uten at vi har måttet bekymre oss for merging-konflikter. Dette har fungert til nå, men vi ser at det vil bli en utfordring når prosjektet blir mer komplisert.
 
 
+Sara Ahmadi
+Kristian Nore 
+Dani Marås 
+Adrian Clopan
+
+
 
 
 
