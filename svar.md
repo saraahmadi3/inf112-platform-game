@@ -48,8 +48,8 @@ lignende, vil vi møtes i subgrupper slik at det passer med resten av timeplanen
 
 Deloppgave 3:
 Det overordnede målet er i første omgang å lage et minimum viable product. Med minimum viable product
-mener vi at spillet er spillbart, men har veldig enkle spesikikasjoner. Dvs at vi har en plattform, og en enkel figur
-som kan flyttes rundt på brettet. 
+mener vi at spillet er spillbart, men har veldig enkle spesikikasjoner. Dvs at vi har en figur som kan bevege seg, og et brett
+den kan bevege seg på.
 
 Brukerhistorier i prioritert rekkefølge:
 1) Som spiller trenger jeg å kunne flytte figuren fra side til side, og opp og ned. 
@@ -68,6 +68,7 @@ Akseptansekriterier:
 
 
 Deloppgave 5
+
 
 
 
