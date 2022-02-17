@@ -9,11 +9,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Platform implements GameObjects {
 	
-	private static Sprite platformSprite;
-	private static double x; //X-coordinate for platform
-	private static double y; //Y-coordinate for platform
-	private static int width;
-	private static int height; 
+	private Sprite platformSprite;
+	private double x; //X-coordinate for platform
+	private double y; //Y-coordinate for platform
+	private int width;
+	private int height; 
  
 	public Platform(int x, int y, int width, int height) {
 		 this.x = x;
