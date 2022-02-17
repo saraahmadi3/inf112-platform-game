@@ -18,25 +18,25 @@ han et valgfag som het "Programmering". På vgs hadde han IT1 og IT2,
 "programmering og modellering x".
 HTML, Database, CSS, JavaScript. Har erfaring med Python, Java og Haskell.
 
-####Sara:
+#### Sara:
 Har gått Data Science (2. året). Har jobbet med Python tidligere. 
 Brukte Python på vgs i forbindelse med matematikk(modellering).
 
-####Adrian:
+#### Adrian:
 Går Data Science 3. året. Har erfaring med Python, Java og Haskell. 
 Har prøvd seg på å lage websider for en kunde (database-basert).
 
-####Dani: Går andre året på Datateknologi. Har jobbet som lektor i 7 år før han 
+#### Dani: Går andre året på Datateknologi. Har jobbet som lektor i 7 år før han 
 begynte på Datateknologi. Ingen erfaring med programmering før han begynte på 
 Datateknologi.
 
-###Rollefordeling:
+### Rollefordeling:
 Aministrativ leder: Dani. Oppgaver: Koordinere møter med de øvrige medlemmene. Sekretær.
 Testleder: Adrian. Oppgaver: Overordnet ansvar for testing.
 Kodesjef: Kristian: Overordnet oppsyn med dokumentering av kode.
 Git-sjef: Sara: Ansvar for Git, arbeidsfordeling.
 
-##Deloppgave 2:
+## Deloppgave 2:
 Organisering:
 Her vil vi gjøre en løpende vurdering underveis i prosjektet, men vi vil forsøke å ha en metodikk 
 med utgangspunkt i Kanban-metoden. Vi møtes ukentlig og oppdaterer hverandre på fullførte oppgaver,
@@ -61,12 +61,12 @@ I forbindelse med innlevering av første deloppgave, har naturligvis det meste a
 kravene til denne obligen. Vi har likevel gjort oss mange tanker om den videre utviklingen, både med tanke på selve spillproduktet
 og spillutviklingen. Eksempelvis ser vi at vi blir nødt til å fordype oss noe i git-hubs og lib-gdx' muligheter. 
 
-##Deloppgave 3:
+## Deloppgave 3:
 Det overordnede målet er i første omgang å lage et minimum viable product med de tre første punktene oppgitt i deloppgave 4. 
 Dvs at vi har et spillbrett, en spiller som vises på spillbrettet, i tillegg til muligheten til å bevege denne spilleren.
 den kan bevege seg på.
 
-###Brukerhistorier i prioritert rekkefølge for innlevering av obligatorisk oppgave 1:
+### Brukerhistorier i prioritert rekkefølge for innlevering av obligatorisk oppgave 1:
 1) Som spiller forventer jeg å se en verden/spillbrett som utgjør selve spillet.
 Akseptansekriterier: Vi skal ha en klar definert nedre del av spillbrettet, og minst en plattform en annen plass på spillbrettet.
 
@@ -83,7 +83,7 @@ Akseptansekriterier: Dersom en karakter hopper opp og treffer en plattform, skal
 5) Som spiller forventer jeg at spillet aldri kræsjer.
 Akseptansekriterier: Spillet skal ikke kræsje.
 
-###Øvrige brukerhistorier/Backlog:
+### Øvrige brukerhistorier/Backlog:
 Jeg forventer at bakgrunn og forgrunn i spillet er lett å skille fra hverandre.
 Akseptansekriterier: Fargene i forgrunn og bakgrunn må lett kunne skilles fra hverandre. Fargekombinasjoner som grønn og rød bør unngås 
 som kontraster på forgrunn og bakgrunn (fargeblindhet). Teksturer hjelper også med å skille ulike elementer på skjermen.
@@ -92,7 +92,7 @@ Som spiller forventer jeg at spillet er intuitivt å spille.
 Akseptansekriterier: Det skal være lett å skjønne hvordan spilleren kan bevege seg på skjermen.
 
 
-##Deloppgave 5 
+## Deloppgave 5 
 Oppsummering
 Gruppen har en fin dynamikk, god kommunikasjon og en god størrelse. Vi har klart å fordele oppgaver, slik at ingen blir sittende arbeidsløs.
 Takket være Kristians tidligere erfaring med å lage spill, har vi også kommet godt i gang med selve spillutviklingen (selv om det inntil videre bare innfrir de tre første kravene til mvp). Vi fulgte ikke den test-drevne utviklingen i begynnelsen, men gjorde heller ting i motsatt rekkefølge; vi begynte med utvikling, og begynte deretter med testing. Vi oppdaget også at det blir vanskelig å teste bevegelsene til spillkarakteren. Spillkarakteren beveger seg med utgangspunkt i x- og y-koordinater, men det er vanskelig å fastslå hvor langt et tastetrykk skal flytte karakteren. Det er derfor vanskelig å lage en test, som tester om karakteren flytter seg nøyaktig fra a til b. 
