@@ -26,7 +26,8 @@ Brukte Python på vgs i forbindelse med matematikk(modellering).
 Går Data Science 3. året. Har erfaring med Python, Java og Haskell. 
 Har prøvd seg på å lage websider for en kunde (database-basert).
 
-#### Dani: Går andre året på Datateknologi. Har jobbet som lektor i 7 år før han 
+#### Dani: 
+Går andre året på Datateknologi. Har jobbet som lektor i 7 år før han 
 begynte på Datateknologi. Ingen erfaring med programmering før han begynte på 
 Datateknologi.
 
@@ -100,6 +101,12 @@ Takket være Kristians tidligere erfaring med å lage spill, har vi også kommet
 I fortsettelsen må vi fordype oss i lib-gdx/Tiling og dets muligheter med tanke på spillkarakter og spillbrett. Vår foreløpige tanke er et plattformspill hvor hvert enkelt nivå er et eget spillbrett, og vi treger derfor flere spillbrett. Spillopplevelsen til det ferdige produktet vårt avhenger derfor av hvor flink vi blir til å utvikle spillbrett.
 
 Vi må også bli flinkere til å utnytte mulighetene git gir oss. Inntil videre har vi fordelt oppgaver slik at vi ikke skriver i samme filer. Ulike medlemmer har derfor fått i oppgave å jobbe med enkeltklasser, slik at vi kan committe uten at vi har måttet bekymre oss for merging-konflikter. Dette har fungert til nå, men vi ser at det vil bli en utfordring når prosjektet blir mer komplisert.
+
+
+Sara Ahmadi
+Kristian Nore 
+Dani Marås 
+Adrian Clopan
 
 
 
