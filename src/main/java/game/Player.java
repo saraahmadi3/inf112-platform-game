@@ -98,6 +98,9 @@ public class Player implements GameObjects {
 		for (Platform p : game.getAllPlatforms()) {
 			if (p.checkForHit(this)) {
 				y=oldY;
+				isGrounded = true;
+				canDoubleJump = false; 
+				gV = 0;
 				System.out.println("Y Hit");
 				break;
 			}
