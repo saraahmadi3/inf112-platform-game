@@ -91,7 +91,7 @@ Akseptansekriterier: Det skal være lett å skjønne hvordan spilleren kan beveg
 
 
 ## Deloppgave 5 
-Oppsummering
+Oppsummering:
 
 Gruppen har en fin dynamikk, god kommunikasjon og en god størrelse. Vi har klart å fordele oppgaver, slik at ingen blir sittende arbeidsløs.
 Takket være Kristians tidligere erfaring med å lage spill, har vi også kommet godt i gang med selve spillutviklingen (selv om det inntil videre bare innfrir de tre første kravene til mvp). Vi fulgte ikke den test-drevne utviklingen i begynnelsen, men gjorde heller ting i motsatt rekkefølge; vi begynte med utvikling, og begynte deretter med testing. Vi oppdaget også at det blir vanskelig å teste bevegelsene til spillkarakteren. Spillkarakteren beveger seg med utgangspunkt i x- og y-koordinater, men det er vanskelig å fastslå hvor langt et tastetrykk skal flytte karakteren. Det er derfor vanskelig å lage en test, som tester om karakteren flytter seg nøyaktig fra a til b. 
@@ -105,10 +105,7 @@ Til tross for at vi har valgt å benytte oss av Kanban-metoden har vi ikke komme
 ![Klassediagram](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/raw/67f497b2b0c8d12f5aa9e5a377cb41f8f4cf262b/IMG_1061.jpg)
 
 
-Sara Ahmadi
-Kristian Nore 
-Dani Marås 
-Adrian Clopan
+Sara Ahmadi, Kristian Nore, Dani Marås og Adrian Clopan.
 
 
 
