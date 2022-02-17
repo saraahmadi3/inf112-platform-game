@@ -9,6 +9,6 @@ public class Main {
         cfg.setTitle("Game");
         cfg.setWindowedMode(1080, 720);
 
-        new Lwjgl3Application(new Screen(), cfg);
+        new Lwjgl3Application(new GameLoop(), cfg);
     }
 }

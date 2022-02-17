@@ -1,8 +1,5 @@
 package game;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -10,32 +7,18 @@ import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Screen implements ApplicationListener {
+public class GameLoop implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
-     
-    //TODO Sprites should probably be kept track of by another class, not here.
-    private List<Sprite> sprites;
-    private Player player;  
-    private Tips tip;
-    private Platform platform;
-
+    private GameState game;
+  
     @Override
     public void create() {
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
         
-        //TODO move all the sprite related to different class
-        player = new Player();
-        tip = new Tips();
-        platform = new Platform();
-        
-        //This list should probably be in a different class, and accessible through something like game.getSprites()
-        sprites = new ArrayList<Sprite>();
-        sprites.add(player);
-        sprites.add(tip);
-        sprites.add(platform);
+        game = new GameState();
     }
 
     @Override
@@ -63,7 +46,7 @@ public class Screen implements ApplicationListener {
     
     //This method should iterate over all movable sprites and call the move() method for each one.
     private void updateAll() {
-    	for (Sprite sprite : sprites) {
+    	for (Sprite sprite : game.getAllSprites()) {
     		sprite.update();
     	}
     }
@@ -72,7 +55,7 @@ public class Screen implements ApplicationListener {
     private void drawAll() {
     	batch.begin();//Must happen before all drawing
         
-    	for (Sprite sprite : sprites) {
+    	for (Sprite sprite : game.getAllSprites()) {
     		sprite.draw(batch, font);
     	}
         

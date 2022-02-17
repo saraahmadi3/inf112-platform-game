@@ -10,7 +10,12 @@ public class GameState {
 	public GameState() {
 		allSprites = new ArrayList<Sprite>();
 		
+		Tips tip = new Tips();
 		player = new Player();
+		Platform platform = new Platform();
+		
+		addSprite(platform);
+		addSprite(tip);
 		addSprite(player);
 	}
 	
