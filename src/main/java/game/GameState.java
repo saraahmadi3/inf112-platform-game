@@ -1,30 +1,29 @@
 package game;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class GameState {
 	
-	private 
-	private List<Sprite> allSprites;
+	private Player player;
+	private ArrayList<Sprite> allSprites;
 	
-	public GameState(Player p) {
+	public GameState() {
+		allSprites = new ArrayList<Sprite>();
 		
+		player = new Player();
+		addSprite(player);
 	}
 	
 	
-	
-	public void addSprite() {
-		
+	public void addSprite(Sprite s) {
+		allSprites.add(s);
 	}
 	
-	public void killSprite() {
-		
+	public void killSprite(Sprite s) {
+		allSprites.remove(s);
 	}
 	
-	public ArrayList getAllSprites() {
-		
-		
-		return null; 
+	public ArrayList<Sprite> getAllSprites() {
+		return allSprites; 
 	}
 }
