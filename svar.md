@@ -26,7 +26,8 @@ Brukte Python på vgs i forbindelse med matematikk(modellering).
 Går Data Science 3. året. Har erfaring med Python, Java og Haskell. 
 Har prøvd seg på å lage websider for en kunde (database-basert).
 
-#### Dani: Går andre året på Datateknologi. Har jobbet som lektor i 7 år før han 
+#### Dani: 
+Går andre året på Datateknologi. Har jobbet som lektor i 7 år før han 
 begynte på Datateknologi. Ingen erfaring med programmering før han begynte på 
 Datateknologi.
 
