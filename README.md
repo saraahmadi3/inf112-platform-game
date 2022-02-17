@@ -88,7 +88,7 @@ Akseptansekriterier: Vi skal ha en klar definert nedre del av spillbrettet, og m
 2) Som spiller forventer jeg å se en spiller på spillbrettet, som jeg kan manipulere.
 Akseptansekriterier: Det skal plasseres en spiller på brettet i det spillet starter.
 
-3.) Som spiller forventer jeg å kunne flytte figuren fra side til side, og opp og ned. 
+3) Som spiller forventer jeg å kunne flytte figuren fra side til side, og opp og ned. 
 Akseptansekriterier: Figuren kan flyttes fra side til side (såfremt det ikke er objekter i veien) og hoppe. Figuren blir påvirket
 av tyngdekraften, og beveger seg nedover etter et hopp, og hvis spilleren beveger seg utenfor en kant.
 
