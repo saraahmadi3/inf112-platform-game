@@ -1,4 +1,4 @@
-#Obligatorisk oppgave 1
+# Obligatorisk oppgave 1
 
 Vi har delt inn dette dokumentet i fem deler, på samme måte som selve oppgaven
 er delt inn i fem deloppgaver. Det er likevel en del overlapp i oppgaveteksten
@@ -9,7 +9,7 @@ mellom ulike oppgavedeler, og vi har forsøkt å unngå å svare to ulike steder
 Dette har vi ikke gjort ennå:
 Project board.
 
-##Deloppgave 1:
+## Deloppgave 1:
 Gruppenavn: antsy-antonym
 
 Kartlegging av kompetanse til medlemmene:
