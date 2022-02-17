@@ -12,14 +12,19 @@ public class Platform implements GameObjects {
 	private static Sprite platformSprite;
 	private static double x; //X-coordinate for platform
 	private static double y; //Y-coordinate for platform
+	private static int width;
+	private static int height;
  
 	public Platform() {
 		 x=300;
 		 y=50;
 		 
+		 width = 200;
+		 height = 8;
+		 
 		 FileHandle platformFileHandle = Gdx.files.internal("game/img/platform.png"); 
 		 Texture platformTexture = new Texture(platformFileHandle);
-		 platformSprite = new Sprite(platformTexture, 200, 8);
+		 platformSprite = new Sprite(platformTexture, width, height);
 	}
 	
 	@Override
@@ -54,6 +59,16 @@ public class Platform implements GameObjects {
 	public void update() {
 		// TODO add collision detection later on possibly here
 		
+	}
+
+	@Override
+	public int getWidth() {
+		return width;
+	}
+
+	@Override
+	public int getHeight() {
+		return height;
 	}
 	
 }

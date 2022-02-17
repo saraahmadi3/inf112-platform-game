@@ -12,7 +12,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Player implements GameObjects {
 	
 	private static Sprite playerSprite;
-
+	private static int width;
+	private static int height;
+	
 	//coordinates must be double, if not Java will round the movement down to -1 for left/down, or 0 for up/right
 	private static double x; //X-coordinate for player
 	private static double y; //Y-coordinate for player
@@ -31,11 +33,14 @@ public class Player implements GameObjects {
 		canDoubleJump = false;
 		x = 50; 
 		y = 50; 
-		gV = 0;  
+		gV = 0; 
+		
+		height = 32;
+		width = 16;
 		
 	    FileHandle playerFileHandle = Gdx.files.internal("game/img/player.png"); 
 	    Texture playerTexture = new Texture(playerFileHandle);
-	    playerSprite = new Sprite(playerTexture, 16, 32);
+	    playerSprite = new Sprite(playerTexture, width, height);
 	}
 	
 	//TODO: Use more advanced graphics for the player sprite
@@ -49,6 +54,16 @@ public class Player implements GameObjects {
 	
 	public int getY() {
 		return (int) y;
+	}
+	
+	@Override
+	public int getWidth() {
+		return width;
+	}
+
+	@Override
+	public int getHeight() {
+		return height;
 	}
 	
 	public void draw(SpriteBatch batch, BitmapFont font) {

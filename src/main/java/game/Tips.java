@@ -10,6 +10,9 @@ public class Tips implements GameObjects {
 	private static final double V = 75; //Velocity for text
 	private static final int spaces = 200; //Spaces between each tip
 	
+	private static int width;
+	private static int height;
+	
 	//TODO Add more tips as the game gets more mechanics
 	private static final String tip = 
 			"Tip: You can move to the left or right even while in the air." + " ".repeat(spaces)
@@ -22,7 +25,10 @@ public class Tips implements GameObjects {
 
 	public Tips() {
 		x = 1250; 
-		y = 700;   
+		y = 700;  
+		
+		width = tip.length()*5;
+		height = 10;
 	}
 	
 	public String getSymbol() {
@@ -49,8 +55,18 @@ public class Tips implements GameObjects {
 		double delta = Gdx.graphics.getDeltaTime(); //The time passed since last frame
 		x -= V*delta; //Scrolling
 		
-		if (x<-tip.length()*5) {
+		if (x<-width) {
 			x = 1250;
 		}
+	}
+
+	@Override
+	public int getWidth() {
+		return width;
+	}
+
+	@Override
+	public int getHeight() {
+		return height;
 	}
 }

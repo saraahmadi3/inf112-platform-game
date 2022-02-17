@@ -23,6 +23,10 @@ public interface GameObjects {
 	 * @return the sprite's integer position in the y-axis
 	 */
 	public int getY();
+	
+	public int getWidth();
+	
+	public int getHeight();
 	/**
 	 * draws the sprite onto the board
 	 */
