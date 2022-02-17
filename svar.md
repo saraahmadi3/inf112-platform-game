@@ -66,7 +66,7 @@ Dvs at vi har et spillbrett, en spiller som vises på spillbrettet, i tillegg ti
 den kan bevege seg på.
 
 Brukerhistorier i prioritert rekkefølge for innlevering av obligatorisk oppgave 1:
-1) Som spiller forveneter jeg å se en verden/spillbrett som utgjør selve spillet.
+1) Som spiller forventer jeg å se en verden/spillbrett som utgjør selve spillet.
 Akseptansekriterier: Vi skal ha en klar definert nedre del av spillbrettet, og minst en plattform en annen plass på spillbrettet.
 
 2) Som spiller forventer jeg å se en spiller på spillbrettet, som jeg kan manipulere.
@@ -91,7 +91,10 @@ Som spiller forventer jeg at spillet er intuitivt å spille.
 Akseptansekriterier: Det skal være lett å skjønne hvordan spilleren kan bevege seg på skjermen.
 
 
-Deloppgave 5
+Deloppgave 5 
+Oppsummering
+Gruppen har en fin dynamikk, god Kommunikasjonen og en god størrelse. Vi har klart å fordele oppgaver, slik at ingen blir sittende arbeidsløs.
+Takket være Kristians tidligere erfaring med å lage spill, har vi også kommet godt i gang med selve spillutviklingen (selv om det inntil viderebare innfrir de tre første kravene til mvp). Vi fulgte ikke den test-drevne utviklingen i begynnelsen, men gjorde heller ting i motsatt rekkefølge; vi begynte med utvikling, og begynte deretter med testing. Vi oppdaget også at det blir vanskelig å teste bevegelsene til spillkarakteren. Spillkarakteren beveger seg med utgangspunkt i x- og y-koordinater, men det er vanskelig å fastslå hvor langt et tastetrykk skal flytte karakteren. Det er derfor vanskelig å lage en test, som tester om karakteren flytter seg nøyaktig fra a til b. 
 
 
 
