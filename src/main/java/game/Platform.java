@@ -10,10 +10,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Platform implements GameObjects {
 	
 	private static Sprite platformSprite;
-	private static double x; //X-coordinate for platform
-	private static double y; //Y-coordinate for platform
-	private static int width;
-	private static int height; 
+	private double x; //X-coordinate for platform
+	private double y; //Y-coordinate for platform
+	private int width;
+	private int height; 
  
 	public Platform(int x, int y, int width, int height) {
 		 this.x = x;
@@ -43,7 +43,17 @@ public class Platform implements GameObjects {
 
 		return (int) y;
 	}
+	
+	@Override
+	public int getWidth() {
+		return width;
+	}
 
+	@Override
+	public int getHeight() {
+		return height;
+	}
+	
 	@Override
 	public void draw(SpriteBatch batch, BitmapFont font) {
 		batch.draw(platformSprite, getX(), getY());
@@ -57,18 +67,19 @@ public class Platform implements GameObjects {
 
 	@Override
 	public void update() {
-		// TODO add collision detection later on possibly here
+
+	}
+
+	public boolean checkForHit(Player player) {
+		boolean checkForLeftXOverlap = player.getX() < getX() && (player.getX()+player.getWidth()>getX());
+		boolean checkForRightXOverlap = player.getX() < getX() && (player.getX()+player.getWidth()>getX()+getWidth());
+		boolean checkForTopYOverlap = player.getY() < getY()+getHeight() && (player.getY()>getY()+getHeight());
+		boolean checkForBottomYOverlap = player.getY()+player.getHeight() < getY()+getHeight() && (player.getY()+player.getHeight()>getY());
 		
+		if ((checkForLeftXOverlap || checkForRightXOverlap) && (checkForTopYOverlap || checkForBottomYOverlap)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-
-	@Override
-	public int getWidth() {
-		return width;
-	}
-
-	@Override
-	public int getHeight() {
-		return height;
-	}
-	
 }
