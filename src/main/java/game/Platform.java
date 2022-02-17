@@ -6,10 +6,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
+ 
 public class Platform implements GameObjects {
-	
-	private static Sprite platformSprite;
+	private Sprite platformSprite;
 	private double x; //X-coordinate for platform
 	private double y; //Y-coordinate for platform
 	private int width;
