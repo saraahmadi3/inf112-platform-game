@@ -6,17 +6,17 @@ mellom ulike oppgavedeler, og vi har forsøkt å unngå å svare to ulike steder
 
 ## Innhold:
 ##### Deloppgave 1-5
-Deloppgave 1: Organisering av teamet
-Deloppgave 2: Prosessen
-Deloppgave 3: Oversikt over forventet produktet/Brukerhistorier
-Deloppgave 4: Kode 
-Deloppgave 5: Oppsummering
+Deloppgave 1: Organisering av teamet  
+Deloppgave 2: Prosessen  
+Deloppgave 3: Oversikt over forventet produktet/Brukerhistorier  
+Deloppgave 4: Kode   
+Deloppgave 5: Oppsummering  
 
 ##### Setup
-Maven Setup
-Running
-Jar Files
-Eclipse Setup
+Maven Setup  
+Running  
+Jar Files  
+Eclipse Setup  
 
 
 
