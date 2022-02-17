@@ -3,7 +3,7 @@ package game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Platform implements Sprite {
+public class Platform implements GameObjects {
 	
 	private static double x; //X-coordinate for platform
 	private static double y; //Y-coordinate for platform

@@ -46,7 +46,7 @@ public class GameLoop implements ApplicationListener {
     
     //This method should iterate over all movable sprites and call the move() method for each one.
     private void updateAll() {
-    	for (Sprite sprite : game.getAllSprites()) {
+    	for (GameObjects sprite : game.getAllSprites()) {
     		sprite.update();
     	}
     }
@@ -55,7 +55,7 @@ public class GameLoop implements ApplicationListener {
     private void drawAll() {
     	batch.begin();//Must happen before all drawing
         
-    	for (Sprite sprite : game.getAllSprites()) {
+    	for (GameObjects sprite : game.getAllSprites()) {
     		sprite.draw(batch, font);
     	}
         
