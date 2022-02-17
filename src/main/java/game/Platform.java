@@ -13,7 +13,7 @@ public class Platform implements GameObjects {
 	private static double x; //X-coordinate for platform
 	private static double y; //Y-coordinate for platform
 	private static int width;
-	private static int height;
+	private static int height; 
  
 	public Platform(int x, int y, int width, int height) {
 		 this.x = x;

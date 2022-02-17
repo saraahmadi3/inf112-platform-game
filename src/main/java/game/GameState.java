@@ -14,7 +14,7 @@ public class GameState {
 		player = new Player();
 		Platform platform = new Platform(300,50,200,8);
 		
-		addSprite(platform);
+		addSprite(platform); 
 		addSprite(tip);
 		addSprite(player);
 	}
