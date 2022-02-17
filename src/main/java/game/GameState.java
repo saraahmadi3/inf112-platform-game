@@ -11,7 +11,7 @@ public class GameState {
 		allSprites = new ArrayList<GameObjects>();
 		
 		Tips tip = new Tips();
-		player = new Player(50,15);
+		player = new Player(50,15, this);
 		
 		Platform platform = new Platform(300,50,200,8);
 		Platform platform2 = new Platform(50,15,4,4);

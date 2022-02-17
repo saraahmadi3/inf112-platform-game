@@ -14,7 +14,7 @@ public class Player implements GameObjects {
 	private Sprite playerSprite;
 	private int width;
 	private int height;
-	
+	private GameState game;
 	//coordinates must be double, if not Java will round the movement down to -1 for left/down, or 0 for up/right
 	private double x; //X-coordinate for player
 	private double y; //Y-coordinate for player
@@ -28,9 +28,10 @@ public class Player implements GameObjects {
 	private static boolean isGrounded; //True if player is on ground
 	private static boolean canDoubleJump; //True if the player can jump again
 	
-	public Player(int x, int y) {
+	public Player(int x, int y, GameState game) {
 		isGrounded = false;
 		canDoubleJump = false;
+		this.game = game;
 		this.x = x;
 		this.y = y;
 		gV = 0; 
@@ -79,6 +80,9 @@ public class Player implements GameObjects {
 		
 		double delta = Gdx.graphics.getDeltaTime(); //The time passed since last frame
 		
+		double oldY = y;
+		double oldX = x;
+		
 		y -= gV*delta; //Gravity
 		
 		gV += G*delta;
@@ -91,6 +95,7 @@ public class Player implements GameObjects {
 			gV = 0;
 		}
 		
+				
 		//Moves the player to the left, slower while in the air
 		if(Gdx.input.isKeyPressed(Keys.A) || Gdx.input.isKeyPressed(Keys.LEFT)) {
 			if (isGrounded) {
