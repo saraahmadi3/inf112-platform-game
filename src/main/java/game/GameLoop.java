@@ -2,6 +2,7 @@ package game;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -13,7 +14,7 @@ public class GameLoop implements ApplicationListener {
     private GameState game;
   
     @Override
-    public void create() {
+    public void create() {    	
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
@@ -61,7 +62,7 @@ public class GameLoop implements ApplicationListener {
         
         batch.end();//Must be called when all drawing is complete
     }
-
+    
     @Override
     public void resize(int width, int height) {
     }
