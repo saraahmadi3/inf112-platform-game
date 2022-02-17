@@ -16,8 +16,9 @@ public class Screen implements ApplicationListener {
      
     //TODO Sprites should probably be kept track of by another class, not here.
     private List<Sprite> sprites;
-    private Player player; 
+    private Player player;  
     private Tips tip;
+    private Platform platform;
 
     @Override
     public void create() {
@@ -28,11 +29,13 @@ public class Screen implements ApplicationListener {
         //TODO move all the sprite related to different class
         player = new Player();
         tip = new Tips();
+        platform = new Platform();
         
         //This list should probably be in a different class, and accessible through something like game.getSprites()
         sprites = new ArrayList<Sprite>();
         sprites.add(player);
         sprites.add(tip);
+        sprites.add(platform);
     }
 
     @Override

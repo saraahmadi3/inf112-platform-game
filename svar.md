@@ -33,7 +33,8 @@ Organisering:
 Her vil vi gjøre en løpende vurdering underveis i prosjektet, men vi vil forsøke å ha en metodikk 
 med utgangspunkt i Kanban-metoden. Vi møtes ukentlig og oppdaterer hverandre på fullførte oppgaver,
 løpende oppgaver og hvordan arbeidsoppgavene skal fordeles. Vi har ikke bestemt oss for hvilket 
-prosjektbrett blabla.
+prosjektbrett vi skal ha ennå, da vi ikke har utviklet selve plottet for spillet ennå.
+
 Vi vil benytte oss av testdrevet utvikling, og koble dette sammen med parprogrammering. Dette håper
 vi skal passe oss veldig bra, da vi består av fire personer. Hvorvidt vi har faste par, eller om vi 
 bytter underveis, vil vi ta stilling til når vi begynner med arbeidet.
@@ -41,11 +42,14 @@ bytter underveis, vil vi ta stilling til når vi begynner med arbeidet.
 Tirsdag: Vi har mulighet for overlapping 10-14 
 Torsdag: Alle medlemmene er ledig 12-14.
 
+Dersom det blir nødvendig å møtes utenfor disse oppsatte tidpsunktene i forbindelse med innleveringer eller 
+lignende, vil vi møtes i subgrupper slik at det passer med resten av timeplanen vår.
+
 
 Deloppgave 3:
 Det overordnede målet er i første omgang å lage et minimum viable product. Med minimum viable product
-mener vi at spillet er spillbart, men veldig enkle spesikikasjoner. Dvs at vi har en plattform, og en enkel figur
-som kan flyttes rundt på brettet. 
+mener vi at spillet er spillbart, men har veldig enkle spesikikasjoner. Dvs at vi har en figur som kan bevege seg, og et brett
+den kan bevege seg på.
 
 Brukerhistorier i prioritert rekkefølge:
 1) Som spiller trenger jeg å kunne flytte figuren fra side til side, og opp og ned. 
@@ -61,6 +65,11 @@ som kontraster på forgrunn og bakgrunn (fargeblindhet). Teksturer.
 
 4.) Som spiller forventer jeg at spillet er intuitivt å spille.
 Akseptansekriterier: 
+
+
+Deloppgave 5
+
+
 
 
 
