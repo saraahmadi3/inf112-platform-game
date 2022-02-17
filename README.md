@@ -99,11 +99,11 @@ Akseptansekriterier: Dersom en karakter hopper opp og treffer en plattform, skal
 Akseptansekriterier: Spillet skal ikke kræsje.
 
 ### Øvrige brukerhistorier/Backlog:
-Jeg forventer at bakgrunn og forgrunn i spillet er lett å skille fra hverandre.
+Jeg forventer at bakgrunn og forgrunn i spillet er lett å skille fra hverandre.  
 Akseptansekriterier: Fargene i forgrunn og bakgrunn må lett kunne skilles fra hverandre. Fargekombinasjoner som grønn og rød bør unngås 
 som kontraster på forgrunn og bakgrunn (fargeblindhet). Teksturer hjelper også med å skille ulike elementer på skjermen.
 
-Som spiller forventer jeg at spillet er intuitivt å spille.
+Som spiller forventer jeg at spillet er intuitivt å spille.  
 Akseptansekriterier: Det skal være lett å skjønne hvordan spilleren kan bevege seg på skjermen.
 
 
