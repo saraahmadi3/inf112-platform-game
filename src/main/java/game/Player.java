@@ -2,12 +2,16 @@ package game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 //TODO: Make interface that Player should implement. F.ex. an interface for any object which has coordinates.
 public class Player implements GameObjects {
 	
+	private static Sprite playerSprite;
 
 	//coordinates must be double, if not Java will round the movement down to -1 for left/down, or 0 for up/right
 	private static double x; //X-coordinate for player
@@ -28,6 +32,10 @@ public class Player implements GameObjects {
 		x = 50; 
 		y = 50; 
 		gV = 0;  
+		
+	    FileHandle playerFileHandle = Gdx.files.internal("game/img/player.png"); 
+	    Texture playerTexture = new Texture(playerFileHandle);
+	    playerSprite = new Sprite(playerTexture, 16, 32);
 	}
 	
 	//TODO: Use more advanced graphics for the player sprite
@@ -44,7 +52,7 @@ public class Player implements GameObjects {
 	}
 	
 	public void draw(SpriteBatch batch, BitmapFont font) {
-		font.draw(batch, getSymbol(), getX(), getY());
+		batch.draw(playerSprite, getX(), getY());
 	}
 	
 	public void update() {
