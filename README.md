@@ -4,7 +4,7 @@ Vi har delt inn dette dokumentet i fem deler, på samme måte som selve oppgaven
 er delt inn i fem deloppgaver. Det er likevel en del overlapp i oppgaveteksten
 mellom ulike oppgavedeler, og vi har forsøkt å unngå å svare to ulike steder på de samme tingene.
 
-##Innhold:
+## Innhold:
 ##### Deloppgave 1-5
 ##### Setup
 
