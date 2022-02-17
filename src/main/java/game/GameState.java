@@ -16,7 +16,7 @@ public class GameState {
 		
 		addSprite(platform); 
 		addSprite(tip);
-		addSprite(player);
+		addSprite(player); 
 	}
 	
 	

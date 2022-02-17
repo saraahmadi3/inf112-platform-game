@@ -34,7 +34,7 @@ public class Player implements GameObjects {
 		this.x = x;
 		this.y = y;
 		gV = 0; 
-		
+		 
 		height = 32;
 		width = 16;
 		
