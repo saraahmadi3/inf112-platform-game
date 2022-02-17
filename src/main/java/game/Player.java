@@ -28,11 +28,11 @@ public class Player implements GameObjects {
 	private static boolean isGrounded; //True if player is on ground
 	private static boolean canDoubleJump; //True if the player can jump again
 	
-	public Player() {
+	public Player(int x, int y) {
 		isGrounded = false;
 		canDoubleJump = false;
-		x = 50; 
-		y = 50; 
+		this.x = x;
+		this.y = y;
 		gV = 0; 
 		
 		height = 32;
