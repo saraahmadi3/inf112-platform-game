@@ -1,21 +1,29 @@
 package game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Platform implements GameObjects {
 	
+	private static Sprite platformSprite;
 	private static double x; //X-coordinate for platform
 	private static double y; //Y-coordinate for platform
  
 	public Platform() {
 		 x=300;
 		 y=50;
+		 
+		 FileHandle platformFileHandle = Gdx.files.internal("game/img/platform.png"); 
+		 Texture platformTexture = new Texture(platformFileHandle);
+		 platformSprite = new Sprite(platformTexture, 200, 8);
 	}
 	
 	@Override
 	public String getSymbol() {
-		
 		return "##################"; 	//currently all platforms are the same
 	}
 
@@ -33,7 +41,7 @@ public class Platform implements GameObjects {
 
 	@Override
 	public void draw(SpriteBatch batch, BitmapFont font) {
-		font.draw(batch, getSymbol(), getX(), getY());
+		batch.draw(platformSprite, getX(), getY());
 	}
 
 	@Override 
