@@ -38,14 +38,14 @@ public class Tips implements GameObjects {
 	}
 	
 	public void draw(SpriteBatch batch, BitmapFont font) {
-		font.draw(batch, getSymbol(), getX(), getY());
+		font.draw(batch, getSymbol(), (float) getX(), (float) getY());
 	}
 	
-	public int getX() {
-		return (int) x;
+	public double getX() {
+		return x;
 	}
 	
-	public int getY() {
+	public double getY() {
 		return (int) y;
 	}
 	

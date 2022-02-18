@@ -9,8 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  
 public class Platform implements GameObjects {
 	private Sprite platformSprite;
-	private double x; //X-coordinate for platform
-	private double y; //Y-coordinate for platform
+	public double x; //X-coordinate for platform
+	public double y; //Y-coordinate for platform
 	private int width;
 	private int height; 
  
@@ -38,15 +38,15 @@ public class Platform implements GameObjects {
 	}
 
 	@Override
-	public int getX() {
+	public double getX() {
 		
-		return (int)x;
+		return x;
 	}
 
 	@Override
-	public int getY() {
+	public double getY() {
 
-		return (int) y;
+		return y;
 	}
 	
 	@Override
@@ -61,7 +61,7 @@ public class Platform implements GameObjects {
 	
 	@Override
 	public void draw(SpriteBatch batch, BitmapFont font) {
-		batch.draw(platformSprite, getX(), getY());
+		batch.draw(platformSprite, (float) getX(), (float) getY());
 	}
 
 	@Override 
@@ -74,7 +74,7 @@ public class Platform implements GameObjects {
 	public void update() {
 
 	}
-
+	
 	public boolean checkForHit(Player player) {
 		boolean checkForLeftXOverlap = player.getX() < getX() && (player.getX()+player.getWidth()>getX());
 		boolean checkForRightXOverlap = player.getX() < getX()+getWidth() && (player.getX()+player.getWidth()>getX()+getWidth());

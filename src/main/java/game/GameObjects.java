@@ -16,16 +16,22 @@ public interface GameObjects {
 	 */
 	public String getSymbol();
 	/**
-	 * @return the sprite's integer position in the x-axis
+	 * @return the sprite's double position in the x-axis
 	 */
-	public int getX();
+	public double getX();
 	/**
-	 * @return the sprite's integer position in the y-axis
+	 * @return the sprite's double position in the y-axis
 	 */
-	public int getY();
+	public double getY();
 	
+	/**
+	 * @return the sprite's integer width
+	 */
 	public int getWidth();
 	
+	/**
+	 * @return the sprite's integer height
+	 */
 	public int getHeight();
 	/**
 	 * draws the sprite onto the board

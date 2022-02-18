@@ -21,11 +21,12 @@ public class Player implements GameObjects {
 	
 	private static final double V = 100; //Running velocity/speed for player	//later not static (powerups)
 	private static final double J = 150; //Jump strength
-	private static final double G = 150; //Gravity acceleration
+	public static final double G = 150; //Gravity acceleration
 	
 	private static double gV; //Gravity/speed at which the player falls
 	private static boolean isGrounded; //True if player is on ground
 	private static boolean canDoubleJump; //True if the player can jump again
+	private static Platform currentPlatform;
 	
 	public Player(int x, int y, GameState game) {
 		isGrounded = false;
@@ -45,17 +46,38 @@ public class Player implements GameObjects {
 	    game.addSprite(this);
 	}
 	
+	public void Boost() {
+		gV+=J;
+	}
+	
+	public void moveByXandY(double xMovment, double yMovment) {
+		x += xMovment;
+		y += yMovment;
+	}
+	
+	public Platform getCurrentPlatform() {
+		return currentPlatform;
+	}
+	
+	public boolean getGrounded() {
+		return isGrounded;
+	}
+	
+	public double getGv() {
+		return gV;
+	}
+	
 	//TODO: Use more advanced graphics for the player sprite
 	public String getSymbol() {
 		return "O";
 	}
 	
-	public int getX() {
-		return (int) x;
+	public double getX() {
+		return x;
 	}
 	
-	public int getY() {
-		return (int) y;
+	public double getY() {
+		return y;
 	}
 	
 	@Override
@@ -69,7 +91,7 @@ public class Player implements GameObjects {
 	}
 	
 	public void draw(SpriteBatch batch, BitmapFont font) {
-		batch.draw(playerSprite, getX(), getY());
+		batch.draw(playerSprite, (float) getX(), (float) getY());
 	}
 	
 	public void update() {
@@ -98,7 +120,7 @@ public class Player implements GameObjects {
 					isGrounded = true;
 					canDoubleJump = false;
 				} 
-				
+				currentPlatform = p;
 				y=oldY;
 				gV = G*delta;
 				break;
