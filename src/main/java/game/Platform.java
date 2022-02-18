@@ -14,16 +14,22 @@ public class Platform implements GameObjects {
 	private int width;
 	private int height; 
  
-	public Platform(int x, int y, int width, int height) {
+	public Platform(GameState game, int x, int y, int width, int height) {
+		this(game, x, y, width, height, "platform.png");
+	}
+	
+	public Platform(GameState game, int x, int y, int width, int height, String imgFile) {
 		 this.x = x;
 		 this.y = y;
 		 
 		 this.width = width;
 		 this.height = height;
 		 
-		 FileHandle platformFileHandle = Gdx.files.internal("game/img/platform.png"); 
+		 FileHandle platformFileHandle = Gdx.files.internal("game/img/"+imgFile); 
 		 Texture platformTexture = new Texture(platformFileHandle);
 		 platformSprite = new Sprite(platformTexture, width, height);
+		 
+		 game.addSprite(this);
 	}
 	
 	@Override
@@ -75,8 +81,9 @@ public class Platform implements GameObjects {
 		boolean checkForMidXOverlap = player.getX() >= getX() && player.getX()+player.getWidth()<=getX()+getWidth();
 		boolean checkForTopYOverlap = player.getY() < getY()+getHeight() && (player.getY()+player.getHeight()>getY()+getHeight());
 		boolean checkForBottomYOverlap = player.getY() < getY() && (player.getY()+player.getHeight()>getY());
+		boolean checkForMidYOverlap = player.getY() >= getY() && player.getY()+player.getHeight()<=getY()+getHeight();
 		
-		if ((checkForLeftXOverlap || checkForRightXOverlap || checkForMidXOverlap) && (checkForTopYOverlap || checkForBottomYOverlap)) {
+		if ((checkForLeftXOverlap || checkForRightXOverlap || checkForMidXOverlap) && (checkForTopYOverlap || checkForBottomYOverlap || checkForMidYOverlap)) {
 			return true;
 		} else {
 			return false;

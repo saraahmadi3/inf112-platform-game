@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class GameState {
 	
-	private Player player;
 	private ArrayList<GameObjects> allSprites;
 	private ArrayList<Platform> allPlatforms;
 	
@@ -12,15 +11,17 @@ public class GameState {
 		allSprites = new ArrayList<GameObjects>();
 		allPlatforms = new ArrayList<Platform>();
 		
-		Tips tip = new Tips();
-		player = new Player(50,15, this);
+		new Tips(this);
+		new Player(50,15, this);
+	
+		new Platform(this, -500, -10, 2000, 20, "grass.png"); //Floor
+		new Platform(this, -500, 718, 2000, 20); //Top
+		new Platform(this, -10, -500, 12, 2000); //Left wall
+		new Platform(this, 1078, -500, 15, 2000); //Right wall
 		
-		Platform platform = new Platform(300,50,200,8);
-		Platform platform2 = new Platform(550,30,100,16);
-		addSprite(platform); 
-		addSprite(platform2); 
-		addSprite(tip);
-		addSprite(player); 
+		new Platform(this, 300,50,200,8);
+		new Platform(this, 550,30,100,16);
+		
 	}
 	
 	

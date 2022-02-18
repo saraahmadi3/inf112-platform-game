@@ -22,7 +22,6 @@ public class Player implements GameObjects {
 	private static final double V = 100; //Running velocity/speed for player	//later not static (powerups)
 	private static final double J = 150; //Jump strength
 	private static final double G = 150; //Gravity acceleration
-	private static final double FLOOR = 12.5; //The Y-coordinate at which there is a floor
 	
 	private static double gV; //Gravity/speed at which the player falls
 	private static boolean isGrounded; //True if player is on ground
@@ -42,6 +41,8 @@ public class Player implements GameObjects {
 	    FileHandle playerFileHandle = Gdx.files.internal("game/img/player.png"); 
 	    Texture playerTexture = new Texture(playerFileHandle);
 	    playerSprite = new Sprite(playerTexture, width, height);
+	    
+	    game.addSprite(this);
 	}
 	
 	//TODO: Use more advanced graphics for the player sprite
@@ -88,13 +89,6 @@ public class Player implements GameObjects {
 		gV += G*delta;
 		
 		isGrounded = false;
-		if (y <= FLOOR) {
-			isGrounded = true;
-			canDoubleJump = false;   
-			y = FLOOR;
-			gV = 0;
-		}
-		
 		for (Platform p : game.getAllPlatforms()) {
 			if (p.checkForHit(this)) {
 				if (oldY<y) {
@@ -147,13 +141,6 @@ public class Player implements GameObjects {
 				canDoubleJump = false;
 				gV = -J;
 			}
-		}
-		
-		//TODO: Make this number equal to the screen width minus the width of the player, not just a hardcoded number.
-		if (x>1068) {
-			x = 1068;
-		} else if (x<0) {
-			x = 0;
 		}
 		
 		for (Platform p : game.getAllPlatforms()) {

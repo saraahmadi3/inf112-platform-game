@@ -23,12 +23,14 @@ public class Tips implements GameObjects {
 			+ "Tip: Using the double jump at the right time is crucial. Use it as soon as possible to gain the most height, or wait to get more distance." + " ".repeat(spaces);
 	
 
-	public Tips() {
+	public Tips(GameState game) {
 		x = 1250; 
 		y = 700;  
 		
 		width = tip.length()*5;
 		height = 10;
+		
+		game.addSprite(this);
 	}
 	
 	public String getSymbol() {
