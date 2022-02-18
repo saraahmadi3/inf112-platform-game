@@ -2,7 +2,7 @@ package game;
 
 import com.badlogic.gdx.Gdx;
 
-public class movingPlatform extends Platform {
+public class MovingPlatform extends Platform {
 
 	private int v;
 	private boolean goingUp;
@@ -13,7 +13,7 @@ public class movingPlatform extends Platform {
 	private int rangeY;
 	private GameState game;
 	
-	public movingPlatform(GameState game, int x, int y, int width, int height, int xRange, int yRange, int speed) {
+	public MovingPlatform(GameState game, int x, int y, int width, int height, int xRange, int yRange, int speed) {
 		super(game, x, y, width, height);
 		startX=x;
 		startY=y;

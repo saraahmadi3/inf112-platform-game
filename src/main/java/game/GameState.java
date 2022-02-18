@@ -22,11 +22,11 @@ public class GameState {
 		new Platform(this, 1078, -500, 15, 2000); //Right wall
 		
 		
-		new movingPlatform(this, 600, 150, 100, 8, 100, 0, 50);
-		new movingPlatform(this, 800, 250, 150, 8, 0, 200, 75);
+		new MovingPlatform(this, 600, 150, 100, 8, 100, 0, 50);
+		new MovingPlatform(this, 800, 250, 150, 8, 0, 200, 75);
 		
 		//TODO fix bug where player is not always grounded on diagonally moving platforms
-		new movingPlatform(this, 400, 360, 75, 8, 250, 75, 25); 
+		new MovingPlatform(this, 400, 360, 75, 8, 250, 75, 25); 
 		
 		new Platform(this, 250,400,75,8);
 		new Platform(this, 200,50,100,8);
