@@ -46,8 +46,10 @@ public class Player implements GameObjects {
 	    game.addSprite(this);
 	}
 	
-	public void Boost() {
-		gV+=J;
+	public void boost(double boostFactor) {
+		gV=-J*boostFactor;
+		isGrounded = false;
+		canDoubleJump = true;
 	}
 	
 	public void moveByXandY(double xMovment, double yMovment) {
@@ -132,7 +134,7 @@ public class Player implements GameObjects {
 			if (isGrounded) {
 				x -= delta * V;
 			} else {
-				x -= delta * (V/3);
+				x -= delta * (V/2);
 			}
 		} 
 		
@@ -141,7 +143,7 @@ public class Player implements GameObjects {
 			if (isGrounded) {
 				x += delta * V;
 			} else {
-				x += delta * (V/3);
+				x += delta * (V/2);
 			}
 		}
 		

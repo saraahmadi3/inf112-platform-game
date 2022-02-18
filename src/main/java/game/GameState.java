@@ -24,13 +24,17 @@ public class GameState {
 		
 		new MovingPlatform(this, 600, 150, 100, 8, 100, 0, 50);
 		new MovingPlatform(this, 800, 250, 150, 8, 0, 200, 75);
+		new MovingPlatform(this, 150, 625, 75, 8, 300, 0, 75);
 		
 		//TODO fix bug where player is not always grounded on diagonally moving platforms
 		new MovingPlatform(this, 400, 360, 75, 8, 250, 75, 25); 
 		
+		new BoostPlatform(this, 30, 250, 50, 8, 2);
+		
 		new Platform(this, 250,400,75,8);
 		new Platform(this, 200,50,100,8);
 		new Platform(this, 350,10,200,170);
+		new Platform(this, 28,525,54,8);
 		
 	}
 	
