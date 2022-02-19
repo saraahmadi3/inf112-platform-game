@@ -27,10 +27,12 @@ public class Player implements GameObjects {
 	private static boolean isGrounded; //True if player is on ground
 	private static boolean canDoubleJump; //True if the player can jump again
 	private static Platform currentPlatform;
+	private static boolean hasKey;
 	
 	public Player(int x, int y, GameState game) {
 		isGrounded = false;
 		canDoubleJump = false;
+		hasKey = false;
 		this.game = game;
 		this.x = x;
 		this.y = y;
@@ -50,6 +52,18 @@ public class Player implements GameObjects {
 		gV=-J*boostFactor;
 		isGrounded = false;
 		canDoubleJump = true;
+	}
+	
+	public boolean hasKey() {
+		return hasKey;
+	}
+	
+	public void useKey() {
+		hasKey=false;
+	}
+	
+	public void pickUpKey() {
+		hasKey=true;
 	}
 	
 	public void moveByXandY(double xMovment, double yMovment) {
@@ -170,9 +184,12 @@ public class Player implements GameObjects {
 		for (Platform p : game.getAllPlatforms()) {
 			if (p.checkForHit(this)) {
 				x=oldX;
+				currentPlatform = p;
 				break;
 			}
 		}
 		
 	}
+
+
 }

@@ -41,11 +41,18 @@ public class GameLoop implements ApplicationListener {
      */
     public void render() {
         clearScreen();
+        updateGameState();
         updateAll();
         drawAll();
+        
     }
     
-    //This method should iterate over all movable sprites and call the move() method for each one.
+    private void updateGameState() {
+		game.addAllNewSprites();
+		game.removeAllDeadSprites();
+	}
+
+	//This method should iterate over all movable sprites and call the move() method for each one.
     private void updateAll() {
     	for (GameObjects sprite : game.getAllSprites()) {
     		sprite.update();
