@@ -24,6 +24,7 @@ class PlayerTest {
 	
 	private static Player playerOne;
 	private static GameState state;
+	private static GameLoop loop;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws NullPointerException {
@@ -32,29 +33,22 @@ class PlayerTest {
 		//Starting the GameLoop would probably look something like the code below, but it might be better to find a way
 		//to start a fresh GameLoop without a window and without the level designs. Perhaps finding a way to call render() from 
 		//GameLoop manually would be a good solution, since we wouldn't have to deal with the Lwjgl3 stuff more than necessary.
-		/*
+		
+		loop = new GameLoop();
 		Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
+		cfg.setTitle("PlayerTest");
 		cfg.setWindowedMode(1080, 720);
-		new Lwjgl3Application(new GameLoop(), cfg);
-		*/
-		
+		state = loop.getGame();
 		playerOne = new Player(10, (int) FLOOR, state);
-		state = new GameState();
-		
-		int spritecount = state.getAllSprites().size();
-		for (int i=0; i<spritecount; i++) {
-			GameObjects current = state.getAllSprites().get(0);
-			state.killSprite(current);
-			
 		state.addSprite(playerOne);
-		}
+		new Lwjgl3Application(loop, cfg);
 		
 	}
 
 	@Test
 	void playerSpawStaysFloor() throws InterruptedException {
 		Thread.sleep(1000);
-		assertEquals((int) FLOOR, state.getAllSprites().get(0).getY());
+		assertEquals((int) FLOOR, playerOne.getY());
 	}
 
 }

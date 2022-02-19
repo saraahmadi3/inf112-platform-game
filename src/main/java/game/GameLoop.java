@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -68,6 +70,10 @@ public class GameLoop implements ApplicationListener {
     	}
         
         batch.end();//Must be called when all drawing is complete
+    }
+    
+    public GameState getGame() {
+    	return game;
     }
     
     @Override
