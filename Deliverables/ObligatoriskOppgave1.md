@@ -55,7 +55,7 @@ Her vil vi gjøre en løpende vurdering underveis i prosjektet, men vi vil fors�
 med utgangspunkt i Kanban-metoden. Vi møtes ukentlig og oppdaterer hverandre på fullførte oppgaver,
 løpende oppgaver og hvordan arbeidsoppgavene skal fordeles. Vi vil benytte Trello-verktøyet som en visuell hjelp til Kanban-metoden.
 
-![Trello](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/commit/c9f6679fa2b14c7f3150eaa59e795adceeaf04b5)
+![Trello](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/2022-02-20_20_57_35-Oblig___Trello.jpg)
 
 Vi vil benytte oss av testdrevet utvikling, og koble dette sammen med parprogrammering. Dette håper
 vi skal passe oss veldig bra, da vi består av fire personer. Hvorvidt vi har faste par, eller om vi 
