@@ -12,14 +12,6 @@ Deloppgave 3: Oversikt over forventet produktet/Brukerhistorier
 Deloppgave 4: Kode   
 Deloppgave 5: Oppsummering  
 
-##### Setup
-Maven Setup  
-Running  
-Jar Files  
-Eclipse Setup  
-
-
-
 
 ## Deloppgave 1:
 Gruppenavn: antsy-antonym
@@ -44,17 +36,17 @@ begynte på Datateknologi. Ingen erfaring med programmering før han begynte på
 Datateknologi.
 
 ### Rollefordeling:
-Aministrativ leder: Dani. Oppgaver: Koordinere møter med de øvrige medlemmene. Sekretær.
+Aministrativ leder: Dani. Oppgaver: Koordinere møter med de øvrige medlemmene. Sekretær.  
 Hvorfor? Dani har jobbet lenge i norsk skole, og har erfaring med å koordinere både kolleger og elever i forbindelse med prosjekter og lignende.  
 
-Testleder: Adrian. Oppgaver: Overordnet ansvar for testing.
+Testleder: Adrian. Oppgaver: Overordnet ansvar for testing.  
 Hvorfor? Adrian er den av oss som har kommet lengst i studieløpet, og har mest erfaring med tester.  
 
-Kodesjef: Kristian: Overordnet oppsyn med dokumentering av kode.
+Kodesjef: Kristian: Overordnet oppsyn med dokumentering av kode.  
 Hvorfor? Kristian har erfaring med spillutvikling tidligere.    
 
 
-Git-sjef: Sara: Ansvar for Git, arbeidsfordeling.
+Git-sjef: Sara: Ansvar for Git, arbeidsfordeling.  
 Hvorfor? Sara har en allsidig kompetanse, og er kjapp med å ta i bruk nye verktøyer. Vi kommer til å støte på problemer med git, og da trenger vi at en kjenner dette systemet godt.  
 
 ## Deloppgave 2:
