@@ -111,14 +111,14 @@ Akseptansekriterier: Det skal være lett å skjønne hvordan spilleren kan beveg
 ## Deloppgave 4
 Kode:
 
-Se 
+Se egen mappe.
 
 
 ## Deloppgave 5 
 Oppsummering:
 
-Gruppen har en fin dynamikk, god kommunikasjon og en god størrelse. Vi har klart å fordele oppgaver, slik at ingen blir sittende arbeidsløs.
-Takket være Kristians tidligere erfaring med å lage spill, har vi også kommet godt i gang med selve spillutviklingen (selv om det inntil videre bare innfrir de tre første kravene til mvp). Vi fulgte ikke den test-drevne utviklingen i begynnelsen, men gjorde heller ting i motsatt rekkefølge; vi begynte med utvikling, og begynte deretter med testing. Vi oppdaget også at det blir vanskelig å teste bevegelsene til spillkarakteren. Spillkarakteren beveger seg med utgangspunkt i x- og y-koordinater, men det er vanskelig å fastslå hvor langt et tastetrykk skal flytte karakteren. Det er derfor vanskelig å lage en test, som tester om karakteren flytter seg nøyaktig fra a til b. 
+Gruppen har en fin dynamikk, god kommunikasjon og en god størrelse. Vi har klart å fordele oppgaver, slik at ingen blir sittende arbeidsløse.
+Takket være Kristians tidligere erfaring med å lage spill, har vi også kommet godt i gang med selve spillutviklingen (selv om det inntil videre bare innfrir de fire første kravene til mvp). Vi støtte på litt vanskeligheter med tanke på å skrive tester til programmet vårt. Libgdx var nytt for oss, og det ble vanskelig å skrive testene uten at noe av programmet var på plass ennå. Vi fulgte derfor ikke den test-drevne utviklingen i begynnelsen, men gjorde heller ting i motsatt rekkefølge; vi begynte med utvikling, og begynte deretter med testing. I fortsettelsen tror vi at testingen og utviklingen kommer til å være a jour med hverandre, og at det blir testdrevet utvikling i praksis så vel som på papiret.
 
 I fortsettelsen må vi fordype oss i lib-gdx/Tiling og dets muligheter med tanke på spillkarakter og spillbrett. Vår foreløpige tanke er et plattformspill hvor hvert enkelt nivå er et eget spillbrett, og vi trenger derfor flere spillbrett. Spillopplevelsen til det ferdige produktet vårt avhenger derfor av hvor flink vi blir til å utvikle spillbrett.
 
