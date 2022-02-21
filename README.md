@@ -85,20 +85,19 @@ Dvs at vi har et spillbrett, en spiller som vises på spillbrettet, muligheten t
 
 ### Brukerhistorier i prioritert rekkefølge for innlevering av obligatorisk oppgave 1:
 1) Som spiller forventer jeg å se en verden/spillbrett som utgjør selve spillet.  
-Akseptansekriterier: Vi skal ha en klar definert nedre del av spillbrettet, og minst èn plattform en annen plass på spillbrettet.
+Akseptansekriterier: Vi skal ha en klar definert nedre del av spillbrettet, og minst èn plattform en annen plass på spillbrettet. Det skal også finnes en dør/portal eller lignende, som viser hvor karakteren skal ende for å komme til neste level/nivå.
 
-2) Som spiller forventer jeg å se en spiller på spillbrettet, som jeg kan manipulere.  
-Akseptansekriterier: Det skal plasseres en spiller på brettet i det spillet starter.
+2) Som spiller forventer jeg å se en karakter på spillbrettet.  
+Akseptansekriterier: Det skal plasseres en spiller på brettet i det spillet starter. Denne spilleren skal ha et ansikt med tydelige trekk.
 
 3) Som spiller forventer jeg å kunne flytte figuren fra side til side, og opp og ned.  
-Akseptansekriterier: Figuren kan flyttes fra side til side (såfremt det ikke er objekter i veien) og hoppe. Figuren blir påvirket
-av tyngdekraften, og beveger seg nedover etter et hopp, eller hvis spilleren beveger seg utenfor en kant.
+Akseptansekriterier: Figuren kan flyttes fra side til side ved hjelp av piltaster og hoppe. Figuren blir påvirket av tyngdekraften, og beveger seg nedover etter et hopp, eller hvis spilleren beveger seg utenfor en kant. Forklaringer og tips til hvordan en beveger karakteren ruller over skjermen underveis i spillet.
 
 4) Som spiller forventer jeg at spillkarakteren ikke kan gå gjennom fysiske objekter.  
-Akseptansekriterier: Dersom en karakter hopper opp og treffer en plattform, skal hen stoppes av plattformen og falle ned igjen. Karakteren skal stoppe dersom hen går inn i en vegg.
+Akseptansekriterier: Dersom en karakter hopper opp og lander på en plattform, skal hen bli stående på plattformen. Dersom karakteren hopper opp og treffer en plattform nedenfra, skal hen ikke gå gjennom plattformen, men miste momentet og falle ned igjen. Karakteren skal stoppe dersom hen går inn i en vegg.
 
 5) Som spiller forventer jeg at spillet aldri kræsjer.  
-Akseptansekriterier: Spillet skal ikke kræsje.
+Akseptansekriterier: Spillet skal ikke kræsje. (Dette er egentlig et helt umulig kriterie å forholde seg til, siden et program alltid kan kræsje. Det er likevel essensielt med tanke på spilleropplevelsen, så vi vil ha det med som et punkt vi må forholde oss til hver gang vi legger til noe nytt i spillet)
 
 ### Øvrige brukerhistorier/Backlog:
 Jeg forventer at bakgrunn og forgrunn i spillet er lett å skille fra hverandre.  
