@@ -40,7 +40,7 @@ class GameStateTest {
 	}
 	
 	@Test
-	void allowsMorePlayers() {
+	void allowsRedundantPlayer() {
 		game.addSpriteQ(playerOne);
 		game.addSpriteQ(playerOne);
 		assertFalse(Collections.frequency(game.getAllSprites(), playerOne) > 1);
