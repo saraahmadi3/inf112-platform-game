@@ -22,6 +22,11 @@ import game.Tips;
  * Tests to confirm that AbstractObjects' methods are working as intended
  */
 
+
+// ISSUE #13 overall
+
+
+
 //For this class (AbstractObject) these methods can be tested using any class 
 //        that extends AbstractObject (without the methods being overwritten):
 
@@ -42,44 +47,35 @@ class GameObjectTest {
 	private static Text text;
 	private static Tips tip;
 	
-	//TO-DO: 
-//Each of the following methods listed by class should each have at least one test 
-	//confirming they are working as intended.
-//BoostPlatform:
-//update()
-//checkForBoost()
+// Approach: SPLIT TESTS INTO CATEGORIES. Create a new issue in git for each category.
 
-//Door:
-//update()
-//checkForKey()
-//openDoor()
+	//Example:
+	//==========TO-DO=========== (Issue #nr)
+	//ToDoClass: toDo(), example()
+	
+		//All issues link to #13
+	
+	
+//=========PLATFORMS========(Issue #19)
+//BoostPlatform: update(), checkForBoost()
+//GhostPlatform: update(), checkForPlayer(), checkForHit()
+//MovingPlatform: update(), move(), movePlayer()
+//Platform: getType()
 
-//Enemy:
-//update()
-//move()
+	
+//======DOOR-KEY-PLAYER======(Issue #20)
+	//(Say it fast, it becomes dorky player lol)
+//Door: update(), checkForKey(), openDoor()
+//Key(): update(), checkForPlayer()
 
-//GhostPlatform:
-//update()
-//checkForPlayer()
-//checkForHit()
+	
+//=======TIPS-and-TEXT========(Issue #21)
+//Tips: move()
+//Text: getSymbol()
 
-//Key:
-//update()
-//checkForPlayer()
-
-//MovingPlatform:
-//update()
-//move()
-//movePlayer()
-
-//Platform:
-//getType()
-
-//Text:
-//getSymbol()
-
-//Tips:
-//move()
+	
+//===========ENEMY===========(Issue #22)
+//Enemy: update(), move()
 	
 
 	@Test

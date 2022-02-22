@@ -11,7 +11,11 @@ import game.GameState;
 import game.Player;
 
 class PlayerTest {
-
+	
+	
+	//ISSUES #13 and #11 
+	
+	
 	private static GameState game;
 	private static Player playerOne;
 	
@@ -43,16 +47,22 @@ class PlayerTest {
 		assertEquals(15, (int) playerOne.getY());
 	}
 	
+// Approach: SPLIT TESTS INTO CATEGORIES. Create a new issue in git for each category.
+
+	//Example:
+	//==========TO-DO=========== (Issue #nr)
+	//ToDoClass: toDo(), example()
 	
+	//All issues link to #11 and #13
 	
-	//==========PLATFORM==========
+//==========PLATFORM========== (Issue #15)
 	//Test the boost platform interaction with player
 	@Test
 	void boostWorks() {
 		//TO-DO: test boost() and getGv() together. Possibly isGrounded()
 	}
 	
-	//Player - Platform interaction test
+//Player - Platform interaction test
 	@Test
 	void platformInteraction() {
 		//TO-DO: getCurrentPlatform(), isGrounded()
@@ -60,7 +70,7 @@ class PlayerTest {
 	
 	
 	
-	//========PLAYER-VALUES========
+//========PLAYER-VALUES========(Issue #16)
 	@Test
 	void hpStressTest() {
 		//TO-DO: test getLives(), loseLife(), checkForDeath()
@@ -68,7 +78,7 @@ class PlayerTest {
 	
 	
 	
-	//==========REDUNDENCY==========
+//==========REDUNDENCY==========(Issue #17)
 	//One cannot allow two instances of the same player into the game. Solved by identity solution in Player class
 	@Test
 	void allowsRedundantPlayer() {
@@ -88,7 +98,7 @@ class PlayerTest {
 	
 	
 	
-	//=============KEY=============
+//=============KEY=============(Issue #18)
 	//Player - Key interaction test
 	@Test
 	void keyInteraction() {
