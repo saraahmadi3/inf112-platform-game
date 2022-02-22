@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import game.GameState;
 import game.Player;
 
-class GameStateTest {
+class PlayerTest {
 
 	private static GameState game;
 	private static Player playerOne;
