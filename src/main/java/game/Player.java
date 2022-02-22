@@ -20,7 +20,7 @@ public class Player extends AbstractObject {
 	private static Platform currentPlatform;
 	private static boolean hasKey;
 	
-	public Player(int x, int y, GameState game) {
+	public Player(int x, int y, GameState game, String imgFile) {
 		super.setGameState(game);
 		game.addSprite(this);
 		
@@ -30,12 +30,16 @@ public class Player extends AbstractObject {
 		super.setHeight(32);
 		super.setWidth(16);
 		
-	    super.setSprite("player.png");
+	    super.setSprite(imgFile);
 	    
 		isGrounded = false;
 		canDoubleJump = false;
 		hasKey = false;
 		gV = 0; 
+	}
+	
+	public Player(int x, int y, GameState game) {
+		this(x, y, game, "player.png");
 	}
 	
 	public void boost(double boostFactor) {
@@ -81,9 +85,6 @@ public class Player extends AbstractObject {
 		
 		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
 		
-		double oldX = super.getX();
-		double oldY = super.getY();
-		
 		super.moveByY(-gV*delta); //Gravity
 		
 		gV += G*delta;
@@ -91,15 +92,16 @@ public class Player extends AbstractObject {
 		isGrounded = false;
 		for (Platform p : super.getGameState().getAllPlatforms()) {
 			if (p.checkForHit(this)) {
-				if (oldY<super.getY()) {
-					gV = G*delta*5; //Increase downwards momentum a little extra after hitting head on platform.
+				currentPlatform = p;
+				
+				if (super.getYMid()<p.getYMid()) {
+					super.setY(p.getY()-super.getHeight());
 				} else { 
 					//This should only happen when the player lands on top of the platform.
+					super.setY(p.getY()+p.getHeight());
 					isGrounded = true;
 					canDoubleJump = false;
 				} 
-				currentPlatform = p;
-				super.setY(oldY);
 				gV = G*delta;
 				break;
 			}
@@ -145,8 +147,12 @@ public class Player extends AbstractObject {
 		
 		for (Platform p : super.getGameState().getAllPlatforms()) {
 			if (p.checkForHit(this)) {
-				super.setX(oldX);
 				currentPlatform = p;
+				if (super.getXMid()<p.getXMid()) {
+					super.setX(p.getX()-super.getWidth());
+				} else {
+					super.setX(p.getX()+p.getWidth());
+				}
 				break;
 			}
 		}
