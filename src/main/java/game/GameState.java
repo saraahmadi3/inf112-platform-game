@@ -119,7 +119,7 @@ public class GameState {
 	
 	//TODO find a better place for this information.
 	private void level(int gameLevel) {
-			if (gameLevel == 1) {
+		if (gameLevel == 1) {
 			new Tips(this);
 			new Door(this, 1050, 650, 20, 34);
 			new Key(this, 950, 12);
