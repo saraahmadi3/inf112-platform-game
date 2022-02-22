@@ -10,9 +10,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Player extends AbstractObject {
 	
-	
-	private GameState game;
-	
 	private static final double V = 100; //Running velocity/speed for player	//later not static (powerups)
 	private static final double J = 150; //Jump strength
 	public static final double G = 150; //Gravity acceleration
@@ -24,11 +21,8 @@ public class Player extends AbstractObject {
 	private static boolean hasKey;
 	
 	public Player(int x, int y, GameState game) {
-		isGrounded = false;
-		canDoubleJump = false;
-		hasKey = false;
-		this.game = game;
-		gV = 0; 
+		super.setGameState(game);
+		game.addSprite(this);
 		
 		super.setX(x);
 		super.setY(y);
@@ -36,11 +30,12 @@ public class Player extends AbstractObject {
 		super.setHeight(32);
 		super.setWidth(16);
 		
-	    FileHandle playerFileHandle = Gdx.files.internal("game/img/player.png"); 
-	    Texture playerTexture = new Texture(playerFileHandle);
-	    super.setSprite(new Sprite(playerTexture, super.getWidth(), super.getHeight()));
+	    super.setSprite("player.png");
 	    
-	    game.addSprite(this);
+		isGrounded = false;
+		canDoubleJump = false;
+		hasKey = false;
+		gV = 0; 
 	}
 	
 	public void boost(double boostFactor) {
@@ -94,7 +89,7 @@ public class Player extends AbstractObject {
 		gV += G*delta;
 		
 		isGrounded = false;
-		for (Platform p : game.getAllPlatforms()) {
+		for (Platform p : super.getGameState().getAllPlatforms()) {
 			if (p.checkForHit(this)) {
 				if (oldY<super.getY()) {
 					gV = G*delta*5; //Increase downwards momentum a little extra after hitting head on platform.
@@ -148,7 +143,7 @@ public class Player extends AbstractObject {
 			}
 		}
 		
-		for (Platform p : game.getAllPlatforms()) {
+		for (Platform p : super.getGameState().getAllPlatforms()) {
 			if (p.checkForHit(this)) {
 				super.setX(oldX);
 				currentPlatform = p;

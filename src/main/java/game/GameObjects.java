@@ -36,7 +36,7 @@ public interface GameObjects {
 	/**
 	 * draws the sprite onto the board
 	 */
-	public void draw(SpriteBatch batch, BitmapFont font);
+	public void draw();
 	/**
 	 * updates the sprite's stat's as the game renders
 	 */
@@ -50,4 +50,5 @@ public interface GameObjects {
 	 * @return the type of the object
 	 */
 	public String getType();
+	
 }

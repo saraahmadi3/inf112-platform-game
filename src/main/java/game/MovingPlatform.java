@@ -11,10 +11,10 @@ public class MovingPlatform extends Platform {
 	private double startY;
 	private int rangeX;
 	private int rangeY;
-	private GameState game;
 	
 	public MovingPlatform(GameState game, int x, int y, int width, int height, int xRange, int yRange, int speed) {
 		super(game, x, y, width, height);
+		super.setGameState(game);
 		startX=x;
 		startY=y;
 		v = speed;
@@ -22,8 +22,6 @@ public class MovingPlatform extends Platform {
 		goingRight = true;
 		rangeX = xRange;
 		rangeY = yRange;
-		this.game = game;
-		
 	}
 	
 	@Override 
@@ -65,7 +63,7 @@ public class MovingPlatform extends Platform {
 		
 		super.moveByXandY(xMove, yMove);		
 		
-		Player player1 = game.getPlayer1();
+		Player player1 = super.getGameState().getPlayer1();
 		
 		if ((player1.getCurrentPlatform() == this && player1.getGrounded()) || super.checkForHit(player1)){
 			player1.moveByXandY(xMove, yMove);

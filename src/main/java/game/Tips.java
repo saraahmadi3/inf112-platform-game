@@ -31,11 +31,6 @@ public class Tips extends Text {
 	}
 	
 	@Override
-	public String getSymbol() {
-		return TIP;
-	}
-	
-	@Override
 	public void update() {
 		move();
 	}

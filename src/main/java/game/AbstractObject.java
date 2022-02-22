@@ -1,5 +1,8 @@
 package game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,6 +14,7 @@ public abstract class AbstractObject implements GameObjects {
 	private double y;
 	private int height;
 	private int width;
+	private GameState game;
 	
 	public boolean checkForHit(Player player) {
 		boolean checkForXOverlap = player.getX()+player.getWidth() > getX() && player.getX() < getX()+getWidth();
@@ -23,11 +27,17 @@ public abstract class AbstractObject implements GameObjects {
 		}
 	}
 	
+	public void setGameState(GameState gameState) {
+		game = gameState;
+	}
 	
+	public GameState getGameState() {
+		return game;
+	}
 	
 	@Override
 	public String getSymbol() {
-		return "Object"; 
+		return "AbstractObject"; 
 	}
 	
 	public String getType() {
@@ -44,7 +54,7 @@ public abstract class AbstractObject implements GameObjects {
 	}
 	
 	public void moveByX(double xMovment) {
-		x += xMovment;
+		setX(getX() + xMovment);
 	}
 	
 	@Override
@@ -57,12 +67,12 @@ public abstract class AbstractObject implements GameObjects {
 	}
 	
 	public void moveByY(double yMovment) {
-		y += yMovment;
+		setY(getY() + yMovment);
 	}
 	
 	public void moveByXandY(double xMovment, double yMovment) {
-		x += xMovment;
-		y += yMovment;
+		moveByX(xMovment);
+		moveByY(yMovment);
 	}
 	
 	@Override
@@ -87,13 +97,23 @@ public abstract class AbstractObject implements GameObjects {
 		return sprite;
 	}
 	
-	public void setSprite(Sprite s) {
-		sprite = s;
+	public void setSprite(String fileName) {
+		FileHandle playerFileHandle = Gdx.files.internal("game/img/"+fileName); 
+	    Texture playerTexture = new Texture(playerFileHandle);
+	    sprite = new Sprite(playerTexture, getWidth(), getHeight());
 	}
 	
 	@Override
+	public void draw() {
+		draw(game.getBatch(), game.getFont());
+	}
+	
 	public void draw(SpriteBatch batch, BitmapFont font) {
-		batch.draw(getSprite(), (float) getX(), (float) getY());
+		if (getSprite() != null) {
+			batch.draw(getSprite(), (float) getX(), (float) getY());
+		} else {
+			font.draw(batch, getSymbol(), (float) getX(), (float) getY());
+		}
 	}
 	
 	public void update() {

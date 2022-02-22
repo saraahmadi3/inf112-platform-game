@@ -19,6 +19,7 @@ public class GameLoop implements ApplicationListener {
         font.setColor(Color.RED);
         
         game = new GameState();
+        game.setBatchAndFont(batch, font);
     }
 
     @Override
@@ -63,10 +64,18 @@ public class GameLoop implements ApplicationListener {
     	batch.begin();//Must happen before all drawing
         
     	for (GameObjects sprite : game.getAllSprites()) {
-    		sprite.draw(batch, font);
+    		sprite.draw();
     	}
         
         batch.end();//Must be called when all drawing is complete
+    }
+    
+    public SpriteBatch getBatch() {
+    	return batch;
+    }
+    
+    public BitmapFont getFont() {
+    	return font;
     }
     
     public GameState getGame() {

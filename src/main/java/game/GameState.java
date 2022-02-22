@@ -2,6 +2,9 @@ package game;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 public class GameState {
 	
 	private Player player1;
@@ -9,6 +12,8 @@ public class GameState {
 	private ArrayList<GameObjects> waitingSprites;
 	private ArrayList<GameObjects> waitingRemovalSprites;
 	private ArrayList<Platform> allPlatforms;
+	private SpriteBatch batch;
+    private BitmapFont font;
 	
 	public GameState() {
 		allSprites = new ArrayList<GameObjects>();
@@ -20,7 +25,19 @@ public class GameState {
 		
 	}
 	
-
+	public void setBatchAndFont(SpriteBatch batch, BitmapFont font) {
+		this.batch = batch;
+		this.font = font;
+	}
+	
+	public SpriteBatch getBatch() {
+		return batch;
+	}
+	
+	public BitmapFont getFont() {
+		return font;
+	}
+ 
 	//Adds the sprite in waitlist to be added to the main list when allowed, avoids ConcurrentModificationException.
 	public void addSprite (GameObjects s) {
 		waitingSprites.add(s);
