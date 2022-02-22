@@ -2,7 +2,7 @@ package game;
 
 public class Key extends AbstractObject {
 	
-	public Key(GameState game, int x, int y) {
+	public Key(GameState game, int x, int y, String imgFile) {
 		 super.setGameState(game);
 		 game.addSprite(this);
 		 
@@ -12,7 +12,12 @@ public class Key extends AbstractObject {
 		 super.setWidth(18);
 		 super.setHeight(30);
 		 
-		 super.setSprite("key.png"); 
+		 super.setSprite(imgFile); 
+	}
+	
+	public Key(GameState game, int x, int y) {
+		this(game, x, y, "key.png");
+
 	}
 
 	@Override

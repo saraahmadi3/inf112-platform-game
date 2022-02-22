@@ -13,9 +13,7 @@ public class GhostPlatform extends Platform {
 		state = 0;
 		counter = 0;
 		prevCounter = 0;
-		this.delay = delay;
-
-		
+		this.delay = delay;	
 	}
 	
 	@Override

@@ -39,7 +39,7 @@ public class Player extends AbstractObject {
 	}
 	
 	public Player(int x, int y, GameState game, String imgFile) {
-		this(x, y, game, "player.png", 1);
+		this(x, y, game, imgFile, 1);
 	}
 	
 	public Player(int x, int y, GameState game) {
@@ -95,6 +95,24 @@ public class Player extends AbstractObject {
 	
 	public void update() {
 		move();
+		checkForDeath();
+	}
+	
+	public void checkForDeath() {
+		if (super.getY()+super.getHeight()<0) {
+			loseLife();
+			if (getLives()>0) {
+				super.setXandY(50, 15);
+				canDoubleJump=false;
+				gV = 0;
+			} else {
+				super.getGameState().killSprite(this);
+				
+				//TODO do something other than just display text when player dies
+				new Text(super.getGameState(), 400, 300, "You Died!");
+			}
+		}
+		
 	}
 	
 	public void move() {
@@ -172,20 +190,5 @@ public class Player extends AbstractObject {
 				break;
 			}
 		}
-		
-		if (super.getY()+super.getHeight()<0) {
-			loseLife();
-			if (getLives()>0) {
-				super.setXandY(50, 15);
-				canDoubleJump=false;
-				gV = G*delta;
-			} else {
-				super.getGameState().killSprite(this);
-				
-				//TODO do something other than just display text
-				new Text(super.getGameState(), 400, 300, "You Died!");
-			}
-		}
-		
 	}
 }

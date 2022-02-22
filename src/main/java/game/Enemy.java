@@ -11,7 +11,7 @@ public class Enemy extends AbstractObject {
 	
 	
 	
-	public Enemy(GameState game, Platform platform) {
+	public Enemy(GameState game, Platform platform, String imgFile) {
 		this.platform = platform;
 		super.setGameState(game);
 		game.addSprite(this);
@@ -22,8 +22,11 @@ public class Enemy extends AbstractObject {
 		
 		super.setHeight(16);
 		super.setWidth(16);
-		super.setSprite("ene.png");
-		
+		super.setSprite(imgFile);
+	}
+
+	public Enemy(GameState game, Platform platform) {
+		this (game, platform, "ene.png");
 	}
 	
 	public void update() {
