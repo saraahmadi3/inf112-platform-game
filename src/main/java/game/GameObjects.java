@@ -45,4 +45,9 @@ public interface GameObjects {
 	 * moves the sprite's position as the game renders
 	 */
 	public void move();
+	
+	/**
+	 * @return the type of the object
+	 */
+	public String getType();
 }

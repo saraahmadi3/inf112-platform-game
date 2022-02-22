@@ -34,14 +34,14 @@ public class MovingPlatform extends Platform {
 		double yMove = 0;
 		
 		if (goingRight) {
-			if (super.x < startX+rangeX) {
+			if (super.getX() < startX+rangeX) {
 				xMove+=delta*v;
 			} else {
 				goingRight=false;
 			}
 		}
 		if (!goingRight) {
-			if (super.x > startX) {
+			if (super.getX() > startX) {
 				xMove-=delta*v;
 			} else {
 				goingRight=true;
@@ -49,23 +49,21 @@ public class MovingPlatform extends Platform {
 		}
 		
 		if (goingUp) {
-			if (super.y < startY+rangeY) {
+			if (super.getY() < startY+rangeY) {
 				yMove+=delta*v;
 			} else {
 				goingUp=false;
 			}
 		}
 		if (!goingUp) {
-			if (super.y > startY) {
+			if (super.getY() > startY) {
 				yMove-=delta*v;
 			} else {
 				goingUp=true;
 			}
 		}
 		
-		super.x+=xMove;
-		super.y+=yMove;
-		
+		super.moveByXandY(xMove, yMove);		
 		
 		Player player1 = game.getPlayer1();
 		

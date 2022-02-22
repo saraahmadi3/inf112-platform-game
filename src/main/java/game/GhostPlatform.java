@@ -74,26 +74,17 @@ public class GhostPlatform extends Platform {
 	@Override
 	public void draw(SpriteBatch batch, BitmapFont font) {
 		if (state <4) {
-			batch.draw(ghostSprites.get(state), (float) getX(), (float) getY());
+			super.setSprite(ghostSprites.get(state));
+			super.draw(batch, font);
 		}
 	}
 	
 	@Override
 	public boolean checkForHit(Player player) {
 		if (state<4) {
-			boolean checkForLeftXOverlap = player.getX() < getX() && (player.getX()+player.getWidth()>getX());
-			boolean checkForRightXOverlap = player.getX() < getX()+getWidth() && (player.getX()+player.getWidth()>getX()+getWidth());
-			boolean checkForMidXOverlap = player.getX() >= getX() && player.getX()+player.getWidth()<=getX()+getWidth();
-			boolean checkForTopYOverlap = player.getY() < getY()+getHeight() && (player.getY()+player.getHeight()>getY()+getHeight());
-			boolean checkForBottomYOverlap = player.getY() < getY() && (player.getY()+player.getHeight()>getY());
-			boolean checkForMidYOverlap = player.getY() >= getY() && player.getY()+player.getHeight()<=getY()+getHeight();
-			
-			if ((checkForLeftXOverlap || checkForRightXOverlap || checkForMidXOverlap) && (checkForTopYOverlap || checkForBottomYOverlap || checkForMidYOverlap)) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
+			return super.checkForHit(player);
+		}
+		else {
 			return false;
 		}
 	}

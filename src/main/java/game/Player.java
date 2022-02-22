@@ -8,16 +8,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-//TODO: Make interface that Player should implement. F.ex. an interface for any object which has coordinates.
-public class Player implements GameObjects {
+public class Player extends AbstractObject {
 	
-	private Sprite playerSprite;
-	private int width;
-	private int height;
+	
 	private GameState game;
-	//coordinates must be double, if not Java will round the movement down to -1 for left/down, or 0 for up/right
-	private double x; //X-coordinate for player
-	private double y; //Y-coordinate for player
 	
 	private static final double V = 100; //Running velocity/speed for player	//later not static (powerups)
 	private static final double J = 150; //Jump strength
@@ -34,16 +28,17 @@ public class Player implements GameObjects {
 		canDoubleJump = false;
 		hasKey = false;
 		this.game = game;
-		this.x = x;
-		this.y = y;
 		gV = 0; 
+		
+		super.setX(x);
+		super.setY(y);
 		 
-		height = 32;
-		width = 16;
+		super.setHeight(32);
+		super.setWidth(16);
 		
 	    FileHandle playerFileHandle = Gdx.files.internal("game/img/player.png"); 
 	    Texture playerTexture = new Texture(playerFileHandle);
-	    playerSprite = new Sprite(playerTexture, width, height);
+	    super.setSprite(new Sprite(playerTexture, super.getWidth(), super.getHeight()));
 	    
 	    game.addSprite(this);
 	}
@@ -62,13 +57,13 @@ public class Player implements GameObjects {
 		hasKey=false;
 	}
 	
-	public void pickUpKey() {
-		hasKey=true;
-	}
-	
-	public void moveByXandY(double xMovment, double yMovment) {
-		x += xMovment;
-		y += yMovment;
+	public boolean pickUpKey() {
+		if (hasKey) {
+			return false;
+		} else {
+			hasKey=true;
+			return true;
+		}
 	}
 	
 	public Platform getCurrentPlatform() {
@@ -83,53 +78,25 @@ public class Player implements GameObjects {
 		return gV;
 	}
 	
-	//TODO: Use more advanced graphics for the player sprite
-	public String getSymbol() {
-		return "O";
-	}
-	
-	public double getX() {
-		return x;
-	}
-	
-	public double getY() {
-		return y;
-	}
-	
-	@Override
-	public int getWidth() {
-		return width;
-	}
-
-	@Override
-	public int getHeight() {
-		return height;
-	}
-	
-	public void draw(SpriteBatch batch, BitmapFont font) {
-		batch.draw(playerSprite, (float) getX(), (float) getY());
-	}
-	
 	public void update() {
 		move();
 	}
 	
-	//TODO Collision detection with platforms and other sprites
 	public void move() {
 		
 		double delta = Gdx.graphics.getDeltaTime(); //The time passed since last frame
 		
-		double oldY = y;
-		double oldX = x;
+		double oldX = super.getX();
+		double oldY = super.getY();
 		
-		y -= gV*delta; //Gravity
+		super.moveByY(-gV*delta); //Gravity
 		
 		gV += G*delta;
 		
 		isGrounded = false;
 		for (Platform p : game.getAllPlatforms()) {
 			if (p.checkForHit(this)) {
-				if (oldY<y) {
+				if (oldY<super.getY()) {
 					gV = G*delta*5; //Increase downwards momentum a little extra after hitting head on platform.
 				} else { 
 					//This should only happen when the player lands on top of the platform.
@@ -137,7 +104,7 @@ public class Player implements GameObjects {
 					canDoubleJump = false;
 				} 
 				currentPlatform = p;
-				y=oldY;
+				super.setY(oldY);
 				gV = G*delta;
 				break;
 			}
@@ -146,18 +113,18 @@ public class Player implements GameObjects {
 		//Moves the player to the left, slower while in the air
 		if(Gdx.input.isKeyPressed(Keys.A) || Gdx.input.isKeyPressed(Keys.LEFT)) {
 			if (isGrounded) {
-				x -= delta * V;
+				super.moveByX(-delta*V);
 			} else {
-				x -= delta * (V/2);
+				super.moveByX(-delta*(V/2));
 			}
 		} 
 		
 		//Moves the player to the right, slower while in the air 
 		if(Gdx.input.isKeyPressed(Keys.D) || Gdx.input.isKeyPressed(Keys.RIGHT)) {
 			if (isGrounded) {
-				x += delta * V;
+				super.moveByX(delta*V);
 			} else {
-				x += delta * (V/2);
+				super.moveByX(delta*(V/2));
 			}
 		}
 		
@@ -183,13 +150,11 @@ public class Player implements GameObjects {
 		
 		for (Platform p : game.getAllPlatforms()) {
 			if (p.checkForHit(this)) {
-				x=oldX;
+				super.setX(oldX);
 				currentPlatform = p;
 				break;
 			}
 		}
 		
 	}
-
-
 }

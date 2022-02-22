@@ -19,7 +19,7 @@ public class BoostPlatform extends Platform{
 		}
 	}
 	
-	
+	@Override
 	public void update() {
 		checkForBoost();
 	}

@@ -3,7 +3,6 @@ package game;
 public class Door extends Platform {
 	
 	private GameState game;
-	private static final boolean SOLID = true;
 	
 	public Door(GameState game, int x, int y, int width, int height) {
 		super(game, x, y, width, height, "door.png");
@@ -22,8 +21,9 @@ public class Door extends Platform {
 		player.useKey();
 		game.levelComplete();
 	}
+	
+	@Override
 	public void update() {
-		
 		checkForKey();
 	}
 	

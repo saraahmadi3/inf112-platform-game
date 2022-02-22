@@ -46,14 +46,14 @@ public class GameState {
 	
 	public void addSpriteQ(GameObjects s) {
 		allSprites.add(s);
-		if (s.getSymbol() == "##################") {
+		if (s.getType() == "Platform") {
 			allPlatforms.add((Platform) s);
 		}
 	}
 	
 	public void killSpriteQ(GameObjects s) {
 		allSprites.remove(s);
-		if (s.getSymbol() == "##################") {
+		if (s.getType() == "Platform") {
 			allPlatforms.remove((Platform) s);
 		}
 	}

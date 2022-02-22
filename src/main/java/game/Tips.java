@@ -4,17 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Tips implements GameObjects {
-	private static double x; //X-coordinate for text
-	private static double y; //Y-coordinate for text		
+public class Tips extends Text {
+	
 	private static final double V = 75; //Velocity for text
 	private static final int spaces = 200; //Spaces between each tip
 	
-	private static int width;
-	private static int height;
-	
 	//TODO Add more tips as the game gets more mechanics
-	private static final String tip = 
+	private static final String TIP = 
 			"Tip: You can move to the left or right even while in the air." + " ".repeat(spaces)
 			+ "Tip: You can press DOWN while in the air to get down faster." + " ".repeat(spaces)
 			+ "TIP: While falling back down after a jump you can press jump again to do a double jump." + " ".repeat(spaces)
@@ -31,51 +27,26 @@ public class Tips implements GameObjects {
 	
 
 	public Tips(GameState game) {
-		x = 1250; 
-		y = 700;  
-		
-		width = tip.length()*5;
-		height = 10;
-		
-		game.addSprite(this);
+		super(game, 1250, 700, TIP);
 	}
 	
+	@Override
 	public String getSymbol() {
-		return tip;
+		return TIP;
 	}
 	
-	public void draw(SpriteBatch batch, BitmapFont font) {
-		font.draw(batch, getSymbol(), (float) getX(), (float) getY());
-	}
-	
-	public double getX() {
-		return x;
-	}
-	
-	public double getY() {
-		return (int) y;
-	}
-	
+	@Override
 	public void update() {
 		move();
 	}
 	
+	@Override
 	public void move() {
 		double delta = Gdx.graphics.getDeltaTime(); //The time passed since last frame
-		x -= V*delta; //Scrolling
+		super.moveByX(-V*delta); //Scrolling
 		
-		if (x<-width) {
-			x = 1250;
+		if (super.getX()<-super.getWidth()) {
+			super.setX(1250);
 		}
-	}
-
-	@Override
-	public int getWidth() {
-		return width;
-	}
-
-	@Override
-	public int getHeight() {
-		return height;
 	}
 }

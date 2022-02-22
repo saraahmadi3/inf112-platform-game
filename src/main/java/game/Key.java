@@ -7,89 +7,33 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Key implements GameObjects {
+public class Key extends AbstractObject {
 
-	private double x;
-	private double y;
-	private int width;
-	private int height; 
-	private Sprite keySprite;
 	private GameState game;
 	
 	public Key(GameState game, int x, int y) {
-		 this.x = x;
-		 this.y = y;
+		 super.setX(x);
+		 super.setY(y);
 		 this.game = game;
 		 
-		 width = 18;
-		 height = 30;
+		 super.setWidth(18);
+		 super.setHeight(30);
 		 
 		 FileHandle platformFileHandle = Gdx.files.internal("game/img/key.png"); 
 		 Texture platformTexture = new Texture(platformFileHandle);
-		 keySprite = new Sprite(platformTexture, width, height);
+		 super.setSprite(new Sprite(platformTexture, super.getWidth(), super.getHeight()));
 		 
 		 game.addSprite(this);
-	}
-	
-	@Override
-	public String getSymbol() {
-		return "Key";
-	}
-
-	@Override
-	public double getX() {
-		return x;
-	}
-
-	@Override
-	public double getY() {
-		return y;
-	}
-
-	@Override
-	public int getWidth() {
-		return width;
-	}
-
-	@Override
-	public int getHeight() {
-		return height;
-	}
-
-	@Override
-	public void draw(SpriteBatch batch, BitmapFont font) {
-		batch.draw(keySprite, (float) getX(), (float) getY());
-		
 	}
 
 	@Override
 	public void update() {
 		Player player = game.getPlayer1();
 		if (checkForHit(player)){
-			player.pickUpKey();
-			game.killSprite(this);
+			if(player.pickUpKey()) {
+				game.killSprite(this);
+			}
 		}
-		
-	}
-
-	private boolean checkForHit(Player player) {
-		boolean checkForLeftXOverlap = player.getX() < getX() && (player.getX()+player.getWidth()>getX());
-		boolean checkForRightXOverlap = player.getX() < getX()+getWidth() && (player.getX()+player.getWidth()>getX()+getWidth());
-		boolean checkForMidXOverlap = player.getX() >= getX() && player.getX()+player.getWidth()<=getX()+getWidth();
-		boolean checkForTopYOverlap = player.getY() < getY()+getHeight() && (player.getY()+player.getHeight()>getY()+getHeight());
-		boolean checkForBottomYOverlap = player.getY() < getY() && (player.getY()+player.getHeight()>getY());
-		boolean checkForMidYOverlap = player.getY() >= getY() && player.getY()+player.getHeight()<=getY()+getHeight();
-		
-		if ((checkForLeftXOverlap || checkForRightXOverlap || checkForMidXOverlap) && (checkForTopYOverlap || checkForBottomYOverlap || checkForMidYOverlap)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
 		
 	}
 
