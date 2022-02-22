@@ -2,6 +2,7 @@ package game;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -23,6 +24,10 @@ public class GameState {
 
 		level1();
 		
+	}
+	
+	public double getDeltaTime() {
+		return Gdx.graphics.getDeltaTime();
 	}
 	
 	public void setBatchAndFont(SpriteBatch batch, BitmapFont font) {

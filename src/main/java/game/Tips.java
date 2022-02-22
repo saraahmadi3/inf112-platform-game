@@ -1,9 +1,5 @@
 package game;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 public class Tips extends Text {
 	
 	private static final double V = 75; //Velocity for text
@@ -37,7 +33,7 @@ public class Tips extends Text {
 	
 	@Override
 	public void move() {
-		double delta = Gdx.graphics.getDeltaTime(); //The time passed since last frame
+		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
 		super.moveByX(-V*delta); //Scrolling
 		
 		if (super.getX()<-super.getWidth()) {

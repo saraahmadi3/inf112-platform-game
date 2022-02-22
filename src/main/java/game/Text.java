@@ -1,8 +1,5 @@
 package game;
 
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
 public class Text extends AbstractObject{
 
 	private String txt;

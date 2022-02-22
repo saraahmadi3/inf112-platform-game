@@ -79,7 +79,7 @@ public class Player extends AbstractObject {
 	
 	public void move() {
 		
-		double delta = Gdx.graphics.getDeltaTime(); //The time passed since last frame
+		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
 		
 		double oldX = super.getX();
 		double oldY = super.getY();

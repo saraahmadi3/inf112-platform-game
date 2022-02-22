@@ -1,7 +1,5 @@
 package game;
 
-import com.badlogic.gdx.Gdx;
-
 public class MovingPlatform extends Platform {
 
 	private int v;
@@ -26,7 +24,7 @@ public class MovingPlatform extends Platform {
 	
 	@Override 
 	public void move() {
-		double delta = Gdx.graphics.getDeltaTime(); //The time passed since last frame
+		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
 		
 		double xMove = 0;
 		double yMove = 0;

@@ -1,7 +1,5 @@
 package game;
 
-import com.badlogic.gdx.Gdx;
-
 public class GhostPlatform extends Platform {
 	
 	private int state;
@@ -23,7 +21,7 @@ public class GhostPlatform extends Platform {
 	@Override
 	public void update() {
 		if (super.getGameState().getPlayer1().getCurrentPlatform()==this || state > 3) {
-			double delta = Gdx.graphics.getDeltaTime(); //The time passed since last frame;
+			double delta = super.getGameState().getDeltaTime(); //The time passed since last frame;
 			counter += delta;
 			if (counter>(prevCounter+(delay/4))){
 				state++;
