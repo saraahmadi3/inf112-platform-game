@@ -17,7 +17,14 @@ public class Key extends AbstractObject {
 
 	@Override
 	public void update() {
-		Player player = super.getGameState().getPlayer1();
+		checkForPlayer(1);
+		if (super.getGameState().getPlayer(2) != null) {
+			checkForPlayer(2);
+		}
+	}
+
+	public void checkForPlayer(int playerId) {
+		Player player = super.getGameState().getPlayer(playerId);
 		if (checkForHit(player)){
 			if(player.pickUpKey()) {
 				super.getGameState().killSprite(this);
@@ -25,5 +32,4 @@ public class Key extends AbstractObject {
 		}
 		
 	}
-
 }

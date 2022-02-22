@@ -10,17 +10,20 @@ public class BoostPlatform extends Platform{
 		this.boostFactor = boostFactor;
 	}
 	
-	public void checkForBoost() {
-		Player player1 = super.getGameState().getPlayer1();
+	public void checkForBoost(int playerId) {
+		Player player = super.getGameState().getPlayer(playerId);
 		
-		if ((player1.getCurrentPlatform() == this && player1.getGrounded()) || super.checkForHit(player1)){
-			player1.boost(boostFactor);
+		if ((player.getCurrentPlatform() == this && player.getGrounded()) || super.checkForHit(player)){
+			player.boost(boostFactor);
 		}
 	}
 	
 	@Override
 	public void update() {
-		checkForBoost();
+		checkForBoost(1);
+		if (super.getGameState().getPlayer(2) != null) {
+			checkForBoost(2);
+		}
 	}
 	
 }

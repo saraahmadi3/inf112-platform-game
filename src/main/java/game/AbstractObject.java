@@ -83,6 +83,11 @@ public abstract class AbstractObject implements GameObjects {
 		moveByY(yMovment);
 	}
 	
+	public void setXandY(double xCoordinate, double yCoordinate) {
+		setX(xCoordinate);
+		setY(yCoordinate);
+	}
+	
 	@Override
 	public int getWidth() {
 		return width;

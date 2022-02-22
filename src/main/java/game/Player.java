@@ -13,20 +13,23 @@ public class Player extends AbstractObject {
 	private static final double V = 100; //Running velocity/speed for player	//later not static (powerups)
 	private static final double J = 150; //Jump strength
 	public static final double G = 150; //Gravity acceleration
+		
+	private double gV; //Gravity/speed at which the player falls
+	private boolean isGrounded; //True if player is on ground
+	private boolean canDoubleJump; //True if the player can jump again
+	private Platform currentPlatform;
+	private boolean hasKey;
+	private int lives;
+	private int identity; //Should be 1 or 2
 	
-	private static double gV; //Gravity/speed at which the player falls
-	private static boolean isGrounded; //True if player is on ground
-	private static boolean canDoubleJump; //True if the player can jump again
-	private static Platform currentPlatform;
-	private static boolean hasKey;
-	
-	public Player(int x, int y, GameState game, String imgFile) {
+	public Player(int x, int y, GameState game, String imgFile, int playerNumber) {
+		identity = playerNumber;
 		super.setGameState(game);
 		game.addSprite(this);
 		
 		super.setX(x);
 		super.setY(y);
-		 
+		
 		super.setHeight(32);
 		super.setWidth(16);
 		
@@ -36,16 +39,34 @@ public class Player extends AbstractObject {
 		canDoubleJump = false;
 		hasKey = false;
 		gV = 0; 
+		
+		lives = 3;
+	}
+	
+	public Player(int x, int y, GameState game, String imgFile) {
+		this(x, y, game, "player.png", 1);
 	}
 	
 	public Player(int x, int y, GameState game) {
-		this(x, y, game, "player.png");
+		this(x, y, game, "player.png", 1);
 	}
 	
 	public void boost(double boostFactor) {
 		gV=-J*boostFactor;
 		isGrounded = false;
 		canDoubleJump = true;
+	}
+	
+	public int getLives() {
+		return lives;
+	}
+	
+	public int getIdentity() {
+		return identity;
+	}
+	
+	public void loseLife() {
+		lives--;
 	}
 	
 	public boolean hasKey() {
@@ -108,7 +129,7 @@ public class Player extends AbstractObject {
 		}
 				
 		//Moves the player to the left, slower while in the air
-		if(Gdx.input.isKeyPressed(Keys.A) || Gdx.input.isKeyPressed(Keys.LEFT)) {
+		if((Gdx.input.isKeyPressed(Keys.A) && identity == 1) || (Gdx.input.isKeyPressed(Keys.LEFT) && identity == 2)) {
 			if (isGrounded) {
 				super.moveByX(-delta*V);
 			} else {
@@ -117,7 +138,7 @@ public class Player extends AbstractObject {
 		} 
 		
 		//Moves the player to the right, slower while in the air 
-		if(Gdx.input.isKeyPressed(Keys.D) || Gdx.input.isKeyPressed(Keys.RIGHT)) {
+		if(Gdx.input.isKeyPressed(Keys.D)  && identity == 1 || Gdx.input.isKeyPressed(Keys.RIGHT)  && identity == 2) {
 			if (isGrounded) {
 				super.moveByX(delta*V);
 			} else {
@@ -126,7 +147,7 @@ public class Player extends AbstractObject {
 		}
 		
 		//Allows the player to get down faster after a jump (or when falling in general) by canceling any upwards momentum and amplifying gravity
-		if(Gdx.input.isKeyPressed(Keys.S) || Gdx.input.isKeyPressed(Keys.DOWN)) {
+		if(Gdx.input.isKeyPressed(Keys.S)  && identity == 1 || Gdx.input.isKeyPressed(Keys.DOWN)  && identity == 2) {
 			if (gV<0) {
 				gV = 0;
 			}
@@ -134,7 +155,7 @@ public class Player extends AbstractObject {
 		}
 				
 		//Jump, this happens once and therefore deltaTime should not be considered.
-		if(Gdx.input.isKeyPressed(Keys.W) || Gdx.input.isKeyPressed(Keys.UP) || Gdx.input.isKeyPressed(Keys.SPACE)) {
+		if(Gdx.input.isKeyPressed(Keys.W)  && identity == 1 || Gdx.input.isKeyPressed(Keys.UP)  && identity == 2) {
 			if (isGrounded) {
 				canDoubleJump = true;
 				gV = -J;
@@ -154,6 +175,20 @@ public class Player extends AbstractObject {
 					super.setX(p.getX()+p.getWidth());
 				}
 				break;
+			}
+		}
+		
+		if (super.getY()+super.getHeight()<0) {
+			loseLife();
+			if (getLives()>0) {
+				super.setXandY(50, 15);
+				canDoubleJump=false;
+				gV = G*delta;
+			} else {
+				super.getGameState().killSprite(this);
+				
+				//TODO do something other than just display text
+				new Text(super.getGameState(), 400, 300, "You Died!");
 			}
 		}
 		

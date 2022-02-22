@@ -7,21 +7,24 @@ public class Door extends Platform {
 		super.setGameState(game);	
 	}
 	
-	public void checkForKey() {
-		Player player1 = super.getGameState().getPlayer1();
-		if (player1.hasKey() && player1.getCurrentPlatform()==this){
-			openDoor(player1);
+	public void checkForKey(int playerId) {
+		Player player = super.getGameState().getPlayer(playerId);
+		if (player.hasKey() && player.getCurrentPlatform()==this){
+			openDoor(player);
 		}
 	}
 	
 	private void openDoor(Player player) {
 		player.useKey();
-		super.getGameState().levelComplete();
+		super.getGameState().levelComplete(player.getIdentity());
 	}
 	
 	@Override
 	public void update() {
-		checkForKey();
+		checkForKey(1);
+		if (super.getGameState().getPlayer(2) != null) {
+			checkForKey(2);
+		}
 	}
 	
 }

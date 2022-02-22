@@ -20,7 +20,14 @@ public class GhostPlatform extends Platform {
 	
 	@Override
 	public void update() {
-		if (super.getGameState().getPlayer1().getCurrentPlatform()==this || state > 3) {
+		checkForPlayer(1);
+		if (super.getGameState().getPlayer(2) != null) {
+			checkForPlayer(2);
+		}
+	}
+	
+	public void checkForPlayer(int playerId) {
+		if (super.getGameState().getPlayer(playerId).getCurrentPlatform()==this || state > 3) {
 			double delta = super.getGameState().getDeltaTime(); //The time passed since last frame;
 			counter += delta;
 			if (counter>(prevCounter+(delay/4))){

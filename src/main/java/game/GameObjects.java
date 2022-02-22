@@ -1,9 +1,5 @@
 package game;
 
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-
 /**
  * An interface that determines the behaviours and variables of all sprites in the game. 
  * 

@@ -61,19 +61,24 @@ public class MovingPlatform extends Platform {
 		
 		super.moveByXandY(xMove, yMove);		
 		
-		Player player1 = super.getGameState().getPlayer1();
-		
-		if ((player1.getCurrentPlatform() == this && player1.getGrounded()) || super.checkForHit(player1)){
-			player1.moveByXandY(xMove, yMove);
-		} else {
-			player1.moveByXandY(xMove, yMove);
-			if (!super.checkForHit(player1)) {
-				player1.moveByXandY(-xMove, -yMove);
-			}
+		movePlayer(1, xMove, yMove);
+		if (super.getGameState().getPlayer(2) != null) {
+			movePlayer(2, xMove, yMove);
 		}
 	
+	}
+	
+	public void movePlayer(int playerId, double xMove, double yMove) {
+		Player player = super.getGameState().getPlayer(playerId);
 		
-		
+		if ((player.getCurrentPlatform() == this && player.getGrounded()) || super.checkForHit(player)){
+			player.moveByXandY(xMove, yMove);
+		} else {
+			player.moveByXandY(xMove, yMove);
+			if (!super.checkForHit(player)) {
+				player.moveByXandY(-xMove, -yMove);
+			}
+		}
 	}
 
 	@Override
