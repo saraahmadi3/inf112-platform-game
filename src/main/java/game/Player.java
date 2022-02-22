@@ -46,32 +46,39 @@ public class Player extends AbstractObject {
 		this(x, y, game, "player.png", 1);
 	}
 	
+	//Is activated by booster platform
 	public void boost(double boostFactor) {
 		gV=-J*boostFactor;
 		isGrounded = false;
 		canDoubleJump = true;
 	}
 	
+	//returns the number of lives the player has
 	public int getLives() {
 		return lives;
 	}
 	
+	//returns the ID of the player, meaning 1 or 2.
 	public int getIdentity() {
 		return identity;
 	}
 	
+	//should be called when the player dies, removes one life.
 	public void loseLife() {
 		lives--;
 	}
 	
+	//only returns true if the player has a key, false otherwise
 	public boolean hasKey() {
 		return hasKey;
 	}
 	
+	//uses the key, which means the player no longer has the key
 	public void useKey() {
 		hasKey=false;
 	}
 	
+	//picks up a key, which means the player now has a key
 	public boolean pickUpKey() {
 		if (hasKey) {
 			return false;
@@ -81,10 +88,12 @@ public class Player extends AbstractObject {
 		}
 	}
 	
+	//returns the platform most recently touched by the player 
 	public Platform getCurrentPlatform() {
 		return currentPlatform;
 	}
 	
+	//returns true if the player is not in the air
 	public boolean getGrounded() {
 		return isGrounded;
 	}
@@ -98,6 +107,7 @@ public class Player extends AbstractObject {
 		checkForDeath();
 	}
 	
+	//checks if the player has fallen below the screen and should die.
 	public void checkForDeath() {
 		if (super.getY()+super.getHeight()<0) {
 			loseLife();

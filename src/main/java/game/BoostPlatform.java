@@ -10,6 +10,7 @@ public class BoostPlatform extends Platform{
 		this.boostFactor = boostFactor;
 	}
 	
+	//Checks if a player is on top of the platform and then boost the player.
 	public void checkForBoost(int playerId) {
 		Player player = super.getGameState().getPlayer(playerId);
 		

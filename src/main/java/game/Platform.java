@@ -19,6 +19,7 @@ public class Platform extends AbstractObject {
 		 super.setSprite(imgFile); 
 	}
 	
+	//This is used to automatically add platforms in the list of platforms in gameState
 	public String getType() {
 		return "Platform";
 	}

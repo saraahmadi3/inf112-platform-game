@@ -27,7 +27,9 @@ public class Key extends AbstractObject {
 			checkForPlayer(2);
 		}
 	}
-
+	
+	//If a player that doesn't already have a key touches the key the player should pick up the key.
+	//When a key is picked up it should be removed from the game.
 	public void checkForPlayer(int playerId) {
 		Player player = super.getGameState().getPlayer(playerId);
 		if (checkForHit(player)){

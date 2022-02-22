@@ -22,6 +22,7 @@ public class MovingPlatform extends Platform {
 		rangeY = yRange;
 	}
 	
+	//Player should not move out of range, and should never stop moving from side to side or up and down.
 	@Override 
 	public void move() {
 		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
@@ -68,6 +69,7 @@ public class MovingPlatform extends Platform {
 	
 	}
 	
+	//A player that stands on a platform should move with the platform
 	public void movePlayer(int playerId, double xMove, double yMove) {
 		Player player = super.getGameState().getPlayer(playerId);
 		

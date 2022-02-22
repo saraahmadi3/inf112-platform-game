@@ -24,6 +24,9 @@ public class GhostPlatform extends Platform {
 		}
 	}
 	
+	//Should start to disappear if any player touches the platform
+	//When it is gone the player can pass through
+	//Then it should come back
 	public void checkForPlayer(int playerId) {
 		if (super.getGameState().getPlayer(playerId).getCurrentPlatform()==this || state > 3) {
 			double delta = super.getGameState().getDeltaTime(); //The time passed since last frame;
