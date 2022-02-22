@@ -24,7 +24,7 @@ public class GameState {
 		waitingSprites = new ArrayList<GameObjects>();
 		waitingRemovalSprites = new ArrayList<GameObjects>();
 		allPlatforms = new ArrayList<Platform>();
-
+	
 		level(gameLevel);
 		
 	}
@@ -34,7 +34,12 @@ public class GameState {
 	}
 	
 	public double getDeltaTime() {
-		return Gdx.graphics.getDeltaTime();
+		try {
+			return Gdx.graphics.getDeltaTime();
+		} catch (Exception e) {
+			System.out.print(e);
+			return 0.01666667; 
+		}
 	}
 	
 	public void setBatchAndFont(SpriteBatch batch, BitmapFont font) {
