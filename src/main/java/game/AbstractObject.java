@@ -48,6 +48,10 @@ public abstract class AbstractObject implements GameObjects {
 	public double getX() {
 		return x;
 	}
+	
+	public double getXMid() {
+		return getX() + (getWidth()/2);
+	}
 
 	public void setX(double xCoordinate) {
 		x = xCoordinate;
@@ -60,6 +64,10 @@ public abstract class AbstractObject implements GameObjects {
 	@Override
 	public double getY() { 
 		return y;
+	}
+	
+	public double getYMid() {
+		return getY() + (getHeight()/2);
 	}
 	
 	public void setY(double yCoordinate) {
@@ -98,9 +106,11 @@ public abstract class AbstractObject implements GameObjects {
 	}
 	
 	public void setSprite(String fileName) {
-		FileHandle playerFileHandle = Gdx.files.internal("game/img/"+fileName); 
-	    Texture playerTexture = new Texture(playerFileHandle);
-	    sprite = new Sprite(playerTexture, getWidth(), getHeight());
+		if (fileName != "testMode") {
+			FileHandle playerFileHandle = Gdx.files.internal("game/img/"+fileName); 
+		    Texture playerTexture = new Texture(playerFileHandle);
+		    sprite = new Sprite(playerTexture, getWidth(), getHeight());
+		}
 	}
 	
 	@Override
