@@ -61,7 +61,9 @@ public class GameState {
 	
 	public void addAllNewSprites(){
 		for (GameObjects o : waitingSprites) {
-			addSpriteQ(o);
+			if (!allSprites.contains(o)){
+				addSpriteQ(o);
+			}
 		}
 		waitingSprites.clear();
 	}
@@ -81,9 +83,11 @@ public class GameState {
 	}
 	
 	public void killSpriteQ(GameObjects s) {
-		allSprites.remove(s);
-		if (s.getType() == "Platform") {
-			allPlatforms.remove((Platform) s);
+		if (allSprites.contains(s)) {
+			allSprites.remove(s);
+			if (s.getType() == "Platform") {
+				allPlatforms.remove((Platform) s);
+			}
 		}
 	}
 	
