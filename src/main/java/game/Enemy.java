@@ -22,7 +22,7 @@ public class Enemy extends AbstractObject {
 		
 		super.setHeight(16);
 		super.setWidth(16);
-		super.setSprite("player.png");
+		super.setSprite("ene.png");
 		
 	}
 	
