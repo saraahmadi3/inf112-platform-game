@@ -50,8 +50,9 @@ class GameStateTest {
 	}
 	
 	@Test
-	void allowsMultiplayerSameSpawnPoint() {
-		fail("Something");
+	void playerStaysPutAtSpawn() {
+		assertEquals(50, (int) playerOne.getX());
+		assertEquals(15, (int) playerOne.getY());
 	}
 
 }
