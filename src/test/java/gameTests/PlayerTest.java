@@ -37,7 +37,39 @@ class PlayerTest {
 		assertEquals(playerOne, game.getAllSprites().get(0));
 	}
 	
-	//One cannot allow two instances of the same player into the game
+	@Test
+	void playerStaysPutAtSpawn() {
+		assertEquals(50, (int) playerOne.getX());
+		assertEquals(15, (int) playerOne.getY());
+	}
+	
+	
+	
+	//==========PLATFORM==========
+	//Test the boost platform interaction with player
+	@Test
+	void boostWorks() {
+		//TO-DO: test boost() and getGv() together. Possibly isGrounded()
+	}
+	
+	//Player - Platform interaction test
+	@Test
+	void platformInteraction() {
+		//TO-DO: getCurrentPlatform(), isGrounded()
+	}
+	
+	
+	
+	//========PLAYER-VALUES========
+	@Test
+	void hpStressTest() {
+		//TO-DO: test getLives(), loseLife(), checkForDeath()
+	}
+	
+	
+	
+	//==========REDUNDENCY==========
+	//One cannot allow two instances of the same player into the game. Solved by identity solution in Player class
 	@Test
 	void allowsRedundantPlayer() {
 		game.addSprite(playerOne);
@@ -50,9 +82,20 @@ class PlayerTest {
 	}
 	
 	@Test
-	void playerStaysPutAtSpawn() {
-		assertEquals(50, (int) playerOne.getX());
-		assertEquals(15, (int) playerOne.getY());
+	void getIdentityWorks() {
+		//TO-DO getIdentity()
 	}
+	
+	
+	
+	//=============KEY=============
+	//Player - Key interaction test
+	@Test
+	void keyInteraction() {
+		//TO-DO: haskey(), useKey(), pickUpKey()
+	}
+	
+	
 
+	
 }
