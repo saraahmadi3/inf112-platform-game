@@ -18,7 +18,7 @@ class GameStateTest {
 	@BeforeEach
 	void setUpBeforeClass() throws NullPointerException {
 		game = new GameState(0);
-		playerOne = new Player(50, 15, game, "testMode");
+		playerOne = new Player(50, 15, game, "testMode", 1);
 	}
 	
 	//Level 0 does not exist. Should be an "blank slate" environment
@@ -37,11 +37,21 @@ class GameStateTest {
 		assertEquals(playerOne, game.getAllSprites().get(0));
 	}
 	
+	//One cannot allow two instances of the same player into the game
 	@Test
 	void allowsRedundantPlayer() {
-		game.addSpriteQ(playerOne);
-		game.addSpriteQ(playerOne);
+		game.addSprite(playerOne);
+		game.addSprite(playerOne);
+		game.addAllNewSprites();
 		assertFalse(Collections.frequency(game.getAllSprites(), playerOne) > 1);
+		game.killSprite(playerOne);
+		game.removeAllDeadSprites();
+		assertTrue(game.getAllSprites().isEmpty());
+	}
+	
+	@Test
+	void allowsMultiplayerSameSpawnPoint() {
+		fail("Something");
 	}
 
 }
