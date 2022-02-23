@@ -2,14 +2,12 @@ package gameTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.rmi.UnexpectedException;
 import java.util.Collections;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import exceptions.ConflictingGameObjectsException;
-import game.AbstractObject;
 import game.GameState;
 import game.Platform;
 import game.Player;
@@ -21,14 +19,15 @@ class PlayerTest {
 	private static final double J = 150; //Jump strength
 	public static final double G = 150; //Gravity acceleration
 	
-	private static AbstractObject absPlayer;
 	private static GameState game;
 	private static Player playerOne;
+	private static Player playerTwo;
 	
 	@BeforeEach
 	void setUpBeforeClass() throws NullPointerException {
 		game = new GameState(0);
 		playerOne = new Player(50, 15, game, "testMode", 1);
+		playerTwo = new Player(50, 15, game, "testMode", 2);
 	}
 	
 	//Level 0 does not exist. Should be an "blank slate" environment
@@ -45,6 +44,13 @@ class PlayerTest {
 		
 		game.addAllNewSprites();
 		assertEquals(playerOne, game.getAllSprites().get(0));
+		
+		//Test if players are stored as variables in GameState
+		assertEquals(playerOne, game.getPlayer(1));
+		playerTwo = new Player(50, 15, game, "testMode", 2);
+		game.addSprite(playerTwo);
+		game.addAllNewSprites();
+		assertEquals(playerTwo, game.getPlayer(2));
 	}
 	
 	@Test
@@ -83,12 +89,14 @@ class PlayerTest {
 		playerOne.boost(0);
 		playerOne.boost(-1);
 		assertEquals(0, (int) playerOne.getGv());
-		
 	}
 	
 //Player - Platform interaction test
 	@Test
 	void platformInteraction() {
+		game.addSprite(playerOne);
+		game.addAllNewSprites();
+
 		assertFalse(playerOne.getGrounded());
 		assertNull(playerOne.getCurrentPlatform());
 		
@@ -138,7 +146,50 @@ class PlayerTest {
 //========PLAYER-VALUES========(Issue #16)
 	@Test
 	void hpStressTest() {
-		//TO-DO: test getLives(), loseLife(), checkForDeath()
+		//Adding playerOne to game. Conditions should apply
+		game.addSprite(playerOne);
+		game.addAllNewSprites();
+		assertEquals(3, playerOne.getLives());
+		playerOne.checkForDeath();
+		game.removeAllDeadSprites();
+		assertTrue(game.getAllSprites().contains(playerOne));
+		
+		//Player loses all lives. Should be killed and removed.
+		playerOne.loseLife();
+		assertEquals(2, playerOne.getLives());
+		playerOne.loseLife();
+		assertEquals(1, playerOne.getLives());
+		playerOne.loseLife();
+		assertEquals(0, playerOne.getLives());
+		game.removeAllDeadSprites();
+		assertFalse(game.getAllSprites().contains(playerOne));
+		
+		//Player falls below map. Checking conditions
+		game.addSprite(playerTwo);
+		game.addAllNewSprites();
+		playerTwo.setY(-playerTwo.getHeight() - 1);
+		playerTwo.checkForDeath();
+		game.removeAllDeadSprites();
+		assertTrue(game.getAllSprites().contains(playerOne));
+		assertEquals(2, playerTwo.getLives());
+		assertEquals(50, playerTwo.getX());
+		assertEquals(15, playerTwo.getY());
+		assertEquals(0, (int) playerTwo.getGv());
+		
+		playerTwo.setXandY(playerTwo.getX() + 123, playerTwo.getY() + 47);
+		playerTwo.setY(-playerTwo.getHeight() - 1);
+		playerTwo.checkForDeath();
+		game.removeAllDeadSprites();
+		assertTrue(game.getAllSprites().contains(playerOne));
+		assertEquals(1, playerTwo.getLives());
+		assertEquals(50, playerTwo.getX());
+		assertEquals(15, playerTwo.getY());
+		assertEquals(0, (int) playerTwo.getGv());
+		
+		playerTwo.setY(-playerTwo.getHeight() - 1);
+		playerTwo.checkForDeath();
+		game.removeAllDeadSprites();
+		assertFalse(game.getAllSprites().contains(playerTwo));
 	}
 	
 	
