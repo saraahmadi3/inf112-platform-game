@@ -2,20 +2,26 @@ package gameTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.rmi.UnexpectedException;
 import java.util.Collections;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import exceptions.ConflictingGameObjectsException;
+import game.AbstractObject;
 import game.GameState;
+import game.Platform;
 import game.Player;
 
 class PlayerTest {
 	
-	
 	//ISSUES #13 and #11 
+	private static final double V = 100; //Running velocity/speed for player	//later not static (powerups)
+	private static final double J = 150; //Jump strength
+	public static final double G = 150; //Gravity acceleration
 	
-	
+	private static AbstractObject absPlayer;
 	private static GameState game;
 	private static Player playerOne;
 	
@@ -59,13 +65,72 @@ class PlayerTest {
 	//Test the boost platform interaction with player
 	@Test
 	void boostWorks() {
-		//TO-DO: test boost() and getGv() together. Possibly isGrounded()
+		
+		//TO-DO: test boost() and getGv() together. 
+		assertEquals(0, (int) playerOne.getGv());
+		
+		//Repeated boostValue
+		playerOne.boost(1);
+		playerOne.boost(1);
+		assertEquals(-J*1, playerOne.getGv());
+		
+		//Boosting in increments of 1 from boost of 0 to 1000
+		for (int i=0; i<=1000; i++) {
+			playerOne.boost(i);
+			assertEquals(-J*i, playerOne.getGv());
+		}
+		
+		playerOne.boost(0);
+		playerOne.boost(-1);
+		assertEquals(0, (int) playerOne.getGv());
+		
 	}
 	
 //Player - Platform interaction test
 	@Test
 	void platformInteraction() {
-		//TO-DO: getCurrentPlatform(), isGrounded()
+		assertFalse(playerOne.getGrounded());
+		assertNull(playerOne.getCurrentPlatform());
+		
+		Platform floor1 = new Platform(game, -500, -10, 1150, 20, "testMode"); //Floor
+		game.addSprite(floor1);
+		game.addAllNewSprites();
+		
+		playerOne.move();
+		
+		assertEquals(floor1, playerOne.getCurrentPlatform());
+		assertTrue(playerOne.getGrounded());
+		
+		//____SOME EXPECTED EXCEPTIONS____
+		//Use of new exception class ConflictingGameObjectsException advised.
+		
+		//Increasing height of platform to cover player
+		assertThrows(ConflictingGameObjectsException.class, () -> {
+			floor1.setHeight(floor1.getHeight() + 50);
+		}, "ConflictingGameObjectsException was expected. Cannot increase height of platform. Covers player");
+		
+		//Removing platform under player
+		double yBeforeFall = playerOne.getY();
+		double xBeforeFall = playerOne.getX();
+		
+		game.killSprite(floor1);
+		game.removeAllDeadSprites();
+		playerOne.move();
+		assertFalse(playerOne.getY() == yBeforeFall);
+		
+		playerOne.setX(xBeforeFall);
+		playerOne.setY(yBeforeFall);
+		
+		//Adding platform that covers player
+		Platform floor2 = new Platform(game, -500, -10, 1150, 20, "testMode"); //Floor
+		game.addSprite(floor2);
+		game.addAllNewSprites();
+		playerOne.move();
+		
+		assertThrows(ConflictingGameObjectsException.class, () -> {
+			game.addSprite(floor1);
+		}, "ConflictingGameObjectsException was expected. Cannot add floor that covers player");
+		
 	}
 	
 	
