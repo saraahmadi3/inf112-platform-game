@@ -13,15 +13,21 @@ public class GameLoop implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
     private GameState game;
+    private Sprite gameOverSprite;
   
     @Override
-    public void create() {    	
+    public void create() { 
+    	
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
         
         game = new GameState();
         game.setBatchAndFont(batch, font);
+    
+        //TODO move this somewhere else
+        Texture img = new Texture(Gdx.files.internal("src/main/java/game/img/gameOver.png"));
+    	gameOverSprite = new Sprite(img);
     }
 
     @Override
@@ -50,10 +56,8 @@ public class GameLoop implements ApplicationListener {
     	}
     	else {
     		clearScreen();
-    		Texture img = new Texture(Gdx.files.internal("src/main/java/game/img/gameOver.png"));
-    		Sprite gameOver = new Sprite(img);
     		batch.begin();
-    		gameOver.draw(batch);
+    		gameOverSprite.draw(batch);
     		batch.end();
     	}
 
