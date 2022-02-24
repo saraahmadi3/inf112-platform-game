@@ -77,9 +77,7 @@ public class Player extends AbstractObject {
 			gV = 0;
 		} else {
 			super.getGameState().killSprite(this);
-			
-			//TODO do something other than just display text when player dies
-			new Text(super.getGameState(), 400, 300, "You Died!");
+			//new Text(super.getGameState(), 400, 300, "You Died!");
 		}
 	}
 	

@@ -22,21 +22,24 @@ public class Key extends AbstractObject {
 
 	@Override
 	public void update() {
-		checkForPlayer(1);
-		if (super.getGameState().getPlayer(2) != null) {
-			checkForPlayer(2);
+		if (!checkForPlayer(1)) {
+			if (super.getGameState().getPlayer(2) != null) {
+				checkForPlayer(2);
+			}
 		}
 	}
 	
 	//If a player that doesn't already have a key touches the key the player should pick up the key.
 	//When a key is picked up it should be removed from the game.
-	public void checkForPlayer(int playerId) {
+	public boolean checkForPlayer(int playerId) {
 		Player player = super.getGameState().getPlayer(playerId);
 		if (checkForHit(player)){
 			if(player.pickUpKey()) {
 				super.getGameState().killSprite(this);
+				return true;
 			}
 		}
+		return false;
 		
 	}
 }

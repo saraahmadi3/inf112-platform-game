@@ -18,9 +18,9 @@ public class Level1 implements Levels {
 		new Door(game, 1050, 650, 20, 34);
 		new Key(game, 950, 12);
 		new Key(game, 390, 65);
-		new Player(50, 15, game);
+		
 		new Player(50, 15, game, "player2.png", 2);
-	
+		new Player(50, 15, game);
 		new Platform(game, -500, -10, 1150, 20, "grass.png"); //Floor
 		new Platform(game, 900, -10, 180, 20, "grass.png"); //Floor
 		new Platform(game, -500, 718, 2000, 20); //Top

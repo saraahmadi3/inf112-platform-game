@@ -44,7 +44,7 @@ public class GameLoop implements ApplicationListener {
     public void render() {
     	if (!game.getGameOver()) {
             clearScreen();
-            updateGameState();
+            game.update();
             updateAll();
             drawAll();
     	}
@@ -60,10 +60,6 @@ public class GameLoop implements ApplicationListener {
         
     }
     
-    private void updateGameState() {
-		game.addAllNewSprites();
-		game.removeAllDeadSprites();
-	}
 
 	//This method should iterate over all movable sprites and call the move() method for each one.
     private void updateAll() {
