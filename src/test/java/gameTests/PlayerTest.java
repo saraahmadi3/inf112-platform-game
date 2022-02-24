@@ -107,7 +107,10 @@ class PlayerTest {
 		game.addSprite(floor1);
 		game.addAllNewSprites();
 		
-		playerOne.move();
+		//Assuming 60 fps, running move() 30 times is equivalent to letting the player fall for 0.5 seconds. 
+		for (int i=0; i<30; i++) {
+			playerOne.move();
+		}
 		
 		assertEquals(floor1, playerOne.getCurrentPlatform());
 		assertTrue(playerOne.getGrounded());

@@ -10,6 +10,7 @@ public class Player extends AbstractObject {
 	public static final double G = 150; //Gravity acceleration
 		
 	private double gV; //Gravity/speed at which the player falls
+	private double stepX;
 	private boolean isGrounded; //True if player is on ground
 	private boolean canDoubleJump; //True if the player can jump again
 	private Platform currentPlatform;
@@ -107,69 +108,29 @@ public class Player extends AbstractObject {
 	}
 	
 	public void update() {
+		getKeypress();
 		move();
 		checkForDeath();
 	}
 	
-	//checks if the player has fallen below the screen and should die.
-	public void checkForDeath() {
-		if (super.getY()+super.getHeight()<0) {
-			loseLife();
-			if (getLives()>0) {
-				super.setXandY(50, 15);
-				canDoubleJump=false;
-				gV = 0;
-			} else {
-				super.getGameState().killSprite(this);
-				
-				//TODO do something other than just display text when player dies
-				new Text(super.getGameState(), 400, 300, "You Died!");
-			}
-		}
-		
-	}
-	
-	public void move() {
-		
+	private void getKeypress() {
+		stepX = 0;
 		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
-		
-		super.moveByY(-gV*delta); //Gravity
-		
-		gV += G*delta;
-		
-		isGrounded = false;
-		for (Platform p : super.getGameState().getAllPlatforms()) {
-			if (p.checkForHit(this)) {
-				currentPlatform = p;
-				
-				if (super.getYMid()<p.getYMid()) {
-					super.setY(p.getY()-super.getHeight());
-				} else { 
-					//This should only happen when the player lands on top of the platform.
-					super.setY(p.getY()+p.getHeight());
-					isGrounded = true;
-					canDoubleJump = false;
-				} 
-				gV = G*delta;
-				break;
-			}
-		}
-				
 		//Moves the player to the left, slower while in the air
 		if((Gdx.input.isKeyPressed(Keys.A) && identity == 1) || (Gdx.input.isKeyPressed(Keys.LEFT) && identity == 2)) {
 			if (isGrounded) {
-				super.moveByX(-delta*V);
+				stepX = -delta*V;
 			} else {
-				super.moveByX(-delta*(V/2));
+				stepX = -delta*(V/2);
 			}
 		} 
 		
 		//Moves the player to the right, slower while in the air 
 		if(Gdx.input.isKeyPressed(Keys.D)  && identity == 1 || Gdx.input.isKeyPressed(Keys.RIGHT)  && identity == 2) {
 			if (isGrounded) {
-				super.moveByX(delta*V);
+				stepX = delta*V;
 			} else {
-				super.moveByX(delta*(V/2));
+				stepX = (delta*(V/2));
 			}
 		}
 		
@@ -193,6 +154,53 @@ public class Player extends AbstractObject {
 			}
 		}
 		
+		
+	}
+
+	//checks if the player has fallen below the screen and should die.
+	public void checkForDeath() {
+		if (super.getY()+super.getHeight()<0) {
+			loseLife();
+			if (getLives()>0) {
+				super.setXandY(50, 15);
+				canDoubleJump=false;
+				gV = 0;
+			} else {
+				super.getGameState().killSprite(this);
+				
+				//TODO do something other than just display text when player dies
+				new Text(super.getGameState(), 400, 300, "You Died!");
+			}
+		}
+		
+	}
+	
+	public void move() {
+		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
+		
+		gV += G*delta; //Acceleration of gravity
+		super.moveByY(-gV*delta); //Gravity
+		
+		isGrounded = false;
+		for (Platform p : super.getGameState().getAllPlatforms()) {
+			if (p.checkForHit(this)) {
+				currentPlatform = p;
+				
+				if (super.getYMid()<p.getYMid()) {
+					super.setY(p.getY()-super.getHeight());
+				} else { 
+					//This should only happen when the player lands on top of the platform.
+					super.setY(p.getY()+p.getHeight());
+					isGrounded = true;
+					canDoubleJump = false;
+				} 
+				gV = G*delta;
+				break;
+			}
+		}
+		
+		super.moveByX(stepX);
+				
 		for (Platform p : super.getGameState().getAllPlatforms()) {
 			if (p.checkForHit(this)) {
 				currentPlatform = p;
