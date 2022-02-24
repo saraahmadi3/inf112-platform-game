@@ -10,8 +10,8 @@ public class MovingPlatform extends Platform {
 	private int rangeX;
 	private int rangeY;
 	
-	public MovingPlatform(GameState game, int x, int y, int width, int height, int xRange, int yRange, int speed) {
-		super(game, x, y, width, height);
+	public MovingPlatform(GameState game, int x, int y, int width, int height, int xRange, int yRange, int speed, String imgFile) {
+		super(game, x, y, width, height, imgFile);
 		super.setGameState(game);
 		startX=x;
 		startY=y;
@@ -20,6 +20,10 @@ public class MovingPlatform extends Platform {
 		goingRight = true;
 		rangeX = xRange;
 		rangeY = yRange;
+	}
+	
+	public MovingPlatform(GameState game, int x, int y, int width, int height, int xRange, int yRange, int speed) {
+		this(game, x, y, width, height, xRange, yRange, speed, "Platform.png");
 	}
 	
 	//Player should not move out of range, and should never stop moving from side to side or up and down.

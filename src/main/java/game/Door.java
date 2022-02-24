@@ -2,9 +2,13 @@ package game;
 
 public class Door extends Platform {
 	
-	public Door(GameState game, int x, int y, int width, int height) {
-		super(game, x, y, width, height, "door.png");
+	public Door(GameState game, int x, int y, int width, int height, String imgFile) {
+		super(game, x, y, width, height, imgFile);
 		super.setGameState(game);	
+	}
+	
+	public Door(GameState game, int x, int y, int width, int height) {
+		this(game, x , y, width, height, "Door.png");
 	}
 	
 	//should only open the door if the player has a key and touches the door

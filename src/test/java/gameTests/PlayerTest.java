@@ -2,7 +2,6 @@ package gameTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -30,8 +29,8 @@ class PlayerTest {
 	@BeforeEach
 	void setUpBeforeClass() throws NullPointerException {
 		game = new GameState(0);
-		playerOne = new Player(50, 15, game, "testMode", 1);
-		playerTwo = new Player(50, 15, game, "testMode", 2);
+		playerOne = new Player(50, 15, game, null, 1);
+		playerTwo = new Player(50, 15, game, null, 2);
 	}
 	
 	//Level 0 does not exist. Should be an "blank slate" environment
@@ -51,7 +50,7 @@ class PlayerTest {
 		
 		//Test if players are stored as variables in GameState
 		assertEquals(playerOne, game.getPlayer(1));
-		playerTwo = new Player(50, 15, game, "testMode", 2);
+		playerTwo = new Player(50, 15, game, null, 2);
 		game.addSprite(playerTwo);
 		game.addAllNewSprites();
 		assertEquals(playerTwo, game.getPlayer(2));
@@ -104,7 +103,7 @@ class PlayerTest {
 		assertFalse(playerOne.getGrounded());
 		assertNull(playerOne.getCurrentPlatform());
 		
-		Platform floor1 = new Platform(game, -500, -10, 1150, 20, "testMode"); //Floor
+		Platform floor1 = new Platform(game, -500, -10, 1150, 20, null); //Floor
 		game.addSprite(floor1);
 		game.addAllNewSprites();
 		
@@ -134,7 +133,7 @@ class PlayerTest {
 		playerOne.setY(yBeforeFall);
 		
 		//Adding platform that covers player
-		Platform floor2 = new Platform(game, -500, -10, 1150, 20, "testMode"); //Floor
+		Platform floor2 = new Platform(game, -500, -10, 1150, 20, null); //Floor
 		game.addSprite(floor2);
 		game.addAllNewSprites();
 		playerOne.move();
@@ -233,8 +232,8 @@ class PlayerTest {
 	@Test
 	void getIdentityWorks() {
 
-		Player playerThree = new Player(50, 15, game, "testMode", 3);
-		Player negativeP = new Player(50, 15, game, "testMode", -1);
+		Player playerThree = new Player(50, 15, game, null, 3);
+		Player negativeP = new Player(50, 15, game, null, -1);
 		
 		//Adding an invalid player of id > 2
 		assertThrows(InvalidPlayerException.class, () -> {
@@ -268,7 +267,7 @@ class PlayerTest {
 		assertFalse(game.getAllSprites().contains(negativeP));
 		killIfPresent(negativeP);
 		
-		Player playerFour = new Player(50, 15, game, "testMode", 4);
+		Player playerFour = new Player(50, 15, game, null, 4);
 		List<Player> twoPlayer = Arrays.asList(playerOne, playerTwo, playerThree, playerFour, negativeP);
 		addToGame(twoPlayer);
 		

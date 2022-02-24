@@ -4,10 +4,14 @@ public class BoostPlatform extends Platform{
 	
 	private double boostFactor;
 	
-	public BoostPlatform(GameState game, int x, int y, int width, int height, double boostFactor) {
-		super(game, x, y, width, height, "boost.png");
+	public BoostPlatform(GameState game, int x, int y, int width, int height, double boostFactor, String imgFile) {
+		super(game, x, y, width, height, imgFile);
 		super.setGameState(game);
 		this.boostFactor = boostFactor;
+	}
+	
+	public BoostPlatform(GameState game, int x, int y, int width, int height, double boostFactor) {
+		this(game, x, y, width, height, boostFactor, "Boost.png");
 	}
 	
 	//Checks if a player is on top of the platform and then boost the player.

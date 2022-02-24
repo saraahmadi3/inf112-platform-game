@@ -68,21 +68,21 @@ class GameObjectTest {
 	@BeforeAll
 	static void setUp() {
 		game = new GameState(0);
-		playerOne = new Player(50, 15, game, "testMode", 1);
-		playerTwo = new Player(50, 15, game, "testMode", 2);
+		playerOne = new Player(50, 15, game, null, 1);
+		playerTwo = new Player(50, 15, game, null, 2);
 		
-		negativeBoostP = new BoostPlatform(game, -500, -10, 1150, 20, negativeBoostFactor, "testMode"); 
-		boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, "testMode"); 
-		ghostP = new GhostPlatform(game, -500, -10, 1150, 20, ghostDelay, "testMode");
-		movingP = new MovingPlatform(game, -500, -10, 1150, 20, xRangeMovingP, yRangeMovingP, speedMovingP, "testMode");
-		door = new Door(game, 60, 15, 20, 34, "testMode");
+		negativeBoostP = new BoostPlatform(game, -500, -10, 1150, 20, negativeBoostFactor, null); 
+		boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, null); 
+		ghostP = new GhostPlatform(game, -500, -10, 1150, 20, ghostDelay);
+		movingP = new MovingPlatform(game, -500, -10, 1150, 20, xRangeMovingP, yRangeMovingP, speedMovingP, null);
+		door = new Door(game, 60, 15, 20, 34, null);
 		
-		regularP = new Platform(game, -500, -10, 1150, 20, "testMode");
-		boostPlatEnemy = new Enemy(game, boostP, "testMode");
-		movingPlatEnemy = new Enemy(game, movingP, "testMode");
-		regularPlatEnemy = new Enemy(game, regularP, "testMode");
-		ghostPlatEnemy = new Enemy(game, ghostP, "testMode");
-		key = new Key(game, 55, 15, "testMode");
+		regularP = new Platform(game, -500, -10, 1150, 20, null);
+		boostPlatEnemy = new Enemy(game, boostP, null);
+		movingPlatEnemy = new Enemy(game, movingP, null);
+		regularPlatEnemy = new Enemy(game, regularP, null);
+		ghostPlatEnemy = new Enemy(game, ghostP, null);
+		key = new Key(game, 55, 15, null);
 		text = new Text(game, 30, 200, "This is a regular text at x=30 and y=200");
 		tooLong = new Text(game, 30, 300, "This text is too l" + " ".repeat(10000) + "ng");
 		Tips tip = new Tips(game);
@@ -144,7 +144,7 @@ class GameObjectTest {
 		game.killSprite(boostP);
 		game.removeAllDeadSprites();
 		
-		negativeBoostP = BoostPlatform(game, -500, -10, 1150, 20, negativeBoostFactor, "testMode"); 
+		negativeBoostP = new BoostPlatform(game, -500, -10, 1150, 20, negativeBoostFactor); 
 		
 		assertThrows(InvalidPlatformException.class, () -> {
 			game.addSprite(negativeBoostP);

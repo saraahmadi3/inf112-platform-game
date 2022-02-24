@@ -8,7 +8,7 @@ public class GhostPlatform extends Platform {
 	private double delay;
 
 	public GhostPlatform(GameState game, int x, int y, int width, int height, double delay) {
-		super(game, x, y, width, height);
+		super(game, x, y, width, height, null);
 		super.setGameState(game);
 		state = 0;
 		counter = 0;
