@@ -39,14 +39,11 @@ public class Enemy extends AbstractObject {
 		updatePlatformRelation();
 		
 		move();
-//		if() collision med player enten killsprite/gameover
+//		if(checkForHit(null))
+
 	}
 	public void updatePlatformRelation() {
-//		if(goingRight)
-//			platformRelation =(super.getX()+super.getWidth()-platform.getX())/platform.getWidth();
-//		else
-//			platformRelation =(super.getX()-platform.getX())/platform.getWidth();
-//		
+
 		platformRelation = (super.getX()-platform.getX())/(platform.getWidth());
 		if(platformRelation< 0.00) 
 			platformRelation = 0.00;
@@ -70,7 +67,7 @@ public class Enemy extends AbstractObject {
 				goingRight = false;
 			} else {
 //				moveByX(delta*speed);
-				super.setX(platform.getX() + (platform.getWidth()* platformRelation) + step);
+				super.setX(platform.getX() + (platform.getWidth()* (platformRelation)) + step);
 				super.setY(platform.getY()+platform.getHeight());
 			}
 		}
