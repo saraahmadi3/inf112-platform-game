@@ -82,7 +82,12 @@ public class MovingPlatform extends Platform {
 			}
 		}
 	}
-
+	
+	public int getSpeed() {
+		return v;
+	}
+	
+	
 	@Override
 	public void update() {
 		move();
