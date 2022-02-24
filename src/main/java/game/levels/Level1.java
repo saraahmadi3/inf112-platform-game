@@ -28,13 +28,12 @@ public class Level1 implements Levels {
 		new Platform(game, 1078, -500, 15, 2000); //Right wall
 		
 		
-		new MovingPlatform(game, 650, 150, 100, 8, 100, 0, 50);
+		new MovingPlatform(game, 650, 140, 100, 8, 100, 0, 50);
 		MovingPlatform moving1 = new MovingPlatform(game, 800, 250, 150, 8, 0, 150, 75);
 		new MovingPlatform(game, 150, 620, 75, 8, 420, 0, 75);
 		
-		//TODO fix bug where player is not always grounded on diagonally moving platforms
-		//new MovingPlatform(this, 400, 360, 75, 8, 250, 75, 25); 
-		MovingPlatform moving2 = new MovingPlatform(game, 400, 360, 75, 8, 250, 0, 50); 
+		
+		MovingPlatform moving2 = new MovingPlatform(game, 400, 360, 75, 8, 250, 75, 25); //new MovingPlatform(game, 400, 360, 75, 8, 250, 0, 50); 
 		
 		new BoostPlatform(game, 30, 250, 50, 8, 2);
 		new BoostPlatform(game, 1000, 50, 50, 8, 2);
