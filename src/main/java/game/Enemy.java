@@ -5,9 +5,12 @@ package game;
 public class Enemy extends AbstractObject {
 	
 
-	private double speed = 10;
+	private double speed = 20;
 	private boolean goingRight;
 	private Platform platform;
+	private double platformRelation;
+	private double step;
+//	private double startX;
 	
 	
 	
@@ -18,11 +21,13 @@ public class Enemy extends AbstractObject {
 		
 		super.setX(platform.getXMid());
 		super.setY(platform.getY()+platform.getHeight());
-		goingRight=true;
 		
+		goingRight=true;
+//		startX=platform.getXMid();
 		super.setHeight(16);
 		super.setWidth(16);
 		super.setSprite(imgFile);
+		
 	}
 
 	public Enemy(GameState game, Platform platform) {
@@ -30,18 +35,42 @@ public class Enemy extends AbstractObject {
 	}
 	
 	public void update() {
+		updateStep();
+		updatePlatformRelation();
+		
 		move();
 //		if() collision med player enten killsprite/gameover
 	}
+	public void updatePlatformRelation() {
+//		if(goingRight)
+//			platformRelation =(super.getX()+super.getWidth()-platform.getX())/platform.getWidth();
+//		else
+//			platformRelation =(super.getX()-platform.getX())/platform.getWidth();
+//		
+		platformRelation = (super.getX()-platform.getX())/(platform.getWidth());
+		if(platformRelation< 0.00) 
+			platformRelation = 0.00;
+		if(platformRelation>1.00) 
+			platformRelation = 1.00;
+		
+	}
+	
+	public void updateStep() {
+		step= super.getGameState().getDeltaTime()*speed;
+		
+	}
 	
 	public void move() {
-		double delta = super.getGameState().getDeltaTime();
+//		double delta = super.getGameState().getDeltaTime();
+		
+		
 		
 		if(goingRight) {
 			if(super.getX()+super.getWidth() > platform.getX()+platform.getWidth()) {
 				goingRight = false;
 			} else {
-				moveByX(delta*speed);
+//				moveByX(delta*speed);
+				super.setX(platform.getX() + (platform.getWidth()* platformRelation) + step);
 				super.setY(platform.getY()+platform.getHeight());
 			}
 		}
@@ -50,7 +79,8 @@ public class Enemy extends AbstractObject {
 			if(super.getX() < platform.getX()) {
 				goingRight = true;
 			} else {
-				moveByX(-delta*speed);
+//				moveByX(-delta*speed);
+				super.setX(platform.getX() + (platform.getWidth()* platformRelation) -step);
 				super.setY(platform.getY()+platform.getHeight());
 			}
 		}
