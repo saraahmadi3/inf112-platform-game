@@ -10,6 +10,7 @@ import game.levels.Level1;
 
 public class GameState {
 	
+	private boolean gameOver;
 	private Player player1;
 	private Player player2;
 	private boolean levelFinished;
@@ -113,6 +114,10 @@ public class GameState {
 			return player1;
 		}
 		
+	}
+	
+	public boolean getGameOver() {
+		return gameOver;
 	}
 	
 	public ArrayList<Platform> getAllPlatforms() {

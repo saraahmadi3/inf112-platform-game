@@ -4,7 +4,9 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameLoop implements ApplicationListener {
@@ -40,10 +42,21 @@ public class GameLoop implements ApplicationListener {
      * Should if possible ONLY call other methods to avoid cluttering
      */
     public void render() {
-        clearScreen();
-        updateGameState();
-        updateAll();
-        drawAll();
+    	if (!game.getGameOver()) {
+            clearScreen();
+            updateGameState();
+            updateAll();
+            drawAll();
+    	}
+    	else {
+    		clearScreen();
+    		Texture img = new Texture(Gdx.files.internal("src/main/java/game/img/gameOver.png"));
+    		Sprite gameOver = new Sprite(img);
+    		batch.begin();
+    		gameOver.draw(batch);
+    		batch.end();
+    	}
+
         
     }
     
