@@ -241,6 +241,7 @@ class PlayerTest {
 			game.addSprite(playerThree);
 		}, "InvalidPlayerException expected. Cannot a player with id higher than 2 to an offline multiplayer game.");
 		
+		game.addAllNewSprites();
 		assertFalse(game.getAllSprites().contains(playerThree));
 		killIfPresent(playerThree);
 		
@@ -256,6 +257,7 @@ class PlayerTest {
 			game.addSprite(negativeP);
 		}, "InvalidPlayerException expected. Cannot add player with a negative id");
 		
+		game.addAllNewSprites();
 		assertFalse(game.getAllSprites().contains(negativeP));
 		killIfPresent(negativeP);
 		
