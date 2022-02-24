@@ -1,8 +1,10 @@
 package game.levels;
 
-public class Level0 {
+import game.GameState;
+
+public class Level0 implements Levels {
 	
-	public Level0 (){
+	public Level0 (GameState game){
 		
 	}
 }

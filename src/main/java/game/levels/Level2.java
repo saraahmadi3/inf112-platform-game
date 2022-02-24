@@ -11,9 +11,9 @@ import game.Platform;
 import game.Player;
 import game.Tips;
 
-public class Level1 implements Levels {
+public class Level2 implements Levels {
 
-	public Level1 (GameState game) {
+	public Level2 (GameState game) {
 		new Tips(game);
 		new Door(game, 1050, 650, 20, 34);
 		new Key(game, 950, 12);

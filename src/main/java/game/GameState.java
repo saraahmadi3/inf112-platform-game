@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import game.levels.Level1;
+import game.levels.Level2;
 
 public class GameState {
 	
@@ -145,6 +146,8 @@ public class GameState {
 	private void level(int gameLevel) {
 		if (gameLevel == 1) {
 			new Level1(this);
+		} else if (gameLevel == 2) {
+			new Level2(this);
 		}
 	}
 	
