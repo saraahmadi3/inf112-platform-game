@@ -145,10 +145,10 @@ public class GameState {
 	}
 	
 	public Player getOtherPlayer(int identity) {
-		if (identity == 2) {
-			return player1;
-		} else {
+		if (identity == 1) {
 			return player2;
+		} else {
+			return player1;
 		}
 	}
 	
