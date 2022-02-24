@@ -63,6 +63,10 @@ public class Player extends AbstractObject {
 		return identity;
 	}
 	
+	public String getType() {
+		return "Player";
+	}
+	
 	//should be called when the player dies, removes one life.
 	public void loseLife() {
 		lives--;
