@@ -14,7 +14,7 @@ public class Door extends Platform {
 	//should only open the door if the player has a key and touches the door
 	public void checkForKey(int playerId) {
 		Player player = super.getGameState().getPlayer(playerId);
-		if (player.hasKey() && player.getCurrentPlatform()==this){
+		if (player.hasKey() && (player.getCurrentPlatform()==this)){
 			openDoor(player);
 		}
 	}

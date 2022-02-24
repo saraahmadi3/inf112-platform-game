@@ -18,10 +18,14 @@ public class Player extends AbstractObject {
 	private int lives;
 	private int identity; //Should be 1 or 2
 	
+	private boolean isCheating;
+	
 	public Player(int x, int y, GameState game, String imgFile, int playerNumber) {
 		identity = playerNumber;
 		super.setGameState(game);
 		game.addSprite(this);
+		
+		isCheating = false;
 		
 		super.setX(x);
 		super.setY(y);
@@ -57,6 +61,10 @@ public class Player extends AbstractObject {
 	//returns the number of lives the player has
 	public int getLives() {
 		return lives;
+	}
+	
+	public boolean getCheat() {
+		return isCheating;
 	}
 	
 	//returns the ID of the player, meaning 1 or 2.
@@ -116,11 +124,83 @@ public class Player extends AbstractObject {
 	}
 	
 	public void update() {
-		getKeypress();
-		move();
 		checkForDeath();
+		
+		if (isCheating) {
+			cheatMode();
+		} else {
+			move();
+			getKeypress();
+		}
 	}
 	
+	
+	private void cheatMode() {
+		stepX = 0;
+		double stepY = 0;
+		int cheatIncrease = 4;
+		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
+		//Moves the player to the left, slower while in the air
+		if((Gdx.input.isKeyPressed(Keys.A) && identity == 1) || (Gdx.input.isKeyPressed(Keys.LEFT) && identity == 2)) {
+			stepX = -delta*V*cheatIncrease;
+		} 
+		
+		//Moves the player to the right, slower while in the air 
+		if(Gdx.input.isKeyPressed(Keys.D)  && identity == 1 || Gdx.input.isKeyPressed(Keys.RIGHT)  && identity == 2) {
+			stepX = delta*(V*cheatIncrease);
+		}
+		
+		//Allows the player to get down faster after a jump (or when falling in general) by canceling any upwards momentum and amplifying gravity
+		if(Gdx.input.isKeyPressed(Keys.S)  && identity == 1 || Gdx.input.isKeyPressed(Keys.DOWN)  && identity == 2) {
+			stepY = -delta*V*cheatIncrease;
+		}
+				
+		//Jump, this happens once and therefore deltaTime should not be considered.
+		if(Gdx.input.isKeyPressed(Keys.W)  && identity == 1 || Gdx.input.isKeyPressed(Keys.UP)  && identity == 2) {
+			stepY = delta*V*cheatIncrease;
+		}
+		
+		if(Gdx.input.isKeyPressed(Keys.C) && Gdx.input.isKeyPressed(Keys.H) && Gdx.input.isKeyPressed(Keys.E) && Gdx.input.isKeyPressed(Keys.A) && Gdx.input.isKeyPressed(Keys.T)) {
+			isCheating = false;
+		}
+		
+		super.moveByY(stepY);
+		
+		isGrounded = false;
+		for (Platform p : super.getGameState().getAllPlatforms()) {
+			if (p.checkForHit(this)) {
+				currentPlatform = p;
+				
+				if (super.getYMid()<p.getYMid()) {
+					super.setY(p.getY()-super.getHeight());
+				} else { 
+					//This should only happen when the player lands on top of the platform.
+					super.setY(p.getY()+p.getHeight());
+					isGrounded = true;
+					canDoubleJump = false;
+				} 
+				gV = G*delta;
+				break;
+			}
+		}
+		
+		super.moveByX(stepX);
+		
+		for (Platform p : super.getGameState().getAllPlatforms()) {
+			if (p.checkForHit(this)) {
+				currentPlatform = p;
+				if (super.getXMid()<p.getXMid()) {
+					super.setX(p.getX()-super.getWidth());
+				} else {
+					super.setX(p.getX()+p.getWidth());
+				}
+				break;
+			}
+		}
+		
+	}
+
+
 	private void getKeypress() {
 		stepX = 0;
 		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
@@ -129,7 +209,7 @@ public class Player extends AbstractObject {
 			if (isGrounded) {
 				stepX = -delta*V;
 			} else {
-				stepX = -delta*(V/2);
+				stepX = -delta*(V*0.65);
 			}
 		} 
 		
@@ -138,7 +218,7 @@ public class Player extends AbstractObject {
 			if (isGrounded) {
 				stepX = delta*V;
 			} else {
-				stepX = (delta*(V/2));
+				stepX = (delta*(V*0.65));
 			}
 		}
 		
@@ -162,7 +242,9 @@ public class Player extends AbstractObject {
 			}
 		}
 		
-		
+		if(Gdx.input.isKeyPressed(Keys.C) && Gdx.input.isKeyPressed(Keys.H)) {
+			isCheating = true;
+		}
 	}
 
 	//checks if the player has fallen below the screen and should die.
