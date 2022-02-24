@@ -12,6 +12,7 @@ import game.levels.Level2;
 public class GameState {
 	
 	private boolean gameOver;
+	private int currentLevel;
 	private Player player1;
 	private Player player2;
 	private boolean levelFinished;
@@ -29,7 +30,9 @@ public class GameState {
 		waitingRemovalSprites = new ArrayList<GameObjects>();
 		allPlatforms = new ArrayList<Platform>();
 	
-		level(gameLevel);
+		currentLevel = gameLevel;
+		
+		level(currentLevel);
 		
 	}
 
@@ -44,6 +47,11 @@ public class GameState {
 			System.out.print(e);
 			return 0.01666667; 
 		}
+	}
+	
+	public void clearState() {
+		waitingRemovalSprites.addAll(allSprites);
+		waitingRemovalSprites.addAll(waitingSprites);
 	}
 	
 	public void setBatchAndFont(SpriteBatch batch, BitmapFont font) {
@@ -62,6 +70,15 @@ public class GameState {
 	//Adds the sprite in waitlist to be added to the main list when allowed, avoids ConcurrentModificationException.
 	public void addSprite (GameObjects s) {
 		waitingSprites.add(s);
+		
+		if (s.getType()=="Player") {
+			Player p = (Player) s;
+			if (p.getIdentity() == 2) {
+				player2 = p;
+			} else {
+				player1 = p;
+			}
+		}
 	}
 	
 	public void killSprite (GameObjects s) {
@@ -89,23 +106,27 @@ public class GameState {
 		if (s.getType() == "Platform") {
 			allPlatforms.add((Platform) s);
 		}
-		if (s.getType()=="Player") {
-			Player p = (Player) s;
-			if (p.getIdentity() == 2) {
-				player2 = p;
-			} else {
-				player1 = p;
-			}
-		}
+		
 	}
 	
 	public void killSpriteQ(GameObjects s) {
 		if (allSprites.contains(s)) {
 			allSprites.remove(s);
-			if (s.getType() == "Platform") {
-				allPlatforms.remove((Platform) s);
+		}
+		if (allPlatforms.contains(s)) {
+			allPlatforms.remove((Platform) s);
+		}
+		/*
+		if (s.getType()=="Player") {
+			Player p = (Player) s;
+			if (p.getIdentity() == 2) {
+				player2 = null;
+			} else {
+				player1 = null;
 			}
 		}
+		*/
+		
 	}
 	
 	public Player getPlayer(int identity) {
@@ -134,6 +155,8 @@ public class GameState {
 		if (levelFinished) {
 			new Text(this, 700, 550, "Better luck next time Player "+playerId+", you finished last.");
 			levelFinished = false;
+			currentLevel++;
+			level(currentLevel);
 		} else {
 			levelFinished = true;
 			new Text(this, 700, 575, "Congratulations Player "+playerId+"! You won the game!");
@@ -144,6 +167,7 @@ public class GameState {
 	
 	//TODO find a better place for this information.
 	private void level(int gameLevel) {
+		clearState();
 		if (gameLevel == 1) {
 			new Level1(this);
 		} else if (gameLevel == 2) {
