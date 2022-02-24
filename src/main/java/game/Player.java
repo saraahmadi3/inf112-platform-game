@@ -71,6 +71,16 @@ public class Player extends AbstractObject {
 	//should be called when the player dies, removes one life.
 	public void loseLife() {
 		lives--;
+		if (getLives()>0) {
+			super.setXandY(50, 15);
+			canDoubleJump=false;
+			gV = 0;
+		} else {
+			super.getGameState().killSprite(this);
+			
+			//TODO do something other than just display text when player dies
+			new Text(super.getGameState(), 400, 300, "You Died!");
+		}
 	}
 	
 	//only returns true if the player has a key, false otherwise
@@ -161,16 +171,6 @@ public class Player extends AbstractObject {
 	public void checkForDeath() {
 		if (super.getY()+super.getHeight()<0) {
 			loseLife();
-			if (getLives()>0) {
-				super.setXandY(50, 15);
-				canDoubleJump=false;
-				gV = 0;
-			} else {
-				super.getGameState().killSprite(this);
-				
-				//TODO do something other than just display text when player dies
-				new Text(super.getGameState(), 400, 300, "You Died!");
-			}
 		}
 		
 	}
