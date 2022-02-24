@@ -2,12 +2,16 @@ package gameTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import exceptions.ConflictingGameObjectsException;
+import exceptions.InvalidPlayerException;
 import game.GameState;
 import game.Platform;
 import game.Player;
@@ -200,16 +204,83 @@ class PlayerTest {
 	void allowsRedundantPlayer() {
 		game.addSprite(playerOne);
 		game.addSprite(playerOne);
+		game.addSprite(playerTwo);
 		game.addAllNewSprites();
 		assertFalse(Collections.frequency(game.getAllSprites(), playerOne) > 1);
+		game.addSprite(playerTwo);
+		game.addAllNewSprites();
+		assertFalse(Collections.frequency(game.getAllSprites(), playerTwo) > 1);
+		game.killSprite(playerTwo);
 		game.killSprite(playerOne);
 		game.removeAllDeadSprites();
 		assertTrue(game.getAllSprites().isEmpty());
 	}
 	
+	private void addToGame(List<Player> players) {
+		for (Player player : players) {
+			game.addSprite(player);
+		}
+		game.addAllNewSprites();
+	}
+	
+	private void killIfPresent(Player player) {
+		if(game.getAllSprites().contains(player)) {
+			game.killSprite(player);
+			game.removeAllDeadSprites();
+		}
+	}
+	
 	@Test
 	void getIdentityWorks() {
-		//TO-DO getIdentity()
+
+		Player playerThree = new Player(50, 15, game, "testMode", 3);
+		Player negativeP = new Player(50, 15, game, "testMode", -1);
+		
+		//Adding an invalid player of id > 2
+		assertThrows(InvalidPlayerException.class, () -> {
+			game.addSprite(playerThree);
+		}, "InvalidPlayerException expected. Cannot a player with id higher than 2 to an offline multiplayer game.");
+		
+		assertFalse(game.getAllSprites().contains(playerThree));
+		killIfPresent(playerThree);
+		
+		assertThrows(InvalidPlayerException.class, () -> {
+			game.addSpriteQ(playerThree);
+		}, "InvalidPlayerException expected. Cannot a player with id higher than 2 to an offline multiplayer game.");
+		
+		assertFalse(game.getAllSprites().contains(playerThree));
+		killIfPresent(playerThree);
+		
+		//Adding player with negative id
+		assertThrows(InvalidPlayerException.class, () -> {
+			game.addSprite(negativeP);
+		}, "InvalidPlayerException expected. Cannot add player with a negative id");
+		
+		assertFalse(game.getAllSprites().contains(negativeP));
+		killIfPresent(negativeP);
+		
+		assertThrows(InvalidPlayerException.class, () -> {
+			game.addSpriteQ(negativeP);
+		}, "InvalidPlayerException expected. Cannot add player with a negative id");
+		
+		assertFalse(game.getAllSprites().contains(negativeP));
+		killIfPresent(negativeP);
+		
+		Player playerFour = new Player(50, 15, game, "testMode", 4);
+		List<Player> twoPlayer = Arrays.asList(playerOne, playerTwo, playerThree, playerFour, negativeP);
+		addToGame(twoPlayer);
+		
+		assertEquals(1, playerOne.getIdentity());
+		assertEquals(2, playerTwo.getIdentity());
+		if (!(playerThree.getIdentity() == 3)) {
+			fail("Player class itself should room positive ids > 2 for future implementation with more players.");
+		}
+		if (!(playerFour.getIdentity() == 4)) {
+			fail("Player class itself should room positive ids > 2 for future implementation with more players.");
+		}
+		
+		assertEquals(game.getPlayer(1).getIdentity(), playerOne.getIdentity());
+		assertEquals(game.getPlayer(2).getIdentity(), playerTwo.getIdentity());
 	}
 	
 	
