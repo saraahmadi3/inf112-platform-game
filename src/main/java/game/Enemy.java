@@ -65,6 +65,22 @@ public class Enemy extends AbstractObject {
 		relativeDistance += step;
 		super.setX(relativeDistance + platform.getX());
 		
+		playerIteraction(1);
+		if (super.getGameState().getPlayer(2) != null) {
+			playerIteraction(2);
+		}
 	}
 	
+	public void playerIteraction(int playerID) {
+		Player player= super.getGameState().getPlayer(playerID);
+		
+		if(super.checkForHit(player)) {
+			if (super.checkForHit(player) && player.getY()> super.getYMid()) {
+				player.boost(0.5);
+				super.getGameState().killSprite(this);
+			} else {
+				player.loseLife();
+			}
+		}
+	}
 }
