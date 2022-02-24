@@ -66,12 +66,12 @@ class PlayerTest {
 // Approach: SPLIT TESTS INTO CATEGORIES. Create a new issue in git for each category.
 
 	//Example:
-	//==========TO-DO=========== (Issue #nr)
+	//==========TO-DO=========== (Issue #nr)[OPEN / CLOSED]
 	//ToDoClass: toDo(), example()
 	
 	//All issues link to #11 and #13
 	
-//==========PLATFORM========== (Issue #15)
+//==========PLATFORM========== (Issue #15)[CLOSED]
 	//Test the boost platform interaction with player
 	@Test
 	void boostWorks() {
@@ -147,7 +147,7 @@ class PlayerTest {
 	
 	
 	
-//========PLAYER-VALUES========(Issue #16)
+//========PLAYER-VALUES========(Issue #16)[CLOSED]
 	@Test
 	void hpStressTest() {
 		//Adding playerOne to game. Conditions should apply
@@ -198,7 +198,7 @@ class PlayerTest {
 	
 	
 	
-//==========REDUNDENCY==========(Issue #17)
+//==========REDUNDENCY==========(Issue #17)[CLOSED]
 	//One cannot allow two instances of the same player into the game. Solved by identity solution in Player class
 	@Test
 	void allowsRedundantPlayer() {
@@ -285,11 +285,27 @@ class PlayerTest {
 	
 	
 	
-//=============KEY=============(Issue #18)
+//=============KEY=============(Issue #18)[CLOSED]
 	//Player - Key interaction test
 	@Test
 	void keyInteraction() {
-		//TO-DO: haskey(), useKey(), pickUpKey()
+		//Player initially has no key
+		assertFalse(playerOne.hasKey());
+		
+		//Picking up key should be successful
+		assertTrue(playerOne.pickUpKey());
+		
+		//Player should have key after successful
+		assertTrue(playerOne.hasKey());
+		
+		//Player cannot pick up another key. He already has one.
+		assertFalse(playerOne.pickUpKey());
+		
+		//Player uses key
+		playerOne.useKey();
+		
+		//Should have no key
+		assertFalse(playerOne.hasKey());
 	}
 	
 	
