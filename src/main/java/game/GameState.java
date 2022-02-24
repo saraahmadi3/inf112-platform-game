@@ -153,13 +153,13 @@ public class GameState {
 
 	public void levelComplete(int playerId) {
 		if (levelFinished) {
-			new Text(this, 700, 550, "Better luck next time Player "+playerId+", you finished last.");
 			levelFinished = false;
 			currentLevel++;
 			level(currentLevel);
 		} else {
 			levelFinished = true;
-			new Text(this, 700, 575, "Congratulations Player "+playerId+"! You won the game!");
+			new Text(this, 700, 575, "Congratulations Player "+playerId+"! You finished the level first!");
+			new Text(this, 700, 550, "Waiting for Player "+playerId+" to finish before starting next level.");
 		}
 		
 			
