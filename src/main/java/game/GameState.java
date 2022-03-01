@@ -38,8 +38,11 @@ public class GameState {
 		allPlayers = new ArrayList<Player>();
 	
 		currentLevel = gameLevel;
-		
-		startscreen = new StartScreen(this, gameLevel);
+		if (gameLevel != 0) {
+			startscreen = new StartScreen(this, gameLevel);
+		} else {
+			level(0);
+		}
 		
 	}
 
