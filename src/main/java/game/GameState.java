@@ -195,8 +195,10 @@ public class GameState {
 
 	public void levelComplete(int playerId) {
 		if (!levelFinished) {
+			getPlayer(playerId).changeScoreBy(200);
 			levelFinished = true;
 		}
+		getPlayer(playerId).changeScoreBy(50);
 	}
 	
 	private void checkForLevelComplete() {

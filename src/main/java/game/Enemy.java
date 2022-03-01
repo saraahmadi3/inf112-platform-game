@@ -80,6 +80,7 @@ public class Enemy extends AbstractObject {
 		if(super.checkForHit(player)) {
 			if (super.checkForHit(player) && player.getY()> super.getYMid()) {
 				player.boost(0.5);
+				player.changeScoreBy(10);
 				super.getGameState().killSprite(this);
 			} else {
 				player.loseLife();

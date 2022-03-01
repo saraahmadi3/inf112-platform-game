@@ -17,6 +17,7 @@ public class Player extends AbstractObject {
 	private boolean hasKey;
 	private int lives;
 	private int identity; //Should be 1 or 2
+	private int score;
 	
 	private boolean isCheating;
 	
@@ -79,6 +80,7 @@ public class Player extends AbstractObject {
 	//should be called when the player dies, removes one life.
 	public void loseLife() {
 		lives--;
+		changeScoreBy(-50);
 		if (getLives()>0) {
 			super.setXandY(50, 15);
 			canDoubleJump=false;
@@ -104,6 +106,7 @@ public class Player extends AbstractObject {
 		if (hasKey) {
 			return false;
 		} else {
+			changeScoreBy(50);
 			hasKey=true;
 			return true;
 		}
@@ -256,7 +259,11 @@ public class Player extends AbstractObject {
 	}
 	
 	public int getScore() {
-		return 1234;
+		return score;
+	}
+	
+	public void changeScoreBy(int changeScore) {
+		score += changeScore;
 	}
 	
 	public void move() {
