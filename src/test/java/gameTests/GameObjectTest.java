@@ -69,7 +69,7 @@ class GameObjectTest {
 	static void setUp() {
 		game = new GameState(0);
 		playerOne = new Player(50, 15, game, null, 1);
-		playerTwo = new Player(50, 15, game, null, 2);
+		playerTwo = new Player(50, 10, game, null, 2);
 		
 		negativeBoostP = new BoostPlatform(game, -500, -10, 1150, 20, negativeBoostFactor, null); 
 		boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, null); 
@@ -106,11 +106,19 @@ class GameObjectTest {
 		game.addSprite(boostP);
 		game.addSprite(playerOne);
 		game.addAllNewSprites();
-		
+		System.out.println(playerOne.getGv());
+		//Thoughts: during one or more frames inside loop, 
+		//assertTrue(boostP.checkForHit(playerOne)) passes, but the rest will fail
+		//While false with timeout. If returns, just pass test.
+		for(int i=0; i<=60; i++) {
+			game.update();
+		}
 		//Adding playerTwo to wait list
-		game.addSprite(playerTwo);
 		
-		playerOne.move();
+		game.addSprite(playerTwo);
+		System.out.println(playerOne.getX() + "," + playerOne.getY());
+//		playerOne.move();
+		System.out.println("\n" +playerOne.getX() + "," + playerOne.getY());
 		assertTrue(boostP.checkForHit(playerOne));
 		assertFalse(boostP.checkForHit(playerTwo));
 		

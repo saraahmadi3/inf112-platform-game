@@ -257,6 +257,7 @@ public class Player extends AbstractObject {
 	
 	public void move() {
 		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
+//		System.out.println(delta);
 		
 		gV += G*delta; //Acceleration of gravity
 		super.moveByY(-gV*delta); //Gravity

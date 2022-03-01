@@ -48,12 +48,14 @@ public class GameState {
 	}
 	
 	public double getDeltaTime() {
+		double deltaTime = 0.0;
 		try {
-			return Gdx.graphics.getDeltaTime();
+			deltaTime= Gdx.graphics.getDeltaTime();
 		} catch (Exception e) {
-			System.out.print(e);
+			System.out.print("Could not retrieve delta time. " + e);
 			return 0.01666667; 
 		}
+		return (double) deltaTime;
 	}
 	
 	public void clearState() {
