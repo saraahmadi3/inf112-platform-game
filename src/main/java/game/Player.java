@@ -255,6 +255,10 @@ public class Player extends AbstractObject {
 		
 	}
 	
+	public int getScore() {
+		return 1234;
+	}
+	
 	public void move() {
 		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
 		
