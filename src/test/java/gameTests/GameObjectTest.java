@@ -111,7 +111,7 @@ class GameObjectTest {
 		//assertTrue(boostP.checkForHit(playerOne)) passes, but the rest will fail
 		//While false with timeout. If returns, just pass test.
 		for(int i=0; i<=60; i++) {
-			game.update();
+			game.update(); 
 		}
 		//Adding playerTwo to wait list
 		

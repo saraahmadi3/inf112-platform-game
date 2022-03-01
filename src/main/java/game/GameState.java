@@ -53,7 +53,7 @@ public class GameState {
 			deltaTime= Gdx.graphics.getDeltaTime();
 		} catch (Exception e) {
 			System.out.print("Could not retrieve delta time. " + e);
-			return 0.01666667; 
+			return 0.01666667;  
 		}
 		return (double) deltaTime;
 	}
