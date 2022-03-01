@@ -171,6 +171,10 @@ public class GameState {
 		return gameOver;
 	}
 	
+	public void setGameOver(boolean gameover) {
+		gameOver = gameover;
+	}
+	
 	public ArrayList<Platform> getAllPlatforms() {
 		return allPlatforms;
 	}
