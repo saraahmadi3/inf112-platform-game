@@ -54,12 +54,12 @@ public class GameState {
 	public double getDeltaTime() {
 		double deltaTime = 0;
 		try {
-			deltaTime = Gdx.graphics.getDeltaTime();
+			deltaTime = (double) Gdx.graphics.getDeltaTime();
 		} catch (NullPointerException e) {
 			System.out.println("Could not retrieve delta time. " + e.getLocalizedMessage());
 			return 0.01666667;  
 		} 
-		return (double) deltaTime;
+		return deltaTime;
 	}
 	
 	public void clearState() {
