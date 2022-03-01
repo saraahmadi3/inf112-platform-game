@@ -107,18 +107,15 @@ class GameObjectTest {
 		game.addSprite(playerOne);
 		game.addAllNewSprites();
 		System.out.println(playerOne.getGv());
-		//Thoughts: during one or more frames inside loop, 
-		//assertTrue(boostP.checkForHit(playerOne)) passes, but the rest will fail
-		//While false with timeout. If returns, just pass test.
 		boolean hasCollided = false;
-		int i=0;
+		int frameCount = 0;
 		while(hasCollided == false) {
 			playerOne.move();
 			playerOne.checkForDeath();
 			
 			hasCollided =boostP.checkForHit(playerOne);
-			i++;
-			if (i>600)
+			frameCount++;
+			if (frameCount>600)
 				fail("The player never hits the platform");
 				break;
 		}
