@@ -44,7 +44,6 @@ class GameObjectTest {
 	
 	private static GameState game;
 	private static Player playerOne;
-	private static Player playerTwo;
 	private static BoostPlatform boostP;
 	private static BoostPlatform negativeBoostP;
 	private static Door door;
@@ -73,7 +72,6 @@ class GameObjectTest {
 	static void setUp() {
 		game = new GameState(0);
 		playerOne = new Player(50, 15, game, null, 1);
-		playerTwo = new Player(50, 15, game, null, 2);
 		
 		negativeBoostP = new BoostPlatform(game, -500, -10, 1150, 20, negativeBoostFactor, null); 
 		boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, null); 
@@ -110,28 +108,23 @@ class GameObjectTest {
 		game.addSprite(boostP);
 		game.addSprite(playerOne);
 		game.addAllNewSprites();
+		
+		//SIMULATE 6000 frames (100 seconds) until collision occurs
+		//Drop player onto platform
 		boolean hasCollided = false;
 		int frameCount = 0;
 		while(!hasCollided) {
 			playerOne.move();
-			System.out.println("FrameCount: " + frameCount);
 			hasCollided = boostP.checkForHit(playerOne);
-			System.out.println("Has collided: " + hasCollided);
 			frameCount++;
 			//Simulate a 100 second drop to boostP by playerOne in 60 frames per second
-			if (frameCount>6000) {
-				System.out.println("Timeout: 600 frames reached");
+			if (frameCount > 6000) {
 				fail("The player never hits the platform");
 				break;
 			}
 		}
 		
-		//Adding playerTwo to wait list
-		
-		game.addSprite(playerTwo);
-		
-//		playerOne.move();
-		
+		//PLAYER 1 IS NOW COLLIDING WITH BOOSTP
 		
 		//checkForBoost() in BoostPlatform
 		boostP.checkForBoost(1);
@@ -144,21 +137,6 @@ class GameObjectTest {
 		
 		game.killSprite(playerOne);
 		game.removeAllDeadSprites();
-		
-		//Adding playerTwo from wait list
-		game.addAllNewSprites();
-		playerTwo.move();
-		
-		assertTrue(boostP.checkForHit(playerTwo));
-		
-		//checkForBoost() playerTwo
-		boostP.checkForBoost(2);
-		assertEquals(-J*boostFactor, playerTwo.getGv());
-		
-		//update() boost with playerTwo on it
-		playerTwo.boost(0);
-		boostP.update();
-		assertEquals(-J*boostFactor, playerTwo.getGv());
 		
 		game.killSprite(boostP);
 		game.removeAllDeadSprites();
