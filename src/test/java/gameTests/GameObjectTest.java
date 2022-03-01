@@ -87,7 +87,7 @@ class GameObjectTest {
 		tooLong = new Text(game, 30, 300, "This text is too l" + " ".repeat(10000) + "ng");
 		Tips tip = new Tips(game);
 		
-	}
+	} 
 	
 	
 // Approach: SPLIT TESTS INTO CATEGORIES. Create a new issue in git for each category.
