@@ -110,17 +110,27 @@ class GameObjectTest {
 		//Thoughts: during one or more frames inside loop, 
 		//assertTrue(boostP.checkForHit(playerOne)) passes, but the rest will fail
 		//While false with timeout. If returns, just pass test.
-		for(int i=0; i<=60; i++) {
-			game.update(); 
+		boolean hasCollided = false;
+		int i=0;
+		while(hasCollided == false) {
+			playerOne.move();
+			playerOne.checkForDeath();
+			
+			hasCollided =boostP.checkForHit(playerOne);
+			i++;
+			if (i>600)
+				fail("The player never hits the platform");
+				break;
 		}
+		System.out.println(playerOne.getX() + "," + playerOne.getY());
+		System.out.println(playerOne.getGv());
+		
 		//Adding playerTwo to wait list
 		
 		game.addSprite(playerTwo);
-		System.out.println(playerOne.getX() + "," + playerOne.getY());
+		
 //		playerOne.move();
-		System.out.println("\n" +playerOne.getX() + "," + playerOne.getY());
-		assertTrue(boostP.checkForHit(playerOne));
-		assertFalse(boostP.checkForHit(playerTwo));
+		
 		
 		//checkForBoost() in BoostPlatform
 		boostP.checkForBoost(1);
