@@ -16,6 +16,7 @@ public class GameState {
 	private int currentLevel;
 	private Player player1;
 	private Player player2;
+	private StartScreen startscreen;
 	private boolean levelFinished;
 	private ArrayList<GameObjects> allSprites;
 	private ArrayList<GameObjects> waitingSprites;
@@ -24,6 +25,9 @@ public class GameState {
 	private ArrayList<Player> allPlayers;
 	private SpriteBatch batch;
     private BitmapFont font;
+	private boolean isMultiplayer;
+	private int singlePlayerID;
+	
 	
 	public GameState(int gameLevel) {
 		levelFinished = false;
@@ -35,7 +39,7 @@ public class GameState {
 	
 		currentLevel = gameLevel;
 		
-		level(currentLevel);
+		startscreen = new StartScreen(this, gameLevel);
 		
 	}
 
@@ -144,6 +148,16 @@ public class GameState {
 		}
 	}
 	
+	public Player getSinglePlayer() {
+		if (getSinglePlayerID()==2) {
+			return player2;
+		} else {
+			return player1;
+		}
+	}
+	
+	/*
+	//TODO: Fix how this works for multiplayer, or remove completely.
 	public Player getOtherPlayer(int identity) {
 		if (identity == 1) {
 			return player2;
@@ -151,6 +165,7 @@ public class GameState {
 			return player1;
 		}
 	}
+	*/
 	
 	public boolean getGameOver() {
 		return gameOver;
@@ -172,13 +187,11 @@ public class GameState {
 	public void levelComplete(int playerId) {
 		if (!levelFinished) {
 			levelFinished = true;
-			new Text(this, 700, 575, "Congratulations Player "+playerId+"! You finished the level first!");
-			new Text(this, 700, 550, "Waiting for Player "+getOtherPlayer(playerId).getIdentity()+" to finish before starting next level.");
-		}	
+		}
 	}
 	
 	private void checkForLevelComplete() {
-		if (getAllPlayers().isEmpty()) {
+		if (getAllPlayers().isEmpty() && !getAllSprites().contains(startscreen)) {
 			if (levelFinished) {
 				levelFinished = false;
 				currentLevel++;
@@ -197,7 +210,7 @@ public class GameState {
 
 
 	//TODO find a better place for this information.
-	private void level(int gameLevel) {
+	public void level(int gameLevel) {
 		clearState();
 		if (gameLevel == 1) {
 			new Level1(this);
@@ -207,5 +220,20 @@ public class GameState {
 			new Level0(this);
 		}
 	}
+
+	public void setMultiPlayer(boolean isMultiplayer) {
+		this.isMultiplayer = isMultiplayer;
+	}
 	
+	public boolean getMultiPlayer() {
+		return isMultiplayer;
+	}
+	
+	public int getSinglePlayerID() {
+		return singlePlayerID;
+	}
+	
+	public void setSinglePlayerID(int playerID) {
+		singlePlayerID = playerID;
+	}
 }

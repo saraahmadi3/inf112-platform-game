@@ -18,7 +18,9 @@ public class GhostPlatform extends Platform {
 	
 	@Override
 	public void update() {
-		checkForPlayer(1);
+		if (super.getGameState().getPlayer(1) != null) {
+			checkForPlayer(1);
+		}
 		if (super.getGameState().getPlayer(2) != null) {
 			checkForPlayer(2);
 		}

@@ -66,7 +66,9 @@ public class MovingPlatform extends Platform {
 		
 		super.moveByXandY(xMove, yMove);		
 		
-		movePlayer(1, xMove, yMove);
+		if (super.getGameState().getPlayer(1) != null) {
+			movePlayer(1, xMove, yMove);
+		}
 		if (super.getGameState().getPlayer(2) != null) {
 			movePlayer(2, xMove, yMove);
 		}

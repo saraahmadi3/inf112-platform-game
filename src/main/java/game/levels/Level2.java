@@ -17,9 +17,16 @@ public class Level2 implements Levels {
 		new Tips(game);
 		new Door(game, 5, 650, 20, 34);
 		new Key(game, 1050, 12);
-		new Key(game, 50, 310);
-		new Player(50, 15, game);
-		new Player(50, 15, game, "player2.png", 2);
+
+		if (game.getMultiPlayer()) {
+			new Player(50, 15, game, "player2.png", 2);
+			new Player(50, 15, game);
+			new Key(game, 50, 310);
+		} else if (game.getSinglePlayerID() == 2){
+			new Player(50, 15, game, "player2.png", 2);
+		} else {
+			new Player(50, 15, game);
+		}
 	
 		new Platform(game, -500, -10, 650, 20, "grass.png"); //Floor
 		new Platform(game, 300, -10, 1500, 20, "grass.png"); //Floor

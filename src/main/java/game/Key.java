@@ -22,7 +22,14 @@ public class Key extends AbstractObject {
 
 	@Override
 	public void update() {
-		if (!checkForPlayer(1)) {
+		
+		if (super.getGameState().getPlayer(1) != null) {
+			if (!checkForPlayer(1)) {
+				if (super.getGameState().getPlayer(2) != null) {
+					checkForPlayer(2);
+				}
+			}
+		} else {
 			if (super.getGameState().getPlayer(2) != null) {
 				checkForPlayer(2);
 			}

@@ -28,7 +28,9 @@ public class Door extends Platform {
 	
 	@Override
 	public void update() {
-		checkForKey(1);
+		if (super.getGameState().getPlayer(1) != null) {
+			checkForKey(1);
+		}
 		if (super.getGameState().getPlayer(2) != null) {
 			checkForKey(2);
 		}

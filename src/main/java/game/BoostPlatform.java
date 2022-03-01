@@ -25,7 +25,9 @@ public class BoostPlatform extends Platform{
 	
 	@Override
 	public void update() {
-		checkForBoost(1);
+		if (super.getGameState().getPlayer(1) != null) {
+			checkForBoost(1);
+		}
 		if (super.getGameState().getPlayer(2) != null) {
 			checkForBoost(2);
 		}
