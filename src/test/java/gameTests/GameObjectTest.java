@@ -2,6 +2,10 @@ package gameTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -69,7 +73,7 @@ class GameObjectTest {
 	static void setUp() {
 		game = new GameState(0);
 		playerOne = new Player(50, 15, game, null, 1);
-		playerTwo = new Player(50, 10, game, null, 2);
+		playerTwo = new Player(50, 15, game, null, 2);
 		
 		negativeBoostP = new BoostPlatform(game, -500, -10, 1150, 20, negativeBoostFactor, null); 
 		boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, null); 
@@ -106,21 +110,21 @@ class GameObjectTest {
 		game.addSprite(boostP);
 		game.addSprite(playerOne);
 		game.addAllNewSprites();
-		System.out.println(playerOne.getGv());
 		boolean hasCollided = false;
 		int frameCount = 0;
-		while(hasCollided == false) {
+		while(!hasCollided) {
 			playerOne.move();
-			playerOne.checkForDeath();
-			
-			hasCollided =boostP.checkForHit(playerOne);
+			System.out.println("FrameCount: " + frameCount);
+			hasCollided = boostP.checkForHit(playerOne);
+			System.out.println("Has collided: " + hasCollided);
 			frameCount++;
-			if (frameCount>600)
+			//Simulate a 100 second drop to boostP by playerOne in 60 frames per second
+			if (frameCount>6000) {
+				System.out.println("Timeout: 600 frames reached");
 				fail("The player never hits the platform");
 				break;
+			}
 		}
-		System.out.println(playerOne.getX() + "," + playerOne.getY());
-		System.out.println(playerOne.getGv());
 		
 		//Adding playerTwo to wait list
 		
