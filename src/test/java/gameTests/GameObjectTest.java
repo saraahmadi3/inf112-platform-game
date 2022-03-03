@@ -56,9 +56,6 @@ class GameObjectTest {
 	private static double boostFactor = 2;
 	private static double negativeBoostFactor = -1;
 	private static double ghostDelay = 2;
-	private static int xRangeMovingP = 250;
-	private static int yRangeMovingP = 0;
-	private static int speedMovingP = 50;
 	
 	@BeforeEach
 	void setUp() {
@@ -75,18 +72,18 @@ class GameObjectTest {
 		
 	} 
 	
-	private boolean collidesAfter(int seconds, Player player, Platform platform) {
+	//Simulate a n-times seconds drop to platform by player in 60 frames per second
+	private boolean causeCollision(int seconds, Player player, Platform platform) {
 		int totalFrames = seconds * 60;
-		int frameCount = 0;
+		int frameCount = 1;
 		boolean hasCollided = false;
 		while(!hasCollided) {
-			playerOne.move();
-			hasCollided = platform.checkForHit(player);
-			frameCount++;
-			//Simulate a 100 second drop to boostP by playerOne in 60 frames per second
 			if (frameCount > totalFrames) {
 				return false;
 			}
+			playerOne.move();
+			hasCollided = platform.checkForHit(player);
+			frameCount++;
 		}
 		return true;
 	}
@@ -121,7 +118,7 @@ class GameObjectTest {
 		
 		//SIMULATE 6000 frames (100 seconds) until collision occurs
 		//Drop player onto platform
-		if (!collidesAfter(100, playerOne, boostP)) {
+		if (!causeCollision(100, playerOne, boostP)) {
 			fail("The player never hits the platform");
 		}
 			
@@ -162,122 +159,145 @@ class GameObjectTest {
 		assertFalse(game.getAllPlatforms().contains(negativeBoostP));
 	}
 	
-
-//MovingPlatform: update(), move(), movePlayer()
-	/*public void move() {
-		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
-		
-		double xMove = 0;
-		double yMove = 0;
-		
-		if (goingRight) {
-			if (super.getX() < startX+rangeX) {
-				xMove+=delta*v;
-			} else {
-				goingRight=false;
-			}
-		}
-		if (!goingRight) {
-			if (super.getX() > startX) {
-				xMove-=delta*v;
-			} else {
-				goingRight=true;
-			}
-		}
-		
-		if (goingUp) {
-			if (super.getY() < startY+rangeY) {
-				yMove+=delta*v;
-			} else {
-				goingUp=false;
-			}
-		}
-		if (!goingUp) {
-			if (super.getY() > startY) {
-				yMove-=delta*v;
-			} else {
-				goingUp=true;
-			}
-		}
-		
-		super.moveByXandY(xMove, yMove);		
-		
-		if (super.getGameState().getPlayer(1) != null) {
-			movePlayer(1, xMove, yMove);
-		}
-		if (super.getGameState().getPlayer(2) != null) {
-			movePlayer(2, xMove, yMove);
-		}
-	
-	}*/
 	@Test
 	void MovingPlatformTest() {
-		MovingPlatform movingP = new MovingPlatform(game, -500, -10, 1150, 20, xRangeMovingP, yRangeMovingP, speedMovingP, null);
-		assertEquals("Platform", movingP.getType());
-		game.addSpriteQ(movingP);
+		MovingPlatform horizontalMovingP = new MovingPlatform(game, -500, -10, 1150, 20, 250, 0, 50, null);
+		MovingPlatform verticalMovingP = new MovingPlatform(game, -500, -10, 1150, 20, 0, 250, 50, null);
+		
+		assertEquals("Platform", horizontalMovingP.getType());
+		game.addSprite(horizontalMovingP);
 		game.addAllNewSprites();
 		assertEquals("Platform", game.getAllPlatforms().get(0).getType());
 		
-		double xStart = movingP.getX();
-		double yStart = movingP.getY();
-		double xPrevious = movingP.getX();
-		double yPrevious = movingP.getY();
+		double xStart = horizontalMovingP.getX();
+		double yStart = horizontalMovingP.getY();
+		double xPrevious = horizontalMovingP.getX();
+		double yPrevious = horizontalMovingP.getY();
 		int frameCount = 0;
 		boolean hasComeBack = false;
 		
 		//Horizontal moving platform test on x axis
 		while(!hasComeBack) {
-			movingP.update();
-			assertTrue(movingP.getY() == yStart);
+			horizontalMovingP.update();
+			assertTrue(horizontalMovingP.getY() == yStart);
 			//Updating two frames. Simulates 100 seconds in 60 fps
 			if (frameCount > 6000) {
 				fail("The platform never returns");
 				break;
 			}
-			else if (xPrevious == movingP.getX()) {
+			else if (xPrevious == horizontalMovingP.getX()) {
 				fail("The platform does not move");
 				break;
 			}
-			else if (xStart == movingP.getX()) {
-				break;
-			}
+			hasComeBack = (xStart == horizontalMovingP.getX());
 			frameCount ++;
-			xPrevious = movingP.getX();
-			yPrevious = movingP.getY();
+			xPrevious = horizontalMovingP.getX();
+			yPrevious = horizontalMovingP.getY();
 		}
+		horizontalMovingP.setXandY(-500, -10);
+		game.killSprite(horizontalMovingP);
+		game.removeAllDeadSprites();
 		
-		xStart = movingP.getX();
-		yStart = movingP.getY();
-		yPrevious = movingP.getY();
-		
-		//Set platform to move vertically
-		xRangeMovingP = 0;
-		yRangeMovingP = 250;
+		game.addSprite(verticalMovingP);
+		game.addAllNewSprites();
+		frameCount = 0;
+		hasComeBack = false;
+		xStart = verticalMovingP.getX();
+		yStart = verticalMovingP.getY();
+		yPrevious = verticalMovingP.getY();
 		
 		//Vertical moving platform test on y axis
 		while(!hasComeBack) {
-			movingP.update();
-			assertTrue(movingP.getX() == xStart);
+			verticalMovingP.update();
+			assertTrue(verticalMovingP.getX() == xStart);
 			//Updating two frames. Simulates 100 seconds in 60 fps
 			if (frameCount > 6000) {
 				fail("The platform never returns");
 				break;
 			}
-			else if (yPrevious == movingP.getY()) {
+			else if (yPrevious == verticalMovingP.getY()) {
 				fail("The platform does not move");
 				break;
 			}
-			else if (yStart == movingP.getY()) {
-				break;
-			}
+			hasComeBack = (yStart == verticalMovingP.getY());
 			frameCount ++;
-			xPrevious = movingP.getX();
-			yPrevious = movingP.getY();
+			xPrevious = verticalMovingP.getX();
+			yPrevious = verticalMovingP.getY();
 		}
+		verticalMovingP.setXandY(-500, -10);
+		game.killSprite(verticalMovingP);
+		game.removeAllDeadSprites();
 		
 		//Test moving player
 		game.addSprite(playerOne);
+		game.addSprite(horizontalMovingP);
+		game.addAllNewSprites();
 		
+		//causeCollision does not update the platform. It should stay put under the player
+		if (!causeCollision(100, playerOne, horizontalMovingP)) {
+			fail("The player never hits the platform");
+		}
+		
+		//We have caused collision. Now we can check movePlayer() just by using move()
+		xPrevious = horizontalMovingP.getX();
+		yPrevious = horizontalMovingP.getY();
+		double previousPlayerX = playerOne.getX();
+		double previousPlayerY = playerOne.getY();
+		
+		//Testing player movement on horizontal moving platform
+		for (int i=0; i<=6000; i++) {
+			horizontalMovingP.update();
+			assertEquals(playerOne.getY(), previousPlayerY);
+			if (playerOne.getX() == previousPlayerX) {
+				fail("The player is not moving");
+				break;
+			}
+			else if (horizontalMovingP.getX() > xPrevious) {
+				if (!(playerOne.getX() > previousPlayerX)) {
+					fail("The player does not move in the same positive direction as the platform");
+				}
+			}
+			else if (horizontalMovingP.getX() < xPrevious) {
+				if (!(playerOne.getX() < previousPlayerX)) {
+					fail("The player does not move in the same negative direction as the platform");
+				}
+			}
+			xPrevious = horizontalMovingP.getX();
+			yPrevious = horizontalMovingP.getY();
+			previousPlayerX = playerOne.getX();
+			previousPlayerY = playerOne.getY();
+		}
+		game.killSprite(horizontalMovingP);
+		game.removeAllDeadSprites();
+		
+		game.addSprite(verticalMovingP);
+		game.addAllNewSprites();
+		
+		playerOne.setXandY(50,  15);
+		causeCollision(100, playerOne, verticalMovingP);
+		
+		for (int i=0; i<=6000; i++) {
+			verticalMovingP.update();
+			assertEquals(playerOne.getX(), previousPlayerX);
+			if (playerOne.getY() == previousPlayerY) {
+				fail("The player is not moving");
+				break;
+			}
+			else if (verticalMovingP.getY() > yPrevious) {
+				if (!(playerOne.getY() > previousPlayerY)) {
+					fail("The player does not move in the same positive direction as platform");
+				}
+			}
+			else if (verticalMovingP.getY() < yPrevious) {
+				if (!(playerOne.getY() < previousPlayerY)) {
+					fail("The player does not move in the same negative direction as platform");
+				}
+			}
+			xPrevious = verticalMovingP.getX();
+			yPrevious = verticalMovingP.getY();
+			previousPlayerX = playerOne.getX();
+			previousPlayerY = playerOne.getY();
+		}
 	}
 	
 //GhostPlatform: update(), checkForPlayer(), checkForHit()
@@ -286,7 +306,27 @@ class GameObjectTest {
 	@Test 
 	void GhostPlatformTest() {
 		GhostPlatform ghostP = new GhostPlatform(game, -500, -10, 1150, 20, ghostDelay);
-		fail("Not yet implemented");
+		game.addSprite(ghostP);
+		game.addSprite(playerOne);
+		game.addAllNewSprites();
+		
+		if (!causeCollision(100, playerOne, ghostP)) {
+			fail("The player does not collide with ghost platform");
+		}
+		
+		boolean hasFallen = false;
+		int frameCount = 0;
+		double previousY = playerOne.getY();
+		while (!hasFallen) {
+			if (frameCount > 6000) {
+				fail("The player does not fall after 100 seconds of standing on ghost platform.");
+				break;
+			}
+			ghostP.update();
+			playerOne.move();
+			hasFallen = (previousY > playerOne.getY());
+			frameCount ++;
+		}
 	}
 
 	
@@ -306,12 +346,12 @@ class GameObjectTest {
 	@Test
 	void enemyTest() {
 		GhostPlatform ghostP = new GhostPlatform(game, -500, -10, 1150, 20, ghostDelay);
-		MovingPlatform movingP = new MovingPlatform(game, -500, -10, 1150, 20, xRangeMovingP, yRangeMovingP, speedMovingP, null);
+		MovingPlatform movingP = new MovingPlatform(game, -500, -10, 1150, 20, 250, 0, 50, null);
 		BoostPlatform boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, null); 
 		Enemy boostPlatEnemy = new Enemy(game, boostP, null);
 		Enemy movingPlatEnemy = new Enemy(game, movingP, null);
 		Enemy regularPlatEnemy = new Enemy(game, regularP, null);
 		Enemy ghostPlatEnemy = new Enemy(game, ghostP, null);
-		fail("Not yet implemented")
+		fail("Not yet implemented");
 	}
 }
