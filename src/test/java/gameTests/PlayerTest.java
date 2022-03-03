@@ -110,13 +110,15 @@ class PlayerTest {
 		game.addSprite(floor1);
 		game.addAllNewSprites();
 		
-		//Assuming 60 fps, running move() 30 times is equivalent to letting the player fall for 0.5 seconds. 
-		for (int i=0; i<30; i++) {
+		//Assuming 60 fps, running move() 6000 times is equivalent to letting the player fall for 100 seconds. 
+		
+		int frameCount = 1;
+		while(!(playerOne.getGrounded() && floor1.equals(playerOne.getCurrentPlatform()))) {
+			if (frameCount > 6000) {
+				fail("The player never hits the platform");
+			}
 			playerOne.move();
 		}
-		
-		assertEquals(floor1, playerOne.getCurrentPlatform());
-		assertTrue(playerOne.getGrounded());
 		
 		//____SOME EXPECTED EXCEPTIONS____
 		//Use of new exception class ConflictingGameObjectsException advised.
