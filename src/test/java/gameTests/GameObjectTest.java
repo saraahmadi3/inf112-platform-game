@@ -44,16 +44,8 @@ class GameObjectTest {
 	
 	private static GameState game;
 	private static Player playerOne;
-	private static BoostPlatform boostP;
-	private static BoostPlatform negativeBoostP;
 	private static Door door;
-	private static Enemy boostPlatEnemy;
-	private static Enemy movingPlatEnemy;
-	private static Enemy regularPlatEnemy;
-	private static Enemy ghostPlatEnemy;
-	private static GhostPlatform ghostP;
 	private static Key key;
-	private static MovingPlatform movingP;
 	private static Platform regularP;
 	private static Text tooLong;
 	private static Text text;
@@ -68,29 +60,36 @@ class GameObjectTest {
 	private static int yRangeMovingP = 0;
 	private static int speedMovingP = 50;
 	
-	@BeforeAll
-	static void setUp() {
+	@BeforeEach
+	void setUp() {
 		game = new GameState(0);
 		playerOne = new Player(50, 15, game, null, 1);
 		
-		negativeBoostP = new BoostPlatform(game, -500, -10, 1150, 20, negativeBoostFactor, null); 
-		boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, null); 
-		ghostP = new GhostPlatform(game, -500, -10, 1150, 20, ghostDelay);
-		movingP = new MovingPlatform(game, -500, -10, 1150, 20, xRangeMovingP, yRangeMovingP, speedMovingP, null);
 		door = new Door(game, 60, 15, 20, 34, null);
 		
 		regularP = new Platform(game, -500, -10, 1150, 20, null);
-		boostPlatEnemy = new Enemy(game, boostP, null);
-		movingPlatEnemy = new Enemy(game, movingP, null);
-		regularPlatEnemy = new Enemy(game, regularP, null);
-		ghostPlatEnemy = new Enemy(game, ghostP, null);
 		key = new Key(game, 55, 15, null);
 		text = new Text(game, 30, 200, "This is a regular text at x=30 and y=200");
 		tooLong = new Text(game, 30, 300, "This text is too l" + " ".repeat(10000) + "ng");
-		Tips tip = new Tips(game);
+		tip = new Tips(game);
 		
 	} 
 	
+	private boolean collidesAfter(int seconds, Player player, Platform platform) {
+		int totalFrames = seconds * 60;
+		int frameCount = 0;
+		boolean hasCollided = false;
+		while(!hasCollided) {
+			playerOne.move();
+			hasCollided = platform.checkForHit(player);
+			frameCount++;
+			//Simulate a 100 second drop to boostP by playerOne in 60 frames per second
+			if (frameCount > totalFrames) {
+				return false;
+			}
+		}
+		return true;
+	}
 	
 // Approach: SPLIT TESTS INTO CATEGORIES. Create a new issue in git for each category.
 
@@ -104,6 +103,8 @@ class GameObjectTest {
 //=========PLATFORMS========(Issue #19)[OPEN]
 	@Test 
 	void boostPlatformTest() {
+		BoostPlatform boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, null); 
+		
 		assertEquals(0, playerOne.getGv());
 		assertEquals("Platform", boostP.getType());
 		game.addSprite(boostP);
@@ -120,19 +121,10 @@ class GameObjectTest {
 		
 		//SIMULATE 6000 frames (100 seconds) until collision occurs
 		//Drop player onto platform
-		boolean hasCollided = false;
-		int frameCount = 0;
-		while(!hasCollided) {
-			playerOne.move();
-			hasCollided = boostP.checkForHit(playerOne);
-			frameCount++;
-			//Simulate a 100 second drop to boostP by playerOne in 60 frames per second
-			if (frameCount > 6000) {
-				fail("The player never hits the platform");
-				break;
-			}
+		if (!collidesAfter(100, playerOne, boostP)) {
+			fail("The player never hits the platform");
 		}
-		
+			
 		//PLAYER 1 IS NOW COLLIDING WITH BOOSTP
 		
 		//checkForBoost() in BoostPlatform
@@ -150,8 +142,8 @@ class GameObjectTest {
 		game.killSprite(boostP);
 		game.removeAllDeadSprites();
 		
-		negativeBoostP = new BoostPlatform(game, -500, -10, 1150, 20, negativeBoostFactor); 
-		
+
+		BoostPlatform negativeBoostP = new BoostPlatform(game, -500, -10, 1150, 20, negativeBoostFactor, null); 
 		assertThrows(InvalidPlatformException.class, () -> {
 			game.addSprite(negativeBoostP);
 		}, "InvalidPlatformException expected. Cannot add BoostPlatform with negative boost.");
@@ -220,12 +212,11 @@ class GameObjectTest {
 	}*/
 	@Test
 	void MovingPlatformTest() {
+		MovingPlatform movingP = new MovingPlatform(game, -500, -10, 1150, 20, xRangeMovingP, yRangeMovingP, speedMovingP, null);
 		assertEquals("Platform", movingP.getType());
 		game.addSpriteQ(movingP);
 		game.addAllNewSprites();
 		assertEquals("Platform", game.getAllPlatforms().get(0).getType());
-		//test update()
-		//test movePlayer()
 		
 		double xStart = movingP.getX();
 		double yStart = movingP.getY();
@@ -283,17 +274,18 @@ class GameObjectTest {
 			xPrevious = movingP.getX();
 			yPrevious = movingP.getY();
 		}
+		
+		//Test moving player
+		game.addSprite(playerOne);
+		
 	}
-	
-	
-//Platform: getType()
-	
 	
 //GhostPlatform: update(), checkForPlayer(), checkForHit()
 	//Need to test fall when player stands too long on GhostPlatform
 	//Need to find conditions for player to pass through. Check for negative delta Y.
 	@Test 
 	void GhostPlatformTest() {
+		GhostPlatform ghostP = new GhostPlatform(game, -500, -10, 1150, 20, ghostDelay);
 		fail("Not yet implemented");
 	}
 
@@ -311,5 +303,15 @@ class GameObjectTest {
 	
 //===========ENEMY===========(Issue #22)[OPEN]
 //Enemy: update(), move()
-
+	@Test
+	void enemyTest() {
+		GhostPlatform ghostP = new GhostPlatform(game, -500, -10, 1150, 20, ghostDelay);
+		MovingPlatform movingP = new MovingPlatform(game, -500, -10, 1150, 20, xRangeMovingP, yRangeMovingP, speedMovingP, null);
+		BoostPlatform boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, null); 
+		Enemy boostPlatEnemy = new Enemy(game, boostP, null);
+		Enemy movingPlatEnemy = new Enemy(game, movingP, null);
+		Enemy regularPlatEnemy = new Enemy(game, regularP, null);
+		Enemy ghostPlatEnemy = new Enemy(game, ghostP, null);
+		fail("Not yet implemented")
+	}
 }
