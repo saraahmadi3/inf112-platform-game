@@ -4,16 +4,14 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameLoop implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
     private GameState game;
-    private Sprite gameOverSprite;
+    private int delayedEnd;
   
     @Override
     public void create() { 
@@ -25,9 +23,7 @@ public class GameLoop implements ApplicationListener {
         game = new GameState();
         game.setBatchAndFont(batch, font);
     
-        //TODO move this somewhere else
-        Texture img = new Texture(Gdx.files.internal("src/main/java/game/img/gameOver.png"));
-    	gameOverSprite = new Sprite(img);
+        delayedEnd = 2;
     }
 
     @Override
@@ -46,22 +42,25 @@ public class GameLoop implements ApplicationListener {
 
     @Override
     /*
-     * Is called every frame, essentially used as the main game loop..
-     * Should if possible ONLY call other methods to avoid cluttering
+     * Is called every frame, essentially used as the main game loop.
+     * Should if possible ONLY call other methods to avoid cluttering.
+     * Render uses not only the most recent frame, but also the previous one
+     * to make a smooth transition, because of this, and still frames like 
+     * the gameover screen must be rendered twice before drawing is stopped.
+     * 
      */
     public void render() {
     	if (!game.getGameOver()) {
             clearScreen();
             game.update();
             updateAll();
-            drawAll();    
-    	}
-    	else {
+            drawAll();  
+    	} else if (delayedEnd>0){
     		game.gameOver();
+    		delayedEnd--;
     	}
     }
     
-
 	
 	//This method should iterate over all movable sprites and call the move() method for each one.
     private void updateAll() {

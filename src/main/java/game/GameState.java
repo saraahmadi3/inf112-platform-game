@@ -214,6 +214,7 @@ public class GameState {
 		}
 	}
 	
+	//TODO: This should only be called once, not every render() call
 	public void gameOver() {
 		setGameOver(true);
 		Gdx.gl.glClearColor(1, 1, 1, 1);
