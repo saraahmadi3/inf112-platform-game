@@ -105,9 +105,18 @@ class GameObjectTest {
 	@Test 
 	void boostPlatformTest() {
 		assertEquals(0, playerOne.getGv());
+		assertEquals("Platform", boostP.getType());
 		game.addSprite(boostP);
+		game.addAllNewSprites();
+		assertEquals(1, game.getAllSprites().size());
+		assertEquals("Platform", game.getAllSprites().get(0).getType());
+		assertEquals("Platform", game.getAllPlatforms().get(0).getType());
+		assertEquals(0, game.getAllPlayers().size());
+		
 		game.addSprite(playerOne);
 		game.addAllNewSprites();
+		
+		assertEquals("Platform", boostP.getType());
 		
 		//SIMULATE 6000 frames (100 seconds) until collision occurs
 		//Drop player onto platform
@@ -161,14 +170,132 @@ class GameObjectTest {
 		assertFalse(game.getAllPlatforms().contains(negativeBoostP));
 	}
 	
+
+//MovingPlatform: update(), move(), movePlayer()
+	/*public void move() {
+		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
+		
+		double xMove = 0;
+		double yMove = 0;
+		
+		if (goingRight) {
+			if (super.getX() < startX+rangeX) {
+				xMove+=delta*v;
+			} else {
+				goingRight=false;
+			}
+		}
+		if (!goingRight) {
+			if (super.getX() > startX) {
+				xMove-=delta*v;
+			} else {
+				goingRight=true;
+			}
+		}
+		
+		if (goingUp) {
+			if (super.getY() < startY+rangeY) {
+				yMove+=delta*v;
+			} else {
+				goingUp=false;
+			}
+		}
+		if (!goingUp) {
+			if (super.getY() > startY) {
+				yMove-=delta*v;
+			} else {
+				goingUp=true;
+			}
+		}
+		
+		super.moveByXandY(xMove, yMove);		
+		
+		if (super.getGameState().getPlayer(1) != null) {
+			movePlayer(1, xMove, yMove);
+		}
+		if (super.getGameState().getPlayer(2) != null) {
+			movePlayer(2, xMove, yMove);
+		}
+	
+	}*/
+	@Test
+	void MovingPlatformTest() {
+		assertEquals("Platform", movingP.getType());
+		game.addSpriteQ(movingP);
+		game.addAllNewSprites();
+		assertEquals("Platform", game.getAllPlatforms().get(0).getType());
+		//test update()
+		//test movePlayer()
+		
+		double xStart = movingP.getX();
+		double yStart = movingP.getY();
+		double xPrevious = movingP.getX();
+		double yPrevious = movingP.getY();
+		int frameCount = 0;
+		boolean hasComeBack = false;
+		
+		//Horizontal moving platform test on x axis
+		while(!hasComeBack) {
+			movingP.update();
+			assertTrue(movingP.getY() == yStart);
+			//Updating two frames. Simulates 100 seconds in 60 fps
+			if (frameCount > 6000) {
+				fail("The platform never returns");
+				break;
+			}
+			else if (xPrevious == movingP.getX()) {
+				fail("The platform does not move");
+				break;
+			}
+			else if (xStart == movingP.getX()) {
+				break;
+			}
+			frameCount ++;
+			xPrevious = movingP.getX();
+			yPrevious = movingP.getY();
+		}
+		
+		xStart = movingP.getX();
+		yStart = movingP.getY();
+		yPrevious = movingP.getY();
+		
+		//Set platform to move vertically
+		xRangeMovingP = 0;
+		yRangeMovingP = 250;
+		
+		//Vertical moving platform test on y axis
+		while(!hasComeBack) {
+			movingP.update();
+			assertTrue(movingP.getX() == xStart);
+			//Updating two frames. Simulates 100 seconds in 60 fps
+			if (frameCount > 6000) {
+				fail("The platform never returns");
+				break;
+			}
+			else if (yPrevious == movingP.getY()) {
+				fail("The platform does not move");
+				break;
+			}
+			else if (yStart == movingP.getY()) {
+				break;
+			}
+			frameCount ++;
+			xPrevious = movingP.getX();
+			yPrevious = movingP.getY();
+		}
+	}
+	
+	
+//Platform: getType()
+	
 	
 //GhostPlatform: update(), checkForPlayer(), checkForHit()
 	//Need to test fall when player stands too long on GhostPlatform
 	//Need to find conditions for player to pass through. Check for negative delta Y.
-	
-//MovingPlatform: update(), move(), movePlayer()
-//Platform: getType()
-	
+	@Test 
+	void GhostPlatformTest() {
+		fail("Not yet implemented");
+	}
 
 	
 //======DOOR-KEY-PLAYER======(Issue #20)[OPEN]
@@ -184,11 +311,5 @@ class GameObjectTest {
 	
 //===========ENEMY===========(Issue #22)[OPEN]
 //Enemy: update(), move()
-	
-
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
 
 }

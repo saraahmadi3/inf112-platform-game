@@ -42,11 +42,14 @@ class PlayerTest {
 	//Player specific
 	@Test
 	void testAddPlayer() {
+		assertEquals("Player", playerOne.getType());
 		game.addSprite(playerOne);
 		assertTrue(game.getAllSprites().isEmpty());
 		
 		game.addAllNewSprites();
-		assertEquals(playerOne, game.getAllSprites().get(0));
+		assertEquals(playerOne, game.getAllSprites().get(0).getType());
+		assertEquals("Player", game.getAllSprites().get(0).getType());
+		assertEquals("Player", game.getAllPlayers().get(0).getType());
 		
 		//Test if players are stored as variables in GameState
 		assertEquals(playerOne, game.getPlayer(1));
