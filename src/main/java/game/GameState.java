@@ -218,26 +218,29 @@ public class GameState {
 		setGameOver(true);
 		Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
+        
+        getBatch().begin();
 		if (!getMultiPlayer()) {
 	    	
-			new Text(this, 700, 575, "Game over. You got " + this.getSinglePlayerID() + " points.");
+			new Text(this, 700, 575, "Game over. You got " + this.getSinglePlayerID() + " points.").draw();;
 		}
 		else {
 			int Player1Points = getPlayer(1).getScore();
 			int Player2Points = getPlayer(2).getScore();
-			new Text(this, 700, 575, "Game over. Player 1  got " + Player1Points + ".");
-			new Text(this, 700, 475, "Game over. Player 2  got " + Player2Points + ".");
+			new Text(this, 700, 575, "Game over. Player 1  got " + Player1Points + ".").draw();;
+			new Text(this, 700, 475, "Game over. Player 2  got " + Player2Points + ".").draw();;
 			if (Player1Points > Player2Points) {
-				new Text(this, 700, 375, "Player 1 won!");
+				new Text(this, 700, 375, "Player 1 won!").draw();;
 			}
 			else if (Player1Points < Player2Points) {
-				new Text(this, 700, 375, "Player 2 won!");
+				new Text(this, 700, 375, "Player 2 won!").draw();;
 			}
 			else {
-				new Text(this, 700, 275, "It's a draw.");
+				new Text(this, 700, 275, "It's a draw.").draw();;
 			}
 			
 		}
+		getBatch().end();
 	}
 	
 	public void update() {
