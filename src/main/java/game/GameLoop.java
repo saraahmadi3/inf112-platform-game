@@ -37,14 +37,16 @@ public class GameLoop implements ApplicationListener {
     }
     
     //Draws a blank screen, used as a reset between each frame
-    private void clearScreen() {
+    public static void clearScreen() {
     	Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
     }
+    
+
 
     @Override
     /*
-     * Is called every frame, essentially used as the main game loop.
+     * Is called every frame, essentially used as the main game loop..
      * Should if possible ONLY call other methods to avoid cluttering
      */
     public void render() {
@@ -52,19 +54,15 @@ public class GameLoop implements ApplicationListener {
             clearScreen();
             game.update();
             updateAll();
-            drawAll();
+            drawAll();    
     	}
     	else {
-    		clearScreen();
-    		batch.begin();
-    		gameOverSprite.draw(batch);
-    		batch.end();
+    		game.gameOver();
     	}
-
-        
     }
     
 
+	
 	//This method should iterate over all movable sprites and call the move() method for each one.
     private void updateAll() {
     	for (GameObjects sprite : game.getAllSprites()) {
