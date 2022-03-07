@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ import exceptions.InvalidPlatformException;
 import game.BoostPlatform;
 import game.Door;
 import game.Enemy;
+import game.GameObjects;
 import game.GameState;
 import game.GhostPlatform;
 import game.Key;
@@ -40,39 +42,41 @@ import game.Tips;
 //checkForHits(), setGameState(), getGameState(), getSymbol(), getType(), getX(), 
 //getY(), getXMid(), getYMid(), setX(), setY(), setXAndY(), moveByX(), moveByY(), 
 //moveByXandY(), getWidth(), getHeight(), setWidth(), setHeight()
+
+//Many of the tests in this testClass rely on simulating an environment
+//in which we cannot test. Libgdx causes a lot of problems in Junit.
+//One might see some problems occur simulating update() for each object 
+//in question through a number of seconds in 60 fps.
+//The benefit of this technique is that we can simulate the game faster 
+//than real time.
 class GameObjectTest {
 	
 	private static GameState game;
 	private static Player playerOne;
-	private static Door door;
-	private static Key key;
-	private static Platform regularP;
-	private static Text tooLong;
-	private static Text text;
-	private static Tips tip;
 	
-
-	private static final double J = 150;
-	private static double boostFactor = 2;
-	private static double negativeBoostFactor = -1;
-	private static double ghostDelay = 2;
-	
-	@BeforeEach
-	void setUp() {
+	//Initialise a new game and a player
+	@BeforeAll
+	static void setUp() {
 		game = new GameState(0);
 		playerOne = new Player(50, 15, game, null, 1);
 		
-		door = new Door(game, 60, 15, 20, 34, null);
-		
-		regularP = new Platform(game, -500, -10, 1150, 20, null);
-		key = new Key(game, 55, 15, null);
-		text = new Text(game, 30, 200, "This is a regular text at x=30 and y=200");
-		tooLong = new Text(game, 30, 300, "This text is too l" + " ".repeat(10000) + "ng");
-		tip = new Tips(game);
-		
 	} 
 	
+	//This resets game and playerOne after each test
+	@AfterEach
+	void tearDown() {
+		ArrayList<GameObjects> sprites = game.getAllSprites();
+		for (int i=0; i < sprites.size(); i++) {
+			game.killSprite(sprites.get(i));
+		}
+		game.removeAllDeadSprites();
+		
+		playerOne.setXandY(50, 15);
+		playerOne.boost(0);
+	}
+	
 	//Simulate a n-times seconds drop to platform by player in 60 frames per second
+	//Checks for hit until the platform registers a player.
 	private boolean causeCollision(int seconds, Player player, Platform platform) {
 		int totalFrames = seconds * 60;
 		int frameCount = 1;
@@ -97,12 +101,17 @@ class GameObjectTest {
 		//All issues link to #13
 	
 	
-//=========PLATFORMS========(Issue #19)[OPEN]
+//=========PLATFORMS========(Issue #19)[CLOSED]
 	@Test 
 	void boostPlatformTest() {
+		System.out.println(playerOne.getX() + "," + playerOne.getY());
+		double negativeBoostFactor = -1;
+		final double J = 150;
+		double boostFactor = 2;
 		BoostPlatform boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, null); 
-		
-		assertEquals(0, playerOne.getGv());
+
+		System.out.println(playerOne.getGv());
+		assertTrue(0 == playerOne.getGv());
 		assertEquals("Platform", boostP.getType());
 		game.addSprite(boostP);
 		game.addAllNewSprites();
@@ -161,6 +170,7 @@ class GameObjectTest {
 	
 	@Test
 	void MovingPlatformTest() {
+		System.out.println(playerOne.getX() + "," + playerOne.getY());
 		MovingPlatform horizontalMovingP = new MovingPlatform(game, -500, -10, 1150, 20, 250, 0, 50, null);
 		MovingPlatform verticalMovingP = new MovingPlatform(game, -500, -10, 1150, 20, 0, 250, 50, null);
 		
@@ -300,11 +310,14 @@ class GameObjectTest {
 		}
 	}
 	
-//GhostPlatform: update(), checkForPlayer(), checkForHit()
+//GhostPlatform: update(), checkForPlayer(), checkForHit() through causeCollision()
 	//Need to test fall when player stands too long on GhostPlatform
 	//Need to find conditions for player to pass through. Check for negative delta Y.
 	@Test 
 	void GhostPlatformTest() {
+		//PlayerOne at x=50, y=15
+		double ghostDelay = 2;
+		System.out.println(playerOne.getX() + "," + playerOne.getY());
 		GhostPlatform ghostP = new GhostPlatform(game, -500, -10, 1150, 20, ghostDelay);
 		game.addSprite(ghostP);
 		game.addSprite(playerOne);
@@ -328,23 +341,85 @@ class GameObjectTest {
 			frameCount ++;
 		}
 	}
+	
+	//=======DOOR-and-KEY========(Issue #20)[CLOSED]
+	@Test
+	void doorKeyTest() {
+		//PlayerOne at x = 50, y = 15
+		Platform regularP = new Platform(game, -500, -10, 1150, 20, null);
+		Door door = new Door(game, 50, 15, 20, 34, null);
+		Key key = new Key(game, 50, 15, null);
+		assertFalse(playerOne.hasKey());
+		game.addSprite(regularP);
+		game.addSprite(key);
+		game.addSprite(playerOne);
+		game.addAllNewSprites();
+		
+		//Settle playerOne on a platform
+		if (!causeCollision(100, playerOne, regularP)) {
+			fail("The player does not hit the platform");
+		}
+		
+		//Move key until player collision occurs
+		int moveCount = 1;
+		boolean hasHitPlayer = false;
+		while (!hasHitPlayer) {
+			//Move downward towards player settled on platform
+			key.moveByY(-(0.1));
+			key.update();
+			hasHitPlayer = playerOne.hasKey();
+			
+			if (moveCount == 10000) {
+				fail("The key does not interract with player");
+			}
+		}
+		//Player should now have the key
+		
+		moveCount = 1;
+		boolean hasOpenedDoor = false;
+		while(!hasOpenedDoor) {
+			door.moveByY(-(0.1));
+			door.update();
+			
+			hasOpenedDoor = !playerOne.hasKey();
+			
+			if(moveCount == 10000) {
+				fail("The door does not interract with player");
+			}
+		}
+		//The player should have used the key while interacting with door
+	}
 
 	
-//======DOOR-KEY-PLAYER======(Issue #20)[OPEN]
-	//(Say it fast, it becomes dorky player lol)
-//Door: update(), checkForKey(), openDoor()
-//Key(): update(), checkForPlayer()
-
-	
-//=======TIPS-and-TEXT========(Issue #21)[OPEN]
+//=======TIPS-and-TEXT========(Issue #21)[CLOSED]
 //Tips: move()
 //Text: getSymbol()
-
+	@Test 
+	void tipAndTextTest() {
+		Text text = new Text(game, 30, 200, "This is a regular text at x=30 and y=200");
+		Tips tip = new Tips(game);
+		game.addSprite(text);
+		game.addSprite(tip);
+		
+		double startX = tip.getX();
+		for (int i=0; i<600; i++) {
+			tip.update();
+			assertFalse( startX == tip.getX());
+			startX = tip.getX();
+		}
+		assertEquals("This is a regular text at x=30 and y=200", text.getSymbol());
+		text.update();
+		assertEquals(30, text.getX());
+		assertEquals(200, text.getY());
+	}
 	
 //===========ENEMY===========(Issue #22)[OPEN]
 //Enemy: update(), move()
 	@Test
 	void enemyTest() {
+		double ghostDelay = 2;
+		double boostFactor = 2;
+		Platform regularP = new Platform(game, -500, -10, 1150, 20, null);
 		GhostPlatform ghostP = new GhostPlatform(game, -500, -10, 1150, 20, ghostDelay);
 		MovingPlatform movingP = new MovingPlatform(game, -500, -10, 1150, 20, 250, 0, 50, null);
 		BoostPlatform boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, null); 
