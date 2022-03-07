@@ -295,6 +295,10 @@ class PlayerTest {
 	
 	
 //=============KEY=============(Issue #18)[CLOSED]
+	//In hindsight after creating test:
+		//One can manipulate player hasKey() without 
+		//the player colliding with a key. Same goes for boost.
+		//problem? Should be abstracted further? Maybe
 	//Player - Key interaction test
 	@Test
 	void keyInteraction() {
