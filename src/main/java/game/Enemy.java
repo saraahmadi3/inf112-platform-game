@@ -67,14 +67,14 @@ public class Enemy extends AbstractObject {
 		
 		
 		if (super.getGameState().getPlayer(1) != null) {
-			playerIteraction(1);
+			playerInteraction(1);
 		}
 		if (super.getGameState().getPlayer(2) != null) {
-			playerIteraction(2);
+			playerInteraction(2);
 		}
 	}
 	
-	public void playerIteraction(int playerID) {
+	public void playerInteraction(int playerID) {
 		Player player= super.getGameState().getPlayer(playerID);
 		
 		if(super.checkForHit(player)) {
