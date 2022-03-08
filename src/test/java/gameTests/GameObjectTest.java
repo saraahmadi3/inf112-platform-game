@@ -186,6 +186,7 @@ class GameObjectTest {
 		int frameCount = 0;
 		boolean hasComeBack = false;
 		
+		//TODO: Use same logic as in EnemyTest()
 		//Horizontal moving platform test on x axis
 		while(!hasComeBack) {
 			horizontalMovingP.update();
