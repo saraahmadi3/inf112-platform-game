@@ -2,15 +2,19 @@ package gameTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import exceptions.ConflictingGameObjectsException;
 import exceptions.InvalidPlayerException;
+import game.GameObjects;
 import game.GameState;
 import game.Platform;
 import game.Player;
@@ -26,11 +30,25 @@ class PlayerTest {
 	private static Player playerOne;
 	private static Player playerTwo;
 	
-	@BeforeEach
-	void setUpBeforeClass() throws NullPointerException {
+	@BeforeAll
+	static void setUpBeforeClass() throws NullPointerException {
 		game = new GameState(0);
 		playerOne = new Player(50, 15, game, null, 1);
 		playerTwo = new Player(50, 15, game, null, 2);
+	}
+
+	@AfterEach
+	void tearDown() {
+		ArrayList<GameObjects> sprites = game.getAllSprites();
+		for (int i=0; i<sprites.size(); i++) {
+			game.killSprite(sprites.get(i));
+		}
+		game.removeAllDeadSprites();
+
+		playerOne.setXandY(50, 15);
+		playerTwo.setXandY(50, 15);
+		playerOne.boost(0);
+		playerTwo.boost(0);
 	}
 	
 	//Level 0 does not exist. Should be an "blank slate" environment
@@ -181,7 +199,7 @@ class PlayerTest {
 		playerTwo.setY(-playerTwo.getHeight() - 1);
 		playerTwo.checkForDeath();
 		game.removeAllDeadSprites();
-		assertTrue(game.getAllSprites().contains(playerOne));
+		assertTrue(game.getAllSprites().contains(playerTwo));
 		assertEquals(2, playerTwo.getLives());
 		assertEquals(50, playerTwo.getX());
 		assertEquals(15, playerTwo.getY());
@@ -191,7 +209,7 @@ class PlayerTest {
 		playerTwo.setY(-playerTwo.getHeight() - 1);
 		playerTwo.checkForDeath();
 		game.removeAllDeadSprites();
-		assertTrue(game.getAllSprites().contains(playerOne));
+		assertTrue(game.getAllSprites().contains(playerTwo));
 		assertEquals(1, playerTwo.getLives());
 		assertEquals(50, playerTwo.getX());
 		assertEquals(15, playerTwo.getY());

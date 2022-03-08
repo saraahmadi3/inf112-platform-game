@@ -58,7 +58,7 @@ class GameObjectTest {
 	@BeforeAll
 	static void setUp() {
 		game = new GameState(0);
-		playerOne = new Player(50, 15, game, null, 1);
+		playerOne = new Player(50, 20, game, null, 1);
 		game.killSprite(playerOne);
 		game.removeAllDeadSprites();
 		System.out.println(game.getAllSprites().size());
@@ -73,12 +73,12 @@ class GameObjectTest {
 		}
 		game.removeAllDeadSprites();
 		
-		playerOne.setXandY(50, 15);
+		playerOne.setXandY(50, 20);
 		playerOne.boost(0);
 	}
 	
 	//Simulate a n-times seconds drop to platform by player in 60 frames per second
-	//Checks for hit until the platform registers a player.
+	//Checks for hit until the player registers the platform
 	private boolean causeCollision(int seconds, Player player, Platform platform) {
 		int totalFrames = seconds * 60;
 		int frameCount = 1;
@@ -88,8 +88,26 @@ class GameObjectTest {
 				return false;
 			}
 			playerOne.move();
-			hasCollided = platform.checkForHit(player);
+			hasCollided = playerOne.getCurrentPlatform() == platform;
 			frameCount++;
+		}
+		return true;
+	}
+	
+	//Causes hit with player by uising Platform.checkForHit()
+	private boolean causeHit(Player player, Platform platform) {
+		System.out.println();
+		System.out.println("-----causeHit-----");
+		int totalMoves = 600;
+		int moveCount = 0;
+		boolean hasCollided = false;
+		while(!hasCollided) {
+			if (moveCount > totalMoves) {
+				return false;
+			}
+			playerOne.moveByY((game.getDeltaTime()*game.getDeltaTime())*(-150));
+			hasCollided = platform.checkForHit(player);
+			moveCount++;
 		}
 		return true;
 	}
@@ -129,7 +147,7 @@ class GameObjectTest {
 		
 		//SIMULATE 6000 frames (100 seconds) until collision occurs
 		//Drop player onto platform
-		if (!causeCollision(100, playerOne, boostP)) {
+		if (!causeHit(playerOne, boostP)) {
 			fail("The player never hits the platform");
 		}
 			
@@ -247,7 +265,7 @@ class GameObjectTest {
 		game.addAllNewSprites();
 		
 		//causeCollision does not update the platform. It should stay put under the player
-		if (!causeCollision(100, playerOne, horizontalMovingP)) {
+		if (!causeHit(playerOne, horizontalMovingP)) {
 			fail("The player never hits the platform");
 		}
 		
@@ -287,7 +305,7 @@ class GameObjectTest {
 		game.addAllNewSprites();
 		
 		playerOne.setXandY(50,  15);
-		causeCollision(100, playerOne, verticalMovingP);
+		causeHit(playerOne, verticalMovingP);
 		
 		for (int i=0; i<=6000; i++) {
 			verticalMovingP.update();
@@ -326,7 +344,7 @@ class GameObjectTest {
 		game.addSprite(playerOne);
 		game.addAllNewSprites();
 		
-		if (!causeCollision(100, playerOne, ghostP)) {
+		if (!causeHit(playerOne, ghostP)) {
 			fail("The player does not collide with ghost platform");
 		}
 		
@@ -348,7 +366,7 @@ class GameObjectTest {
 	//=======DOOR-and-KEY========(Issue #20)[CLOSED]
 	@Test
 	void doorKeyTest() {
-		//PlayerOne at x = 50, y = 15
+		//PlayerOne at x = 50, y = 20
 		Platform regularP = new Platform(game, -500, -10, 1150, 20, null);
 		Door door = new Door(game, 50, 15, 20, 34, null);
 		Key key = new Key(game, 50, 15, null);
@@ -375,6 +393,7 @@ class GameObjectTest {
 			if (moveCount == 10000) {
 				fail("The key does not interract with player");
 			}
+			moveCount ++;
 		}
 		//Player should now have the key
 		
@@ -389,6 +408,7 @@ class GameObjectTest {
 			if(moveCount == 10000) {
 				fail("The door does not interract with player");
 			}
+			moveCount ++;
 		}
 		//The player should have used the key while interacting with door
 	}
