@@ -28,9 +28,11 @@ public class GameState {
     private BitmapFont font;
 	private boolean isMultiplayer;
 	private int singlePlayerID;
+	private boolean testNetwork;
 	
 	
 	public GameState(int gameLevel) {
+		testNetwork = false;
 		levelFinished = false;
 		allSprites = new ArrayList<GameObjects>();
 		waitingSprites = new ArrayList<GameObjects>();
@@ -213,6 +215,7 @@ public class GameState {
 		}
 	}
 	
+	//TODO: This should only be called once, not every render() call
 	public void gameOver() {
 		setGameOver(true);
 		Gdx.gl.glClearColor(1, 1, 1, 1);
@@ -258,6 +261,12 @@ public class GameState {
 			new Level2(this);
 		} else {
 			new Level0(this);
+		}
+		
+		if (testNetwork==true) {
+	        new Network();
+	        new PosClient(this);
+	        new PosServer(this);
 		}
 	}
 
