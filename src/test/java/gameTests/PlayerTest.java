@@ -181,7 +181,7 @@ class PlayerTest {
 		playerTwo.setY(-playerTwo.getHeight() - 1);
 		playerTwo.checkForDeath();
 		game.removeAllDeadSprites();
-		assertTrue(game.getAllSprites().contains(playerOne));
+		assertTrue(game.getAllSprites().contains(playerTwo));
 		assertEquals(2, playerTwo.getLives());
 		assertEquals(50, playerTwo.getX());
 		assertEquals(15, playerTwo.getY());
@@ -191,7 +191,7 @@ class PlayerTest {
 		playerTwo.setY(-playerTwo.getHeight() - 1);
 		playerTwo.checkForDeath();
 		game.removeAllDeadSprites();
-		assertTrue(game.getAllSprites().contains(playerOne));
+		assertTrue(game.getAllSprites().contains(playerTwo));
 		assertEquals(1, playerTwo.getLives());
 		assertEquals(50, playerTwo.getX());
 		assertEquals(15, playerTwo.getY());
