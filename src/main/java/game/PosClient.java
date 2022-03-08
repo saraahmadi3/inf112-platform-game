@@ -75,6 +75,7 @@ public class PosClient {
 		while (true) {
 			UpdatePlayer msg = new UpdatePlayer();
 			
+			//TODO Make this movement dependent on key presses
 			msg.x = player.getX()+1;
 			msg.y = player.getY()+1;
 			
