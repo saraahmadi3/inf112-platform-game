@@ -1,5 +1,6 @@
 package game;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
@@ -28,9 +29,11 @@ public class GameState {
     private BitmapFont font;
 	private boolean isMultiplayer;
 	private int singlePlayerID;
+	private boolean testNetwork;
 	
 	
 	public GameState(int gameLevel) {
+		testNetwork = false;
 		levelFinished = false;
 		allSprites = new ArrayList<GameObjects>();
 		waitingSprites = new ArrayList<GameObjects>();
@@ -260,6 +263,12 @@ public class GameState {
 			new Level2(this);
 		} else {
 			new Level0(this);
+		}
+		
+		if (testNetwork==true) {
+	        new Network();
+	        new PosClient(this);
+	        new PosServer(this);
 		}
 	}
 
