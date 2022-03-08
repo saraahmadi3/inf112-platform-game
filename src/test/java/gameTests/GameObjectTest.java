@@ -59,7 +59,9 @@ class GameObjectTest {
 	static void setUp() {
 		game = new GameState(0);
 		playerOne = new Player(50, 15, game, null, 1);
-		
+		game.killSprite(playerOne);
+		game.removeAllDeadSprites();
+		System.out.println(game.getAllSprites().size());
 	} 
 	
 	//This resets game and playerOne after each test
@@ -186,7 +188,7 @@ class GameObjectTest {
 		int frameCount = 0;
 		boolean hasComeBack = false;
 		
-		//TODO: Use same logic as in EnemyTest()
+		//TODO: Use same logic as in EnemyTest
 		//Horizontal moving platform test on x axis
 		while(!hasComeBack) {
 			horizontalMovingP.update();
