@@ -427,6 +427,34 @@ class GameObjectTest {
 		Enemy movingPlatEnemy = new Enemy(game, movingP, null);
 		Enemy regularPlatEnemy = new Enemy(game, regularP, null);
 		Enemy ghostPlatEnemy = new Enemy(game, ghostP, null);
-		fail("Not yet implemented");
+		
+		game.addSprite(regularPlatEnemy);
+		game.addSprite(regularP);
+		game.addAllNewSprites();
+		
+		int changesInDirection = 0;
+		int frameCount = 0;
+		boolean goingRight = true;
+		double previousX = regularPlatEnemy.getX();
+		
+		//Enemy should at least change direction 10 times in
+		//about 16 minutes (1000 seconds)
+		while(changesInDirection < 11) {
+			if (frameCount == 60000) {
+				fail("The enemy never changes direction");
+				break;
+			}
+			regularPlatEnemy.update();
+			if (goingRight && (previousX > regularPlatEnemy.getX())) {
+					changesInDirection ++;
+					goingRight = false;
+			}
+			else if (!goingRight && (previousX < regularPlatEnemy.getX())) {
+					changesInDirection ++;
+					goingRight = true;
+			}
+			frameCount ++;
+			previousX = regularPlatEnemy.getX();
+		}
 	}
 }
