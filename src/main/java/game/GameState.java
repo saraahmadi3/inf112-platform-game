@@ -58,7 +58,6 @@ public class GameState {
 		try {
 			deltaTime = (double) Gdx.graphics.getDeltaTime();
 		} catch (NullPointerException e) {
-			System.out.println("Could not retrieve delta time. " + e.getLocalizedMessage());
 			return 0.01666667;  
 		} 
 		return deltaTime;
