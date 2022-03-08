@@ -60,7 +60,7 @@ public class PosClient {
 
 		String host = ui.inputHost();
 		try {
-			client.connect(5000, host, Network.port);
+			client.connect(4000, host, Network.port);
 			// Server communication after connection can go here, or in Listener#connected().
 		} catch (IOException ex) {
 			ex.printStackTrace();

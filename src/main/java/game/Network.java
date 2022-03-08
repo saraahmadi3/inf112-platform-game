@@ -4,7 +4,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.EndPoint;
 
 public class Network {
-	static public final int port = 0;
+	static public final int port = 443;
 
 	// This registers objects that are going to be sent over the network.
 	static public void register (EndPoint endPoint) {
