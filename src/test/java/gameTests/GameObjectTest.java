@@ -58,7 +58,7 @@ class GameObjectTest {
 	@BeforeAll
 	static void setUp() {
 		game = new GameState(0);
-		playerOne = new Player(50, 15, game, null, 1);
+		playerOne = new Player(50, 20, game, null, 1);
 		game.killSprite(playerOne);
 		game.removeAllDeadSprites();
 		System.out.println(game.getAllSprites().size());
@@ -73,7 +73,7 @@ class GameObjectTest {
 		}
 		game.removeAllDeadSprites();
 		
-		playerOne.setXandY(50, 15);
+		playerOne.setXandY(50, 20);
 		playerOne.boost(0);
 	}
 	
@@ -98,15 +98,14 @@ class GameObjectTest {
 	private boolean causeHit(Player player, Platform platform) {
 		System.out.println();
 		System.out.println("-----causeHit-----");
-		int totalMoves = 60;
+		int totalMoves = 600;
 		int moveCount = 0;
 		boolean hasCollided = false;
 		while(!hasCollided) {
 			if (moveCount > totalMoves) {
 				return false;
 			}
-			System.out.println(playerOne.getX() + "," + playerOne.getY());
-			playerOne.moveByY(-game.getDeltaTime()*player.getGv());
+			playerOne.moveByY((game.getDeltaTime()*game.getDeltaTime())*(-150));
 			hasCollided = platform.checkForHit(player);
 			moveCount++;
 		}
@@ -367,7 +366,7 @@ class GameObjectTest {
 	//=======DOOR-and-KEY========(Issue #20)[CLOSED]
 	@Test
 	void doorKeyTest() {
-		//PlayerOne at x = 50, y = 15
+		//PlayerOne at x = 50, y = 20
 		Platform regularP = new Platform(game, -500, -10, 1150, 20, null);
 		Door door = new Door(game, 50, 15, 20, 34, null);
 		Key key = new Key(game, 50, 15, null);
