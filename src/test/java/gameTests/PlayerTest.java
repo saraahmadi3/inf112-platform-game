@@ -264,7 +264,7 @@ class PlayerTest {
 		//Adding an invalid player of id > 2
 		assertThrows(InvalidPlayerException.class, () -> {
 			game.addSprite(playerThree);
-		}, "InvalidPlayerException expected. Cannot a player with id higher than 2 to an offline multiplayer game.");
+		}, "InvalidPlayerException expected. Cannot add a player with id higher than 2 to an offline multiplayer game.");
 		
 		game.addAllNewSprites();
 		assertFalse(game.getAllSprites().contains(playerThree));
@@ -272,7 +272,7 @@ class PlayerTest {
 		
 		assertThrows(InvalidPlayerException.class, () -> {
 			game.addSpriteQ(playerThree);
-		}, "InvalidPlayerException expected. Cannot a player with id higher than 2 to an offline multiplayer game.");
+		}, "InvalidPlayerException expected. Cannot add a player with id higher than 2 to an offline multiplayer game.");
 		
 		assertFalse(game.getAllSprites().contains(playerThree));
 		killIfPresent(playerThree);
