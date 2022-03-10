@@ -36,6 +36,7 @@ public class PosServer {
 				// We know all connections for this server are actually CharacterConnections.
 				PlayerConnection connection = (PlayerConnection)c;
 				Player player = connection.player;
+				System.out.println(player);
 
 				if (object instanceof Login) {
 					// Ignore if already logged in.
@@ -69,7 +70,10 @@ public class PosServer {
 
 				if (object instanceof PlayerPos) {
 					// Ignore if not logged in.
-					if (player == null) return;
+					if (player == null) {
+						System.out.println("Player is not logged in!");
+						return;
+					}
 
 					PlayerPos msg = (PlayerPos)object;
 
@@ -107,6 +111,8 @@ public class PosServer {
 		c.player = player;
 
 		loggedIn.add(player);
+		System.out.print("Player succesfully logged in");
+		System.out.print(player);
 	}
 
 

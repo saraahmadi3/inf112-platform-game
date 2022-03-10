@@ -59,6 +59,10 @@ public class GameLoop implements ApplicationListener {
     		game.gameOver();
     		delayedEnd--;
     	}
+    	
+    	if (game.getClient() != null) {
+    		game.getClient().sendMsg();
+    	}
     }
     
 	

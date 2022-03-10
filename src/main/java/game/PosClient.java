@@ -14,6 +14,7 @@ import com.esotericsoftware.kryonet.Listener.ThreadedListener;
 import game.PosServer;
 import game.Network;
 import game.Network.Login;
+import game.Network.PlayerPos;
 import game.Network.Register;
 import game.Network.RegistrationRequired;
 import game.Network.UpdatePlayer;
@@ -21,7 +22,8 @@ import game.Network.UpdatePlayer;
 public class PosClient {
 	UI ui;
 	Client client;
-	GameState game;
+	Login login;
+	private GameState game;
 	int id;
 
 	public PosClient (GameState game) {
@@ -56,7 +58,7 @@ public class PosClient {
 			}
 		}));
 
-		ui = new UI();
+		ui = new UI(game);
 
 		String host = ui.inputHost();
 		try {
@@ -67,24 +69,34 @@ public class PosClient {
 		}
 
 		id = ui.inputID();
-		Login login = new Login();
+		this.login = new Login();
 		login.id = id;
 		client.sendTCP(login);
+	}
+	
+	public void sendMsg() {
+		if (login == null) return;
 		Player player = game.getPlayer(id);
-
-		while (true) {
-			UpdatePlayer msg = new UpdatePlayer();
-			
-			//TODO Make this movement dependent on key presses
-			msg.x = player.getX()+1;
-			msg.y = player.getY()+1;
-			
-			if (msg != null) client.sendTCP(msg);
+		PlayerPos msg = new PlayerPos();
+		
+		//TODO Make this movement dependent on key presses
+		msg.id = id;
+		msg.x = player.getX()+1;
+		msg.y = player.getY()+1;
+		
+		if (msg != null) {
+			//System.out.println("Sending msg");
+			client.sendTCP(msg);
 		}
 	}
 
-	static class UI {
-		HashMap<Integer, Player> players = new HashMap<>();
+	private class UI {
+		
+		private GameState game;
+
+		public UI (GameState game) {
+			this.game = game;
+		}
 
 		public String inputHost () {
 			String input = (String)JOptionPane.showInputDialog(null, "Host:", "Connect to server", JOptionPane.QUESTION_MESSAGE,
@@ -102,7 +114,7 @@ public class PosClient {
 
 
 		public void updatePlayer (UpdatePlayer msg) {
-			Player player = players.get(msg.id);
+			Player player = game.getPlayer(msg.id);
 			if (player == null) return;
 			player.setX(msg.x);
 			player.setY(msg.y);

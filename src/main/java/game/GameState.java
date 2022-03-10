@@ -28,11 +28,14 @@ public class GameState {
     private BitmapFont font;
 	private boolean isMultiplayer;
 	private int singlePlayerID;
-	private boolean testNetwork;
 	
+	private boolean testNetwork;
+	private boolean isServer;
+	private PosClient client;
 	
 	public GameState(int gameLevel) {
 		testNetwork = false;
+		isServer = true;
 		levelFinished = false;
 		allSprites = new ArrayList<GameObjects>();
 		waitingSprites = new ArrayList<GameObjects>();
@@ -263,13 +266,21 @@ public class GameState {
 			new Level0(this);
 		}
 		
-		if (testNetwork==true) {
+		if (testNetwork) {
 	        new Network();
-	        new PosClient(this);
-	        new PosServer(this);
-		}
+	        if (isServer) {
+	        	new PosServer(this);
+	        } else {
+	        	client = new PosClient(this);
+	        }
+		} 
+		
 	}
 
+	public PosClient getClient() {
+		return client;
+	}
+	
 	public void setMultiPlayer(boolean isMultiplayer) {
 		this.isMultiplayer = isMultiplayer;
 	}
