@@ -1,5 +1,6 @@
 package game;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
@@ -28,14 +29,12 @@ public class GameState {
     private BitmapFont font;
 	private boolean isMultiplayer;
 	private int singlePlayerID;
-	
-	private boolean testNetwork;
 	private boolean isServer;
+
 	private PosClient client;
 	
 	public GameState(int gameLevel) {
-		testNetwork = false;
-		isServer = true;
+		isServer = false;
 		levelFinished = false;
 		allSprites = new ArrayList<GameObjects>();
 		waitingSprites = new ArrayList<GameObjects>();
@@ -265,20 +264,25 @@ public class GameState {
 		} else {
 			new Level0(this);
 		}
-		
-		if (testNetwork) {
-	        new Network();
-	        if (isServer) {
-	        	new PosServer(this);
-	        } else {
-	        	client = new PosClient(this);
-	        }
-		} 
-		
 	}
 
 	public PosClient getClient() {
 		return client;
+	}
+	 
+	public void startMultiPlayer() {
+		setSinglePlayerID(0); //This value should not be accessed anyways.
+		setMultiPlayer(true); 
+		
+
+		try {
+			client = new PosClient(this);
+		} catch (IOException e) {
+			new PosServer(this);
+		}
+		
+		
+		level(currentLevel);
 	}
 	
 	public void setMultiPlayer(boolean isMultiplayer) {

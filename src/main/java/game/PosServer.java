@@ -3,6 +3,8 @@ package game;
 import java.io.IOException;
 import java.util.HashSet;
 
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
@@ -13,6 +15,8 @@ import game.Network.Register;
 import game.Network.UpdatePlayer;
 
 public class PosServer {
+	
+	
 	Server server;
 	GameState game;
 	HashSet<Player> loggedIn = new HashSet<>();
@@ -36,7 +40,6 @@ public class PosServer {
 				// We know all connections for this server are actually CharacterConnections.
 				PlayerConnection connection = (PlayerConnection)c;
 				Player player = connection.player;
-				System.out.println(player);
 
 				if (object instanceof Login) {
 					// Ignore if already logged in.

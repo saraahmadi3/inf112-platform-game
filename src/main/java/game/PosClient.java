@@ -26,7 +26,7 @@ public class PosClient {
 	private GameState game;
 	int id;
 
-	public PosClient (GameState game) {
+	public PosClient (GameState game) throws IOException {
 		client = new Client();
 		client.start();
 		this.game=game;
@@ -48,30 +48,35 @@ public class PosClient {
 				}
 
 				if (object instanceof UpdatePlayer) {
-					ui.updatePlayer((UpdatePlayer)object);
+					updatePlayer((UpdatePlayer)object);
 					return;
 				}
+				
 			}
 
 			public void disconnected (Connection connection) {
 				System.exit(0);
 			}
+			
 		}));
 
-		ui = new UI(game);
+		ui = new UI();
 
 		String host = ui.inputHost();
-		try {
-			client.connect(4000, host, Network.port);
+		client.connect(2500, host, Network.port);
 			// Server communication after connection can go here, or in Listener#connected().
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
 
 		id = ui.inputID();
 		this.login = new Login();
 		login.id = id;
 		client.sendTCP(login);
+	}
+	
+	public void updatePlayer (UpdatePlayer msg) {
+		Player player = game.getPlayer(msg.id);
+		if (player == null) return;
+		player.setX(msg.x);
+		player.setY(msg.y);
 	}
 	
 	public void sendMsg() {
@@ -81,8 +86,8 @@ public class PosClient {
 		
 		//TODO Make this movement dependent on key presses
 		msg.id = id;
-		msg.x = player.getX()+1;
-		msg.y = player.getY()+1;
+		msg.x = player.getX();
+		msg.y = player.getY();
 		
 		if (msg != null) {
 			//System.out.println("Sending msg");
@@ -91,34 +96,18 @@ public class PosClient {
 	}
 
 	private class UI {
-		
-		private GameState game;
-
-		public UI (GameState game) {
-			this.game = game;
-		}
 
 		public String inputHost () {
 			String input = (String)JOptionPane.showInputDialog(null, "Host:", "Connect to server", JOptionPane.QUESTION_MESSAGE,
 				null, null, "localhost");
 			if (input == null || input.trim().length() == 0) System.exit(1);
-			return input.trim();
+			return input.trim(); 
 		}
 
 		public int inputID () {
 			String input = (String)JOptionPane.showInputDialog(null, "ID:", "Connect to server", JOptionPane.QUESTION_MESSAGE,
 				null, null, 1);
 			return Integer.parseInt(input);
-		}
-
-
-
-		public void updatePlayer (UpdatePlayer msg) {
-			Player player = game.getPlayer(msg.id);
-			if (player == null) return;
-			player.setX(msg.x);
-			player.setY(msg.y);
-			System.out.println(player.getIdentity() + " moved to " + player.getX() + ", " + player.getY());
 		}
 
 	}

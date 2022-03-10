@@ -34,9 +34,7 @@ public class StartScreen extends AbstractObject {
 		}
 		
 		if (Gdx.input.isKeyPressed(Keys.SPACE)) {
-			game.setSinglePlayerID(0); //This value should not be accessed anyways.
-			game.setMultiPlayer(true);
-			game.level(startLvl);
+			game.startMultiPlayer();
 		}
 	}
 }
