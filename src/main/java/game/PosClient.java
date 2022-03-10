@@ -2,7 +2,6 @@ package game;
 
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 
@@ -11,8 +10,7 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Listener.ThreadedListener;
 
-import game.PosServer;
-import game.Network;
+import game.Network.GameDeltaTime;
 import game.Network.Login;
 import game.Network.PlayerPos;
 import game.Network.Register;
@@ -54,15 +52,15 @@ public class PosClient {
 				}
 				
 				if (object instanceof PlayerPos) {
-					Player player = game.getPlayer(((PlayerPos) object).id);
 					
+					PlayerPos msg = (PlayerPos)object;
 					// Ignore if not logged in.
-					if (player == null) {
-						System.out.println("Player is not logged in!");
+					if (msg.id == 0) {
+						System.out.println("Client: Player is not logged in!");
 						return;
 					}
-
-					PlayerPos msg = (PlayerPos)object;
+					
+					Player player = game.getPlayer(msg.id);
 
 					player.setX(msg.x);
 					player.setY(msg.y);
@@ -75,7 +73,14 @@ public class PosClient {
 					return;
 				}
 				
+				if (object instanceof GameDeltaTime) {
+					GameDeltaTime msg = (GameDeltaTime) object;
+					game.syncDelay((game.getTotalDeltaTime()-msg.sumDeltaTime)/2);
+					return;
+				}
+				
 			}
+			
 
 			public void disconnected (Connection connection) {
 				System.exit(0);
@@ -91,6 +96,7 @@ public class PosClient {
 		this.login = new Login();
 		login.id = id;
 		client.sendTCP(login);
+		game.level(game.getCurrentLevel());
 	}
 	
 	public void updatePlayer (UpdatePlayer msg) {
@@ -113,6 +119,19 @@ public class PosClient {
 			client.sendTCP(msg);
 		}
 	}
+	
+	public void sync(double totalDeltaTime) {
+		if (login == null) return;
+		GameDeltaTime msg = new GameDeltaTime();
+		
+		msg.id = id;
+		msg.sumDeltaTime = totalDeltaTime;
+		
+		if (msg != null) {
+			client.sendTCP(msg);
+		}
+	}
+	
 
 	private class UI {
 

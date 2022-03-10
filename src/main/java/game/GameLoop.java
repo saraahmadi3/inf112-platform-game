@@ -11,8 +11,10 @@ public class GameLoop implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
     private GameState game;
+    
     private int delayedEnd;
-  
+    private boolean isSynced;
+    
     @Override
     public void create() { 
     	
@@ -20,10 +22,11 @@ public class GameLoop implements ApplicationListener {
         font = new BitmapFont();
         font.setColor(Color.RED);
         
-        game = new GameState();
+        game = new GameState(this);
         game.setBatchAndFont(batch, font);
     
         delayedEnd = 2;
+        isSynced = false;
     }
 
     @Override
@@ -67,10 +70,18 @@ public class GameLoop implements ApplicationListener {
 	
 	private void updateMultiPlayer() {
     	if (game.getMultiPlayer()) {
-	    	if (game.getServer() != null) {
-	    		game.getServer().sendMsg();
+    		PosServer s = game.getServer();
+	    	if (s != null) {
+	    		if (!isSynced && !s.loggedIn.isEmpty()) {
+	    			isSynced = true;
+	    			game.level(game.getCurrentLevel());
+	    		} else {
+	    			s.sendMsg();
+		    		s.sync(game.getTotalDeltaTime());
+	    		}
 	    	} else if (game.getClient() != null) {
 	    		game.getClient().sendMsg();
+	    		game.getClient().sync(game.getTotalDeltaTime());
 	    	}
     	}
 	}

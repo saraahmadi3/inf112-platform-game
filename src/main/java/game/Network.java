@@ -9,12 +9,13 @@ public class Network {
 	// This registers objects that are going to be sent over the network.
 	static public void register (EndPoint endPoint) {
 		Kryo kryo = endPoint.getKryo();
+		kryo.setRegistrationRequired(false);
+		
 		kryo.register(Login.class);
 		kryo.register(RegistrationRequired.class);
 		kryo.register(Register.class);
 		kryo.register(PlayerPos.class);
 		kryo.register(UpdatePlayer.class);
-
 	}
 
 	static public class Login {
@@ -39,4 +40,11 @@ public class Network {
 		public double x;
 		public double y;
 	}
+	
+	static public class GameDeltaTime {
+		public int id;
+		public double sumDeltaTime;
+	}
+
 }
+

@@ -30,10 +30,14 @@ public class GameState {
 	private boolean isMultiplayer;
 	private int singlePlayerID;
 	
+	private GameLoop gameLoop;
 	private PosClient client;
 	private PosServer server;
+	private double totalDeltaTime;
+	private double delayDifference;
 	
-	public GameState(int gameLevel) {
+	public GameState(GameLoop gameLoop, int gameLevel) {
+		this.gameLoop = gameLoop;
 		levelFinished = false;
 		allSprites = new ArrayList<GameObjects>();
 		waitingSprites = new ArrayList<GameObjects>();
@@ -51,8 +55,22 @@ public class GameState {
 	}
 
 	public GameState() {
-		this(1);
+		this(null,1);
 	}
+	
+	public GameState(GameLoop gameLoop) {
+		this(gameLoop, 1);
+	}
+	
+	public GameState(int gameLevel) {
+		this(null, gameLevel);
+	}
+	
+	//How much behind the target fps of 60 the game currently is.
+	public double getTotalDeltaTime() {
+		return totalDeltaTime;
+	}
+
 	
 	public double getDeltaTime() {
 		double deltaTime = 0;
@@ -60,14 +78,37 @@ public class GameState {
 			deltaTime = (double) Gdx.graphics.getDeltaTime();
 		} catch (NullPointerException e) {
 			//The default value if the actual one can not be fetched is 60 fps
-			return (double) 1/60; 
+			deltaTime = (double) 1/60; 
 		} 
+		
 		//Minimum 12 fps to prevent weird behavior after extended pauses between frames,
 		//such as when dragging the window around to move it.
-		return Math.min(deltaTime, (double) 1/12); 
+		
+		deltaTime = Math.min(deltaTime, (double) 1/12); 
+
+		if (getMultiPlayer()) {
+			deltaTime = adjustForDelay(deltaTime);
+		}
+		
+		return deltaTime;
 	}
 	
+	private double adjustForDelay(double deltaTime) {
+		double oldDeltaTime = deltaTime;
+		if (delayDifference < (double) -1/60) {
+			deltaTime *= 1.2;
+			delayDifference -= oldDeltaTime-deltaTime;
+		} else if (delayDifference > (double) 1/60) {
+			deltaTime *= 0.80;
+			delayDifference -= oldDeltaTime-deltaTime;
+		}
+		totalDeltaTime += deltaTime;
+		
+		return deltaTime;
+	}
+
 	public void clearState() {
+		totalDeltaTime = 0;
 		waitingRemovalSprites.addAll(allSprites);
 		waitingRemovalSprites.addAll(waitingSprites);
 	}
@@ -83,6 +124,10 @@ public class GameState {
 	
 	public BitmapFont getFont() {
 		return font;
+	}
+	
+	public GameLoop getGameLoop() {
+		return gameLoop;
 	}
  
 	//Adds the sprite in waitlist to be added to the main list when allowed, avoids ConcurrentModificationException.
@@ -182,6 +227,10 @@ public class GameState {
 		return gameOver;
 	}
 	
+	public int getCurrentLevel() {
+		return currentLevel;
+	}
+	
 	public void setGameOver(boolean gameover) {
 		gameOver = gameover;
 	}
@@ -277,6 +326,7 @@ public class GameState {
 	}
 	 
 	public void startMultiPlayer() {
+		//killSprite(startscreen);
 		setSinglePlayerID(0); //This value should not be accessed anyways.
 		setMultiPlayer(true); 
 		
@@ -285,10 +335,8 @@ public class GameState {
 			client = new PosClient(this);
 		} catch (IOException e) {
 			server = new PosServer(this);
+			new Text(this, 350, 350, "Server running. Waiting for Player2 to connect...");
 		}
-		
-		
-		level(currentLevel);
 	}
 	
 	public void setMultiPlayer(boolean isMultiplayer) {
@@ -306,4 +354,10 @@ public class GameState {
 	public void setSinglePlayerID(int playerID) {
 		singlePlayerID = playerID;
 	}
+
+	public void syncDelay(double difference) {
+		System.out.println(delayDifference);
+		this.delayDifference = difference;
+	}
+
 }

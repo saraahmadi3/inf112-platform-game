@@ -9,6 +9,7 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 
+import game.Network.GameDeltaTime;
 import game.Network.Login;
 import game.Network.PlayerPos;
 import game.Network.Register;
@@ -17,12 +18,12 @@ import game.Network.UpdatePlayer;
 public class PosServer {
 	
 	Server server;
-	int playerID;
+	int serverPlayerID;
 	GameState game;
-	HashSet<Player> loggedIn = new HashSet<>();
+	HashSet<Integer> loggedIn = new HashSet<>();
 
 	public PosServer (GameState game) {
-		playerID = 1;
+		serverPlayerID = 1;
 		this.game = game;
 		server = new Server() {
 			protected Connection newConnection () {
@@ -40,45 +41,44 @@ public class PosServer {
 			public void received (Connection c, Object object) {
 				// We know all connections for this server are actually CharacterConnections.
 				PlayerConnection connection = (PlayerConnection)c;
-				Player player = connection.player;
+				int playerID = connection.playerID;
 
 				if (object instanceof Login) {
 					// Ignore if already logged in.
-					if (player != null) return;
-
-					// Reject if the name is invalid.
-					int id = ((Login)object).id;
+					if (playerID != 0) return;
+					
+					playerID = ((Login)object).id;
 
 					// Reject if already logged in.
-					for (Player other : loggedIn) {
-						if (other.getIdentity() == id) {
+					for (int other : loggedIn) {
+						if (other == playerID) {
 							c.close();
 							return;
 						}
 					}
-
-					player = game.getPlayer(id);
 					
-					loggedIn(connection, player);
+					loggedIn(connection, playerID);
 					return;
 				}
 
 				if (object instanceof Register) {
 					// Ignore if already logged in.
-					if (player != null) return;
+					if (playerID != 0) return;
 
-					loggedIn(connection, player);
+					loggedIn(connection, playerID);
 					return;
 				}
 
 				if (object instanceof PlayerPos) {
 					// Ignore if not logged in.
-					if (player == null) {
-						System.out.println("Player is not logged in!");
+					if (playerID == 0) {
+						System.out.println("Server: Player is not logged in!");
 						return;
 					}
 
 					PlayerPos msg = (PlayerPos)object;
+					
+					Player player = game.getPlayer(playerID);
 
 					player.setX(msg.x);
 					player.setY(msg.y);
@@ -96,6 +96,11 @@ public class PosServer {
 					return;
 				}
 				
+				if (object instanceof GameDeltaTime) {
+					GameDeltaTime msg = (GameDeltaTime) object;
+					game.syncDelay((game.getTotalDeltaTime()-msg.sumDeltaTime)/2);
+					return;
+				}
 				
 			}
 			
@@ -109,8 +114,8 @@ public class PosServer {
 
 			public void disconnected (Connection c) {
 				PlayerConnection connection = (PlayerConnection)c;
-				if (connection.player != null) {
-					loggedIn.remove(connection.player);
+				if (connection.playerID != 0) {
+					loggedIn.remove(connection.playerID);
 					
 					//TODO do something when player is disconnected!
 				}
@@ -127,10 +132,10 @@ public class PosServer {
 
 	public void sendMsg() {
 		if (loggedIn.isEmpty()) return;
-		Player player = game.getPlayer(playerID);
+		Player player = game.getPlayer(serverPlayerID);
 		PlayerPos msg = new PlayerPos();
 		
-		msg.id = playerID;
+		msg.id = serverPlayerID;
 		msg.x = player.getX();
 		msg.y = player.getY();
 		
@@ -140,16 +145,28 @@ public class PosServer {
 		}
 	}
 	
-	void loggedIn (PlayerConnection c, Player player) {
-		c.player = player;
-
-		loggedIn.add(player);
+	public void sync(double totalDeltaTime) {
+		if (loggedIn.isEmpty()) return;
+		GameDeltaTime msg = new GameDeltaTime();
+		
+		msg.id = serverPlayerID;
+		msg.sumDeltaTime = totalDeltaTime;
+		
+		if (msg != null) {
+			server.sendToAllTCP(msg);
+		}
+	}
+	
+	
+	void loggedIn (PlayerConnection c, int playerID) {
+		c.playerID = playerID;
+		loggedIn.add(playerID);
 	}
 
 
 
 	// This holds per connection state.
 	static class PlayerConnection extends Connection {
-		public Player player;
+		public int playerID;
 	}
 }
