@@ -53,6 +53,8 @@ public class PosServer {
 						}
 					}
 
+					player = game.getPlayer(id);
+					
 					loggedIn(connection, player);
 					return;
 				}
