@@ -29,12 +29,11 @@ public class GameState {
     private BitmapFont font;
 	private boolean isMultiplayer;
 	private int singlePlayerID;
-	private boolean isServer;
-
+	
 	private PosClient client;
+	private PosServer server;
 	
 	public GameState(int gameLevel) {
-		isServer = false;
 		levelFinished = false;
 		allSprites = new ArrayList<GameObjects>();
 		waitingSprites = new ArrayList<GameObjects>();
@@ -60,9 +59,12 @@ public class GameState {
 		try {
 			deltaTime = (double) Gdx.graphics.getDeltaTime();
 		} catch (NullPointerException e) {
-			return 0.01666667;  
+			//The default value if the actual one can not be fetched is 60 fps
+			return (double) 1/60; 
 		} 
-		return deltaTime;
+		//Minimum 12 fps to prevent weird behavior after extended pauses between frames,
+		//such as when dragging the window around to move it.
+		return Math.min(deltaTime, (double) 1/12); 
 	}
 	
 	public void clearState() {
@@ -266,6 +268,10 @@ public class GameState {
 		}
 	}
 
+	public PosServer getServer() {
+		return server;
+	}
+
 	public PosClient getClient() {
 		return client;
 	}
@@ -278,7 +284,7 @@ public class GameState {
 		try {
 			client = new PosClient(this);
 		} catch (IOException e) {
-			new PosServer(this);
+			server = new PosServer(this);
 		}
 		
 		

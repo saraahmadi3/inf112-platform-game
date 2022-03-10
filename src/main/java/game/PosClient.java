@@ -27,6 +27,7 @@ public class PosClient {
 	int id;
 
 	public PosClient (GameState game) throws IOException {
+		id = 2;
 		client = new Client();
 		client.start();
 		this.game=game;
@@ -52,6 +53,28 @@ public class PosClient {
 					return;
 				}
 				
+				if (object instanceof PlayerPos) {
+					Player player = game.getPlayer(((PlayerPos) object).id);
+					
+					// Ignore if not logged in.
+					if (player == null) {
+						System.out.println("Player is not logged in!");
+						return;
+					}
+
+					PlayerPos msg = (PlayerPos)object;
+
+					player.setX(msg.x);
+					player.setY(msg.y);
+
+					UpdatePlayer update = new UpdatePlayer();
+					update.id = player.getIdentity();
+					update.x = player.getX();
+					update.y = player.getY();
+					client.sendTCP(update);
+					return;
+				}
+				
 			}
 
 			public void disconnected (Connection connection) {
@@ -64,9 +87,7 @@ public class PosClient {
 
 		String host = ui.inputHost();
 		client.connect(2500, host, Network.port);
-			// Server communication after connection can go here, or in Listener#connected().
 
-		id = ui.inputID();
 		this.login = new Login();
 		login.id = id;
 		client.sendTCP(login);
@@ -84,13 +105,11 @@ public class PosClient {
 		Player player = game.getPlayer(id);
 		PlayerPos msg = new PlayerPos();
 		
-		//TODO Make this movement dependent on key presses
 		msg.id = id;
 		msg.x = player.getX();
 		msg.y = player.getY();
 		
 		if (msg != null) {
-			//System.out.println("Sending msg");
 			client.sendTCP(msg);
 		}
 	}
@@ -103,12 +122,5 @@ public class PosClient {
 			if (input == null || input.trim().length() == 0) System.exit(1);
 			return input.trim(); 
 		}
-
-		public int inputID () {
-			String input = (String)JOptionPane.showInputDialog(null, "ID:", "Connect to server", JOptionPane.QUESTION_MESSAGE,
-				null, null, 1);
-			return Integer.parseInt(input);
-		}
-
 	}
 }

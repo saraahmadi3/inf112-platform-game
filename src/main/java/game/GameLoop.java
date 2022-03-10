@@ -30,6 +30,7 @@ public class GameLoop implements ApplicationListener {
     public void dispose() {
         batch.dispose();
         font.dispose();
+        System.exit(0);
     }
     
     //Draws a blank screen, used as a reset between each frame
@@ -59,13 +60,21 @@ public class GameLoop implements ApplicationListener {
     		game.gameOver();
     		delayedEnd--;
     	}
-    	
-    	if (game.getClient() != null) {
-    		game.getClient().sendMsg();
-    	}
+    
+    	updateMultiPlayer();
     }
     
 	
+	private void updateMultiPlayer() {
+    	if (game.getMultiPlayer()) {
+	    	if (game.getServer() != null) {
+	    		game.getServer().sendMsg();
+	    	} else if (game.getClient() != null) {
+	    		game.getClient().sendMsg();
+	    	}
+    	}
+	}
+
 	//This method should iterate over all movable sprites and call the move() method for each one.
     private void updateAll() {
     	for (GameObjects sprite : game.getAllSprites()) {
@@ -96,15 +105,27 @@ public class GameLoop implements ApplicationListener {
     	return game;
     }
     
-    @Override
-    public void resize(int width, int height) {
+    public void setGame (GameState game) {
+    	this.game = game;
     }
 
-    @Override
-    public void pause() {
-    }
+	@Override
+	public void resize(int width, int height) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    @Override
-    public void resume() {
-    }
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resume() {
+		// TODO Auto-generated method stub
+		
+	}
+
+    
 }

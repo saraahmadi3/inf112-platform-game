@@ -16,12 +16,13 @@ import game.Network.UpdatePlayer;
 
 public class PosServer {
 	
-	
 	Server server;
+	int playerID;
 	GameState game;
 	HashSet<Player> loggedIn = new HashSet<>();
 
 	public PosServer (GameState game) {
+		playerID = 1;
 		this.game = game;
 		server = new Server() {
 			protected Connection newConnection () {
@@ -66,9 +67,6 @@ public class PosServer {
 					// Ignore if already logged in.
 					if (player != null) return;
 
-					Register register = (Register)object;
-
-
 					loggedIn(connection, player);
 					return;
 				}
@@ -92,7 +90,22 @@ public class PosServer {
 					server.sendToAllTCP(update);
 					return;
 				}
+				
+				if (object instanceof UpdatePlayer) {
+					updatePlayer((UpdatePlayer)object);
+					return;
+				}
+				
+				
 			}
+			
+			public void updatePlayer (UpdatePlayer msg) {
+				Player player = game.getPlayer(msg.id);
+				if (player == null) return;
+				player.setX(msg.x);
+				player.setY(msg.y);
+			}
+
 
 			public void disconnected (Connection c) {
 				PlayerConnection connection = (PlayerConnection)c;
@@ -112,12 +125,25 @@ public class PosServer {
 		server.start();
 	}
 
+	public void sendMsg() {
+		if (loggedIn.isEmpty()) return;
+		Player player = game.getPlayer(playerID);
+		PlayerPos msg = new PlayerPos();
+		
+		msg.id = playerID;
+		msg.x = player.getX();
+		msg.y = player.getY();
+		
+		if (msg != null) {
+			//System.out.println("Sending msg");
+			server.sendToAllTCP(msg);
+		}
+	}
+	
 	void loggedIn (PlayerConnection c, Player player) {
 		c.player = player;
 
 		loggedIn.add(player);
-		System.out.print("Player succesfully logged in");
-		System.out.print(player);
 	}
 
 
