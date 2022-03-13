@@ -29,6 +29,7 @@ public class GameState {
     private BitmapFont font;
 	private boolean isMultiplayer;
 	private int singlePlayerID;
+	private boolean gameStarted;
 	
 	private GameLoop gameLoop;
 	private PosClient client;
@@ -66,7 +67,7 @@ public class GameState {
 		this(null, gameLevel);
 	}
 	
-	//How much behind the target fps of 60 the game currently is.
+	
 	public double getTotalDeltaTime() {
 		return totalDeltaTime;
 	}
@@ -81,9 +82,8 @@ public class GameState {
 			deltaTime = (double) 1/60; 
 		} 
 		
-		//Minimum 12 fps to prevent weird behavior after extended pauses between frames,
+		//To prevent weird behavior after extended pauses between frames,
 		//such as when dragging the window around to move it.
-		
 		deltaTime = Math.min(deltaTime, (double) 1/12); 
 
 		if (getMultiPlayer()) {
@@ -95,10 +95,10 @@ public class GameState {
 	
 	private double adjustForDelay(double deltaTime) {
 		double oldDeltaTime = deltaTime;
-		if (delayDifference < (double) -1/60) {
+		if (delayDifference < (double) -1/180) {
 			deltaTime *= 1.2;
 			delayDifference -= oldDeltaTime-deltaTime;
-		} else if (delayDifference > (double) 1/60) {
+		} else if (delayDifference > (double) 1/180) {
 			deltaTime *= 0.80;
 			delayDifference -= oldDeltaTime-deltaTime;
 		}
@@ -257,7 +257,7 @@ public class GameState {
 	}
 	
 	private void checkForLevelComplete() {
-		if (getAllPlayers().isEmpty() && !getAllSprites().contains(startscreen)) {
+		if (getAllPlayers().isEmpty() && gameStarted) {
 			if (levelFinished) {
 				levelFinished = false;
 				currentLevel++;
@@ -308,6 +308,7 @@ public class GameState {
 	//TODO find a better place for this information.
 	public void level(int gameLevel) {
 		clearState();
+		gameStarted = true;
 		if (gameLevel == 1) {
 			new Level1(this);
 		} else if (gameLevel == 2) {
@@ -326,7 +327,7 @@ public class GameState {
 	}
 	 
 	public void startMultiPlayer() {
-		//killSprite(startscreen);
+		killSprite(startscreen);
 		setSinglePlayerID(0); //This value should not be accessed anyways.
 		setMultiPlayer(true); 
 		
