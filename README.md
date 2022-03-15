@@ -1,3 +1,10 @@
+### Brukerhistorier i prioritert rekkefølge for innlevering av obligatorisk oppgave 1:
+1) Jeg forventer at jeg skal kunne spille mot en annen spiller over et lokalt nettverk, uten at forsinkelsen blir for stor.
+Akseptansekriterier: 
+
+2) Jeg forventer at jeg skal kunne spille multiplayer over et lokalt nettverk med en server 
+
+
 Vi har ikke vært oppmerksomme på at det skal skrives referat fra hver gruppetime, så vi har ikke skrevet referat fra tidligere gruppetimer til nå. I forbindelse med oppmøtet har alle gruppemedlemmene vært tilstede ved hver gruppetime til nå.
 
 #### Referat 15.03.2022
