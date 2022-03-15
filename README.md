@@ -1,8 +1,17 @@
 ### Brukerhistorier i prioritert rekkefølge for innlevering av obligatorisk oppgave 1:
+De fleste brukerhistoriene i forbindelse med denne innleveringen, dreier seg om multiplayer over nettverk. Det vil si at vi ikke kommer til å levere oppgaven med alle de implementasjonene. Brukerhistoriene bør leses som en prioritert rekkefølge hvor vi begynner på toppen, og jobber oss nedover. Det vil si at vi leverer programmet med den siste implemtasjonen.
+
 1) Jeg forventer at jeg skal kunne spille mot en annen spiller over et lokalt nettverk, uten at forsinkelsen blir for stor.
 Akseptansekriterier: 
 
-2) Jeg forventer at jeg skal kunne spille multiplayer over et lokalt nettverk med en server 
+2) Jeg forventer at jeg skal kunne spille multiplayer over et lokalt nettverk med en server og to klienter.
+Akseptansekriterier: 
+
+3) Jeg forventer at brukergrensesnittet består av knapper, og er lett å forstå.
+Akseptansekriterier: Det skal være en knapp for en-spiller/flerspiller-funksjon med i GUI.
+
+4) Jeg forventer at spillet har en kickass melodi.
+Akseptansekriterier: Alle i nrh
 
 
 Vi har ikke vært oppmerksomme på at det skal skrives referat fra hver gruppetime, så vi har ikke skrevet referat fra tidligere gruppetimer til nå. I forbindelse med oppmøtet har alle gruppemedlemmene vært tilstede ved hver gruppetime til nå.
