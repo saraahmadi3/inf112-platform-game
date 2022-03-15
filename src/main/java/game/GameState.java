@@ -1,6 +1,8 @@
 package game;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
@@ -337,6 +339,11 @@ public class GameState {
 		} catch (IOException e) {
 			server = new PosServer(this);
 			new Text(this, 350, 350, "Server running. Waiting for Player2 to connect...");
+			try {
+				new Text(this, 350, 300, "Your IP: " + InetAddress.getLocalHost());
+			} catch (UnknownHostException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 	
