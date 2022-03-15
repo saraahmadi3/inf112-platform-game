@@ -79,7 +79,12 @@ public class PosServer {
 					PlayerPos msg = (PlayerPos)object;
 					
 					Player player = game.getPlayer(playerID);
-
+					
+					if (player==null) {
+						System.out.print("Recived coordinates was ignore because player is null.");
+						return;
+					}
+					
 					player.setX(msg.x);
 					player.setY(msg.y);
 
