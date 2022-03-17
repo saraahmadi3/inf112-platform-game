@@ -44,6 +44,7 @@ public class GameState {
 	private double delayDifference;
 	
 	public GameState(GameLoop gameLoop, int gameLevel) {
+		
 		this.gameLoop = gameLoop;
 		levelFinished = false;
 		allSprites = new ArrayList<GameObjects>();

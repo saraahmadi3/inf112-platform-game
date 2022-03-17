@@ -2,8 +2,8 @@ package game;
 
 
 import java.io.IOException;
+import java.net.InetAddress;
 
-import javax.swing.JOptionPane;
 
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
@@ -19,16 +19,16 @@ import game.Network.RegistrationRequired;
 import game.Network.UpdatePlayer;
 
 public class PosClient {
-	UI ui; 
+	//UI ui; 
 	Client client;
 	Login login;
 	private GameState game;
 	int id;
 
 	public PosClient (GameState game) throws IOException {
+		System.setProperty("java.net.preferIPv4Stack" , "true");
 		id = 2;
 		client = new Client();
-		client.start();
 		this.game=game;
 
 		// For consistency, the classes to be sent over the network are
@@ -98,11 +98,18 @@ public class PosClient {
 			
 		}));
 
-		ui = new UI();
+		//ui = new UI();
 
-		String host = ui.inputHost();
+		//String host = ui.inputHost();
+		InetAddress host = client.discoverHost(Network.port-1, 2500);
+		if (host == null) {
+			throw new IOException("host cannot be null.");
+		} else {
+			System.out.println("Host: "+host.toString());
+		}
+	
 		client.connect(2500, host, Network.port);
-
+		client.start();
 		this.login = new Login();
 		login.id = id;
 		client.sendTCP(login);
@@ -151,7 +158,7 @@ public class PosClient {
 		}
 	}
 	
-
+	/*
 	private class UI {
 
 		public String inputHost () {
@@ -161,4 +168,5 @@ public class PosClient {
 			return input.trim(); 
 		}
 	}
+	*/
 }

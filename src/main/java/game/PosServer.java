@@ -31,7 +31,7 @@ public class PosServer {
 				return new PlayerConnection();
 			}
 		};
-
+		
 		// For consistency, the classes to be sent over the network are
 		// registered by the same method for both the client and server.
 		Network.register(server);
@@ -135,7 +135,7 @@ public class PosServer {
 			}
 		});
 		try {
-			server.bind(Network.port);
+			server.bind(Network.port, Network.port-1);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -146,6 +146,7 @@ public class PosServer {
 	public void sendMsg() {
 		if (loggedIn.isEmpty()) return;
 		Player player = game.getPlayer(serverPlayerID);
+		if (!game.playerIsAlive(player)) return;
 		PlayerPos msg = new PlayerPos();
 		
 		msg.id = serverPlayerID;
@@ -161,7 +162,6 @@ public class PosServer {
 	public void sync(double totalDeltaTime) {
 		if (loggedIn.isEmpty()) return;
 		GameDeltaTime msg = new GameDeltaTime();
-		
 		msg.sumDeltaTime = totalDeltaTime;
 		
 		if (msg != null) {
