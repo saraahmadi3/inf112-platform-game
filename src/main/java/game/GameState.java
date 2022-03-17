@@ -9,6 +9,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.audio.*;
+
 
 import game.levels.Level0;
 import game.levels.Level1;
@@ -32,6 +34,8 @@ public class GameState {
 	private boolean isMultiplayer;
 	private int singlePlayerID;
 	private boolean gameStarted;
+
+
 	
 	private GameLoop gameLoop;
 	private PosClient client;
@@ -47,6 +51,7 @@ public class GameState {
 		waitingRemovalSprites = new ArrayList<GameObjects>();
 		allPlatforms = new ArrayList<Platform>();
 		allPlayers = new ArrayList<Player>();
+
 	
 		currentLevel = gameLevel;
 		if (gameLevel != 0) {
