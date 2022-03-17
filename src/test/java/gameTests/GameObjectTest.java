@@ -62,6 +62,7 @@ class GameObjectTest {
 		game.killSprite(playerOne);
 		game.removeAllDeadSprites();
 		System.out.println(game.getAllSprites().size());
+		game.setMultiPlayer(false);
 	} 
 	
 	//This resets game and playerOne after each test
@@ -75,6 +76,7 @@ class GameObjectTest {
 		
 		playerOne.setXandY(50, 20);
 		playerOne.boost(0);
+		playerOne.clearCurrentPlatform();
 	}
 	
 	//Simulate a n-times seconds drop to platform by player in 60 frames per second
@@ -229,6 +231,7 @@ class GameObjectTest {
 		game.killSprite(horizontalMovingP);
 		game.removeAllDeadSprites();
 		
+		
 		game.addSprite(verticalMovingP);
 		game.addAllNewSprites();
 		frameCount = 0;
@@ -377,7 +380,7 @@ class GameObjectTest {
 		game.addAllNewSprites();
 		
 		//Settle playerOne on a platform
-		if (!causeCollision(100, playerOne, regularP)) {
+		if (!causeHit(playerOne, regularP)) {
 			fail("The player does not hit the platform");
 		}
 		
@@ -436,7 +439,8 @@ class GameObjectTest {
 		assertEquals(200, text.getY());
 	}
 	
-//===========ENEMY===========(Issue #22)[OPEN]
+//===========ENEMY===========(Issue #22)[CLOSED]
+	//TODO: Add more test cases for different platforms and player interaction
 //Enemy: update(), move()
 	@Test
 	void enemyTest() {
