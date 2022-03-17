@@ -6,11 +6,14 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.audio.*;
 
 public class GameLoop implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
     private GameState game;
+	private Music music;
+    
     
     private int delayedEnd;
     private boolean isSynced;
@@ -27,12 +30,19 @@ public class GameLoop implements ApplicationListener {
     
         delayedEnd = 2;
         isSynced = false;
+        
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/song.mp3"));
+        music.setVolume(1.0f);
+        music.setLooping(true);
+        music.play();
+        
     }
 
     @Override
     public void dispose() {
         batch.dispose();
         font.dispose();
+        music.dispose(); 
         System.exit(0);
     }
     
