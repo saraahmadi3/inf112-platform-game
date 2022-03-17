@@ -102,20 +102,30 @@ public class GameState {
 	
 	private double adjustForDelay(double deltaTime) {
 		double oldDeltaTime = deltaTime;
-		if (delayDifference < (double) -1/180) {
-			deltaTime *= 1.2;
-			delayDifference -= oldDeltaTime-deltaTime;
-		} else if (delayDifference > (double) 1/180) {
-			deltaTime *= 0.80;
-			delayDifference -= oldDeltaTime-deltaTime;
+		
+		System.out.println(delayDifference);
+		//Severe adjustment
+		if (delayDifference < (double) -1/2) {
+			deltaTime *= 2;
+		} else if (delayDifference > (double) 1/2) {
+			deltaTime *= 0.5;
 		}
+		
+		//Small adjustment
+		if (delayDifference < (double) -1/360) {
+			deltaTime *= 1.2;
+		} else if (delayDifference > (double) 1/360) {
+			deltaTime *= 0.80;
+		}
+		
+		delayDifference -= oldDeltaTime-deltaTime;
 		totalDeltaTime += deltaTime;
 		
 		return deltaTime;
 	}
 
 	public void clearState() {
-		totalDeltaTime = 0;
+		//totalDeltaTime = 0;
 		waitingRemovalSprites.addAll(allSprites);
 		waitingRemovalSprites.addAll(waitingSprites);
 	}
@@ -166,8 +176,15 @@ public class GameState {
 	}
 	
 	public void removeAllDeadSprites(){
-		for (GameObjects o : waitingRemovalSprites) {
-			killSpriteQ(o);
+		if (waitingRemovalSprites.isEmpty()) return;
+		GameObjects obj = waitingRemovalSprites.get(0);
+		try {
+			for (GameObjects o : waitingRemovalSprites) {
+				obj = o;
+				killSpriteQ(obj);
+			}
+		} catch (Exception e) {
+			killSpriteQ(obj);
 		}
 		waitingRemovalSprites.clear();
 	}
@@ -190,17 +207,7 @@ public class GameState {
 		if (allPlayers.contains(s)) {
 			allPlayers.remove((Player) s);
 		}
-		/*
-		if (s.getType()=="Player") {
-			Player p = (Player) s;
-			if (p.getIdentity() == 2) {
-				player2 = null;
-			} else {
-				player1 = null;
-			}
-		}
-		*/
-		
+		//System.out.println("killed: "+s);
 	}
 	
 	public Player getPlayer(int identity) {
@@ -211,6 +218,10 @@ public class GameState {
 		}
 	}
 	
+	public boolean playerIsAlive (Player p) {
+		return (getAllPlayers().contains(p));
+	}
+	
 	public Player getSinglePlayer() {
 		if (getSinglePlayerID()==2) {
 			return player2;
@@ -218,17 +229,6 @@ public class GameState {
 			return player1;
 		}
 	}
-	
-	/*
-	//TODO: Fix how this works for multiplayer, or remove completely.
-	public Player getOtherPlayer(int identity) {
-		if (identity == 1) {
-			return player2;
-		} else {
-			return player1;
-		}
-	}
-	*/
 	
 	public boolean getGameOver() {
 		return gameOver;
@@ -377,7 +377,7 @@ public class GameState {
 	}
 
 	public void syncDelay(double difference) {
-		System.out.println(delayDifference);
+		//System.out.println(delayDifference);
 		this.delayDifference = difference;
 	}
 

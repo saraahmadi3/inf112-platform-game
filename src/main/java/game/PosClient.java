@@ -11,6 +11,7 @@ import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Listener.ThreadedListener;
 
 import game.Network.GameDeltaTime;
+import game.Network.KillPlayer;
 import game.Network.Login;
 import game.Network.PlayerPos;
 import game.Network.Register;
@@ -79,6 +80,15 @@ public class PosClient {
 					return;
 				}
 				
+				if (object instanceof KillPlayer) {
+					KillPlayer msg = (KillPlayer) object;
+					Player player = game.getPlayer(msg.id);
+					if (player == null) return;
+					if (!game.playerIsAlive(player)) return;
+					player.killPlayer();	
+					return;
+				}
+				
 			}
 			
 
@@ -123,9 +133,18 @@ public class PosClient {
 	public void sync(double totalDeltaTime) {
 		if (login == null) return;
 		GameDeltaTime msg = new GameDeltaTime();
-		
-		msg.id = id;
 		msg.sumDeltaTime = totalDeltaTime;
+		
+		if (msg != null) {
+			client.sendTCP(msg);
+		}
+	}
+	
+	public void playerDied(Player p) {
+		if (login == null) return;
+		KillPlayer msg = new KillPlayer();
+		
+		msg.id = p.getIdentity();
 		
 		if (msg != null) {
 			client.sendTCP(msg);

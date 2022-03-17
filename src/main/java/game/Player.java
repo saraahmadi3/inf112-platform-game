@@ -86,8 +86,18 @@ public class Player extends AbstractObject {
 			canDoubleJump=false;
 			gV = 0;
 		} else {
-			super.getGameState().killSprite(this);
+			killPlayer();
 			//new Text(super.getGameState(), 400, 300, "You Died!");
+		}
+	}
+	
+	public void killPlayer() {
+		super.getGameState().killSprite(this);
+		
+		if (super.getGameState().isServer()) {
+			super.getGameState().getServer().playerDied(this);
+		} else if (super.getGameState().isClient()) {
+			super.getGameState().getClient().playerDied(this);
 		}
 	}
 	

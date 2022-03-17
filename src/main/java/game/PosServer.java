@@ -3,13 +3,12 @@ package game;
 import java.io.IOException;
 import java.util.HashSet;
 
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 
 import game.Network.GameDeltaTime;
+import game.Network.KillPlayer;
 import game.Network.Login;
 import game.Network.PlayerPos;
 import game.Network.Register;
@@ -107,6 +106,15 @@ public class PosServer {
 					return;
 				}
 				
+				if (object instanceof KillPlayer) {
+					KillPlayer msg = (KillPlayer) object;
+					Player player = game.getPlayer(msg.id);
+					if (player == null) return;
+					if (!game.playerIsAlive(player)) return;
+					player.killPlayer();
+					return;
+				}
+				
 			}
 			
 			public void updatePlayer (UpdatePlayer msg) {
@@ -154,7 +162,6 @@ public class PosServer {
 		if (loggedIn.isEmpty()) return;
 		GameDeltaTime msg = new GameDeltaTime();
 		
-		msg.id = serverPlayerID;
 		msg.sumDeltaTime = totalDeltaTime;
 		
 		if (msg != null) {
@@ -162,6 +169,16 @@ public class PosServer {
 		}
 	}
 	
+	public void playerDied(Player p) {
+		if (loggedIn.isEmpty()) return;
+		KillPlayer msg = new KillPlayer();
+		
+		msg.id = p.getIdentity();
+		
+		if (msg != null) {
+			server.sendToAllTCP(msg);
+		}
+	}
 	
 	void loggedIn (PlayerConnection c, int playerID) {
 		c.playerID = playerID;

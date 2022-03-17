@@ -42,9 +42,11 @@ public class Network {
 	}
 	
 	static public class GameDeltaTime {
-		public int id;
 		public double sumDeltaTime;
 	}
-
+	
+	static public class KillPlayer {
+		public int id;
+	}
 }
 

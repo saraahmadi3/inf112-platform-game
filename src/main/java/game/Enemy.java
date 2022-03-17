@@ -66,10 +66,10 @@ public class Enemy extends AbstractObject {
 		super.setX(relativeDistance + platform.getX());
 		
 		
-		if (super.getGameState().getPlayer(1) != null) {
+		if (super.getGameState().getPlayer(1) != null && super.getGameState().playerIsAlive(super.getGameState().getPlayer(1))) {
 			playerInteraction(1);
 		}
-		if (super.getGameState().getPlayer(2) != null) {
+		if (super.getGameState().getPlayer(2) != null && super.getGameState().playerIsAlive(super.getGameState().getPlayer(2))) {
 			playerInteraction(2);
 		}
 	}
@@ -82,7 +82,7 @@ public class Enemy extends AbstractObject {
 				player.boost(0.5);
 				player.changeScoreBy(10);
 				super.getGameState().killSprite(this);
-			} else {
+			} else if (((playerID == 1) && (!super.getGameState().isClient())) || ((playerID == 2) && (!super.getGameState().isServer()))){
 				player.loseLife();
 			}
 		}
