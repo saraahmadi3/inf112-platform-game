@@ -18,7 +18,7 @@ import game.Network.RegistrationRequired;
 import game.Network.UpdatePlayer;
 
 public class PosClient {
-	UI ui;
+	UI ui; 
 	Client client;
 	Login login;
 	private GameState game;
