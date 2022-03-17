@@ -127,8 +127,10 @@ public class Player extends AbstractObject {
 	}
 	
 	public void update() {
+		if ((super.getGameState().isServer() && identity == 2) || (super.getGameState().isClient() && identity == 1)) {
+			return;
+		}
 		checkForDeath();
-		
 		if (isCheating) {
 			cheatMode();
 		} else {

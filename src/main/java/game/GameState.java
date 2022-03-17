@@ -323,9 +323,17 @@ public class GameState {
 	public PosServer getServer() {
 		return server;
 	}
-
+	
+	public boolean isServer() {
+		return server!=null;
+	}
+	
 	public PosClient getClient() {
 		return client;
+	}
+	
+	public boolean isClient() {
+		return client!=null;
 	}
 	 
 	public void startMultiPlayer() {
