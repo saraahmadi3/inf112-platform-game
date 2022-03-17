@@ -23,7 +23,7 @@ public class Door extends Platform {
 	private void openDoor(Player player) {
 		player.useKey();
 		super.getGameState().levelComplete(player.getIdentity());
-		super.getGameState().killSprite(player);
+		player.killPlayer();
 	}
 	
 	@Override

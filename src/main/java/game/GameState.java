@@ -103,11 +103,12 @@ public class GameState {
 	private double adjustForDelay(double deltaTime) {
 		double oldDeltaTime = deltaTime;
 		
-		System.out.println(delayDifference);
 		//Severe adjustment
-		if (delayDifference < (double) -1/2) {
+		if (delayDifference < (double) -1) {
+			System.out.println("High delay: " +delayDifference);
 			deltaTime *= 2;
-		} else if (delayDifference > (double) 1/2) {
+		} else if (delayDifference > (double) 1) {
+			System.out.println("High delay: " +delayDifference);
 			deltaTime *= 0.5;
 		}
 		
