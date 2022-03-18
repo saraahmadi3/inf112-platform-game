@@ -16,6 +16,11 @@ Akseptansekriterier: Alle i nrh
 
 Vi har ikke vært oppmerksomme på at det skal skrives referat fra hver gruppetime, så vi har ikke skrevet referat fra tidligere gruppetimer til nå. I forbindelse med oppmøtet har alle gruppemedlemmene vært tilstede ved hver gruppetime til nå.
 
+#### Referat 18.03.2022
+Tilstede Adrian og Sara
+
+Vi prøvde å jobbe på en bedre løsning for server client i branchen serverSplit, med målet å holde all bakgrunnslogikken i serveren for så å oppdatere dette i client. Har lagd noen planner for hva som må forandres med resten av programmet. Desverre gikk mesteparten av tiden git problemer.
+
 #### Referat 17.03.2022
 Tilstede Kristian og Dani
 
