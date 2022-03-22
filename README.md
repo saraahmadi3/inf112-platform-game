@@ -51,6 +51,16 @@ Mulig løsning: Vi kan sende gameState over serveren. Dette har blitt forsøkt, 
 Mulig løsning2: Vi sender ikke all infoen, men viktig info på ulike intervaller. Eksempelvis må spillerne sjekke for om den andre er død.
 Mulig løsning3: Spillerne må vente på bekreftelse på at informasjonen. 
 
+#### Oppsummering
+- Rollene i teamet fungerer veldig bra. Siden sist har vi også forsøkt oss på å dele oss opp i to grupper for å jobbe med enkelte oppgaver. Dette har falt seg veldig naturlig, da vi har ulike timeplaner. Vi har ikke valgt å oppdatere rollene i teamet, selv om disse rollene kan være i flyt i perioder. 
+
+- Vi har ikke sett behov for å definere nye roller, selv om vi ser et tydelig behov for å hjelpe hverandre på tvers av de definerte rollene. Eksempelvis må antakeligvis flere av oss hjelpe til med å skrive tester i forbindelse med nettverksimplementeringen vår. Dette temaet er nytt for oss alle, og vi har mer enn nok med å få det til å fungere. Vi har derfor gått bort fra den testdrevne utviklingen i forbindelse med dette. 
+
+Dersom vi likevel skal bestemme oss for å legge til en ny rolle, kunne dette kanskje vært en UX-ansvarlig. 
+
+- 
+
+
 
 # Obligatorisk oppgave 1
 
