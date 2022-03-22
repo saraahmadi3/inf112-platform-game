@@ -1,20 +1,15 @@
 ### Brukerhistorier i prioritert rekkefølge for innlevering av obligatorisk oppgave 1:
-De fleste brukerhistoriene i forbindelse med denne innleveringen, dreier seg om multiplayer over nettverk. Det vil si at vi ikke kommer til å levere oppgaven med alle de implementasjonene. Brukerhistoriene bør leses som en prioritert rekkefølge hvor vi begynner på toppen, og jobber oss nedover. Det vil si at vi leverer programmet med den siste implemtasjonen.
-
 1) Jeg forventer at jeg skal kunne spille mot en annen spiller over et lokalt nettverk, uten at forsinkelsen blir for stor.
-Akseptansekriterier: 
+Akseptansekriterier: En spiller på en maskin skal kunne kobles til en annen maskin, og disse skal kunne spille mot hverandre.
 
-2) Jeg forventer at jeg skal kunne spille multiplayer over et lokalt nettverk med en server og to klienter.
-Akseptansekriterier: 
-
-3) Jeg forventer at brukergrensesnittet består av knapper, og er lett å forstå.
+2) Jeg forventer at brukergrensesnittet består av knapper, og er lett å forstå.
 Akseptansekriterier: Det skal være en knapp for en-spiller/flerspiller-funksjon med i GUI.
 
-4) Jeg forventer at spillet har en kickass melodi.
-Akseptansekriterier: Alle i nrh
+3) Jeg forventer at spillet har musikk, for å skape en helthetlig musikkopplevelse.
+Akseptansekriterier: Det spilles musikk når spillet starter.
 
 
-Vi har ikke vært oppmerksomme på at det skal skrives referat fra hver gruppetime, så vi har ikke skrevet referat fra tidligere gruppetimer til nå. I forbindelse med oppmøtet har alle gruppemedlemmene vært tilstede ved hver gruppetime til nå.
+Vi har ikke vært oppmerksomme på at det skal skrives referat fra hver gruppetime, så vi har ikke skrevet referat fra tidligere gruppetimer enn 15.03. I forbindelse med oppmøtet har alle gruppemedlemmene vært tilstede ved hver gruppetime til nå.
 
 #### Referat 22.03.2022
 Tilstede: Sara, Kristian; Adrian og Dani.
@@ -54,16 +49,12 @@ Mulig løsning3: Spillerne må vente på bekreftelse på at informasjonen.
 #### Oppsummering
 
 ##### Roller
-Rollene i teamet fungerer veldig bra. Siden sist har vi også forsøkt oss på å dele oss opp i to grupper for å jobbe med enkelte oppgaver. Dette har falt seg veldig naturlig, da vi har ulike timeplaner. Vi har ikke valgt å oppdatere rollene i teamet, selv om disse rollene kan være i flyt i perioder. 
-
-Vi har ikke sett behov for å definere nye roller, selv om vi ser et tydelig behov for å hjelpe hverandre på tvers av de definerte rollene. Eksempelvis må antakeligvis flere av oss hjelpe til med å skrive tester i forbindelse med nettverksimplementeringen vår. Dette temaet er nytt for oss alle, og vi har hatt mer enn nok med å få det til å fungere. Vi har derfor gått bort fra den testdrevne utviklingen i forbindelse med dette. 
+Rollene i teamet fungerer veldig bra. Vi har ikke sett behov for å definere nye roller, selv om vi ser et tydelig behov for å hjelpe hverandre på tvers av de definerte rollene. Eksempelvis må antakeligvis flere av oss hjelpe til med å skrive tester i forbindelse med nettverksimplementeringen vår. Dette temaet er nytt for oss alle, og vi har hatt mer enn nok med å få det til å fungere. Vi har derfor gått bort fra den testdrevne utviklingen i forbindelse med dette. 
 
 Dersom vi likevel skal bestemme oss for å legge til en ny rolle, kunne dette kanskje vært en UX-ansvarlig. Denne rollen er det kanskje naturlig å gi til Sara eller Dani, eventuelt å splitte opp UX-ansvaret i for eksempel lyd og grafikk.
 
 ##### Gruppedynamikk
-Gruppedynamikken er god. Vi kommuniserer godt med hverandre, og folk er flinke til å følge opp oppgavene vi blir tildelt.
-
-Rent team-messig har vi som nevnt tidligere delt oss opp i to grupper denne gangen. Dette var både fordi vi var uenige om hvilken løsning som ville fungere best, men også fordi at det virket fornuftig å forsøke å løse oppgaven på ulike måter. Ingen av oss hadde erfaring med slike nettverksløsninger, og det var tydelig at dette kunne gjøres på ulike måter. Istedenfor at alle jobbet med samme løsning, virket det derfor mer naturlig at vi forsøkte ulike ting.	
+Gruppedynamikken er god. Vi kommuniserer godt med hverandre, og folk er flinke til å følge opp oppgavene vi blir tildelt. Siden sist har vi også forsøkt oss på å dele oss opp i to grupper for å jobbe med enkelte oppgaver. Dette har falt seg veldig naturlig, da vi har ulike timeplaner. Dette var både fordi vi var uenige om hvilken løsning som ville fungere best, men også fordi at det virket fornuftig å forsøke å løse oppgaven på ulike måter. Ingen av oss hadde erfaring med slike nettverksløsninger, og det var tydelig at dette kunne gjøres på ulike måter. Istedenfor at alle jobbet med samme løsning, virket det derfor mer naturlig at vi forsøkte ulike ting.	
 
 ##### Status quo
 Til nå har vi klart å lage et plattformbasert spill som fungerer godt dersom multiplayer er begrenset til å kjøre på en maskin. Nettverksløsningen vår per dags dato fungerer også dersom det er begrenset til en maskin. Med andre ord finner maskinen localhost. Dersom vi forsøker å kjøre spillet på to ulike maskiner, fungerer ikke nettverksløsningen ennå.
