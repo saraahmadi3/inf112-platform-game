@@ -4,9 +4,7 @@
 
 ## Innhold:
 ##### Deloppgave 1-5
-**[Deloppgave 1: Organisering av teamet](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave1.md#deloppgave-1)<br>
-[Deloppgave 2: Prosessen](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave1.md#deloppgave-2)<br>
-[Deloppgave 3: Oversikt over forventet produktet/Brukerhistorier](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave1.md#deloppgave-3)<br>
+[Deloppgave 1: Oversikt over forventet produktet/Brukerhistorier](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-1)<br>
 [Deloppgave 4: Kode](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave1.md#deloppgave-4)<br>
 [Deloppgave 5: Oppsummering](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave1.md#deloppgave-5)**
 
