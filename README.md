@@ -52,19 +52,20 @@ Mulig løsning2: Vi sender ikke all infoen, men viktig info på ulike intervalle
 Mulig løsning3: Spillerne må vente på bekreftelse på at informasjonen. 
 
 #### Oppsummering
-Roller
+
+##### Roller
 Rollene i teamet fungerer veldig bra. Siden sist har vi også forsøkt oss på å dele oss opp i to grupper for å jobbe med enkelte oppgaver. Dette har falt seg veldig naturlig, da vi har ulike timeplaner. Vi har ikke valgt å oppdatere rollene i teamet, selv om disse rollene kan være i flyt i perioder. 
 
 Vi har ikke sett behov for å definere nye roller, selv om vi ser et tydelig behov for å hjelpe hverandre på tvers av de definerte rollene. Eksempelvis må antakeligvis flere av oss hjelpe til med å skrive tester i forbindelse med nettverksimplementeringen vår. Dette temaet er nytt for oss alle, og vi har hatt mer enn nok med å få det til å fungere. Vi har derfor gått bort fra den testdrevne utviklingen i forbindelse med dette. 
 
 Dersom vi likevel skal bestemme oss for å legge til en ny rolle, kunne dette kanskje vært en UX-ansvarlig. Denne rollen er det kanskje naturlig å gi til Sara eller Dani, eventuelt å splitte opp UX-ansvaret i for eksempel lyd og grafikk.
 
-Gruppedynamikk
+##### Gruppedynamikk
 Gruppedynamikken er god. Vi kommuniserer godt med hverandre, og folk er flinke til å følge opp oppgavene vi blir tildelt.
 
 Rent team-messig har vi som nevnt tidligere delt oss opp i to grupper denne gangen. Dette var både fordi vi var uenige om hvilken løsning som ville fungere best, men også fordi at det virket fornuftig å forsøke å løse oppgaven på ulike måter. Ingen av oss hadde erfaring med slike nettverksløsninger, og det var tydelig at dette kunne gjøres på ulike måter. Istedenfor at alle jobbet med samme løsning, virket det derfor mer naturlig at vi forsøkte ulike ting.	
 
-Status quo
+##### Status quo
 Til nå har vi klart å lage et plattformbasert spill som fungerer godt dersom multiplayer er begrenset til å kjøre på en maskin. Nettverksløsningen vår per dags dato fungerer også dersom det er begrenset til en maskin. Med andre ord finner maskinen localhost. Dersom vi forsøker å kjøre spillet på to ulike maskiner, fungerer ikke nettverksløsningen ennå.
 
 Vi har så smått begynt å legge til musikk til spillet. Inntil videre har vi bare lagt til en lydfil funnet på freesound.org, for å se om det fungerer. Denne vil byttes ut senere med noe som passer spillet bedre. På sikt vil vi også legge til lydfiler som akkompagnerer spillet som f. eks. hopp, boost, "fiende blir tatt", "spiller blir tatt av fiende" etc.
