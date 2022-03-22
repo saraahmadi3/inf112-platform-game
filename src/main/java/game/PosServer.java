@@ -1,6 +1,7 @@
 package game;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.util.HashSet;
 
 import com.esotericsoftware.kryonet.Connection;
@@ -35,6 +36,14 @@ public class PosServer {
 		// For consistency, the classes to be sent over the network are
 		// registered by the same method for both the client and server.
 		Network.register(server);
+		server.start();
+		
+		try {
+			server.bind(Network.port, Network.port-1);
+		} catch (Exception e) {
+			System.out.println("Catched exception: "+e); 
+		}
+		
 
 		server.addListener(new Listener() {
 			public void received (Connection c, Object object) {
@@ -134,13 +143,6 @@ public class PosServer {
 				}
 			}
 		});
-		try {
-			server.bind(Network.port, Network.port-1);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		server.start();
 	}
 
 	public void sendMsg() {

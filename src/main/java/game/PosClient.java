@@ -9,6 +9,7 @@ import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Listener.ThreadedListener;
+import com.esotericsoftware.minlog.Log;
 
 import game.Network.GameDeltaTime;
 import game.Network.KillPlayer;
@@ -26,15 +27,15 @@ public class PosClient {
 	int id;
 
 	public PosClient (GameState game) throws IOException {
-		System.setProperty("java.net.preferIPv4Stack" , "true");
+		//System.setProperty("java.net.preferIPv4Stack" , "true");
 		id = 2;
 		client = new Client();
 		this.game=game;
-
+		Log.set(1);
 		// For consistency, the classes to be sent over the network are
 		// registered by the same method for both the client and server.
 		Network.register(client);
-
+		client.start();
 		// ThreadedListener runs the listener methods on a different thread.
 		client.addListener(new ThreadedListener(new Listener() {
 			public void connected (Connection connection) {
@@ -108,8 +109,7 @@ public class PosClient {
 			System.out.println("Host: "+host.toString());
 		}
 	
-		client.connect(2500, host, Network.port);
-		client.start();
+		client.connect(2500, host, Network.port, Network.port-1);
 		this.login = new Login();
 		login.id = id;
 		client.sendTCP(login);
