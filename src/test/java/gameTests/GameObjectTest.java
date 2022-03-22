@@ -3,16 +3,11 @@ package gameTests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.JUnitException;
 
-import exceptions.InvalidPlatformException;
 import game.BoostPlatform;
 import game.Door;
 import game.Enemy;
@@ -126,7 +121,6 @@ class GameObjectTest {
 	@Test 
 	void boostPlatformTest() {
 		System.out.println(playerOne.getX() + "," + playerOne.getY());
-		double negativeBoostFactor = -1;
 		final double J = 150;
 		double boostFactor = 2;
 		BoostPlatform boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, null); 
@@ -385,7 +379,7 @@ class GameObjectTest {
 		moveCount = 1;
 		boolean hasOpenedDoor = false;
 		while(!hasOpenedDoor) {
-			door.moveByY(-(0.1));
+			door.moveByY(-(0.01));
 			door.update();
 			
 			hasOpenedDoor = !playerOne.hasKey();

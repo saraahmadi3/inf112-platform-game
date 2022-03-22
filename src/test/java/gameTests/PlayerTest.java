@@ -3,17 +3,13 @@ package gameTests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import exceptions.ConflictingGameObjectsException;
-import exceptions.InvalidPlayerException;
 import game.GameObjects;
 import game.GameState;
 import game.Platform;
