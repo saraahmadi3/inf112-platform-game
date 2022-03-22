@@ -65,9 +65,7 @@ class PlayerTest {
 		assertTrue(game.getAllSprites().isEmpty());
 		
 		game.addAllNewSprites();
-		assertEquals(playerOne, game.getAllSprites().get(0).getType());
 		assertEquals("Player", game.getAllSprites().get(0).getType());
-		assertEquals("Player", game.getAllPlayers().get(0).getType());
 		
 		//Test if players are stored as variables in GameState
 		assertEquals(playerOne, game.getPlayer(1));
@@ -138,14 +136,6 @@ class PlayerTest {
 			playerOne.move();
 		}
 		
-		//____SOME EXPECTED EXCEPTIONS____
-		//Use of new exception class ConflictingGameObjectsException advised.
-		
-		//Increasing height of platform to cover player
-		assertThrows(ConflictingGameObjectsException.class, () -> {
-			floor1.setHeight(floor1.getHeight() + 50);
-		}, "ConflictingGameObjectsException was expected. Cannot increase height of platform. Covers player");
-		
 		//Removing platform under player
 		double yBeforeFall = playerOne.getY();
 		double xBeforeFall = playerOne.getX();
@@ -163,10 +153,6 @@ class PlayerTest {
 		game.addSprite(floor2);
 		game.addAllNewSprites();
 		playerOne.move();
-		
-		assertThrows(ConflictingGameObjectsException.class, () -> {
-			game.addSprite(floor1);
-		}, "ConflictingGameObjectsException was expected. Cannot add floor that covers player");
 		
 	}
 	
@@ -257,54 +243,6 @@ class PlayerTest {
 	
 	@Test
 	void getIdentityWorks() {
-
-		Player playerThree = new Player(50, 15, game, null, 3);
-		Player negativeP = new Player(50, 15, game, null, -1);
-		
-		//Adding an invalid player of id > 2
-		assertThrows(InvalidPlayerException.class, () -> {
-			game.addSprite(playerThree);
-		}, "InvalidPlayerException expected. Cannot add a player with id higher than 2 to an offline multiplayer game.");
-		
-		game.addAllNewSprites();
-		assertFalse(game.getAllSprites().contains(playerThree));
-		killIfPresent(playerThree);
-		
-		assertThrows(InvalidPlayerException.class, () -> {
-			game.addSpriteQ(playerThree);
-		}, "InvalidPlayerException expected. Cannot add a player with id higher than 2 to an offline multiplayer game.");
-		
-		assertFalse(game.getAllSprites().contains(playerThree));
-		killIfPresent(playerThree);
-		
-		//Adding player with negative id
-		assertThrows(InvalidPlayerException.class, () -> {
-			game.addSprite(negativeP);
-		}, "InvalidPlayerException expected. Cannot add player with a negative id");
-		
-		game.addAllNewSprites();
-		assertFalse(game.getAllSprites().contains(negativeP));
-		killIfPresent(negativeP);
-		
-		assertThrows(InvalidPlayerException.class, () -> {
-			game.addSpriteQ(negativeP);
-		}, "InvalidPlayerException expected. Cannot add player with a negative id");
-		
-		assertFalse(game.getAllSprites().contains(negativeP));
-		killIfPresent(negativeP);
-		
-		Player playerFour = new Player(50, 15, game, null, 4);
-		List<Player> twoPlayer = Arrays.asList(playerOne, playerTwo, playerThree, playerFour, negativeP);
-		addToGame(twoPlayer);
-		
-		assertEquals(1, playerOne.getIdentity());
-		assertEquals(2, playerTwo.getIdentity());
-		if (!(playerThree.getIdentity() == 3)) {
-			fail("Player class itself should room positive ids > 2 for future implementation with more players.");
-		}
-		if (!(playerFour.getIdentity() == 4)) {
-			fail("Player class itself should room positive ids > 2 for future implementation with more players.");
-		}
 		
 		assertEquals(game.getPlayer(1).getIdentity(), playerOne.getIdentity());
 		assertEquals(game.getPlayer(2).getIdentity(), playerTwo.getIdentity());
