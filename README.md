@@ -16,6 +16,14 @@ Akseptansekriterier: Alle i nrh
 
 Vi har ikke vært oppmerksomme på at det skal skrives referat fra hver gruppetime, så vi har ikke skrevet referat fra tidligere gruppetimer til nå. I forbindelse med oppmøtet har alle gruppemedlemmene vært tilstede ved hver gruppetime til nå.
 
+#### Referat 22.03.2022
+Tilstede: Sara, Kristian; Adrian og Dani.
+
+Halvparten av gruppen har problemer med å kjøre programmet i Eclipse/Intellij, tilsynelatende etter å ha kjørt koden i Visual Studio Code hvor den har blitt kompilert med en nyere versjon av Java.
+
+Siden sist har gruppen delt seg i to for å jobbe med implementeringen av nettverk i forbindelse med multiplayer-funksjonen. Vi har angrepet problemet på to ulike måter. Sara og Adrian har jobbet med å implementere en selvstendig server, som de ulike klientene kan koble seg opp mot. Kristian og Dani har jobbet med løsningen hvor den ene klienten blir en server, som den andre spilleren knytter seg opp mot. Ingen av løsningene fungerer skikkelig ennå.
+
+
 #### Referat 18.03.2022
 Tilstede Adrian og Sara
 
@@ -24,7 +32,7 @@ Vi prøvde å jobbe på en bedre løsning for server client i branchen serverSpl
 #### Referat 17.03.2022
 Tilstede Kristian og Dani
 
-Vi hadde en ekstraøkt for å forsøke å komme videre med multiplayer over nettver. Slik multiplayer fungerer nå, må man klienten manuelt skrive inn ip-adressen til serveren. Dermed er "klient-spilleren" avhengig av å sitte ved siden av "server-spilleren". Dette ønsket vi å forbedre. Vi forsøkte først en løsning hvor vi ved hjelp av DatagramPacket og DatagramSocket-bibliotekene, broadcaster en pakke fra fra klient til server. Server sjekker at dette er fra klienten, og sender tilbake til serveren. Klienten får pakken fra serveren, og har med det også adressen. Dette viste seg ikke å fungere, da vi hadde misforstått hvordan send-metoden i DatagramSocket fungerte. Den ble ikke broadcastet slik vi så for oss.
+Vi hadde en ekstraøkt for å forsøke å komme videre med multiplayer over nettverk. Slik multiplayer fungerer nå, må klienten manuelt skrive inn ip-adressen til serveren. Dermed er "klient-spilleren" avhengig av å sitte ved siden av "server-spilleren". Dette ønsket vi å forbedre. Vi forsøkte først en løsning hvor vi ved hjelp av DatagramPacket og DatagramSocket-bibliotekene, broadcaster en pakke fra fra klient til server. Server sjekker at dette er fra klienten, og sender tilbake til serveren. Klienten får pakken fra serveren, og har med det også adressen. Dette viste seg ikke å fungere, da vi hadde misforstått hvordan send-metoden i DatagramSocket fungerte. Den ble ikke broadcastet slik vi så for oss.
 
 Vi forsøkte da å benytte oss av Klient-klassen - arvet av kryonet - til å gjøre noe lignende. client.discoverHost skal gi oss adressen til serveren.
 
