@@ -1,3 +1,15 @@
+# Obligatorisk oppgave 2
+
+
+
+## Innhold:
+##### Deloppgave 1-5
+**[Deloppgave 1: Organisering av teamet](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave1.md#deloppgave-1)<br>
+[Deloppgave 2: Prosessen](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave1.md#deloppgave-2)<br>
+[Deloppgave 3: Oversikt over forventet produktet/Brukerhistorier](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave1.md#deloppgave-3)<br>
+[Deloppgave 4: Kode](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave1.md#deloppgave-4)<br>
+[Deloppgave 5: Oppsummering](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave1.md#deloppgave-5)**
+
 ### Brukerhistorier i prioritert rekkefølge for innlevering av obligatorisk oppgave 1:
 1) Jeg forventer at jeg skal kunne spille mot en annen spiller over et lokalt nettverk, uten at forsinkelsen blir for stor.
 Akseptansekriterier: En spiller på en maskin skal kunne kobles til en annen maskin, og disse skal kunne spille mot hverandre.
