@@ -76,7 +76,6 @@ class GameObjectTest {
 		
 		playerOne.setXandY(50, 20);
 		playerOne.boost(0);
-		playerOne.clearCurrentPlatform();
 	}
 	
 	//Simulate a n-times seconds drop to platform by player in 60 frames per second
@@ -169,25 +168,8 @@ class GameObjectTest {
 		
 		game.killSprite(boostP);
 		game.removeAllDeadSprites();
-		
 
-		BoostPlatform negativeBoostP = new BoostPlatform(game, -500, -10, 1150, 20, negativeBoostFactor, null); 
-		assertThrows(InvalidPlatformException.class, () -> {
-			game.addSprite(negativeBoostP);
-		}, "InvalidPlatformException expected. Cannot add BoostPlatform with negative boost.");
-		
 		game.addAllNewSprites();
-		assertFalse(game.getAllPlatforms().contains(negativeBoostP));
-		if(game.getAllPlatforms().contains(negativeBoostP)) {
-			game.killSprite(negativeBoostP);
-			game.removeAllDeadSprites();
-		}
-		
-		assertThrows(InvalidPlatformException.class, () -> {
-			game.addSpriteQ(negativeBoostP);
-		}, "InvalidPlatformException expected. Cannot add BoostPlatform with negative boost.");
-		
-		assertFalse(game.getAllPlatforms().contains(negativeBoostP));
 	}
 	
 	@Test
