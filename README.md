@@ -1,3 +1,6 @@
+# Running 
+I forbindelse med tilbakemeldingen til oblig1, har vi blitt gjort oppmerksomme på at gruppelederne ikke klarer å kjøre programmet vårt på maskinene deres. Vår forelpige hypotese er at dette skyldes noe i forbindelse med Eclipse. Dersom vi ikke klarer å løse dette før fristen, er det derfor mulig at brukeren må kjøre programmet i Eclipse.
+
 # INF112 libGDX + Maven template 
 Simple skeleton with [libGDX](https://libgdx.com/). See the tutorial in [Filer / Tutorials](https://mitt.uib.no/courses/33532/files/folder/Tutorials) on Mitt UiB. 
 
