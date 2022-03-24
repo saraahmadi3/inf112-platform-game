@@ -1,4 +1,6 @@
-# Obligatorisk oppgave 2
+# Oblig 2 
+
+* Team: *antsy-antonym* (Gruppe 8): *Sara Ahmadi, Kristian Nore, Dani Marås og Adrian Clopan.*
 
 
 
