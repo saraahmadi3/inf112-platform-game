@@ -10,7 +10,7 @@
 
 ### Deloppgave 1: Team og prosjekt
 
-**[Referatene](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/Referat)<br>** våre er samlet i egen mappe, for å holde dette dokumentet mest mulig oversiktlig.
+**[Referatene](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/Referat)** våre er samlet i egen mappe, for å holde dette dokumentet mest mulig oversiktlig.
 
 ### Brukerhistorier i prioritert rekkefølge for innlevering av obligatorisk oppgave 2:
 1) Jeg forventer at jeg skal kunne spille mot en annen spiller over et lokalt nettverk, uten at forsinkelsen blir for stor.
