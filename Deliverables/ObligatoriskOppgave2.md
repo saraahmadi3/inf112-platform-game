@@ -39,3 +39,6 @@ Vi har så smått begynt å legge til musikk til spillet. Inntil videre har vi b
 
 ##### U-committet kode
 I forbindelse med nettverksimplementeringen vår, har vi skrevet veldig mye kode som ikke har blitt committet. Dette er av den enkle grunn at vi har forsøkt på ting som ikke har fungert. I disse tilfellene har vi slettet kode lokalt uten å committe det.
+
+##### Prosjektmetodikk
+Siden forrige gang har vi endret noe på prosjektmetodikken. Vi benytter oss fremdeles av Kanban-metoden, men har gått vekk fra bruken av Trello som verktøy. Istedenfor har vi benyttet oss av "Issues", som er en egen feature på github. Dette virket som en mer praktisk løsning, siden vi allerede bruker github. Det må likevel innvendes at vi ikke har vært flinke nok til faktisk å bruke det, og at arbeidsfordelingen har fortsatt å skje på en muntlig måte.
