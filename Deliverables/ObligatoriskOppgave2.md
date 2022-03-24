@@ -5,11 +5,11 @@
 
 
 ## Innhold
-**[Deloppgave 1](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-1:-team-og-prosjekt)<br>
-[Deloppgave 2](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-2:-krav)<br>**
+**[Deloppgave 1](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-1)<br>
+[Deloppgave 2](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-2)<br>**
 
 
-### Deloppgave 1: Team og prosjekt
+### Deloppgave 1
 
 **[Referatene](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/Referat)** våre er samlet i egen mappe, for å holde dette dokumentet mest mulig oversiktlig.
 
@@ -29,7 +29,7 @@ Gruppedynamikken er god. Vi kommuniserer godt med hverandre, og folk er flinke t
 ##### U-committet kode
 I forbindelse med nettverksimplementeringen vår, har vi skrevet veldig mye kode som ikke har blitt committet. Dette er av den enkle grunn at vi har forsøkt på ting som ikke har fungert. I disse tilfellene har vi slettet kode lokalt uten å committe det.
 
-### Deloppgave 2: krav
+### Deloppgave 2
 ##### Status quo og veien videre
 I forbindelse med denne innleveringen har vi prioritert følgende tre brukerhistorier:
 
