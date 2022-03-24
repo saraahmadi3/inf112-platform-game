@@ -10,18 +10,12 @@
 ### Brukerhistorier i prioritert rekkefølge for innlevering av obligatorisk oppgave 2:
 1) Jeg forventer at jeg skal kunne spille mot en annen spiller over et lokalt nettverk, uten at forsinkelsen blir for stor.
 Akseptansekriterier: En spiller på en maskin skal kunne kobles til en annen maskin, og disse skal kunne spille mot hverandre.
-Krav som dekkes: 
 
-2) Jeg forventer at brukergrensesnittet består av knapper, og er lett å forstå.
+2) Jeg forventer at brukergrensesnittet er intuitivt.
 Akseptansekriterier: Det skal være en knapp for en-spiller/flerspiller-funksjon med i GUI.
 
 3) Jeg forventer at spillet har musikk, for å skape en helthetlig musikkopplevelse.
 Akseptansekriterier: Det spilles musikk når spillet starter.
-
-Husk å slette denne:
-Som spiller forventer jeg å se en verden/spillbrett som utgjør selve spillet, slik at jeg vet hvor jeg kan/bør bevege spilleren.Akseptansekriterier: Vi skal ha en klar definert nedre del av spillbrettet, og minst èn plattform en annen plass på spillbrettet. Det skal også finnes en dør/portal eller lignende, som viser hvor karakteren skal ende for å komme til neste level/nivå.
-Krav som dekkes: krav 1 om å vise et spillebrett, og delvis også krav 8 om et mål for spillbrettet.
-Arbeidsoppgaver: I Main.js må vi lage et vindu. I GameLoop.js må vi tegne alle elementer for hver frame. Vi trenger en Platform.js klasse, og evetuelle andre klasser som implementerer et GameObjects.js interface og blir tegnet. Sara lager interfacet GameObjects.js, og eventuelle nødvendige klasser, Kristian hjelper med implementasjonsdetaljer og foreløpig grafikk for spillbrettet.
 
 
 #### Oppsummering
