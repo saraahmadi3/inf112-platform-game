@@ -54,25 +54,10 @@ public class GameState {
 		allPlayers = new ArrayList<Player>();
 		
 		System.out.println("Mode: "+mode);
-		if (mode == 0) {
-			setSinglePlayerID(1);
-			startSinglePlayer();
-		} else if (mode == 1) {
-			setSinglePlayerID(2);
-			startSinglePlayer();
-		} else if (mode == 2) {
-			setMultiPlayer(true);
-		} else if (mode == 3) {
-			startMultiPlayer("A");
-		} else if (mode == 4) {
-			startMultiPlayer("S");
-		} else if (mode == 5) {
-			startMultiPlayer("C");
-		} else if (mode == 6) {
-			startMultiPlayer("M");
-		}
-			
+		
 		currentLevel = gameLevel;
+		
+		startMode(mode);
 		
 	}
 
@@ -88,6 +73,30 @@ public class GameState {
 		this(null, gameLevel, 0);
 	}
 	
+	private void startMode(int mode) {
+		if (mode == 0) {
+			setSinglePlayerID(1);
+			startSinglePlayer();
+		} else if (mode == 1) {
+			setSinglePlayerID(2);
+			startSinglePlayer();
+		} else if (mode == 2) {
+			setMultiPlayer(true);
+			if (currentLevel == 0) {
+				level(0);
+			} else {
+				level(currentLevel);
+			}
+		} else if (mode == 3) {
+			startMultiPlayer("A");
+		} else if (mode == 4) {
+			startMultiPlayer("S");
+		} else if (mode == 5) {
+			startMultiPlayer("C");
+		} else if (mode == 6) {
+			startMultiPlayer("M");
+		}
+	}
 	
 	public double getTotalDeltaTime() {
 		return totalDeltaTime;
@@ -95,10 +104,10 @@ public class GameState {
 	
 	public void startSinglePlayer() {
 		setMultiPlayer(false);
-		if (currentLevel != 0) {
-			level(currentLevel);
-		} else {
+		if (currentLevel == 0) {
 			level(0);
+		} else {
+			level(currentLevel);
 		}
 	}
 
@@ -339,7 +348,6 @@ public class GameState {
 	//TODO find a better place for this information.
 	public void level(int gameLevel) {
 		clearState();
-		gameStarted = true;
 		if (gameLevel == 1) {
 			new Level1(this);
 		} else if (gameLevel == 2) {
@@ -347,6 +355,7 @@ public class GameState {
 		} else {
 			new Level0(this);
 		}
+		gameStarted = true;
 	}
 
 	public PosServer getServer() {
