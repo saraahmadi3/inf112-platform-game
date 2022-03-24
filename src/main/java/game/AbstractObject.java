@@ -199,10 +199,12 @@ public abstract class AbstractObject implements GameObjects {
 		}
 	}
 	
+	@Override
 	public void update() {
 		return;
 	}
 	
+	@Override
 	public void move() {
 		return;
 	}
