@@ -54,7 +54,11 @@ Til neste sprint, ønsker vi å videreutvikle de samme brukerhistoriene vi har j
 ##### Bugs
 Det eksisterer en del bugs i spillet. En av bugsene som finnes er at dersom spilleren beveger seg for fort, kan det hende at collision-detection ikke fungerer. Dette problemet er ikke utbredt, men det kan forekomme.  
 
-De fleste bugsene er knyttet til synkronisering i forbindelse med multiplayer-funksjonen over nettverk. Spilleren som spiller på pc 1 vil oppleve at sin spiller er synkron med terrenget, men at motspilleren kan være usynkron med terrenget. Dette skjer typisk i forbindelse med de bevegelige plattformene. Når terrenget blir usynkront på de to ulike maskinene, kan det for spiller 1 fortone seg som at spiller 2 og den bevegelige plattformen hen står på er ute av synk. En vil likevel oppleve at sin egen spiller er synkron med det lokale terrenget.
+De fleste bugsene er knyttet til synkronisering i forbindelse med multiplayer-funksjonen over nettverk. Spilleren som spiller på pc 1 vil oppleve at sin spiller er synkron med terrenget, men at motspilleren kan være usynkron med terrenget. Dette skjer typisk i forbindelse med de bevegelige plattformene. Når terrenget blir usynkront på de to ulike maskinene, kan det for spiller 1 fortone seg som at spiller 2 og den bevegelige plattformen hen står på er ute av synk. En vil likevel oppleve at sin egen spiller er synkron med det lokale terrenget.  
+
+Synkroniseringen får også store problemer dersom den ene spilleren dør i multiplayer-funksjonen.
+
+
 
 ### Deloppgave 3
 I forbindelse med tilbakemeldingen på oblig 1 ble vi gjort oppmerksomme på at programmet ikke lot seg kjøre på maskinene til gruppelederne. Denne tilbakemeldingen fikk vi to dager før fristen, så vi har rett og slett ikke rukket å fikse det. Hypotesen vår er at problemet på et eller annet vis skyldes Eclipse, da samtlige gruppemedlemmer bruker dette, mens ingen av gruppelederne gjør det. Vi har sjekket feilmeldingene gruppelederne får (tilsynelatende feil i file-paths), men vi får ikke de samme feilmeldingene, og klarer heller ikke å se hvorfor file-pathsene skulle være feil. Vi har kontaktet Anya for hjelp, men det er en fare for at hun ikke rekker å hjelpe oss før fristen. Vi håper derfor at gruppelederne kan forsøke å åpne programmet i Eclipse, dersom det ikke lar seg kjøre.
