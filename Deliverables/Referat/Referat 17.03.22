@@ -1,0 +1,5 @@
+Referat 17.03.2022
+Tilstede Kristian og Dani
+Vi hadde en ekstraøkt for å forsøke å komme videre med multiplayer over nettverk. Slik multiplayer fungerer nå, må klienten manuelt skrive inn ip-adressen til serveren. Dermed er "klient-spilleren" avhengig av å sitte ved siden av "server-spilleren". Dette ønsket vi å forbedre. Vi forsøkte først en løsning hvor vi ved hjelp av DatagramPacket og DatagramSocket-bibliotekene, broadcaster en pakke fra fra klient til server. Server sjekker at dette er fra klienten, og sender tilbake til serveren. Klienten får pakken fra serveren, og har med det også adressen. Dette viste seg ikke å fungere, da vi hadde misforstått hvordan send-metoden i DatagramSocket fungerte. Den ble ikke broadcastet slik vi så for oss.
+Vi forsøkte da å benytte oss av Klient-klassen - arvet av kryonet - til å gjøre noe lignende. client.discoverHost skal gi oss adressen til serveren.
+
