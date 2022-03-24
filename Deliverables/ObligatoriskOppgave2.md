@@ -58,6 +58,6 @@ De fleste bugsene er knyttet til synkronisering i forbindelse med multiplayer-fu
 ### Deloppgave 3
 I forbindelse med tilbakemeldingen på oblig 1 ble vi gjort oppmerksomme på at programmet ikke lot seg kjøre på maskinene til gruppelederne. Denne tilbakemeldingen fikk vi to dager før fristen, så vi har rett og slett ikke rukket å fikse det. Hypotesen vår er at problemet på et eller annet vis skyldes Eclipse, da samtlige gruppemedlemmer bruker dette, mens ingen av gruppelederne gjør det. Vi har sjekket feilmeldingene gruppelederne får (tilsynelatende fiel i filepaths), men vi får ikke de samme feilmeldingene, og klarer heller ikke å se hvorfor filepathsene skulle være feil.
 
-Klassediagrammet
+[Klassediagrammet](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/KlassediagramOblig2.png) er lastet opp som en png-fil, for å letter kunne zoome inn på det.
 
 
