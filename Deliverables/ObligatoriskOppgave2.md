@@ -33,13 +33,13 @@ I forbindelse med nettverksimplementeringen vår, har vi skrevet veldig mye kode
 ##### Status quo og veien videre
 I forbindelse med denne innleveringen har vi prioritert følgende tre brukerhistorier:
 
-1) Jeg forventer at jeg skal kunne spille mot en annen spiller over et lokalt nettverk, uten at forsinkelsen blir for stor.
+1) Jeg forventer at jeg skal kunne spille mot en annen spiller over et lokalt nettverk, uten at forsinkelsen blir for stor.  
 Akseptansekriterier: En spiller på en maskin skal kunne kobles til en annen maskin, og disse skal kunne spille mot hverandre.
 
-2) Jeg forventer at brukergrensesnittet er intuitivt.
+2) Jeg forventer at brukergrensesnittet er intuitivt.  
 Akseptansekriterier: Det skal være en knapp for en-spiller/flerspiller-funksjon med i GUI.
 
-3) Jeg forventer at spillet har musikk, for å skape en helthetlig musikkopplevelse.
+3) Jeg forventer at spillet har musikk, for å skape en helthetlig musikkopplevelse.  
 Akseptansekriterier: Det spilles musikk når spillet starter.
 
 "Stretchgoalet" vårt i denne forbindelse vil være å implementere en multiplayer-løsning som fungerer på lokalt nettverk.Til nå har vi klart å lage et plattformbasert spill som fungerer godt dersom multiplayer er begrenset til å kjøre på en maskin (piltaster og asdw). Vi har også fått til en nettverksløsning som fungerer dersom vi manuelt skriver inn IP-koden. Til neste gang ønsker vi å få til en nettverksløsning hvor vi ikke trenger å skrive inn IP-adressen manuelt.
