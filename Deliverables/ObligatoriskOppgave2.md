@@ -28,7 +28,7 @@ Gruppedynamikken er god. Vi kommuniserer godt med hverandre, og folk er flinke t
 
 
 ##### U-committet kode
-I forbindelse med nettverksimplementeringen vår, har vi skrevet veldig mye kode som ikke har blitt committet. Dette er av den enkle grunn at vi har forsøkt på ting som ikke har fungert. I disse tilfellene har vi slettet kode lokalt uten å committe det.
+I forbindelse med nettverksimplementeringen vår, har vi skrevet veldig mye kode som ikke har blitt committet. Dette er av den enkle grunn at vi har forsøkt på ting som ikke har fungert. I disse tilfellene har vi slettet kode lokalt uten å committe det. Vi delte oss også i to grupper (Dani/ Kristian og Sara/Adrian) da vi forsøkte å løse nettverksimplementeringen. Sara og Adrian lagde da en egen branch for å jobbe med deres løsning.
 
 ### Deloppgave 2
 ##### Status quo og veien videre
@@ -43,7 +43,7 @@ Akseptansekriterier: Det skal være en knapp for en-spiller/flerspiller-funksjon
 3) Jeg forventer at spillet har musikk, for å skape en helthetlig musikkopplevelse.  
 Akseptansekriterier: Det spilles musikk når spillet starter.
 
-"Stretchgoalet" vårt i denne forbindelse vil være å implementere en multiplayer-løsning som fungerer på lokalt nettverk.Til nå har vi klart å lage et plattformbasert spill som fungerer godt dersom multiplayer er begrenset til å kjøre på en maskin (piltaster og asdw). Vi har også fått til en nettverksløsning som fungerer dersom vi manuelt skriver inn IP-koden. Til neste gang ønsker vi å få til en nettverksløsning hvor vi ikke trenger å skrive inn IP-adressen manuelt.
+"Stretchgoalet" vårt til denne innleveringen har vært å implementere en multiplayer-løsning som fungerer på lokalt nettverk.Til nå har vi klart å lage et plattformbasert spill som fungerer godt dersom multiplayer er begrenset til å kjøre på en maskin (piltaster og asdw). Vi har også fått til en nettverksløsning som fungerer dersom vi manuelt skriver inn IP-koden. Til neste gang ønsker vi å få til en nettverksløsning hvor vi ikke trenger å skrive inn IP-adressen manuelt.
 
 I forbindelse med brukerhistorie 2 lar startskjermen oss velge mellom enkel- og flerspiller, men vi ønsker å forbedre denne når vi har fått nettverksløsningen vår bedre til.
 
@@ -52,12 +52,13 @@ Vi har så smått begynt å legge til musikk til spillet. Inntil videre har vi b
 Til neste sprint, ønsker vi å videreutvikle de samme brukerhistoriene vi har jobbet med frem til denne innleveringen. Vi ønsker som sagt å få til en nettverksløsningn hvor ikke trenger å skrive inn IP-adressen manuelt, vi vil ha en mer intuitiv startskjerm (knapper og/eller flere valg knyttet til nettverksløsninger) i tillegg til egenkomponert musikk og lydeffekter til spillet.
 
 ##### Bugs
-Det eksisterer en del bugs i spillet. En av bugsene som finnes er at dersom spilleren beveger seg for fort, kan det hende at collision-detection ikke fungerer. Dette problemet er ikke utbredt, men det kan forekomme.
+Det eksisterer en del bugs i spillet. En av bugsene som finnes er at dersom spilleren beveger seg for fort, kan det hende at collision-detection ikke fungerer. Dette problemet er ikke utbredt, men det kan forekomme.  
+
 De fleste bugsene er knyttet til synkronisering i forbindelse med multiplayer-funksjonen over nettverk. Spilleren som spiller på pc 1 vil oppleve at sin spiller er synkron med terrenget, men at motspilleren kan være usynkron med terrenget. Dette skjer typisk i forbindelse med de bevegelige plattformene. Når terrenget blir usynkront på de to ulike maskinene, kan det for spiller 1 fortone seg som at spiller 2 og den bevegelige plattformen hen står på er ute av synk. En vil likevel oppleve at sin egen spiller er synkron med det lokale terrenget.
 
 ### Deloppgave 3
-I forbindelse med tilbakemeldingen på oblig 1 ble vi gjort oppmerksomme på at programmet ikke lot seg kjøre på maskinene til gruppelederne. Denne tilbakemeldingen fikk vi to dager før fristen, så vi har rett og slett ikke rukket å fikse det. Hypotesen vår er at problemet på et eller annet vis skyldes Eclipse, da samtlige gruppemedlemmer bruker dette, mens ingen av gruppelederne gjør det. Vi har sjekket feilmeldingene gruppelederne får (tilsynelatende fiel i filepaths), men vi får ikke de samme feilmeldingene, og klarer heller ikke å se hvorfor filepathsene skulle være feil.
+I forbindelse med tilbakemeldingen på oblig 1 ble vi gjort oppmerksomme på at programmet ikke lot seg kjøre på maskinene til gruppelederne. Denne tilbakemeldingen fikk vi to dager før fristen, så vi har rett og slett ikke rukket å fikse det. Hypotesen vår er at problemet på et eller annet vis skyldes Eclipse, da samtlige gruppemedlemmer bruker dette, mens ingen av gruppelederne gjør det. Vi har sjekket feilmeldingene gruppelederne får (tilsynelatende feil i file-paths), men vi får ikke de samme feilmeldingene, og klarer heller ikke å se hvorfor file-pathsene skulle være feil. Vi har kontaktet Anya for hjelp, men det er en fare for at hun ikke rekker å hjelpe oss før fristen. Vi håper derfor at gruppelederne kan forsøke å åpne programmet i Eclipse, dersom det ikke lar seg kjøre.
 
-[Klassediagrammet](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/KlassediagramOblig2.png) er lastet opp som en png-fil, for å letter kunne zoome inn på det.
+[Klassediagrammet](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/KlassediagramOblig2.png) er lastet opp som en png-fil, for å lettere kunne zoome inn på det. Merk at du må åpne det i en ny fane for å kunne zoome i det.
 
 
