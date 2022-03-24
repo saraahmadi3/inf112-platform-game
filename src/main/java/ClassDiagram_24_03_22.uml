@@ -3040,6 +3040,7 @@
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_n696Qqt6EeyhUa3PxTJlLQ" name="checkForHit" specification="_n5LKgKt6EeyhUa3PxTJlLQ">
           <ownedParameter xmi:id="_n696Q6t6EeyhUa3PxTJlLQ" name="player" type="_npDq4Kt6EeyhUa3PxTJlLQ"/>
           <ownedParameter xmi:id="_n696RKt6EeyhUa3PxTJlLQ" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
           </ownedParameter>
           <language>java</language>
@@ -3060,13 +3061,16 @@
 	</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_n696R6t6EeyhUa3PxTJlLQ" name="getGameState" specification="_nqYgkKt6EeyhUa3PxTJlLQ">
-          <ownedParameter xmi:id="_n696SKt6EeyhUa3PxTJlLQ" type="_np9p0Kt6EeyhUa3PxTJlLQ" direction="return"/>
+          <ownedParameter xmi:id="_n696SKt6EeyhUa3PxTJlLQ" type="_np9p0Kt6EeyhUa3PxTJlLQ" direction="return">
+            <name xsi:nil="true"/>
+          </ownedParameter>
           <language>java</language>
           <body>return game;&#xD;
 	</body>
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_n696Sat6EeyhUa3PxTJlLQ" name="getSymbol" specification="_nqYgkat6EeyhUa3PxTJlLQ">
           <ownedParameter xmi:id="_n696Sqt6EeyhUa3PxTJlLQ" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <language>java</language>
@@ -3075,6 +3079,7 @@
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_n696S6t6EeyhUa3PxTJlLQ" name="getType" specification="_nqaVwKt6EeyhUa3PxTJlLQ">
           <ownedParameter xmi:id="_n696TKt6EeyhUa3PxTJlLQ" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedParameter>
           <language>java</language>
@@ -3083,6 +3088,7 @@
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_n6-hUKt6EeyhUa3PxTJlLQ" name="getXMid" specification="_nqbj4Kt6EeyhUa3PxTJlLQ">
           <ownedParameter xmi:id="_n6-hUat6EeyhUa3PxTJlLQ" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
           </ownedParameter>
           <language>java</language>
@@ -3099,6 +3105,7 @@
         </ownedBehavior>
         <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_n6-hVKt6EeyhUa3PxTJlLQ" name="getYMid" specification="_nqcK8qt6EeyhUa3PxTJlLQ">
           <ownedParameter xmi:id="_n6-hVat6EeyhUa3PxTJlLQ" direction="return">
+            <name xsi:nil="true"/>
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
           </ownedParameter>
           <language>java</language>
@@ -3675,6 +3682,7 @@
   </uml:OpaqueBehavior>
   <uml:OpaqueBehavior xmi:id="_n69TMKt6EeyhUa3PxTJlLQ" name="getX" specification="_n6YrcKt6EeyhUa3PxTJlLQ">
     <ownedParameter xmi:id="_n69TMat6EeyhUa3PxTJlLQ" direction="return">
+      <name xsi:nil="true"/>
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
     </ownedParameter>
     <language>java</language>
@@ -3691,6 +3699,7 @@
   </uml:OpaqueBehavior>
   <uml:OpaqueBehavior xmi:id="_n69TNKt6EeyhUa3PxTJlLQ" name="getY" specification="_n6Z5kat6EeyhUa3PxTJlLQ">
     <ownedParameter xmi:id="_n69TNat6EeyhUa3PxTJlLQ" direction="return">
+      <name xsi:nil="true"/>
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
     </ownedParameter>
     <language>java</language>
@@ -3707,6 +3716,7 @@
   </uml:OpaqueBehavior>
   <uml:OpaqueBehavior xmi:id="_n69TOKt6EeyhUa3PxTJlLQ" name="getHeight" specification="_n6bHsat6EeyhUa3PxTJlLQ">
     <ownedParameter xmi:id="_n69TOat6EeyhUa3PxTJlLQ" direction="return">
+      <name xsi:nil="true"/>
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
     </ownedParameter>
     <language>java</language>
@@ -3723,6 +3733,7 @@
   </uml:OpaqueBehavior>
   <uml:OpaqueBehavior xmi:id="_n69TPKt6EeyhUa3PxTJlLQ" name="getWidth" specification="_n6cV0Kt6EeyhUa3PxTJlLQ">
     <ownedParameter xmi:id="_n69TPat6EeyhUa3PxTJlLQ" direction="return">
+      <name xsi:nil="true"/>
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
     </ownedParameter>
     <language>java</language>

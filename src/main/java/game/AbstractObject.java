@@ -16,6 +16,11 @@ public abstract class AbstractObject implements GameObjects {
 	private int width;
 	private GameState game;
 	
+	/**
+	 * Checks if and object is overlapping with a player
+	 * @param player
+	 * @return boolean: true, if overlapping, false, if not
+	 */
 	public boolean checkForHit(Player player) {
 		boolean checkForXOverlap = player.getX()+player.getWidth() > getX() && player.getX() < getX()+getWidth();
 		boolean checkForYOverlap = player.getY()+player.getHeight() > getY() && player.getY()<getY()+getHeight();
@@ -27,10 +32,18 @@ public abstract class AbstractObject implements GameObjects {
 		}
 	}
 	
+	/**
+	 * sets current gameState 
+	 * @param gameState
+	 */
 	public void setGameState(GameState gameState) {
 		game = gameState;
 	}
 	
+	/**
+	 * 
+	 * @return current gameState
+	 */
 	public GameState getGameState() {
 		return game;
 	}
@@ -40,6 +53,7 @@ public abstract class AbstractObject implements GameObjects {
 		return "AbstractObject"; 
 	}
 	
+	@Override
 	public String getType() {
 		return "AbstractObject";
 	}
@@ -48,15 +62,26 @@ public abstract class AbstractObject implements GameObjects {
 	public double getX() {
 		return x;
 	}
-	
+	/**
+	 * returns the x coordinate thats at the mid point of the object as a double
+	 * @return double: mid x-coordinate
+	 */
 	public double getXMid() {
 		return getX() + (getWidth()/2);
 	}
-
+	
+	/**
+	 * sets a objects x-coordinate
+	 * @param xCoordinate
+	 */
 	public void setX(double xCoordinate) {
 		x = xCoordinate;
 	}
 	
+	/**
+	 * moves a object by a specified amount in the x direction
+	 * @param xMovment
+	 */
 	public void moveByX(double xMovment) {
 		setX(getX() + xMovment);
 	}
@@ -66,23 +91,44 @@ public abstract class AbstractObject implements GameObjects {
 		return y;
 	}
 	
+	/**
+	 * returns the y coordinate thats at the mid point of the object as a double
+	 * @return double: mid y-coordinate
+	 */
 	public double getYMid() {
 		return getY() + (getHeight()/2);
 	}
 	
+	/**
+	 * sets a objects y-coordinate
+	 * @param yCoordinate
+	 */
 	public void setY(double yCoordinate) {
 		y = yCoordinate;
 	}
 	
+	/**
+	 * moves a object by a specified amount in the y direction
+	 * @param yMovment
+	 */
 	public void moveByY(double yMovment) {
 		setY(getY() + yMovment);
 	}
 	
+	/**
+	 * moves a object by a specified amount in the x and y direction
+	 * @param xMovment
+	 * @param yMovment
+	 */
 	public void moveByXandY(double xMovment, double yMovment) {
 		moveByX(xMovment);
 		moveByY(yMovment);
 	}
-	
+	/**
+	 * sets an objects x- and y-coordinate
+	 * @param xCoordinate
+	 * @param yCoordinate
+	 */
 	public void setXandY(double xCoordinate, double yCoordinate) {
 		setX(xCoordinate);
 		setY(yCoordinate);
@@ -93,6 +139,10 @@ public abstract class AbstractObject implements GameObjects {
 		return width;
 	}
 	
+	/**
+	 * sets an objects width
+	 * @param spriteWidth
+	 */
 	public void setWidth(int spriteWidth) {
 		width = spriteWidth;
 	}
@@ -102,19 +152,37 @@ public abstract class AbstractObject implements GameObjects {
 		return height;
 	}
 	
+	/**
+	 * sets an objects height
+	 * @param spriteHeight
+	 */
 	public void setHeight(int spriteHeight) {
 		height = spriteHeight;
 	}
 	
+	/**
+	 * 
+	 * @return the sprite of the object
+	 */
 	public Sprite getSprite() {
 		return sprite;
 	}
 	
+	/**
+	 * Sets the sprite based on a file name if the file name is valid
+	 * @param fileName
+	 */
 	public void setSprite(String fileName) {
 		if (fileName != null && !fileName.equals("testMode")) {
-			FileHandle playerFileHandle = Gdx.files.internal("game/img/"+fileName); 
-		    Texture playerTexture = new Texture(playerFileHandle);
-		    sprite = new Sprite(playerTexture, getWidth(), getHeight());
+			try {
+				FileHandle playerFileHandle = Gdx.files.internal("game/img/"+fileName); 
+				Texture playerTexture = new Texture(playerFileHandle);
+			    sprite = new Sprite(playerTexture, getWidth(), getHeight());
+			}
+			catch (Exception e) {
+				System.out.println("An error occurred whilst trying to get the image file for the sprite.");
+			}
+		    
 		}
 	}
 	
