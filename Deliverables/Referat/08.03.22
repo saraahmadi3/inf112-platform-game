@@ -1,0 +1,3 @@
+Tilstede: Kristian, Sara, Dani og Adrian.
+
+Per dags dato er multiplayer-funksjonen vår begrenset til en maskin (piltastene og asdw). Vi skal nå forsøke å videreutvikle dette til å fungere på et LAN-nettverk. Dani og Adrian skal lese seg opp på kryonet, mens Sara og Adrian skal jobbe videre med testing. Kristian er bekymret for at flere av testene vi har, ikke vil fungere med de nye implementasjonene knyttet til nettverk. 
