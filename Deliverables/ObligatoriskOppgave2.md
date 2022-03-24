@@ -43,7 +43,7 @@ Akseptansekriterier: Det skal være en knapp for en-spiller/flerspiller-funksjon
 3) Jeg forventer at spillet har musikk, for å skape en helthetlig musikkopplevelse.  
 Akseptansekriterier: Det spilles musikk når spillet starter.
 
-"Stretchgoalet" vårt til denne innleveringen har vært å implementere en multiplayer-løsning som fungerer på lokalt nettverk.Til nå har vi klart å lage et plattformbasert spill som fungerer godt dersom multiplayer er begrenset til å kjøre på en maskin (piltaster og asdw). Vi har også fått til en nettverksløsning som fungerer dersom vi manuelt skriver inn IP-koden. Til neste gang ønsker vi å få til en nettverksløsning hvor vi ikke trenger å skrive inn IP-adressen manuelt.
+"Stretchgoalet" vårt til denne innleveringen har vært å implementere en multiplayer-løsning som fungerer på lokalt nettverk.Multiplayer fungerer godt dersom multiplayer er begrenset til å kjøre på en maskin (piltaster og asdw). Vi har også fått til en nettverksløsning som fungerer dersom vi manuelt skriver inn IP-adressen. Til neste gang ønsker vi å få til en nettverksløsning hvor vi ikke trenger å skrive inn IP-adressen manuelt. Vi har laget en discoverHost-løsning som skal finne serveren. Dette får vi til å fungere på en maskin (localhost), men ikke med flere maskiner. Dette kan være pga eduroam-nettverket.
 
 I forbindelse med brukerhistorie 2 lar startskjermen oss velge mellom enkel- og flerspiller, men vi ønsker å forbedre denne når vi har fått nettverksløsningen vår bedre til.
 
