@@ -1,0 +1,3 @@
+Referat 18.03.2022
+Tilstede Adrian og Sara
+Vi prøvde å jobbe på en bedre løsning for server client i branchen serverSplit, med målet å holde all bakgrunnslogikken i serveren for så å oppdatere dette i client. Har lagd noen planner for hva som må forandres med resten av programmet. Desverre gikk mesteparten av tiden git problemer.
