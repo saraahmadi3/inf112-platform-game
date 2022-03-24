@@ -37,6 +37,7 @@ public class Platform extends AbstractObject {
 	}
 	
 	//This is used to automatically add platforms in the list of platforms in gameState
+	@Override
 	public String getType() {
 		return "Platform";
 	}
