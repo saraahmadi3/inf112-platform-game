@@ -1,0 +1,11 @@
+Referat 15.03.2022
+Tilstede: Sara, Kristian; Adrian og Dani.
+Vi jobber fremdeles med MultiPlayer-implementasjonen.
+Vi har fortsatt jobbingen med multiplayer-løsningen vår. Vi er litt usikre på om den løsningen vi allerede har, er innenfor kriteriene for hva som er godkjent. Løsningen vi har er multiplayer på èn maskin. Vi har likevel implementert klassene som skal tillate oss å spille over nettverk, og ønsker å få til en multiplayer over LAN eller online.
+Cons med løsningen vi har nå:
+Vi sender kun koordinatene til de ulike spillerne.
+Synkroniseringen er ikke nøyaktig nok, og kan føre til ulike gameStates hos de to ulike spillerne. Eksempelvis kan den ene spilleren dø uten at den andre spilleren blir oppdatert på dette.
+Vi brainstormet deretter rundt ulike løsninger på dette:
+Mulig løsning: Vi kan sende gameState over serveren. Dette har blitt forsøkt, og endte med overflow.
+Mulig løsning2: Vi sender ikke all infoen, men viktig info på ulike intervaller. Eksempelvis må spillerne sjekke for om den andre er død.
+Mulig løsning3: Spillerne må vente på bekreftelse på at informasjonen.
