@@ -32,3 +32,6 @@ Gruppedynamikken er god. Vi kommuniserer godt med hverandre, og folk er flinke t
 Til nå har vi klart å lage et plattformbasert spill som fungerer godt dersom multiplayer er begrenset til å kjøre på en maskin. Nettverksløsningen vår per dags dato fungerer også dersom det er begrenset til en maskin. Med andre ord finner maskinen localhost. Dersom vi forsøker å kjøre spillet på to ulike maskiner, fungerer ikke nettverksløsningen ennå.
 
 Vi har så smått begynt å legge til musikk til spillet. Inntil videre har vi bare lagt til en lydfil funnet på freesound.org, for å se om det fungerer. Denne vil byttes ut senere med noe som passer spillet bedre. På sikt vil vi også legge til lydfiler som akkompagnerer spillet som f. eks. hopp, boost, "fiende blir tatt", "spiller blir tatt av fiende" etc.
+
+##### U-committet kode
+I forbindelse med nettverksimplementeringen vår, har vi skrevet veldig mye kode som ikke har blitt committet. Dette er av den enkle grunn at vi har forsøkt på ting som ikke har fungert. I disse tilfellene har vi slettet kode lokalt uten å committe det.
