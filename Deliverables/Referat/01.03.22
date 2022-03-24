@@ -1,0 +1,5 @@
+Tilstede: Kristian, Sara, Dani og Adrian.
+
+Første møte etter innleveringen forrige uke. Vi ønsker å få til en "game over-state" ved endt spill. Denne skal fortelle hvor mange poeng spilleren har/hvor lang tid spilleren har brukt eller lignende. Vi har ikke tenkt ut hvordan spillopplevelsen skal være helt ennå, så vi begynner ganske enkelt med en skjerm som sier game over dersom spilleren dør.
+
+Testene har blitt videreutviklet siden sist. Kristian har også laget en cheat-mode, slik at vi kjapt kan spille gjennom spillet. 
