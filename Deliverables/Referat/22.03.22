@@ -1,0 +1,5 @@
+Referat 22.03.2022
+Tilstede: Sara, Kristian; Adrian og Dani.
+Halvparten av gruppen har problemer med å kjøre programmet i Eclipse/Intellij, tilsynelatende etter å ha kjørt koden i Visual Studio Code hvor den har blitt kompilert med en nyere versjon av Java.
+Siden sist har gruppen delt seg i to for å jobbe med implementeringen av nettverk i forbindelse med multiplayer-funksjonen. Vi har angrepet problemet på to ulike måter. Sara og Adrian har jobbet med å implementere en selvstendig server, som de ulike klientene kan koble seg opp mot. Kristian og Dani har jobbet med løsningen hvor den ene klienten blir en server, som den andre spilleren knytter seg opp mot. Ingen av løsningene fungerer skikkelig ennå.
+
