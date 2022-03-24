@@ -42,13 +42,13 @@ Akseptansekriterier: Det skal være en knapp for en-spiller/flerspiller-funksjon
 3) Jeg forventer at spillet har musikk, for å skape en helthetlig musikkopplevelse.
 Akseptansekriterier: Det spilles musikk når spillet starter.
 
-Til nå har vi klart å lage et plattformbasert spill som fungerer godt dersom multiplayer er begrenset til å kjøre på en maskin. Vi har også fått til en nettverksløsning som fungerer dersom vi manuelt skriver inn IP-koden.
+"Stretchgoalet" vårt i denne forbindelse vil være å implementere en multiplayer-løsning som fungerer på lokalt nettverk.Til nå har vi klart å lage et plattformbasert spill som fungerer godt dersom multiplayer er begrenset til å kjøre på en maskin (piltaster og asdw). Vi har også fått til en nettverksløsning som fungerer dersom vi manuelt skriver inn IP-koden. Til neste gang ønsker vi å få til en nettverksløsning hvor vi ikke trenger å skrive inn IP-adressen manuelt.
 
-Startskjermen vår lar oss velge mellom enkel- og flerspiller, men vi ønsker å forbedre denne når vi har fått nettverksløsningen vår bedre til.
+I forbindelse med brukerhistorie 2 lar startskjermen oss velge mellom enkel- og flerspiller, men vi ønsker å forbedre denne når vi har fått nettverksløsningen vår bedre til.
 
 Vi har så smått begynt å legge til musikk til spillet. Inntil videre har vi bare lagt til en lydfil funnet på freesound.org, for å se om det fungerer. Denne vil byttes ut senere med noe som passer spillet bedre. Siden grafikken i spillet er laget av oss selv, ønsker vi at musikken også skal være dette. På sikt vil vi også legge til lydfiler som akkompagnerer spillet som f. eks. hopp, boost, "fiende blir tatt", "spiller blir tatt av fiende" etc.
 
-Til neste sprint, ønsker vi å videreutvikle de samme brukerhistoriene vi har jobbet med frem til denne innleveringen. Vi ønsker å få til en nettverksløsningn hvor ikke trenger å skrive inn IP-adressen manuelt, vi vil ha en mer intuitiv startskjerm (knapper og/eller flere valg knyttet til nettversløsninger) i tillegg til egenkomponert musikk og lydeffekter til spillet.
+Til neste sprint, ønsker vi å videreutvikle de samme brukerhistoriene vi har jobbet med frem til denne innleveringen. Vi ønsker som sagt å få til en nettverksløsningn hvor ikke trenger å skrive inn IP-adressen manuelt, vi vil ha en mer intuitiv startskjerm (knapper og/eller flere valg knyttet til nettverksløsninger) i tillegg til egenkomponert musikk og lydeffekter til spillet.
 
 
 
