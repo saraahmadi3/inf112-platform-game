@@ -4,10 +4,11 @@
 
 
 
-## Innhold:
-**[Brukerhistorier](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#brukerhistorier)<br>
-[Bugs](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#bugs)<br>
-[Oppsummering](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#oppsummering)**
+## Innhold
+**[Deloppgave 1](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-1)<br>
+
+
+### Deloppgave 1: Team og prosjekt
 
 ### Brukerhistorier i prioritert rekkefølge for innlevering av obligatorisk oppgave 2:
 1) Jeg forventer at jeg skal kunne spille mot en annen spiller over et lokalt nettverk, uten at forsinkelsen blir for stor.
