@@ -5,11 +5,11 @@
 
 
 ## Innhold
-**[Deloppgave 1](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-1)<br>
-[Deloppgave 2](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-2)<br>**
+**[Deloppgave 1](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-1:-team-og-prosjekt)<br>
+[Deloppgave 2](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-2:-krav)<br>**
 
 
-### Deloppgave 1
+### Deloppgave 1: Team og prosjekt
 
 **[Referatene](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/Referat)** våre er samlet i egen mappe, for å holde dette dokumentet mest mulig oversiktlig.
 
@@ -24,6 +24,12 @@ Siden forrige gang har vi endret noe på prosjektmetodikken. Vi benytter oss fre
 ##### Gruppedynamikk
 Gruppedynamikken er god. Vi kommuniserer godt med hverandre, og folk er flinke til å følge opp oppgavene vi blir tildelt. Siden sist har vi også forsøkt oss på å dele oss opp i to grupper for å jobbe med enkelte oppgaver. Dette har falt seg veldig naturlig, da vi har ulike timeplaner. Dette var både fordi vi var uenige om hvilken løsning som ville fungere best, men også fordi at det virket fornuftig å forsøke å løse oppgaven på ulike måter. Ingen av oss hadde erfaring med slike nettverksløsninger, og det var tydelig at dette kunne gjøres på ulike måter. Istedenfor at alle jobbet med samme løsning, virket det derfor mer naturlig at vi forsøkte ulike ting.
 
+
+
+##### U-committet kode
+I forbindelse med nettverksimplementeringen vår, har vi skrevet veldig mye kode som ikke har blitt committet. Dette er av den enkle grunn at vi har forsøkt på ting som ikke har fungert. I disse tilfellene har vi slettet kode lokalt uten å committe det.
+
+### Deloppgave 2: krav
 ##### Status quo og veien videre
 I forbindelse med denne innleveringen har vi prioritert følgende tre brukerhistorier:
 
@@ -44,9 +50,5 @@ Vi har så smått begynt å legge til musikk til spillet. Inntil videre har vi b
 
 Til neste sprint, ønsker vi å videreutvikle de samme brukerhistoriene vi har jobbet med frem til denne innleveringen. Vi ønsker å få til en nettverksløsningn hvor ikke trenger å skrive inn IP-adressen manuelt, vi vil ha en mer intuitiv startskjerm (knapper og/eller flere valg knyttet til nettversløsninger) i tillegg til egenkomponert musikk og lydeffekter til spillet.
 
-##### U-committet kode
-I forbindelse med nettverksimplementeringen vår, har vi skrevet veldig mye kode som ikke har blitt committet. Dette er av den enkle grunn at vi har forsøkt på ting som ikke har fungert. I disse tilfellene har vi slettet kode lokalt uten å committe det.
-
-### Deloppgave 2
 
 
