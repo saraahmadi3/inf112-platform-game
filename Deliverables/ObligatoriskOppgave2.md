@@ -5,7 +5,8 @@
 
 
 ## Innhold
-**[Deloppgave 1](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-1)<br>**
+**[Deloppgave 1](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-1)<br>
+[Deloppgave 2](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-2)<br>**
 
 
 ### Deloppgave 1: Team og prosjekt
@@ -45,5 +46,7 @@ Til neste sprint, ønsker vi å videreutvikle de samme brukerhistoriene vi har j
 
 ##### U-committet kode
 I forbindelse med nettverksimplementeringen vår, har vi skrevet veldig mye kode som ikke har blitt committet. Dette er av den enkle grunn at vi har forsøkt på ting som ikke har fungert. I disse tilfellene har vi slettet kode lokalt uten å committe det.
+
+### Deloppgave 2: krav
 
 
