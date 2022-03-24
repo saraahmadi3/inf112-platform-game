@@ -5,11 +5,12 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.audio.*;
 
 
 import game.levels.Level0;
@@ -22,7 +23,6 @@ public class GameState {
 	private int currentLevel;
 	private Player player1;
 	private Player player2;
-	private StartScreen startscreen;
 	private boolean levelFinished;
 	private ArrayList<GameObjects> allSprites;
 	private ArrayList<GameObjects> waitingSprites;
@@ -43,7 +43,7 @@ public class GameState {
 	private double totalDeltaTime;
 	private double delayDifference;
 	
-	public GameState(GameLoop gameLoop, int gameLevel) {
+	public GameState(GameLoop gameLoop, int gameLevel, int mode) {
 		
 		this.gameLoop = gameLoop;
 		levelFinished = false;
@@ -52,32 +52,54 @@ public class GameState {
 		waitingRemovalSprites = new ArrayList<GameObjects>();
 		allPlatforms = new ArrayList<Platform>();
 		allPlayers = new ArrayList<Player>();
-
-	
-		currentLevel = gameLevel;
-		if (gameLevel != 0) {
-			startscreen = new StartScreen(this, gameLevel);
-		} else {
-			level(0);
+		
+		System.out.println("Mode: "+mode);
+		if (mode == 0) {
+			setSinglePlayerID(1);
+			startSinglePlayer();
+		} else if (mode == 1) {
+			setSinglePlayerID(2);
+			startSinglePlayer();
+		} else if (mode == 2) {
+			setMultiPlayer(true);
+		} else if (mode == 3) {
+			startMultiPlayer("A");
+		} else if (mode == 4) {
+			startMultiPlayer("S");
+		} else if (mode == 5) {
+			startMultiPlayer("C");
+		} else if (mode == 6) {
+			startMultiPlayer("M");
 		}
+			
+		currentLevel = gameLevel;
 		
 	}
 
 	public GameState() {
-		this(null,1);
+		this(null,1, 0);
 	}
 	
 	public GameState(GameLoop gameLoop) {
-		this(gameLoop, 1);
+		this(gameLoop, 1, 0);
 	}
 	
 	public GameState(int gameLevel) {
-		this(null, gameLevel);
+		this(null, gameLevel, 0);
 	}
 	
 	
 	public double getTotalDeltaTime() {
 		return totalDeltaTime;
+	}
+	
+	public void startSinglePlayer() {
+		setMultiPlayer(false);
+		if (currentLevel != 0) {
+			level(currentLevel);
+		} else {
+			level(0);
+		}
 	}
 
 	
@@ -343,21 +365,44 @@ public class GameState {
 		return client!=null;
 	}
 	 
-	public void startMultiPlayer() {
-		killSprite(startscreen);
+	public void startMultiPlayer(String s) {
 		setSinglePlayerID(0); //This value should not be accessed anyways.
 		setMultiPlayer(true); 
-		
-
-		try {
-			client = new PosClient(this);
-		} catch (IOException e) {
+		if (s == "S") {
 			server = new PosServer(this);
-			new Text(this, 350, 350, "Server running. Waiting for Player2 to connect...");
+			new Text(this, 350, 350, "Server running. Waiting for client to connect...");
 			try {
 				new Text(this, 350, 300, "Your IP: " + InetAddress.getLocalHost());
 			} catch (UnknownHostException e1) {
 				e1.printStackTrace();
+			}
+		} else if (s == "C") {
+			try {
+				client = new PosClient(this);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else if (s == "M"){
+			String input = (String)JOptionPane.showInputDialog(null, "Enter server-IP:", "Connect to server", JOptionPane.QUESTION_MESSAGE,
+					null, null, "localhost");
+				if (input == null || input.trim().length() == 0) System.exit(1);
+				input.trim();
+				try {
+					client = new PosClient(this, InetAddress.getByName(input));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		} else { //Should only activate for s=="A"
+			try {
+				client = new PosClient(this);
+			} catch (IOException e) {
+				server = new PosServer(this);
+				new Text(this, 350, 350, "Could not find a server.\nStarted own server and is now waiting for client to connect...");
+				try {
+					new Text(this, 350, 300, "Your IP: " + InetAddress.getLocalHost());
+				} catch (UnknownHostException e1) {
+					e1.printStackTrace();
+				}
 			}
 		}
 	}
@@ -382,5 +427,6 @@ public class GameState {
 		//System.out.println(delayDifference);
 		this.delayDifference = difference;
 	}
+
 
 }

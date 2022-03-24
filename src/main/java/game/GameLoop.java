@@ -12,21 +12,24 @@ public class GameLoop implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
     private GameState game;
+    private int mode;
 	private Music music;
     
     
     private int delayedEnd;
     private boolean isSynced;
     
+    public GameLoop(int mode) {
+    	this.mode=mode;
+    }
+    
     @Override
     public void create() { 
-    	
+ 
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
-        
-        game = new GameState(this);
-        game.setBatchAndFont(batch, font);
+     
     
         delayedEnd = 2;
         isSynced = false;
@@ -36,6 +39,8 @@ public class GameLoop implements ApplicationListener {
         music.setLooping(true);
         music.play();
         
+        game = new GameState (this, 1, mode);
+        game.setBatchAndFont(batch, font);
     }
 
     @Override
@@ -64,6 +69,8 @@ public class GameLoop implements ApplicationListener {
      * 
      */
     public void render() {
+    	if (game == null) return;
+    	
     	if (!game.getGameOver()) {
             clearScreen();
             game.update();

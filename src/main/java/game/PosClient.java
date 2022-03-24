@@ -3,7 +3,7 @@ package game;
 
 import java.io.IOException;
 import java.net.InetAddress;
-
+import java.net.UnknownHostException;
 
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
@@ -19,14 +19,14 @@ import game.Network.Register;
 import game.Network.RegistrationRequired;
 import game.Network.UpdatePlayer;
 
-public class PosClient {
-	//UI ui; 
+public class PosClient { 
 	Client client;
 	Login login;
 	private GameState game;
 	int id;
 
-	public PosClient (GameState game) throws IOException {
+	public PosClient (GameState game, InetAddress hostIP) throws IOException {
+		InetAddress host = hostIP;
 		//System.setProperty("java.net.preferIPv4Stack" , "true");
 		id = 2;
 		client = new Client();
@@ -63,7 +63,9 @@ public class PosClient {
 					}
 					
 					Player player = game.getPlayer(msg.id);
-
+					
+					if (player==null) return;
+					
 					player.setX(msg.x);
 					player.setY(msg.y);
 
@@ -99,14 +101,13 @@ public class PosClient {
 			
 		}));
 
-		//ui = new UI();
-
-		//String host = ui.inputHost();
-		InetAddress host = client.discoverHost(Network.port-1, 2500);
 		if (host == null) {
-			throw new IOException("host cannot be null.");
-		} else {
-			System.out.println("Host: "+host.toString());
+			host = client.discoverHost(Network.port-1, 2500);
+			if (host == null) {
+				throw new IOException("host cannot be null.");
+			} else {
+				System.out.println("Host: "+host.toString());
+			}
 		}
 	
 		client.connect(2500, host, Network.port, Network.port-1);
@@ -116,6 +117,10 @@ public class PosClient {
 		game.level(game.getCurrentLevel());
 	}
 	
+	public PosClient(GameState gameState) throws IOException {
+		this(gameState, null);
+	}
+
 	public void updatePlayer (UpdatePlayer msg) {
 		Player player = game.getPlayer(msg.id);
 		if (player == null) return;
