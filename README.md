@@ -6,3 +6,8 @@ Det eksisterer en del bugs i spillet. En av bugsene som finnes er at dersom spil
 
 De fleste bugsene er knyttet til synkronisering i forbindelse med multiplayer-funksjonen over nettverk. Spilleren som spiller på pc 1 vil oppleve at sin spiller er synkron med terrenget, men at motspilleren kan være usynkron med terrenget. Dette skjer typisk i forbindelse med de bevegelige plattformene. Det kan også oppstå problemer i tilfeller hvor den ene spilleren dør, eller når den ene spilleren fullfører levelet.
 
+# Musikk
+Musikken er lisensfri og hentet herfra:  
+
+https://freesound.org/people/Manicciola/sounds/173306/
+
