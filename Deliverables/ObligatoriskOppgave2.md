@@ -71,7 +71,7 @@ I forbindelse med tilbakemeldingen på oblig 1 ble vi gjort oppmerksomme på at 
 - Vi har lagt til en forklaring på hvorfor vi benytter oss av Kanban under **[Prosjektmetodikk](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#prosjektmetodikk)**.
 - Vi har endret mappestrukturen til prosjektet vårt samt pom-filen, slik at det skal kunne kjøres på andres maskiner.
 - Vi har endret README.md, slik at den forteller brukeren hvordan en bygger prosjektet, og hvordan en går frem for å spille spillet.
-- Mer beskrivende commits. Innimellom alle reelle commits fins det likevel intetsigende commits også. Dette kan eksempelvi være i forbindelse med at vi har støtt på problemer med github, og gjør en push for å sjekke at alt fungerer.
+- Vi har skrevet mer beskrivende commits. Innimellom alle reelle commits fins det likevel intetsigende commits. Dette kan eksempelvis være i forbindelse med at vi har støtt på problemer med github, og gjør en push for å sjekke at alt fungerer.
 - Vi har også lagt til tester siden sist. Vi ligger likevel bakpå med tanke på å sjekke all funksjonaliteten i koden.    
 
 
