@@ -7,7 +7,8 @@
 ## Innhold
 **[Deloppgave 1](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-1)<br>
 [Deloppgave 2](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-2)<br>
-[Deloppgave 3](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-3)<br>**
+[Deloppgave 3](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#deloppgave-3)<br>
+[Fikset siden sist](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/ObligatoriskOppgave2.md#fikset-siden-sist)**
 
 
 ### Deloppgave 1
@@ -63,5 +64,10 @@ Synkroniseringen får også problemer dersom den ene spilleren dør i multiplaye
 I forbindelse med tilbakemeldingen på oblig 1 ble vi gjort oppmerksomme på at programmet ikke lot seg kjøre på maskinene til gruppelederne. Dette har vi fikset ved å flytte alle bilder og lydfiler inn i src/main/resources. Vi har også endret main.class i pom-filen til game.Main. For å se om dette fungerte har vi forsøkt å slette prosjektet lokalt, for deretter å klone det på nytt. Vi har også kontaktet en av gruppelederne for å få ham til å bygge og kjøre programmet på sin maskin. Han kunne fortelle at det fungerte på hans maskin også.
 
 [Klassediagrammet](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/Images/KlassediagramOblig2.png) er lastet opp som en png-fil, for å lettere kunne zoome inn på det. Merk at du må åpne det i en ny fane for å kunne zoome i det.
+
+### Fikset siden sist 
+- Referater er skrevet, og lagt til i en egen mappe i Deliverables.
+- Vi har byttet fra Trello til githubs egne Issues, og lagt inn en rekke arbeidsoppgaver her. Vi har likevel ikke blitt flinke nok til å legge til nye arbeidsoppgaver, samt fjerne utførte oppgaver herfra.
+- Vi har endret mappestrukturen til prosjektet vårt samt pom-filen, slik at det skal kunne kjøres på andres maskiner.
 
 
