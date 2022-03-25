@@ -31,7 +31,7 @@ Gruppedynamikken er god. Vi kommuniserer godt med hverandre, og folk er flinke t
 I forbindelse med nettverksimplementeringen vår, har vi skrevet veldig mye kode som ikke har blitt committet. Dette er av den enkle grunn at vi har forsøkt på ting som ikke har fungert. I disse tilfellene har vi slettet kode lokalt uten å committe det. Vi delte oss også i to grupper (Dani/ Kristian og Sara/Adrian) da vi forsøkte å løse nettverksimplementeringen. Sara og Adrian lagde da en egen branch for å jobbe med deres løsning.
 
 ### Deloppgave 2
-##### Status quo og veien videre
+##### Brukerhistoriene vi har fokusert på og veien videre
 I forbindelse med denne innleveringen har vi prioritert følgende tre brukerhistorier:
 
 1) Jeg forventer at jeg skal kunne spille mot en annen spiller over et lokalt nettverk, uten at forsinkelsen blir for stor.  
