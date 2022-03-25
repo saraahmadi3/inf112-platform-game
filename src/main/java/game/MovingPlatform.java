@@ -9,7 +9,19 @@ public class MovingPlatform extends Platform {
 	private double startY;
 	private int rangeX;
 	private int rangeY;
-	
+	/**
+	 * Constructor. Creates a moving platform based on the GameState, x and y start coordinate, the platforms width and height,
+	 * the x- and y range the platform can move in, the speed the platform moves at, as well as a image file 
+	 * @param game
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param xRange
+	 * @param yRange
+	 * @param speed
+	 * @param imgFile
+	 */
 	public MovingPlatform(GameState game, int x, int y, int width, int height, int xRange, int yRange, int speed, String imgFile) {
 		super(game, x, y, width, height, imgFile);
 		super.setGameState(game);
@@ -21,13 +33,28 @@ public class MovingPlatform extends Platform {
 		rangeX = xRange;
 		rangeY = yRange;
 	}
-	
+	/**
+	 * Constructor. Creates a moving platform based on the GameState, x and y start coordinate, the platforms width and height,
+	 * the x- and y range the platform can move in, the speed the platform moves at with the default image file "Platform.png"
+	 * @param game
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param xRange
+	 * @param yRange
+	 * @param speed
+	 */
 	public MovingPlatform(GameState game, int x, int y, int width, int height, int xRange, int yRange, int speed) {
 		this(game, x, y, width, height, xRange, yRange, speed, "Platform.png");
 	}
 	
-	//Player should not move out of range, and should never stop moving from side to side or up and down.
+	
 	@Override 
+	/**
+	 * moves the platform in accordance with its speed and range. if a player is grounded or collides with the platform, 
+	 * it should be moved in accordance to the platforms displacement.
+	 */
 	public void move() {
 		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
 		
@@ -75,7 +102,14 @@ public class MovingPlatform extends Platform {
 	
 	}
 	
-	//A player that stands on a platform should move with the platform
+	
+	/**
+	 * moves a player in accordance to the moving platforms displacement if the player collides with the platform of is 
+	 * grounded on the moving platform
+	 * @param playerId
+	 * @param xMove
+	 * @param yMove
+	 */
 	public void movePlayer(int playerId, double xMove, double yMove) {
 		Player player = super.getGameState().getPlayer(playerId);
 		
@@ -89,6 +123,10 @@ public class MovingPlatform extends Platform {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return the speed of the platform
+	 */
 	public int getSpeed() {
 		return v;
 	}
