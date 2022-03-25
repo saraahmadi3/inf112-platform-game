@@ -105,8 +105,13 @@ class PlayerTest {
 		}
 		
 		playerOne.boost(0);
-		playerOne.boost(-1);
 		assertEquals(0, (int) playerOne.getGv());
+		
+		playerOne.boost(-1);
+		assertTrue(playerOne.getGv()>0);
+		
+		playerOne.boost(1);
+		assertTrue(playerOne.getGv()<0);
 	}
 	
 //Player - Platform interaction test

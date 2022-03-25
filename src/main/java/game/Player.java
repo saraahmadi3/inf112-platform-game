@@ -127,6 +127,10 @@ public class Player extends AbstractObject {
 		return currentPlatform;
 	}
 	
+	public void setCurrentPlatform(Platform platform) {
+		currentPlatform = platform;
+	}
+	
 	//returns true if the player is not in the air
 	public boolean getGrounded() {
 		return isGrounded;

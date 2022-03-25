@@ -101,7 +101,7 @@ class GameObjectTest {
 			if (moveCount > totalMoves) {
 				return false;
 			}
-			playerOne.moveByY((game.getDeltaTime()*game.getDeltaTime())*(-150));
+			playerOne.moveByY(-1);
 			hasCollided = platform.checkForHit(player);
 			moveCount++;
 		}
@@ -226,10 +226,13 @@ class GameObjectTest {
 				break;
 			}
 			else if (yPrevious == verticalMovingP.getY()) {
-				fail("The platform does not move");
-				break;
+				verticalMovingP.update();
+				if (yPrevious == verticalMovingP.getY()) {
+					fail("The platform does not move");
+					break;
+				}
 			}
-			hasComeBack = (yStart == verticalMovingP.getY());
+			hasComeBack = (yStart>=verticalMovingP.getY());
 			frameCount ++;
 			xPrevious = verticalMovingP.getX();
 			yPrevious = verticalMovingP.getY();
@@ -257,10 +260,14 @@ class GameObjectTest {
 		//Testing player movement on horizontal moving platform
 		for (int i=0; i<=6000; i++) {
 			horizontalMovingP.update();
-			assertEquals(playerOne.getY(), previousPlayerY);
+			assertTrue(playerOne.getY()>previousPlayerY-10 || playerOne.getY()<previousPlayerY+10);
 			if (playerOne.getX() == previousPlayerX) {
-				fail("The player is not moving");
-				break;
+				playerOne.move();
+				horizontalMovingP.update();
+				if (playerOne.getX() == previousPlayerX) {
+					fail("The player is not moving");
+					break;
+				}
 			}
 			else if (horizontalMovingP.getX() > xPrevious) {
 				if (!(playerOne.getX() > previousPlayerX)) {
@@ -288,12 +295,15 @@ class GameObjectTest {
 		
 		for (int i=0; i<=6000; i++) {
 			verticalMovingP.update();
-			assertEquals(playerOne.getX(), previousPlayerX);
+			assertTrue(playerOne.getX()>previousPlayerX-10 || playerOne.getX()<previousPlayerX+10);
 			if (playerOne.getY() == previousPlayerY) {
-				fail("The player is not moving");
-				break;
-			}
-			else if (verticalMovingP.getY() > yPrevious) {
+				playerOne.move();
+				verticalMovingP.update();
+				if (playerOne.getY() == previousPlayerY) {
+					fail("The player is not moving");
+					break;
+				}
+			} else if (verticalMovingP.getY() > yPrevious) {
 				if (!(playerOne.getY() > previousPlayerY)) {
 					fail("The player does not move in the same positive direction as platform");
 				}
@@ -347,13 +357,15 @@ class GameObjectTest {
 	void doorKeyTest() {
 		//PlayerOne at x = 50, y = 20
 		Platform regularP = new Platform(game, -500, -10, 1150, 20, null);
-		Door door = new Door(game, 50, 15, 20, 34, null);
-		Key key = new Key(game, 50, 15, null);
+		Door door = new Door(game, 50, 100, 20, 34, null);
+		Key key = new Key(game, 50, 100, null);
 		assertFalse(playerOne.hasKey());
 		game.addSprite(regularP);
 		game.addSprite(key);
 		game.addSprite(playerOne);
 		game.addAllNewSprites();
+		
+		assertEquals(door.getGameState().getPlayer(1), playerOne);
 		
 		//Settle playerOne on a platform
 		if (!causeHit(playerOne, regularP)) {
@@ -365,30 +377,29 @@ class GameObjectTest {
 		boolean hasHitPlayer = false;
 		while (!hasHitPlayer) {
 			//Move downward towards player settled on platform
-			key.moveByY(-(0.1));
+			key.moveByY(-1);
 			key.update();
 			hasHitPlayer = playerOne.hasKey();
 			
-			if (moveCount == 10000) {
+			if (moveCount == 1000) {
 				fail("The key does not interract with player");
 			}
 			moveCount ++;
 		}
 		//Player should now have the key
+		door.update();
+		assertTrue(playerOne.hasKey());
 		
-		moveCount = 1;
-		boolean hasOpenedDoor = false;
-		while(!hasOpenedDoor) {
-			door.moveByY(-(0.01));
-			door.update();
-			
-			hasOpenedDoor = !playerOne.hasKey();
-			
-			if(moveCount == 10000) {
-				fail("The door does not interract with player");
-			}
-			moveCount ++;
-		}
+		playerOne.setXandY(door.getXMid(), door.getYMid());
+		assertTrue(door.checkForHit(playerOne));
+		playerOne.setCurrentPlatform(door);
+		assertEquals(door, playerOne.getCurrentPlatform());
+		
+		door.update();
+		
+		//Player should now NOT have a key
+		assertFalse(playerOne.hasKey());
+		
 		//The player should have used the key while interacting with door
 	}
 
