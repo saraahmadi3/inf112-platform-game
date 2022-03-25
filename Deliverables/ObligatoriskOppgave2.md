@@ -43,20 +43,20 @@ Akseptansekriterier: Det skal være en knapp for en-spiller/flerspiller-funksjon
 3) Jeg forventer at spillet har musikk, for å skape en helthetlig musikkopplevelse.  
 Akseptansekriterier: Det spilles musikk når spillet starter.
 
-"Stretchgoalet" vårt til denne innleveringen har vært å implementere en multiplayer-løsning som fungerer på lokalt nettverk.Multiplayer fungerer godt dersom multiplayer er begrenset til å kjøre på en maskin (piltaster og asdw). Vi har også fått til en nettverksløsning som fungerer dersom vi manuelt skriver inn IP-adressen. Til neste gang ønsker vi å få til en nettverksløsning hvor vi ikke trenger å skrive inn IP-adressen manuelt. Vi har laget en discoverHost-løsning som skal finne serveren. Dette får vi til å fungere på en maskin (localhost), men ikke med flere maskiner. Dette kan være pga eduroam-nettverket.
+Multiplayer fungerer allerede godt dersom multiplayer er begrenset til å kjøre på en maskin (piltaster og asdw-tastene). "Stretchgoalet" vårt til denne innleveringen har vært å implementere en multiplayer-løsning som fungerer på lokalt nettverk.  Hittil har vi fått til en nettverksløsning som fungerer dersom vi manuelt skriver inn IP-adressen til serveren på klient-maskinen. Til neste gang ønsker vi likevel å få til en nettverksløsning hvor klienten finner serveren automatisk. Vi er allerede i gang med en implementering av dette, hvor vi bruker discoverHost-metoden til kryonet for å finne serveren. Dette får vi til å fungere på en maskin (localhost), men ikke med flere maskiner. Dette kan være pga eduroam-nettverket, men dette har vi ikke fått sjekket.
 
-I forbindelse med brukerhistorie 2 lar startskjermen oss velge mellom enkel- og flerspiller, men vi ønsker å forbedre denne når vi har fått nettverksløsningen vår bedre til.
+I forbindelse med brukerhistorie 2 lar startskjermen oss velge mellom enkel- og flerspiller, men vi ønsker å forbedre denne når vi har fått nettverksløsningen vår bedre til. Eksempelvis med knapper på skjermen.
 
-Vi har så smått begynt å legge til musikk til spillet. Inntil videre har vi bare lagt til en lydfil funnet på freesound.org, for å se om det fungerer. Denne vil byttes ut senere med noe som passer spillet bedre. Siden grafikken i spillet er laget av oss selv, ønsker vi at musikken også skal være dette. På sikt vil vi også legge til lydfiler som akkompagnerer spillet som f. eks. hopp, boost, "fiende blir tatt", "spiller blir tatt av fiende" etc.
+Vi har så smått begynt å legge til musikk til spillet. Inntil videre har vi bare lagt til en lydfil funnet på freesound.org, for å se om det fungerer. Denne vil byttes ut senere med noe som passer spillet bedre. Siden grafikken i spillet er laget av oss selv, ønsker vi at musikken også skal være dette. På sikt ønsker vi også legge til lydfiler som akkompagnerer spillet som f. eks. hopp, boost, "fiende blir tatt", "spiller blir tatt av fiende" etc.
 
-Til neste sprint, ønsker vi å videreutvikle de samme brukerhistoriene vi har jobbet med frem til denne innleveringen. Vi ønsker som sagt å få til en nettverksløsningn hvor ikke trenger å skrive inn IP-adressen manuelt, vi vil ha en mer intuitiv startskjerm (knapper og/eller flere valg knyttet til nettverksløsninger) i tillegg til egenkomponert musikk og lydeffekter til spillet.
+Til neste sprint, ønsker vi derfor å videreutvikle de samme brukerhistoriene vi har jobbet med frem til denne innleveringen. Vi ønsker som sagt å få til en nettverksløsning hvor klienten finner serveren automatisk, vi vil ha en mer intuitiv startskjerm (knapper og/eller flere valg knyttet til nettverksløsninger) i tillegg til egenkomponert musikk og lydeffekter til spillet.
 
 ##### Bugs
 Det eksisterer en del bugs i spillet. En av bugsene som finnes er at dersom spilleren beveger seg for fort, kan det hende at collision-detection ikke fungerer. Dette problemet er ikke utbredt, men det kan forekomme.  
 
 De fleste bugsene er knyttet til synkronisering i forbindelse med multiplayer-funksjonen over nettverk. Spilleren som spiller på pc 1 vil oppleve at sin spiller er synkron med terrenget, men at motspilleren kan være usynkron med terrenget. Dette skjer typisk i forbindelse med de bevegelige plattformene. Når terrenget blir usynkront på de to ulike maskinene, kan det for spiller 1 fortone seg som at spiller 2 og den bevegelige plattformen hen står på er ute av synk. En vil likevel oppleve at sin egen spiller er synkron med det lokale terrenget.  
 
-Synkroniseringen får også store problemer dersom den ene spilleren dør i multiplayer-funksjonen.
+Synkroniseringen får også problemer dersom den ene spilleren dør i multiplayer-funksjonen, eller hvis den ene spilleren fullfører levelet.
 
 
 
