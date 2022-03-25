@@ -62,7 +62,7 @@ Synkroniseringen får også problemer dersom den ene spilleren dør i multiplaye
 
 
 ### Deloppgave 3
-I forbindelse med tilbakemeldingen på oblig 1 ble vi gjort oppmerksomme på at programmet ikke lot seg kjøre på maskinene til gruppelederne. Denne tilbakemeldingen fikk vi to dager før fristen, så vi har rett og slett ikke rukket å fikse det. Hypotesen vår er at problemet på et eller annet vis skyldes Eclipse, da samtlige gruppemedlemmer bruker dette, mens ingen av gruppelederne gjør det. Vi har sjekket feilmeldingene gruppelederne får (tilsynelatende feil i file-paths), men vi får ikke de samme feilmeldingene, og klarer heller ikke å se hvorfor file-pathsene skulle være feil. Vi har kontaktet Anya for hjelp, men det er en fare for at hun ikke rekker å hjelpe oss før fristen. Vi håper derfor at gruppelederne kan forsøke å åpne programmet i Eclipse, dersom det ikke lar seg kjøre.
+I forbindelse med tilbakemeldingen på oblig 1 ble vi gjort oppmerksomme på at programmet ikke lot seg kjøre på maskinene til gruppelederne. Vi har forsøkt å fikse dette ved å flytte alle bilder og lydfiler inn i src/main/resources. Vi har også endret main.class i pom-filen til game.Main. Programmet lar seg kjøre på våre maskiner, men det har det gjort hele tiden. 
 
 [Klassediagrammet](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/KlassediagramOblig2.png) er lastet opp som en png-fil, for å lettere kunne zoome inn på det. Merk at du må åpne det i en ny fane for å kunne zoome i det.
 
