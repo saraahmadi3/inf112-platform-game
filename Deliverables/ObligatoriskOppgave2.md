@@ -67,7 +67,11 @@ I forbindelse med tilbakemeldingen på oblig 1 ble vi gjort oppmerksomme på at 
 
 ### Fikset siden sist 
 - Referater er skrevet, og lagt til i en egen mappe i Deliverables.
-- Vi har byttet fra Trello til githubs egne Issues, og lagt inn en rekke arbeidsoppgaver her. Vi har likevel ikke blitt flinke nok til å legge til nye arbeidsoppgaver, samt fjerne utførte oppgaver herfra.
+- Vi har byttet fra Trello til githubs egen Issues, og lagt inn en rekke arbeidsoppgaver her. Vi har likevel ikke blitt flinke nok til å legge til nye arbeidsoppgaver, samt fjerne utførte oppgaver herfra.
 - Vi har endret mappestrukturen til prosjektet vårt samt pom-filen, slik at det skal kunne kjøres på andres maskiner.
+- Vi har endret README.md, slik at den forteller brukeren hvordan en bygger prosjektet, og hvordan en går frem for å spille spillet.
+- Mer beskrivende commits. Innimellom alle reelle commits fins det likevel intetsigende commits også. Dette kan eksempelvi være i forbindelse med at vi har støtt på problemer med github, og gjør en push for å sjekke at alt fungerer.
+- Vi har også lagt til tester siden sist. Vi ligger likevel bakpå med tanke på å sjekke all funksjonaliteten i koden.    
+
 
 
