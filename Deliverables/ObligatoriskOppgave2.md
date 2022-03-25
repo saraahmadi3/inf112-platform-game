@@ -62,7 +62,7 @@ Synkroniseringen får også problemer dersom den ene spilleren dør i multiplaye
 
 
 ### Deloppgave 3
-I forbindelse med tilbakemeldingen på oblig 1 ble vi gjort oppmerksomme på at programmet ikke lot seg kjøre på maskinene til gruppelederne. Vi har forsøkt å fikse dette ved å flytte alle bilder og lydfiler inn i src/main/resources. Vi har også endret main.class i pom-filen til game.Main. For å se om dette fungerte har vi forsøkt å slette prosjektet lokalt, for deretter å klone det på nytt. Dette fungerer på våre maskiner, men vi har ikke rukket å få sjekke med noen av gruppelederne om de klarer å kjøre det på sine maskiner. 
+I forbindelse med tilbakemeldingen på oblig 1 ble vi gjort oppmerksomme på at programmet ikke lot seg kjøre på maskinene til gruppelederne. Dette har vi fikset ved å flytte alle bilder og lydfiler inn i src/main/resources. Vi har også endret main.class i pom-filen til game.Main. For å se om dette fungerte har vi forsøkt å slette prosjektet lokalt, for deretter å klone det på nytt. Vi har også kontaktet en av gruppelederne for å få ham til å bygge og kjøre programmet på sin maskin. Han kunne fortelle at det fungerte på hans maskin også.
 
 [Klassediagrammet](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/Images/KlassediagramOblig2.png) er lastet opp som en png-fil, for å lettere kunne zoome inn på det. Merk at du må åpne det i en ny fane for å kunne zoome i det.
 
