@@ -31,7 +31,7 @@ public class BoostPlatform extends Platform{
 	 * @param boostFactor
 	 */
 	public BoostPlatform(GameState game, int x, int y, int width, int height, double boostFactor) {
-		this(game, x, y, width, height, boostFactor, "Boost.png");
+		this(game, x, y, width, height, boostFactor, "boost.png");
 	}
 	
 	/**

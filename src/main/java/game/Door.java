@@ -8,7 +8,7 @@ public class Door extends Platform {
 	}
 	
 	public Door(GameState game, int x, int y, int width, int height) {
-		this(game, x , y, width, height, "Door.png");
+		this(game, x , y, width, height, "door.png");
 	}
 	
 	//should only open the door if the player has a key and touches the door
