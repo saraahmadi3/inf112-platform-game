@@ -1,0 +1,5 @@
+Tilstede: Kristian og Dani
+
+Endret på mappestrukturen, slik at bilde- og lydfiler ligger i src/main/resources. Endret også main.class i pom.xml-filen til game.Main. Vi var senere i kontakt med gruppelederen Sindre, som nå lyktes med å kjøre programmet på sin maskin. 
+
+Så også på noen av testene før fristen gikk ut klokken 16:00. 
