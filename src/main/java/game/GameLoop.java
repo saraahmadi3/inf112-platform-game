@@ -34,7 +34,7 @@ public class GameLoop implements ApplicationListener {
         delayedEnd = 2;
         isSynced = false;
         
-        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/song.mp3"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/song.ogg"));
         music.setVolume(1.0f);
         music.setLooping(true);
         music.play();

@@ -175,7 +175,7 @@ public abstract class AbstractObject implements GameObjects {
 	public void setSprite(String fileName) {
 		if (fileName != null && !fileName.equals("testMode")) {
 			try {
-				FileHandle playerFileHandle = Gdx.files.internal("game/img/"+fileName); 
+				FileHandle playerFileHandle = Gdx.files.internal("images/"+fileName); 
 				Texture playerTexture = new Texture(playerFileHandle);
 			    sprite = new Sprite(playerTexture, getWidth(), getHeight());
 			}
