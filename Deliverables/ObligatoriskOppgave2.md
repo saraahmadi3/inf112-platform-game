@@ -31,7 +31,7 @@ Gruppedynamikken er god. Vi kommuniserer godt med hverandre, og folk er flinke t
 I forbindelse med nettverksimplementeringen vår, har vi skrevet veldig mye kode som ikke har blitt committet. Dette er av den enkle grunn at vi har forsøkt på ting som ikke har fungert. I disse tilfellene har vi slettet kode lokalt uten å committe det. Vi delte oss også i to grupper (Dani/ Kristian og Sara/Adrian) da vi forsøkte å løse nettverksimplementeringen. Sara og Adrian lagde da en egen branch for å jobbe med deres løsning.
 
 ### Deloppgave 2
-##### Brukerhistoriene vi har fokusert på og veien videre
+##### Brukerhistorier
 I forbindelse med denne innleveringen har vi prioritert følgende tre brukerhistorier:
 
 1) Jeg forventer at jeg skal kunne spille mot en annen spiller over et lokalt nettverk, uten at forsinkelsen blir for stor.  
@@ -43,6 +43,7 @@ Akseptansekriterier: Det skal være en knapp for en-spiller/flerspiller-funksjon
 3) Jeg forventer at spillet har musikk, for å skape en helthetlig musikkopplevelse.  
 Akseptansekriterier: Det spilles musikk når spillet starter.
 
+##### "Stretchgoal" og veien videre
 Multiplayer fungerer allerede godt dersom multiplayer er begrenset til å kjøre på en maskin (piltaster og asdw-tastene). "Stretchgoalet" vårt til denne innleveringen har vært å implementere en multiplayer-løsning som fungerer på lokalt nettverk.  Hittil har vi fått til en nettverksløsning som fungerer dersom vi manuelt skriver inn IP-adressen til serveren på klient-maskinen. Til neste gang ønsker vi likevel å få til en nettverksløsning hvor klienten finner serveren automatisk. Vi er allerede i gang med en implementering av dette, hvor vi bruker discoverHost-metoden til kryonet for å finne serveren. Dette får vi til å fungere på en maskin (localhost), men ikke med flere maskiner. Dette kan være pga eduroam-nettverket, men dette har vi ikke fått sjekket.
 
 I forbindelse med brukerhistorie 2 lar startskjermen oss velge mellom enkel- og flerspiller, men vi ønsker å forbedre denne når vi har fått nettverksløsningen vår bedre til. Eksempelvis med knapper på skjermen.
