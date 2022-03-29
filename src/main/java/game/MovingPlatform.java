@@ -46,7 +46,7 @@ public class MovingPlatform extends Platform {
 	 * @param speed
 	 */
 	public MovingPlatform(GameState game, int x, int y, int width, int height, int xRange, int yRange, int speed) {
-		this(game, x, y, width, height, xRange, yRange, speed, "Platform.png");
+		this(game, x, y, width, height, xRange, yRange, speed, "platform.png");
 	}
 	
 	
