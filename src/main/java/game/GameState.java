@@ -34,6 +34,7 @@ public class GameState {
 	private boolean isMultiplayer;
 	private int singlePlayerID;
 	private boolean gameStarted;
+	private int mode;
 
 
 	
@@ -52,6 +53,7 @@ public class GameState {
 		waitingRemovalSprites = new ArrayList<GameObjects>();
 		allPlatforms = new ArrayList<Platform>();
 		allPlayers = new ArrayList<Player>();
+		this.mode=mode;
 		
 		System.out.println("Mode: "+mode);
 		
@@ -87,6 +89,7 @@ public class GameState {
 			} else {
 				level(currentLevel);
 			}
+			//
 		} else if (mode == 3) {
 			startMultiPlayer("A");
 		} else if (mode == 4) {
@@ -96,6 +99,13 @@ public class GameState {
 		} else if (mode == 6) {
 			startMultiPlayer("M");
 		}
+	}
+	
+	public boolean CanUseBothKeys() {
+		if (mode == 2)
+			return false;
+		
+		return true;
 	}
 	
 	public double getTotalDeltaTime() {
@@ -377,6 +387,7 @@ public class GameState {
 	public void startMultiPlayer(String s) {
 		setSinglePlayerID(0); //This value should not be accessed anyways.
 		setMultiPlayer(true); 
+		// server
 		if (s == "S") {
 			server = new PosServer(this);
 			new Text(this, 350, 350, "Server running. Waiting for client to connect...");
@@ -385,12 +396,14 @@ public class GameState {
 			} catch (UnknownHostException e1) {
 				e1.printStackTrace();
 			}
+			//client
 		} else if (s == "C") {
 			try {
 				client = new PosClient(this);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			//manual
 		} else if (s == "M"){
 			String input = (String)JOptionPane.showInputDialog(null, "Enter server-IP:", "Connect to server", JOptionPane.QUESTION_MESSAGE,
 					null, null, "localhost");
@@ -401,7 +414,7 @@ public class GameState {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-		} else { //Should only activate for s=="A"
+		} else { //Should only Auto for s=="A"
 			try {
 				client = new PosClient(this);
 			} catch (IOException e) {

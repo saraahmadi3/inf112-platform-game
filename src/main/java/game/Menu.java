@@ -72,7 +72,8 @@ public class Menu implements ActionListener {
 		frame.setVisible(false);
 		if(e.getSource() == playSingleplayer) {
 			System.out.println("Received Singleplayer");
-			promptKeyPreference();
+			Main.startGame(0);
+//			promptKeyPreference();
 		}
 		if(e.getSource() == playMultiplayer) {
 			System.out.println("Received Multiplayer");
@@ -81,7 +82,7 @@ public class Menu implements ActionListener {
 		
 	}
 
-	
+	//removed from menu so that both keys work and the player is free to choose
 	private static void promptKeyPreference() {
 		Object[] possibilities = {"W, A, S and D", "Arrows"};
 		String s = (String) JOptionPane.showInputDialog(
@@ -108,6 +109,7 @@ public class Menu implements ActionListener {
 
 	private static void promptMultiplayer() {
 		Object[] possibilities = {"Single Screen Multiplayer", "Network Multiplayer"};
+				
 		String s = (String) JOptionPane.showInputDialog(
 						null,
 						"How would you like to play Multiplayer?\n",
@@ -116,7 +118,9 @@ public class Menu implements ActionListener {
 						null,
 						possibilities,
 						null);
-
+		
+		
+		
 		//If a string was returned, say so.
 		if((s != null) && (s.length() > 0)) {
 			System.out.println("Received " + s);
