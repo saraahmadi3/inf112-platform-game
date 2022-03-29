@@ -1,0 +1,13 @@
+Tilstede: Dani, Sara, Kristian.
+Adrian var syk og ble hjemme, han var tilgjengelig på Discord.
+
+Dani brukte en virtuell maskin for å prøve å finne ut hvorfor programmet ser ut til å ikke kjøre på Linux,
+dette viste seg å være lettere sagt enn gjort da det var mye som måtte installeres og trøbbel med SSH nøkler.
+
+Sara og Kristian jobbet videre med koden. Dette inkluderte debugging av synkroniseringsproblemer, og endring 
+i menyen og hvordan man kontrollerer spilleren. Nå kan man (dersom man ikke spiller single screen multiplayer)
+bruke piltastene eller WASD fritt for å kontrollere spilleren, uten at man trenger å spesifisere hvilke taster
+man vil bruke i menyen.
+
+Neste gang bør vi jobbe med strukturen til testene, slik at det er mange, men mindre tester, 
+i stedet for veldig lange tester som er uoversiktige å jobbe med.
