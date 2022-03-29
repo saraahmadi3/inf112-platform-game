@@ -157,29 +157,33 @@ public class Player extends AbstractObject {
 	private void cheatMode() {
 		stepX = 0;
 		double stepY = 0;
-		int cheatIncrease = 4;
+		int cheatIncrease = 3;
 		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
 		//Moves the player to the left, slower while in the air
-		if((Gdx.input.isKeyPressed(Keys.A) && identity == 1) || (Gdx.input.isKeyPressed(Keys.LEFT) && identity == 2)) {
+		if(Gdx.input.isKeyPressed(Keys.A) && (identity == 1 || super.getGameState().CanUseBothKeys()) 
+				|| Gdx.input.isKeyPressed(Keys.LEFT) && (identity == 2 || super.getGameState().CanUseBothKeys())) {
 			stepX = -delta*V*cheatIncrease;
 		} 
 		
 		//Moves the player to the right, slower while in the air 
-		if(Gdx.input.isKeyPressed(Keys.D)  && identity == 1 || Gdx.input.isKeyPressed(Keys.RIGHT)  && identity == 2) {
+		if(Gdx.input.isKeyPressed(Keys.D)  && (identity == 1 || super.getGameState().CanUseBothKeys()) 
+				|| Gdx.input.isKeyPressed(Keys.RIGHT)  && (identity == 2 || super.getGameState().CanUseBothKeys())) {
 			stepX = delta*(V*cheatIncrease);
 		}
 		
 		//Allows the player to get down faster after a jump (or when falling in general) by canceling any upwards momentum and amplifying gravity
-		if(Gdx.input.isKeyPressed(Keys.S)  && identity == 1 || Gdx.input.isKeyPressed(Keys.DOWN)  && identity == 2) {
+		if(Gdx.input.isKeyPressed(Keys.S)  && (identity == 1 || super.getGameState().CanUseBothKeys()) 
+				|| Gdx.input.isKeyPressed(Keys.DOWN)  && (identity == 2 || super.getGameState().CanUseBothKeys())) {
 			stepY = -delta*V*cheatIncrease;
 		}
 				
 		//Jump, this happens once and therefore deltaTime should not be considered.
-		if(Gdx.input.isKeyPressed(Keys.W)  && identity == 1 || Gdx.input.isKeyPressed(Keys.UP)  && identity == 2) {
+		if(Gdx.input.isKeyPressed(Keys.W)  && (identity == 1 || super.getGameState().CanUseBothKeys()) 
+				|| Gdx.input.isKeyPressed(Keys.UP)  && (identity == 2 || super.getGameState().CanUseBothKeys())) {
 			stepY = delta*V*cheatIncrease;
 		}
 		
-		if(Gdx.input.isKeyPressed(Keys.C) && Gdx.input.isKeyPressed(Keys.H) && Gdx.input.isKeyPressed(Keys.E) && Gdx.input.isKeyPressed(Keys.A) && Gdx.input.isKeyPressed(Keys.T)) {
+		if(Gdx.input.isKeyPressed(Keys.X)) {
 			isCheating = false;
 		}
 		
