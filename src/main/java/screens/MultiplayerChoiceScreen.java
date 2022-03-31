@@ -1,6 +1,5 @@
 package screens;
 
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -36,12 +35,7 @@ public class MultiplayerChoiceScreen extends AbstractScreen implements ActionLis
 		
 		
 		//add buttons to the window
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(buttons);
-		frame.setMinimumSize(new Dimension(400, 250));
-		frame.setPreferredSize(new Dimension(400, 250));
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
+		setUpWindow(frame, buttons);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
