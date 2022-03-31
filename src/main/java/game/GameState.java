@@ -51,25 +51,7 @@ public class GameState {
 	
 
 	
-	//Lydeff
-	public void playSound(String fileName) {
-		if (fileName != null && !fileName.equals("testMode")) {
-			try {
-				if (jukebox.containsKey(fileName)) {
-					jukebox.get(fileName).play(1.0f);
-				}
-				else {
-					FileHandle soundFileHandle = Gdx.files.internal("sounds/"+fileName);
-					Sound sound = Gdx.audio.newSound(soundFileHandle);
-					jukebox.put(fileName, sound);
-					sound.play(1.0f);
-				}  
-			}
-			catch (Exception e) {
-				System.out.println("An error occurred whilst trying to get the sound file for the sound effects.");
-			}
-		}
-	}
+
 	
 	public GameState(GameLoop gameLoop, int gameLevel, int mode) {
 		
@@ -81,6 +63,7 @@ public class GameState {
 		allPlatforms = new ArrayList<Platform>();
 		allPlayers = new ArrayList<Player>();
 		this.mode=mode;
+		jukebox = new HashMap<String, Sound>();
 		
 		System.out.println("Mode: "+mode);
 		
@@ -452,6 +435,26 @@ public class GameState {
 				} catch (UnknownHostException e1) {
 					e1.printStackTrace();
 				}
+			}
+		}
+	}
+	
+	//Lydeffekter
+	public void playSound(String fileName) {
+		if (fileName != null && !fileName.equals("testMode")) {
+			try {
+				if (jukebox.containsKey(fileName)) {
+					jukebox.get(fileName).play(1.0f);
+				}
+				else {
+					FileHandle soundFileHandle = Gdx.files.internal("sounds/"+fileName);
+					Sound sound = Gdx.audio.newSound(soundFileHandle);
+					jukebox.put(fileName, sound);
+					sound.play(1.0f);
+				}  
+			}
+			catch (Exception e) {
+				System.out.println("An error occurred whilst trying to get the sound file for the sound effects.");
 			}
 		}
 	}
