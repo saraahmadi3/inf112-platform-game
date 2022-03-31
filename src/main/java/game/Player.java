@@ -54,6 +54,7 @@ public class Player extends AbstractObject {
 	
 	//Is activated by booster platform
 	public void boost(double boostFactor) {
+		//TODO: Play jump sound here
 		gV=-J*boostFactor;
 		isGrounded = false;
 		canDoubleJump = true;
@@ -260,12 +261,11 @@ public class Player extends AbstractObject {
 		if(Gdx.input.isKeyPressed(Keys.W)  && (identity == 1 || super.getGameState().CanUseBothKeys()) 
 				|| Gdx.input.isKeyPressed(Keys.UP)  && (identity == 2 || super.getGameState().CanUseBothKeys())) {
 			if (isGrounded) {
-				canDoubleJump = true;
-				gV = -J;
+				boost(1);
 			//Allows the player to jump again one time in mid-air after the first jump 
 			} else if (canDoubleJump && gV>=0) {
+				boost(1);
 				canDoubleJump = false;
-				gV = -J;
 			}
 		}
 		
