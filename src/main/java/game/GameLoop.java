@@ -14,6 +14,7 @@ public class GameLoop implements ApplicationListener {
     private GameState game;
     private int mode;
 	private Music music;
+
     
     
     private int delayedEnd;
@@ -30,10 +31,10 @@ public class GameLoop implements ApplicationListener {
         font = new BitmapFont();
         font.setColor(Color.RED);
      
-    
         delayedEnd = 2;
         isSynced = false;
         
+        //Musikken som spilles i bakgrunnen
         music = Gdx.audio.newMusic(Gdx.files.internal("sounds/song.ogg"));
         music.setVolume(1.0f);
         music.setLooping(true);
@@ -48,7 +49,7 @@ public class GameLoop implements ApplicationListener {
         batch.dispose();
         font.dispose();
         music.dispose(); 
-        System.exit(0);
+
     }
     
     //Draws a blank screen, used as a reset between each frame
@@ -80,6 +81,7 @@ public class GameLoop implements ApplicationListener {
     		game.gameOver();
     		delayedEnd--;
     	}
+ 
     
     	updateMultiPlayer();
     }

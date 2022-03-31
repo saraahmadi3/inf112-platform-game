@@ -4,12 +4,18 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL30;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
@@ -35,14 +41,37 @@ public class GameState {
 	private int singlePlayerID;
 	private boolean gameStarted;
 	private int mode;
-
-
+	private HashMap<String, Sound> jukebox; // samling av lydeffekter.
 	
 	private GameLoop gameLoop;
 	private PosClient client;
 	private PosServer server;
 	private double totalDeltaTime;
 	private double delayDifference;
+	
+
+	
+	//Lydeff
+	public void playSound(String fileName) {
+		if (fileName != null && !fileName.equals("testMode")) {
+			try {
+				if (jukebox.containsKey(fileName)) {
+					jukebox.get(fileName).play(1.0f);
+				}
+				else {
+					FileHandle soundFileHandle = Gdx.files.internal("sounds/"+fileName);
+					Sound sound = Gdx.audio.newSound(soundFileHandle);
+					jukebox.put(fileName, sound);
+					sound.play(1.0f);
+				}  
+			}
+			catch (Exception e) {
+				System.out.println("An error occurred whilst trying to get the sound file for the sound effects.");
+			}
+		}
+	}
+	
+
 	
 	public GameState(GameLoop gameLoop, int gameLevel, int mode) {
 		
