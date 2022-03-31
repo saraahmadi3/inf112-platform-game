@@ -71,8 +71,6 @@ public class GameState {
 		}
 	}
 	
-
-	
 	public GameState(GameLoop gameLoop, int gameLevel, int mode) {
 		
 		this.gameLoop = gameLoop;

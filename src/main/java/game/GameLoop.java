@@ -49,7 +49,6 @@ public class GameLoop implements ApplicationListener {
         batch.dispose();
         font.dispose();
         music.dispose(); 
-
     }
     
     //Draws a blank screen, used as a reset between each frame
