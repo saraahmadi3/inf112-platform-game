@@ -1,0 +1,5 @@
+Tilstede: Kristian, Nore og Dani.
+
+Lydeffekter: Vi jobbet med at det skulle spilles av en lydeffekt når spilleren hopper, og vi bestemte oss for hvilke deler av spillet som vi føler trenger lydeffekter.
+
+Linux: Ved forrige gruppetime tror vi at vi fant vi ut av hvorfor spillet ikke lot seg spille på Linux. Vi fikk en feilmelding knyttet til Swing-biblioteket til Java, og vi tror løsningen er å lage flere Frames, slik at vi lett kan dispose dem før man åpner en ny igjen. Dette satser vi på å få fikset frem til neste innlevering.
