@@ -16,7 +16,11 @@ public class Main {
         
         GameLoop loop = new GameLoop(mode);
         
-        new Lwjgl3Application(loop, cfg); //No lines below this will run.
+        new Lwjgl3Application(loop, cfg);
+        
+        //When everything in the Lwjgl3Application has finished running the game is over,
+        //and the system should exit to close any running servers or other processes.
+        System.exit(0);
          
     }
 
