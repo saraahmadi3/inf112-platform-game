@@ -54,7 +54,7 @@ public class Player extends AbstractObject {
 	
 	//Is activated by booster platform
 	public void boost(double boostFactor) {
-		//TODO: Play jump sound here
+		super.getGameState().playSound("jump.ogg");
 		gV=-J*boostFactor;
 		isGrounded = false;
 		canDoubleJump = true;
