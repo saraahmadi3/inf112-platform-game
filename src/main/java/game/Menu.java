@@ -53,7 +53,7 @@ public class Menu implements ActionListener {
 	 * @param name - The name to be displayed on the button.
 	 * @return
 	 */
-	JButton addButton(JPanel buttons, String name) {
+	public JButton addButton(JPanel buttons, String name) {
 		JButton button = new JButton();
 		button.setText(name);
 		button.setFont(new Font("Arial", Font.PLAIN, 40));
