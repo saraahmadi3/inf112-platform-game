@@ -2,11 +2,12 @@ package game;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import screens.MenuScreen;
 
 public class Main {
 	
     public static void main(String[] args) {
-    	new Menu();
+    	new MenuScreen();
     }
     
     public static void startGame (int mode) {

@@ -451,7 +451,8 @@ public class GameState {
 				}  
 			}
 			catch (Exception e) {
-				System.out.println("An error occurred whilst trying to get the sound file for the sound effects.");
+				System.out.println("An error occurred whilst trying to get the sound file for the sound effects: "+e);
+				
 			}
 		}
 	}
