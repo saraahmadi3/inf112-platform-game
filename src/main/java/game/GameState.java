@@ -50,9 +50,6 @@ public class GameState {
 	private double delayDifference;
 	
 
-	
-
-	
 	public GameState(GameLoop gameLoop, int gameLevel, int mode) {
 		
 		this.gameLoop = gameLoop;
