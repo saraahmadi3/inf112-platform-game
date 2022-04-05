@@ -41,9 +41,11 @@ public class Network {
 		public double sumDeltaTime;
 	}
 	
-	static public class KillPlayer {
+	static public class GameOver {
 		public int score;
-		public boolean dead;
+	}
+	
+	static public class LevelComplete {
 	}
 }
 

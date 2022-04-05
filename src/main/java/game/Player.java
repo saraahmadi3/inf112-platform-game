@@ -88,18 +88,16 @@ public class Player extends AbstractObject {
 			gV = 0;
 		} else {
 			killPlayer();
-			//new Text(super.getGameState(), 400, 300, "You Died!");
+			if (super.getGameState().isServer()) {
+				super.getGameState().getServer().playerDied(this);
+			} else if (super.getGameState().isClient()) {
+				super.getGameState().getClient().playerDied(this);
+			}
 		}
 	}
 	
 	public void killPlayer() {
 		super.getGameState().killSprite(this);
-		
-		if (super.getGameState().isServer()) {
-			super.getGameState().getServer().playerDied(this);
-		} else if (super.getGameState().isClient()) {
-			super.getGameState().getClient().playerDied(this);
-		}
 	}
 	
 	//only returns true if the player has a key, false otherwise
@@ -284,6 +282,10 @@ public class Player extends AbstractObject {
 	
 	public int getScore() {
 		return score;
+	}
+	
+	public void setScore(int newScore) {
+		score = newScore;
 	}
 	
 	public void changeScoreBy(int changeScore) {

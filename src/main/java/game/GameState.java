@@ -30,6 +30,7 @@ public class GameState {
 	private Player player1;
 	private Player player2;
 	private boolean levelFinished;
+	private boolean shouldStartNextLevel;
 	private ArrayList<GameObjects> allSprites;
 	private ArrayList<GameObjects> waitingSprites;
 	private ArrayList<GameObjects> waitingRemovalSprites;
@@ -54,6 +55,7 @@ public class GameState {
 		
 		this.gameLoop = gameLoop;
 		levelFinished = false;
+		shouldStartNextLevel = false;
 		allSprites = new ArrayList<GameObjects>();
 		waitingSprites = new ArrayList<GameObjects>();
 		waitingRemovalSprites = new ArrayList<GameObjects>();
@@ -306,6 +308,15 @@ public class GameState {
 
 
 	public void levelComplete(int playerId) {
+		if (server != null || client != null) {
+			getPlayer(playerId).changeScoreBy(250);
+			if (server != null) {
+				server.levelComplete();
+			} else {
+				client.levelComplete();
+			}
+			return;
+		}
 		if (!levelFinished) {
 			getPlayer(playerId).changeScoreBy(200);
 			levelFinished = true;
@@ -314,15 +325,31 @@ public class GameState {
 	}
 	
 	private void checkForLevelComplete() {
+		
+		if (shouldStartNextLevel) {
+			shouldStartNextLevel = false;
+			nextLevel();
+		}
+		
+		if (server != null || client != null) return;
+		
 		if (getAllPlayers().isEmpty() && gameStarted) {
 			if (levelFinished) {
 				levelFinished = false;
-				currentLevel++;
-				level(currentLevel);
+				startNextLevel();
 			} else {
 				gameOver=true; //When both players are dead the game is over.
 			}
 		}
+	}
+	
+	public void nextLevel() {
+		currentLevel++;
+		level(currentLevel);
+	}
+	
+	public void startNextLevel() {
+		shouldStartNextLevel = true;
 	}
 	
 	//TODO: This should only be called once, not every render() call
@@ -371,6 +398,12 @@ public class GameState {
 			new Level2(this);
 		} else {
 			new Level0(this);
+			if (server != null) {
+				server.playerDied(player1);
+			}
+			if (client != null) {
+				client.playerDied(player2);
+			}
 		}
 		gameStarted = true;
 	}

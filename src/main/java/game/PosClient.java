@@ -12,7 +12,8 @@ import com.esotericsoftware.kryonet.Listener.ThreadedListener;
 import com.esotericsoftware.minlog.Log;
 
 import game.Network.GameDeltaTime;
-import game.Network.KillPlayer;
+import game.Network.GameOver;
+import game.Network.LevelComplete;
 import game.Network.Login;
 import game.Network.PlayerPos;
 import game.Network.Register;
@@ -77,12 +78,17 @@ public class PosClient {
 					return;
 				}
 				
-				if (object instanceof KillPlayer) {
-					KillPlayer msg = (KillPlayer) object;
+				if (object instanceof GameOver) {
+					GameOver msg = (GameOver) object;
 					Player player = game.getPlayer(serverID);
 					if (player == null) return;
-					if (!game.playerIsAlive(player)) return;
-					player.killPlayer();	
+					player.setScore(msg.score);
+					game.setGameOver(true);
+					return;
+				}
+				
+				if (object instanceof LevelComplete) {
+					game.startNextLevel();
 					return;
 				}
 				
@@ -146,9 +152,20 @@ public class PosClient {
 	
 	public void playerDied(Player p) {
 		if (login == null) return;
-		KillPlayer msg = new KillPlayer();
+		GameOver msg = new GameOver();
+		msg.score = game.getPlayer(id).getScore();
 		if (msg != null) {
 			client.sendTCP(msg);
 		}
+		game.setGameOver(true);
+	}
+	
+	public void levelComplete() {
+		if (login == null) return;
+		LevelComplete msg = new LevelComplete();
+		if (msg != null) {
+			client.sendTCP(msg);
+		}
+		game.startNextLevel();
 	}
 }
