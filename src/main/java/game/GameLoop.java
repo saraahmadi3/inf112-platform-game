@@ -35,7 +35,7 @@ public class GameLoop implements ApplicationListener {
         isSynced = false;
         
         //Musikken som spilles i bakgrunnen
-        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/temasang.ogg"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/Sad_Creation.ogg"));
         music.setVolume(1.0f);
         music.setLooping(true);
         music.play();
