@@ -11,8 +11,8 @@ Det eksisterer en del bugs i spillet.
 
 De fleste bugsene er knyttet til synkronisering i forbindelse med multiplayer-funksjonen over nettverk. Spilleren som spiller på pc 1 vil oppleve at sin spiller er synkron med terrenget, men at motspilleren i noen tilfeller kan være usynkron med terrenget. Dette blir tydelig i forbindelse med de bevegelige plattformene. Det kan også oppstå problemer i tilfeller hvor den ene spilleren dør, eller når den ene spilleren fullfører levelet. Under normale forhold vil spillet selv gjøre et forsøk på å synkronisere seg, men dette fungerer ikke alltid under speiselle tilfeller.
 
-# Musikk
-Musikken er lisensfri og hentet herfra:  
+Vi har også bugs knyttet til bruk av Linux. Dersom vi kjører programmet vårt i Ubuntu, fungerer alt bortsett fra nettverksløsningene våre. Sindre, gruppelederen vår, får likevel kjørt programmet på sin Linux-maskin, dersom han kjører det i Debug-mode i IntelliJ. 
 
-https://freesound.org/people/Manicciola/sounds/173306/
+# Musikk
+All musikk er komponert av antsy-antonym
 
