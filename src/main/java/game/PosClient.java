@@ -18,7 +18,6 @@ import game.Network.Login;
 import game.Network.PlayerPos;
 import game.Network.Register;
 import game.Network.RegistrationRequired;
-import game.Network.UpdatePlayer;
 
 public class PosClient { 
 	Client client;
@@ -49,11 +48,6 @@ public class PosClient {
 					Register register = new Register();
 					client.sendTCP(register);
 				}
-
-				if (object instanceof UpdatePlayer) {
-					updatePlayer((UpdatePlayer)object);
-					return;
-				}
 				
 				if (object instanceof PlayerPos) {
 					
@@ -65,10 +59,6 @@ public class PosClient {
 					player.setX(msg.x);
 					player.setY(msg.y);
 
-					UpdatePlayer update = new UpdatePlayer();
-					update.x = player.getX();
-					update.y = player.getY();
-					client.sendTCP(update);
 					return;
 				}
 				
@@ -118,13 +108,6 @@ public class PosClient {
 	
 	public PosClient(GameState gameState) throws IOException {
 		this(gameState, null);
-	}
-
-	public void updatePlayer (UpdatePlayer msg) {
-		Player player = game.getPlayer(id);
-		if (player == null) return;
-		player.setX(msg.x);
-		player.setY(msg.y);
 	}
 	
 	public void sendMsg() {

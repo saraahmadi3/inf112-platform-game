@@ -15,7 +15,9 @@ public class Network {
 		kryo.register(RegistrationRequired.class);
 		kryo.register(Register.class);
 		kryo.register(PlayerPos.class);
-		kryo.register(UpdatePlayer.class);
+		kryo.register(LevelComplete.class);
+		kryo.register(GameOver.class);
+		kryo.register(GameDeltaTime.class);
 	}
 
 	static public class Login {
@@ -25,11 +27,6 @@ public class Network {
 	}
 
 	static public class Register {
-	}
-	
-	static public class UpdatePlayer {
-		public double x;
-		public double y;
 	}
 
 	static public class PlayerPos {
