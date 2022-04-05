@@ -19,24 +19,20 @@ public class Network {
 	}
 
 	static public class Login {
-		public int id;
 	}
 
 	static public class RegistrationRequired {
 	}
 
 	static public class Register {
-		public int id;
 	}
 	
 	static public class UpdatePlayer {
-		public int id; 
 		public double x;
 		public double y;
 	}
 
 	static public class PlayerPos {
-		public int id; 
 		public double x;
 		public double y;
 	}
@@ -46,7 +42,8 @@ public class Network {
 	}
 	
 	static public class KillPlayer {
-		public int id;
+		public int score;
+		public boolean dead;
 	}
 }
 

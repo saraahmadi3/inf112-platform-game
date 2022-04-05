@@ -24,11 +24,13 @@ public class PosClient {
 	Login login;
 	private GameState game;
 	int id;
+	int serverID;
 
 	public PosClient (GameState game, InetAddress hostIP) throws IOException {
 		InetAddress host = hostIP;
 		//System.setProperty("java.net.preferIPv4Stack" , "true");
 		id = 2;
+		serverID = 1;
 		client = new Client();
 		this.game=game;
 		Log.set(1);
@@ -44,7 +46,6 @@ public class PosClient {
 			public void received (Connection connection, Object object) {
 				if (object instanceof RegistrationRequired) {
 					Register register = new Register();
-					register.id = id;
 					client.sendTCP(register);
 				}
 
@@ -56,13 +57,7 @@ public class PosClient {
 				if (object instanceof PlayerPos) {
 					
 					PlayerPos msg = (PlayerPos)object;
-					// Ignore if not logged in.
-					if (msg.id == 0) {
-						System.out.println("Client: Player is not logged in!");
-						return;
-					}
-					
-					Player player = game.getPlayer(msg.id);
+					Player player = game.getPlayer(serverID);
 					
 					if (player==null) return;
 					
@@ -70,7 +65,6 @@ public class PosClient {
 					player.setY(msg.y);
 
 					UpdatePlayer update = new UpdatePlayer();
-					update.id = player.getIdentity();
 					update.x = player.getX();
 					update.y = player.getY();
 					client.sendTCP(update);
@@ -85,7 +79,7 @@ public class PosClient {
 				
 				if (object instanceof KillPlayer) {
 					KillPlayer msg = (KillPlayer) object;
-					Player player = game.getPlayer(msg.id);
+					Player player = game.getPlayer(serverID);
 					if (player == null) return;
 					if (!game.playerIsAlive(player)) return;
 					player.killPlayer();	
@@ -112,7 +106,6 @@ public class PosClient {
 	
 		client.connect(2500, host, Network.port, Network.port-1);
 		this.login = new Login();
-		login.id = id;
 		client.sendTCP(login);
 		game.level(game.getCurrentLevel());
 	}
@@ -122,7 +115,7 @@ public class PosClient {
 	}
 
 	public void updatePlayer (UpdatePlayer msg) {
-		Player player = game.getPlayer(msg.id);
+		Player player = game.getPlayer(id);
 		if (player == null) return;
 		player.setX(msg.x);
 		player.setY(msg.y);
@@ -133,7 +126,6 @@ public class PosClient {
 		Player player = game.getPlayer(id);
 		PlayerPos msg = new PlayerPos();
 		
-		msg.id = id;
 		msg.x = player.getX();
 		msg.y = player.getY();
 		
@@ -155,23 +147,8 @@ public class PosClient {
 	public void playerDied(Player p) {
 		if (login == null) return;
 		KillPlayer msg = new KillPlayer();
-		
-		msg.id = p.getIdentity();
-		
 		if (msg != null) {
 			client.sendTCP(msg);
 		}
 	}
-	
-	/*
-	private class UI {
-
-		public String inputHost () {
-			String input = (String)JOptionPane.showInputDialog(null, "Host:", "Connect to server", JOptionPane.QUESTION_MESSAGE,
-				null, null, "localhost");
-			if (input == null || input.trim().length() == 0) System.exit(1);
-			return input.trim(); 
-		}
-	}
-	*/
 }

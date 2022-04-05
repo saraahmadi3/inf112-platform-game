@@ -18,12 +18,14 @@ import game.Network.UpdatePlayer;
 public class PosServer {
 	
 	Server server;
-	int serverPlayerID;
+	int id;
+	int clientID;
 	GameState game;
 	HashSet<Integer> loggedIn = new HashSet<>();
 
 	public PosServer (GameState game) {
-		serverPlayerID = 1;
+		id = 1;
+		clientID = 2;
 		this.game = game;
 		server = new Server() {
 			protected Connection newConnection () {
@@ -55,7 +57,7 @@ public class PosServer {
 					// Ignore if already logged in.
 					if (playerID != 0) return;
 					
-					playerID = ((Login)object).id;
+					playerID = clientID;
 
 					// Reject if already logged in.
 					for (int other : loggedIn) {
@@ -78,7 +80,6 @@ public class PosServer {
 				}
 
 				if (object instanceof PlayerPos) {
-					// Ignore if not logged in.
 					if (playerID == 0) {
 						System.out.println("Server: Player is not logged in!");
 						return;
@@ -97,7 +98,6 @@ public class PosServer {
 					player.setY(msg.y);
 
 					UpdatePlayer update = new UpdatePlayer();
-					update.id = player.getIdentity();
 					update.x = player.getX();
 					update.y = player.getY();
 					server.sendToAllTCP(update);
@@ -117,7 +117,7 @@ public class PosServer {
 				
 				if (object instanceof KillPlayer) {
 					KillPlayer msg = (KillPlayer) object;
-					Player player = game.getPlayer(msg.id);
+					Player player = game.getPlayer(playerID);
 					if (player == null) return;
 					if (!game.playerIsAlive(player)) return;
 					player.killPlayer();
@@ -127,7 +127,7 @@ public class PosServer {
 			}
 			
 			public void updatePlayer (UpdatePlayer msg) {
-				Player player = game.getPlayer(msg.id);
+				Player player = game.getPlayer(id);
 				if (player == null) return;
 				player.setX(msg.x);
 				player.setY(msg.y);
@@ -147,11 +147,10 @@ public class PosServer {
 
 	public void sendMsg() {
 		if (loggedIn.isEmpty()) return;
-		Player player = game.getPlayer(serverPlayerID);
+		Player player = game.getPlayer(id);
 		if (!game.playerIsAlive(player)) return;
 		PlayerPos msg = new PlayerPos();
 		
-		msg.id = serverPlayerID;
 		msg.x = player.getX();
 		msg.y = player.getY();
 		
@@ -174,8 +173,6 @@ public class PosServer {
 	public void playerDied(Player p) {
 		if (loggedIn.isEmpty()) return;
 		KillPlayer msg = new KillPlayer();
-		
-		msg.id = p.getIdentity();
 		
 		if (msg != null) {
 			server.sendToAllTCP(msg);
