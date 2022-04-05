@@ -1,0 +1,5 @@
+Tilstede: Kristian, Sara, Adrian og Dani
+
+Spillet fungerer på Linux, dersom vi kun er èn spiller, eller hvis vi er to spillere på en skjerm. Nettverksløsningen fungerer dermed ikke.
+Vi mangler også noen av lydeffektene vi ønsker oss. Vi har fremdeles noen sykroniseringsfeil i forbindelse med nettverksløsningen vår, men håper å unngå noen av disse ved å endre logikken i spillreglene. Dvs at hvis en spiller dør, vinner automatisk den andre spilleren, og hvis en spiller kommer først til døren, vil begge spillerne gå videre til neste brett, men den første spilleren får en bonus. 
+
