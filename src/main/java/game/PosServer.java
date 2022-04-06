@@ -14,7 +14,6 @@ import game.Network.LevelComplete;
 import game.Network.Login;
 import game.Network.PlayerPos;
 import game.Network.Register;
-import game.Network.UpdatePlayer;
 
 public class PosServer {
 	
@@ -98,15 +97,7 @@ public class PosServer {
 					player.setX(msg.x);
 					player.setY(msg.y);
 
-//					UpdatePlayer update = new UpdatePlayer();
-//					update.x = player.getX();
-//					update.y = player.getY();
-//					server.sendToAllTCP(update);
-					return;
-				}
-				
-				if (object instanceof UpdatePlayer) {
-					updatePlayer((UpdatePlayer)object);
+
 					return;
 				}
 				
@@ -130,14 +121,6 @@ public class PosServer {
 					return;
 				}
 			}
-			
-			public void updatePlayer (UpdatePlayer msg) {
-				Player player = game.getPlayer(id);
-				if (player == null) return;
-				player.setX(msg.x);
-				player.setY(msg.y);
-			}
-
 
 			public void disconnected (Connection c) {
 				PlayerConnection connection = (PlayerConnection)c;
