@@ -98,10 +98,10 @@ public class PosServer {
 					player.setX(msg.x);
 					player.setY(msg.y);
 
-					UpdatePlayer update = new UpdatePlayer();
-					update.x = player.getX();
-					update.y = player.getY();
-					server.sendToAllTCP(update);
+//					UpdatePlayer update = new UpdatePlayer();
+//					update.x = player.getX();
+//					update.y = player.getY();
+//					server.sendToAllTCP(update);
 					return;
 				}
 				
