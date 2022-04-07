@@ -43,6 +43,7 @@ public class Key extends AbstractObject {
 		if (checkForHit(player)){
 			if(player.pickUpKey()) {
 				super.getGameState().killSprite(this);
+				super.getGameState().playSound("landing.ogg");
 				return true;
 			}
 		}
