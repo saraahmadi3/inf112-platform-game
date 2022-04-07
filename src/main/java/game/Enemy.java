@@ -82,6 +82,7 @@ public class Enemy extends AbstractObject {
 				player.boost(0.5);
 				player.changeScoreBy(10);
 				super.getGameState().killSprite(this);
+				super.getGameState().playSound("landing.ogg");
 			} else if (((playerID == 1) && (!super.getGameState().isClient())) || ((playerID == 2) && (!super.getGameState().isServer()))){
 				player.loseLife();
 			}
