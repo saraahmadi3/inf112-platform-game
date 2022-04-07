@@ -1,6 +1,7 @@
 package game.levels;
 
 import game.BoostPlatform;
+import game.Coin;
 import game.Door;
 import game.Enemy;
 import game.GameState;
@@ -27,6 +28,12 @@ public class Level1 implements Levels {
 		} else {
 			new Player(50, 15, game);
 		}
+		
+		new Coin(game, 15, 100);
+		new Coin(game, 750, 75);
+		new Coin(game, 50, 650);
+		new Coin(game, 275, 420);
+		new Coin(game, 800, 620);
 		
 		
 		new Platform(game, -500, -10, 1150, 20, "grass.png"); //Floor
