@@ -39,6 +39,7 @@ public class EnterIPScreen extends AbstractScreen implements ActionListener {
 		panel.add(submit);
 		submit.addActionListener(this);
 		
+		frame.getRootPane().setDefaultButton(submit);
 		
 		//add buttons to the window
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
