@@ -21,9 +21,11 @@ public class Door extends Platform {
 	
 	//After door is opened the player should no longer have the key
 	private void openDoor(Player player) {
+		super.getGameState().playSound("landing.ogg");
 		player.useKey();
 		super.getGameState().levelComplete(player.getIdentity());
 		player.killPlayer();
+		
 	}
 	
 	@Override
