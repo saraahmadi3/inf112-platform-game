@@ -22,6 +22,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import game.levels.Level0;
 import game.levels.Level1;
 import game.levels.Level2;
+import game.levels.Level3;
 
 public class GameState {
 	
@@ -398,6 +399,8 @@ public class GameState {
 			new Level1(this);
 		} else if (gameLevel == 2) {
 			new Level2(this);
+		} else if (gameLevel == 3) {
+			new Level3(this);
 		} else {
 			new Level0(this);
 			if (server != null) {
