@@ -95,7 +95,7 @@ public class PosClient {
 		if (host == null) {
 			host = client.discoverHost(Network.port-1, 2500);
 			if (host == null) {
-				throw new IOException("host cannot be null.");
+				throw new IOException("Could not find server while trying to discover host.");
 			} else {
 				System.out.println("Host: "+host.toString());
 			}
