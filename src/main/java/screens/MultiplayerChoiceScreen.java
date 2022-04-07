@@ -39,8 +39,7 @@ public class MultiplayerChoiceScreen extends AbstractScreen implements ActionLis
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		frame.setVisible(false);
-		frame.dispose();
+		super.dispose(frame);
 		if (e.getSource() == SingleScreenMultiplayer) {
 			System.out.println("Received Single screen Multiplayer");
 			Main.startGame(2);

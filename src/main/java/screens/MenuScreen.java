@@ -41,8 +41,7 @@ public class MenuScreen extends AbstractScreen implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		frame.setVisible(false);
-		frame.dispose();
+		super.dispose(frame);
 		if(e.getSource() == playSingleplayer) {
 			System.out.println("Received Singleplayer");
 			Main.startGame(0);

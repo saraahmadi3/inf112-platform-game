@@ -40,8 +40,7 @@ public class ClientChoiceScreen extends AbstractScreen implements ActionListener
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		frame.setVisible(false);
-		frame.dispose();
+		super.dispose(frame);
 		if(e.getSource()==discoverhost) {
 			Main.startGame(5);
 		}else if(e.getSource()==enterIP) {

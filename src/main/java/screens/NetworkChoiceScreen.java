@@ -43,16 +43,7 @@ public class NetworkChoiceScreen extends AbstractScreen implements ActionListene
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		frame.setVisible(false);
-		frame.dispose();
-		//https://github.com/LWJGL/lwjgl3/issues/149
-		/*
-		 * Run System.gc(), at least two times. Not sure how AWT handles native resources, 
-		 * maybe there's a finalizable/PhantomRef-ed resource that is not released immediately, 
-		 * but a subsequent GC triggers a (too late) free. 
-		 */
-		System.gc();
-		System.gc();
+		super.dispose(frame);
 		if (e.getSource() == auto) {
 			System.out.println("Received Aotomatic Network solution");
 			Main.startGame(3);
