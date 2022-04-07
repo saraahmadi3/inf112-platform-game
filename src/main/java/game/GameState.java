@@ -447,8 +447,7 @@ public class GameState {
 			}
 			//manual
 		} else if (s == "M"){
-			String input = (String)JOptionPane.showInputDialog(null, "Enter server-IP:", "Connect to server", JOptionPane.QUESTION_MESSAGE,
-					null, null, "localhost");
+			String input = inputIP;
 				if (input == null || input.trim().length() == 0) System.exit(1);
 				input.trim();
 				try {
