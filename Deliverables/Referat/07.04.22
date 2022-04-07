@@ -1,0 +1,7 @@
+Tilstede: Kristian, Sara og Dani
+
+Dagen i forveien oppdaget vi noe som kunne være en løsning på problemet vårt knyttet til nettverksløsningen på Linux. Dette viste seg ikke å fungere, men vi tror vi har funnet ut av hva som gør at spillet kræsjer på Linux. Skjermbildet som dukker opp i forbindelse med nettverksvalgene virker å være det som utløser kræsjet. Dette er implementert på en annen måte enn de andre skjermene, og vi vil derfor forsøke å implementere dette på en annen måte. Vi er ikke sikre på om vi rekker å fikse det til innleveringen i morgen.
+
+Vi har også lagt til lydeffekter knyttet til ulike hendelser i spillet. Inntil videre har alle tingene fått samme lyd. Vi finner mer passende lyd senere.
+
+Vi har også en tanke om hvordan vi kan fikse synkroniseringsfeilene våre knyttet til nettverskløsningen vår. Den innnebærer at de ulike pcene må utveksle et felles tidspunkt, slik at de starter helt samtidig.
