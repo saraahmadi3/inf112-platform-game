@@ -45,7 +45,7 @@ I forbindelse med brukerhistorie 2, har vi laget en temasang samt noen lydeffekt
 
 Til neste sprint ønsker vi derfor:
 - å få til en nettverksløsning, som også fungerer på Linux. 
-- teste om løsningen vår for å oppdage en server automatisk, fungerer på et av hjemme-nettverkene våre. 
+- teste om løsningen vår for å oppdage en server automatisk fungerer på et av hjemme-nettverkene våre. 
 - få spillet til å kjøre på Mac. 
 - lage unike lydeffekter til de ulike hendelsene i spillet. 
 
