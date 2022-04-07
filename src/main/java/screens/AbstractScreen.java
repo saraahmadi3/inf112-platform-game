@@ -50,12 +50,6 @@ public abstract class AbstractScreen{
 		frame.setVisible(true);
 	}
 	
-	//https://github.com/LWJGL/lwjgl3/issues/149
-	/*
-	 * Run System.gc(), at least two times. Not sure how AWT handles native resources, 
-	 * maybe there's a finalizable/PhantomRef-ed resource that is not released immediately, 
-	 * but a subsequent GC triggers a (too late) free. 
-	 */
 	public void dispose(JFrame frame) {
 		frame.setVisible(false);
 		frame.dispose();
