@@ -361,7 +361,7 @@ public class GameState {
         getBatch().begin();
 		if (!getMultiPlayer()) {
 	    	
-			new Text(this, 700, 575, "Game over. You got " + this.getSinglePlayerID() + " points.").draw();;
+			new Text(this, 700, 575, "Game over. You got " + getPlayer(getSinglePlayerID()).getScore() + " points.").draw();;
 		}
 		else {
 			int Player1Points = getPlayer(1).getScore();

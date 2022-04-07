@@ -19,6 +19,9 @@ public class Tips extends Text {
 			+ "Tip: After being launched into the air by a Booster platform you can use a double jump just like you would after a normal jump." + " ".repeat(spaces)
 			+ "Tip: Ghost platforms will look identical to regular platforms until you step on one." + " ".repeat(spaces)
 			+ "Tip: Ghost platforms will disappear if you stand on them for too long, but don't worry, after a while they come back." + " ".repeat(spaces)
+			+ "Tip: The player with the highest score at the end of the game wins!" + " ".repeat(spaces)
+			+ "Tip: You get a lot of points by finishing a level first, but be careful, dying will make you lose points!" + " ".repeat(spaces)
+			+ "Tip: Kill enemies or collect coins to earn more points!" + " ".repeat(spaces)
 			+ "Tip: Using the double jump at the right time is crucial. Use it as soon as possible to gain the most height, or wait to get more distance." + " ".repeat(spaces);
 	
 
