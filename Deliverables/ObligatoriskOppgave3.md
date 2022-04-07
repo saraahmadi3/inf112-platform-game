@@ -47,7 +47,9 @@ Til neste sprint ønsker vi derfor:
 - å få til en nettverksløsning, som også fungerer på Linux. 
 - teste om løsningen vår for å oppdage en server automatisk fungerer på et av hjemme-nettverkene våre. 
 - få spillet til å kjøre på Mac. 
-- lage unike lydeffekter til de ulike hendelsene i spillet. 
+- lage unike lydeffekter til de ulike hendelsene i spillet.
+- lage en bedre/finere scoreboard.
+- lage en restart-knapp som dukker opp når spillet er over. 
 
 Til syvende og sist har vi på tampen av denne sprinten kommet på en idè som kanskje kan løse de siste Synkroniseringsutfordringene våre. Dette knytter seg til en klokke som skal sørge for at spillerne begynner nøyaktig likt ved bruk av nettverksløsningen vår. Dette vil bli en brukerhistorie til den siste innleveringen vår.
 
