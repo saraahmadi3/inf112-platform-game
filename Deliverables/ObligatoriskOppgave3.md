@@ -67,7 +67,7 @@ Vi har ennå ikke fått tilbakemelding på den andre innleveringen vår, så vi 
 - Vi har redusert mengden data som sendes over nettverket, og på denne måten forbedret synkroniseringen ved bruk av nettverksløsning.
 - Vi har utvidet GUIen vår, slik at den lar brukeren bestemme nettverksløsning (merk at vi er i gang med å forbedre denne, da vi tror at det er denne som gjør at det ikke lar seg kjøre på Linux).
 - Vi har lagt til mynter (Coin) i spillet.
-- Vi har fikset scoreboardet på slutten av spillet, slik at socren til spillerne er synkronisert.
+- Vi har fikset scoreboardet på slutten av spillet, slik at scoren til spillerne er synkronisert.
 
 
 
