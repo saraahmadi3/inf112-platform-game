@@ -44,7 +44,7 @@ public class MenuScreen extends AbstractScreen implements ActionListener {
 		super.dispose(frame);
 		if(e.getSource() == playSingleplayer) {
 			System.out.println("Received Singleplayer");
-			Main.startGame(0);
+			Main.startGame(0, null);
 
 		}
 		if(e.getSource() == playMultiplayer) {

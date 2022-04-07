@@ -42,6 +42,7 @@ public class GameState {
 	private int singlePlayerID;
 	private boolean gameStarted;
 	private int mode;
+	private String inputIP;
 	private HashMap<String, Sound> jukebox; // samling av lydeffekter.
 	
 	private GameLoop gameLoop;
@@ -51,7 +52,7 @@ public class GameState {
 	private double delayDifference;
 	
 
-	public GameState(GameLoop gameLoop, int gameLevel, int mode) {
+	public GameState(GameLoop gameLoop, int gameLevel, int mode, String inputIP) {
 		
 		this.gameLoop = gameLoop;
 		levelFinished = false;
@@ -62,6 +63,7 @@ public class GameState {
 		allPlatforms = new ArrayList<Platform>();
 		allPlayers = new ArrayList<Player>();
 		this.mode=mode;
+		this.inputIP=inputIP;
 		jukebox = new HashMap<String, Sound>();
 		
 		System.out.println("Mode: "+mode);
@@ -73,15 +75,15 @@ public class GameState {
 	}
 
 	public GameState() {
-		this(null,1, 0);
+		this(null,1, 0, null);
 	}
 	
 	public GameState(GameLoop gameLoop) {
-		this(gameLoop, 1, 0);
+		this(gameLoop, 1, 0, null);
 	}
 	
 	public GameState(int gameLevel) {
-		this(null, gameLevel, 0);
+		this(null, gameLevel, 0, null);
 	}
 	
 	private void startMode(int mode) {

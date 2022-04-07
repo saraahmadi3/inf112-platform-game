@@ -73,7 +73,7 @@ public class Menu implements ActionListener {
 		if(e.getSource() == playSingleplayer) {
 			System.out.println("Received Singleplayer");
 			frame.dispose();
-			Main.startGame(0);
+			Main.startGame(0, null);
 //			promptKeyPreference();
 		}
 		if(e.getSource() == playMultiplayer) {
@@ -101,10 +101,10 @@ public class Menu implements ActionListener {
 		}
 		if (s.equals(possibilities[0])) {
 			frame.dispose();
-			Main.startGame(0);
+			Main.startGame(0, null);
 		} else {
 			frame.dispose();
-			Main.startGame(1);
+			Main.startGame(1, null);
 		}
 			
 	}
@@ -131,7 +131,7 @@ public class Menu implements ActionListener {
 		
 		if (s == possibilities[0]) {
 			frame.dispose();
-			Main.startGame(2);
+			Main.startGame(2, null);
 		} else {
 			promptNetwork();
 		}
@@ -154,12 +154,12 @@ public class Menu implements ActionListener {
 		}
 		if (s.equals(possibilities[1])) {
 			frame.dispose();
-			Main.startGame(4);
+			Main.startGame(4, null);
 		} else if (s.equals(possibilities[2])) {
 			promptClient();
 		} else {
 			frame.dispose();
-			Main.startGame(3);
+			Main.startGame(3, null);
 		}
 			
 	}
@@ -181,10 +181,10 @@ public class Menu implements ActionListener {
 		}
 		if (s.equals(possibilities[0])) {
 			frame.dispose();
-			Main.startGame(5);
+			Main.startGame(5, null);
 		} else {
 			frame.dispose();
-			Main.startGame(6);
+			Main.startGame(6, null);
 		}
 			
 	}

@@ -10,12 +10,12 @@ public class Main {
     	new MenuScreen();
     }
     
-    public static void startGame (int mode) {
+    public static void startGame (int mode, String inputIP) {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("Game");
         cfg.setWindowedMode(1080, 720);
         
-        GameLoop loop = new GameLoop(mode);
+        GameLoop loop = new GameLoop(mode, inputIP);
         
         new Lwjgl3Application(loop, cfg);
         

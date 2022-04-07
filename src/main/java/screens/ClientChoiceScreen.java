@@ -42,9 +42,9 @@ public class ClientChoiceScreen extends AbstractScreen implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		super.dispose(frame);
 		if(e.getSource()==discoverhost) {
-			Main.startGame(5);
+			Main.startGame(5, null);
 		}else if(e.getSource()==enterIP) {
-			Main.startGame(6);
+			EnterIPScreen ip = new EnterIPScreen();
 		}
 
 	}

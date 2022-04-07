@@ -46,10 +46,10 @@ public class NetworkChoiceScreen extends AbstractScreen implements ActionListene
 		super.dispose(frame);
 		if (e.getSource() == auto) {
 			System.out.println("Received Aotomatic Network solution");
-			Main.startGame(3);
+			Main.startGame(3, null);
 		}else if(e.getSource()==server) {
 			System.out.println("Received Server");
-			Main.startGame(4);
+			Main.startGame(4, null);
 		}else if (e.getSource()==client) {
 			System.out.println("Received Client");
 			ClientChoiceScreen client = new ClientChoiceScreen();

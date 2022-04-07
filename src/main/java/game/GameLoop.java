@@ -13,6 +13,7 @@ public class GameLoop implements ApplicationListener {
     private BitmapFont font;
     private GameState game;
     private int mode;
+    private String inputIP;
 	private Music music;
 
     
@@ -20,8 +21,9 @@ public class GameLoop implements ApplicationListener {
     private int delayedEnd;
     private boolean isSynced;
     
-    public GameLoop(int mode) {
+    public GameLoop(int mode, String inputIP) {
     	this.mode=mode;
+    	this.inputIP=inputIP;
     }
     
     @Override
@@ -40,7 +42,7 @@ public class GameLoop implements ApplicationListener {
         music.setLooping(true);
         music.play();
         
-        game = new GameState (this, 1, mode);
+        game = new GameState (this, 1, mode, inputIP);
         game.setBatchAndFont(batch, font);
     }
 
