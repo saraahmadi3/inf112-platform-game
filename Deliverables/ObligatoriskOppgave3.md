@@ -60,8 +60,6 @@ Bugsene knyttet til spillet er i stor grad de samme som ved forrige innlevering.
 
 Graden av synkroniseringsfeil har likevel endret seg. Vi oppdaget at vi sendte unødvendig mye data over nettverket, og klarte derfor å moderere mengden data som sendes. Dette ga synlige utslag på synkroniseringsfeil. Selv om dette problemet har bedret seg, oppstår det likevel synkroniseringsfeil.
 
-Synkroniseringen får også problemer dersom den ene spilleren dør i multiplayer-funksjonen, eller hvis den ene spilleren fullfører levelet.
-
 Spillet vårt fungerer ikke på Mac ennå.
 
 ### Deloppgave 3
@@ -74,7 +72,7 @@ Vi har ennå ikke fått tilbakemelding på den andre innleveringen vår, så vi 
 - Vi har komponert musikk til spillet, og lagt til lydeffekter i spillet.
 - Vi har redusert mengden data som sendes over nettverket, og på denne måten forbedret synkroniseringen ved bruk av nettverksløsning.
 - Vi har utvidet GUIen vår, slik at den lar brukeren bestemme nettverksløsning (merk at vi er i gang med å forbedre denne, da vi tror at det er denne som gjør at det ikke lar seg kjøre på Linux).
-- Vi har lagt til mynter (Coin) i spillet.
+- Vi har lagt til mynter (Coin) i spillet som gir spilleren poeng.
 - Vi har fikset scoreboardet på slutten av spillet, slik at scoren til spillerne er synkronisert.
 
 
