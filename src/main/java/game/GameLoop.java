@@ -140,23 +140,20 @@ public class GameLoop implements ApplicationListener {
     	this.game = game;
     }
 
+    //Below methods must be implemented from ApplicationListener, but for now we don't have much use for them.
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		
+		return;	
 	}
-
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-		
+		return;
 	}
-
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
-		
+		return;	
 	}
+
 
     
 }

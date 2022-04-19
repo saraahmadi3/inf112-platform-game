@@ -159,26 +159,26 @@ public class Player extends AbstractObject {
 		int cheatIncrease = 3;
 		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
 		//Moves the player to the left, slower while in the air
-		if(Gdx.input.isKeyPressed(Keys.A) && (identity == 1 || super.getGameState().CanUseBothKeys()) 
-				|| Gdx.input.isKeyPressed(Keys.LEFT) && (identity == 2 || super.getGameState().CanUseBothKeys())) {
+		if(Gdx.input.isKeyPressed(Keys.A) && (identity == 1 || super.getGameState().canUseBothKeys()) 
+				|| Gdx.input.isKeyPressed(Keys.LEFT) && (identity == 2 || super.getGameState().canUseBothKeys())) {
 			stepX = -delta*V*cheatIncrease;
 		} 
 		
 		//Moves the player to the right, slower while in the air 
-		if(Gdx.input.isKeyPressed(Keys.D)  && (identity == 1 || super.getGameState().CanUseBothKeys()) 
-				|| Gdx.input.isKeyPressed(Keys.RIGHT)  && (identity == 2 || super.getGameState().CanUseBothKeys())) {
+		if(Gdx.input.isKeyPressed(Keys.D)  && (identity == 1 || super.getGameState().canUseBothKeys()) 
+				|| Gdx.input.isKeyPressed(Keys.RIGHT)  && (identity == 2 || super.getGameState().canUseBothKeys())) {
 			stepX = delta*(V*cheatIncrease);
 		}
 		
 		//Allows the player to get down faster after a jump (or when falling in general) by canceling any upwards momentum and amplifying gravity
-		if(Gdx.input.isKeyPressed(Keys.S)  && (identity == 1 || super.getGameState().CanUseBothKeys()) 
-				|| Gdx.input.isKeyPressed(Keys.DOWN)  && (identity == 2 || super.getGameState().CanUseBothKeys())) {
+		if(Gdx.input.isKeyPressed(Keys.S)  && (identity == 1 || super.getGameState().canUseBothKeys()) 
+				|| Gdx.input.isKeyPressed(Keys.DOWN)  && (identity == 2 || super.getGameState().canUseBothKeys())) {
 			stepY = -delta*V*cheatIncrease;
 		}
 				
 		//Jump, this happens once and therefore deltaTime should not be considered.
-		if(Gdx.input.isKeyPressed(Keys.W)  && (identity == 1 || super.getGameState().CanUseBothKeys()) 
-				|| Gdx.input.isKeyPressed(Keys.UP)  && (identity == 2 || super.getGameState().CanUseBothKeys())) {
+		if(Gdx.input.isKeyPressed(Keys.W)  && (identity == 1 || super.getGameState().canUseBothKeys()) 
+				|| Gdx.input.isKeyPressed(Keys.UP)  && (identity == 2 || super.getGameState().canUseBothKeys())) {
 			stepY = delta*V*cheatIncrease;
 		}
 		
@@ -227,8 +227,8 @@ public class Player extends AbstractObject {
 		stepX = 0;
 		double delta = super.getGameState().getDeltaTime(); //The time passed since last frame
 		//Moves the player to the left, slower while in the air
-		if(Gdx.input.isKeyPressed(Keys.A) && (identity == 1 || super.getGameState().CanUseBothKeys()) 
-				|| Gdx.input.isKeyPressed(Keys.LEFT) && (identity == 2 || super.getGameState().CanUseBothKeys())) {
+		if(Gdx.input.isKeyPressed(Keys.A) && (identity == 1 || super.getGameState().canUseBothKeys()) 
+				|| Gdx.input.isKeyPressed(Keys.LEFT) && (identity == 2 || super.getGameState().canUseBothKeys())) {
 			if (isGrounded) {
 				stepX = -delta*V;
 			} else {
@@ -237,8 +237,8 @@ public class Player extends AbstractObject {
 		} 
 		
 		//Moves the player to the right, slower while in the air 
-		if(Gdx.input.isKeyPressed(Keys.D)  && (identity == 1 || super.getGameState().CanUseBothKeys()) 
-				|| Gdx.input.isKeyPressed(Keys.RIGHT)  && (identity == 2 || super.getGameState().CanUseBothKeys())) {
+		if(Gdx.input.isKeyPressed(Keys.D)  && (identity == 1 || super.getGameState().canUseBothKeys()) 
+				|| Gdx.input.isKeyPressed(Keys.RIGHT)  && (identity == 2 || super.getGameState().canUseBothKeys())) {
 			if (isGrounded) {
 				stepX = delta*V;
 			} else {
@@ -247,8 +247,8 @@ public class Player extends AbstractObject {
 		}
 		
 		//Allows the player to get down faster after a jump (or when falling in general) by canceling any upwards momentum and amplifying gravity
-		if(Gdx.input.isKeyPressed(Keys.S)  && (identity == 1 || super.getGameState().CanUseBothKeys()) 
-				|| Gdx.input.isKeyPressed(Keys.DOWN)  && (identity == 2 || super.getGameState().CanUseBothKeys())) {
+		if(Gdx.input.isKeyPressed(Keys.S)  && (identity == 1 || super.getGameState().canUseBothKeys()) 
+				|| Gdx.input.isKeyPressed(Keys.DOWN)  && (identity == 2 || super.getGameState().canUseBothKeys())) {
 			if (gV<0) {
 				gV = 0;
 			}
@@ -256,8 +256,8 @@ public class Player extends AbstractObject {
 		}
 				
 		//Jump, this happens once and therefore deltaTime should not be considered.
-		if(Gdx.input.isKeyPressed(Keys.W)  && (identity == 1 || super.getGameState().CanUseBothKeys()) 
-				|| Gdx.input.isKeyPressed(Keys.UP)  && (identity == 2 || super.getGameState().CanUseBothKeys())) {
+		if(Gdx.input.isKeyPressed(Keys.W)  && (identity == 1 || super.getGameState().canUseBothKeys()) 
+				|| Gdx.input.isKeyPressed(Keys.UP)  && (identity == 2 || super.getGameState().canUseBothKeys())) {
 			if (isGrounded) {
 				boost(1);
 			//Allows the player to jump again one time in mid-air after the first jump 

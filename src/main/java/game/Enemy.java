@@ -8,7 +8,6 @@ public class Enemy extends AbstractObject {
 	private double speed = 20;
 	private boolean goingRight;
 	private Platform platform;
-	private double platformRelation;
 	private double step;
 	private double relativeDistance;
 	

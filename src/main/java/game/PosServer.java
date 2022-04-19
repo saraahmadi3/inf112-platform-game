@@ -1,7 +1,5 @@
 package game;
 
-import java.io.IOException;
-import java.net.BindException;
 import java.util.HashSet;
 
 import com.esotericsoftware.kryonet.Connection;
