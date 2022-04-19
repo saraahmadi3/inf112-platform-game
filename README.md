@@ -20,7 +20,7 @@ Koden er skrevet med versjon 15.0.1 av Java i tankene, denne versjonen er anbefa
 git clone git@git.app.uib.no:inf112-oblig/inf112.22v.libgdx-template.git
 ```
 
-3. Kjør følgende i terminalen for å compilere og kjøre prosjektet:
+3. Naviger til mappen hvor koden er plassert og kjør følgende i terminalen for å kompilere og kjøre prosjektet:
 
 ```
 mvn clean compile exec:java
