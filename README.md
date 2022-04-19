@@ -13,6 +13,9 @@ De fleste bugsene er knyttet til synkronisering i forbindelse med multiplayer-fu
 
 Vi har også bugs knyttet til bruk av Linux. Dersom vi kjører programmet vårt i Ubuntu, fungerer alt bortsett fra nettverksløsningene våre. Sindre, gruppelederen vår, får likevel kjørt programmet på sin Linux-maskin, dersom han kjører det i Debug-mode i IntelliJ. 
 
+# Debug mode
+Under testing av spillet kan man benytte en debug/cheat-mode. Denne aktiveres ved å trykke C og H samtidig på tastaturet, og kan deretter deaktiveres ved å trykke X. Når cheat-mode er aktivert kan spilleren fly rundt med økt hastighet, noe som tillater raskere testing av hva som for eksempel skjer når man fullfører et level.
+
 # Musikk
 All musikk er komponert av antsy-antonym
 
