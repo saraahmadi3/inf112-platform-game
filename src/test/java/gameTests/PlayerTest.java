@@ -135,6 +135,7 @@ class PlayerTest {
 				fail("The player never hits the platform");
 			}
 			playerOne.move();
+			frameCount ++;
 		}
 		
 		//Removing platform under player
