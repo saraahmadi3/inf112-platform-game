@@ -4,7 +4,30 @@ Spillet er et plattformspill hvor spilleren må hoppe fra plattfrom til plattfor
 Spillet kan spilles av en eller flere spillere, slik at du kan konkurrere med en venn om å komme lengst mulig og skaffe flest mulig poeng.
 
 # Produktoppsett 
+
+Koden er skrevet med versjon 15.0.1 av Java i tankene, denne versjonen er anbefalt for å kjøre programmet, men senere versjoner kan også fungere.
+
+
+
+## Med IDE
 Åpne din foretrukkne IDE, f.eks. Eclipse. Prosjektet vil bygges, kompileres og kjøres i din valgte IDE. Main-funksjonen ligger i "src/main/java/game/Main", og kjører den ved hjelp av din IDE. Menyen vil da poppe opp, og etter å trykket på dine foretrukkne instillinger åpnes et nytt vindu med spillet. Dersom du ønsker å spille multiplayer med en server og en client må du først starte en server (eller velge auto) og deretter kjøre programmet igjen og velge client (eller auto) for å koble deg til serveren.
+
+## Fra terminalen
+1. Sørg for at følgende er installert: Java (versjon 15+), Maven, Git.
+2. Kjør følgende i terminalen for å clone prosjektet: 
+
+```
+git clone git@git.app.uib.no:inf112-oblig/inf112.22v.libgdx-template.git
+```
+
+3. Kjør følgende i terminalen for å compilere og kjøre prosjektet:
+
+```
+mvn clean compile exec:java
+```
+
+
+
 
 # Bugs
 Det eksisterer en del bugs i spillet.
