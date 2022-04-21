@@ -1,5 +1,6 @@
 package screens;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,7 +33,10 @@ public class MultiplayerChoiceScreen extends AbstractScreen implements ActionLis
 		SingleScreenMultiplayer.addActionListener(this);
 		NetworkMultiplayer = super.addButton(buttons, "NetworkMultiplayer");
 		NetworkMultiplayer.addActionListener(this);
+		addOptions(buttons);
 		
+		super.getstart().addActionListener(this);
+		super.getback().addActionListener(this);
 		
 		//add buttons to the window
 		setUpWindow(frame, buttons);
@@ -47,8 +51,17 @@ public class MultiplayerChoiceScreen extends AbstractScreen implements ActionLis
 		if (e.getSource() == NetworkMultiplayer) {
 			System.out.println("Received Multiplayer over a Network");
 			
-			NetworkChoiceScreen network = new NetworkChoiceScreen();
+			new NetworkChoiceScreen();
 		}
+		if (e.getSource() == super.getback()) {
+			System.out.println("Received go back");
+			
+			new MenuScreen();
+		}
+		if (e.getSource() == super.getstart()) {
+			BacktoStart();
+		}
+		
 
 	}
 

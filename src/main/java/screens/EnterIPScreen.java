@@ -40,7 +40,10 @@ public class EnterIPScreen extends AbstractScreen implements ActionListener {
 		submit.addActionListener(this);
 		
 		frame.getRootPane().setDefaultButton(submit);
-		
+		addOptions(panel);
+		super.getback().addActionListener(this);
+		super.getstart().addActionListener(this);
+
 		//add buttons to the window
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(panel);
@@ -60,6 +63,11 @@ public class EnterIPScreen extends AbstractScreen implements ActionListener {
 		if (e.getSource()==submit) {
 			inputIP =input.getText();
 			Main.startGame(6, inputIP);
+		}else if (e.getSource()==super.getback()) {
+			System.out.println("Received go back");
+			new ClientChoiceScreen();
+		}else if (e.getSource() == super.getstart()) {
+			BacktoStart();
 		}
 
 	}

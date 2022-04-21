@@ -1,10 +1,12 @@
 package screens;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -17,6 +19,10 @@ import com.badlogic.gdx.Screen;
 import game.Main;
 
 public abstract class AbstractScreen{
+	
+	private JButton back;
+	private JButton startmenu;
+	private JButton options;
 	
 	/**
 	 * adds a button (JButton) to a JPanel, with a string to be added onto the button.
@@ -35,6 +41,41 @@ public abstract class AbstractScreen{
 		buttons.add(button);
 		return button;
 	}
+	
+	public void addOptions(JPanel buttons) {
+		JPanel optionspanel = new JPanel();
+		
+//		ImageIcon backicon = new ImageIcon("images/coin.png");
+		back = new JButton("back");
+		startmenu = new JButton("Start Menu");
+		options =new JButton("options");
+		
+		optionspanel.add(back, BorderLayout.WEST);
+		optionspanel.add(startmenu, BorderLayout.CENTER);
+		optionspanel.add(options, BorderLayout.EAST);
+		
+		buttons.add(optionspanel, BorderLayout.SOUTH);
+		
+	}
+	
+	public JButton getback() {
+		return back;
+	}
+	
+	public JButton getstart() {
+		return startmenu;
+	}
+	
+	public JButton getoptions() {
+		return options;
+	}
+	
+	public void BacktoStart() {
+		System.out.println("Received start screen");
+		
+		MenuScreen menu = new MenuScreen();
+	}
+	
 	/**
 	 * sets up a frame with a set of buttons.
 	 * defult: close: EXIT_ON_CLOSE, window dimensions: 500x350
