@@ -13,15 +13,14 @@ Koden er skrevet med versjon 15.0.1 av Java i tankene, denne versjonen er anbefa
 Åpne din foretrukkne IDE, f.eks. Eclipse. Prosjektet vil bygges, kompileres og kjøres i din valgte IDE. Main-funksjonen ligger i "src/main/java/game/Main", og kjører den ved hjelp av din IDE. Menyen vil da poppe opp, og etter å trykket på dine foretrukkne instillinger åpnes et nytt vindu med spillet. Dersom du ønsker å spille multiplayer med en server og en client må du først starte en server (eller velge auto) og deretter kjøre programmet igjen og velge client (eller auto) for å koble deg til serveren.
 
 ## Fra terminalen
-1. Sørg for at følgende er installert: Java (versjon 15+), Maven, Git.
-2. Kjør følgende i terminalen for å clone prosjektet: 
+ 1\. Sørg for at følgende er installert: Java (versjon 15+), Maven, Git. <br>
+ 2\. Kjør følgende i terminalen for å clone prosjektet:
 
 ```
 git clone git@git.app.uib.no:inf112-oblig/inf112.22v.libgdx-template.git
 ```
-
-3. Naviger til mappen hvor koden er plassert og kjør følgende i terminalen for å kompilere og kjøre prosjektet:
-
+ 3\. Naviger til mappen hvor koden er plassert og kjør følgende i terminalen for å kompilere og kjøre prosjektet:
+ 
 ```
 mvn clean compile exec:java
 ```
