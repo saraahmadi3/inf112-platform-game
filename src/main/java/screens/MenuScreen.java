@@ -14,6 +14,7 @@ public class MenuScreen extends AbstractScreen implements ActionListener {
 
 	private final JButton playSingleplayer;
 	private final JButton playMultiplayer;
+	private final JButton options;
 	private static JFrame frame;
 	boolean start;
 
@@ -32,7 +33,8 @@ public class MenuScreen extends AbstractScreen implements ActionListener {
 		playSingleplayer.addActionListener(this);
 		playMultiplayer = super.addButton(buttons, "Multiplayer");
 		playMultiplayer.addActionListener(this);
-		
+		options = super.addButton(buttons, "options");
+		options.addActionListener(this);
 		
 		//add buttons to the window
 		setUpWindow(frame, buttons);
@@ -50,7 +52,7 @@ public class MenuScreen extends AbstractScreen implements ActionListener {
 		if(e.getSource() == playMultiplayer) {
 			System.out.println("Received Multiplayer");
 			
-			MultiplayerChoiceScreen multi = new MultiplayerChoiceScreen();
+			new MultiplayerChoiceScreen();
 
 		}
 		

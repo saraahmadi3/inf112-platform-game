@@ -32,7 +32,10 @@ public class ClientChoiceScreen extends AbstractScreen implements ActionListener
 		discoverhost.addActionListener(this);
 		enterIP = super.addButton(buttons, "Enter IP manually");
 		enterIP.addActionListener(this);
-		
+		addOptions(buttons);
+		super.getback().addActionListener(this);
+		super.getstart().addActionListener(this);
+
 		
 		//add buttons to the window
 		setUpWindow(frame, buttons);
@@ -45,6 +48,11 @@ public class ClientChoiceScreen extends AbstractScreen implements ActionListener
 			Main.startGame(5, null);
 		}else if(e.getSource()==enterIP) {
 			EnterIPScreen ip = new EnterIPScreen();
+		}else if (e.getSource()==super.getback()) {
+			System.out.println("Received go back");
+			new NetworkChoiceScreen();
+		}else if (e.getSource() == super.getstart()) {
+			BacktoStart();
 		}
 
 	}

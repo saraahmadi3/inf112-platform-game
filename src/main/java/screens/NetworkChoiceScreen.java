@@ -35,7 +35,9 @@ public class NetworkChoiceScreen extends AbstractScreen implements ActionListene
 		server.addActionListener(this);
 		client = super.addButton(buttons, "Client");
 		client.addActionListener(this);
-		
+		addOptions(buttons);
+		super.getback().addActionListener(this);
+		super.getstart().addActionListener(this);
 		
 		//add buttons to the window
 		setUpWindow(frame, buttons);
@@ -52,7 +54,12 @@ public class NetworkChoiceScreen extends AbstractScreen implements ActionListene
 			Main.startGame(4, null);
 		}else if (e.getSource()==client) {
 			System.out.println("Received Client");
-			ClientChoiceScreen client = new ClientChoiceScreen();
+			new ClientChoiceScreen();
+		}else if (e.getSource()==super.getback()) {
+			System.out.println("Received go back");
+			new MultiplayerChoiceScreen();
+		}else if (e.getSource() == super.getstart()) {
+			BacktoStart();
 		}
 
 	}
