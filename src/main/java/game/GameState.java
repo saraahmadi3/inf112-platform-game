@@ -443,13 +443,13 @@ public class GameState {
 		if (fileName != null && !fileName.equals("testMode")) {
 			try {
 				if (jukebox.containsKey(fileName)) {
-					jukebox.get(fileName).play(1.0f);
+					jukebox.get(fileName).play(var.getVolume());
 				}
 				else {
 					FileHandle soundFileHandle = Gdx.files.internal("sounds/"+fileName);
 					Sound sound = Gdx.audio.newSound(soundFileHandle);
 					jukebox.put(fileName, sound);
-					sound.play(1.0f);
+					sound.play(var.getVolume());
 				}  
 			}
 			catch (Exception e) {
