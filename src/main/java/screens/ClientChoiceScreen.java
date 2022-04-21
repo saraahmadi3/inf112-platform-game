@@ -21,7 +21,7 @@ public class ClientChoiceScreen extends AbstractScreen implements ActionListener
 		
 		//make new main window for the game menu
 		frame = new JFrame();
-		frame.setTitle("Multiplayer Options");
+		frame.setTitle("Client Options");
 
 		//make panel for game buttons
 		JPanel buttons = new JPanel();

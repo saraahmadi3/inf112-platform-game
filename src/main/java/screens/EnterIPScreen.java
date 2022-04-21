@@ -24,7 +24,7 @@ public class EnterIPScreen extends AbstractScreen implements ActionListener {
 		
 		//make new main window for the game menu
 		frame = new JFrame();
-		frame.setTitle("Game Menu");
+		frame.setTitle("IP Menu");
 		inputIP="";
 		//make panel for input and buttons
 		JPanel panel = new JPanel();

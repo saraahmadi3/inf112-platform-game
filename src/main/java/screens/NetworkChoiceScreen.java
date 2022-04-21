@@ -22,7 +22,7 @@ public class NetworkChoiceScreen extends AbstractScreen implements ActionListene
 		
 		//make new main window for the game menu
 		frame = new JFrame();
-		frame.setTitle("Game Menu");
+		frame.setTitle("Network Menu");
 
 		//make panel for game buttons
 		JPanel buttons = new JPanel();

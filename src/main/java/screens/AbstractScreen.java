@@ -22,7 +22,6 @@ public abstract class AbstractScreen{
 	
 	private JButton back;
 	private JButton startmenu;
-	private JButton options;
 	
 	/**
 	 * adds a button (JButton) to a JPanel, with a string to be added onto the button.
@@ -45,14 +44,13 @@ public abstract class AbstractScreen{
 	public void addOptions(JPanel buttons) {
 		JPanel optionspanel = new JPanel();
 		
-//		ImageIcon backicon = new ImageIcon("images/coin.png");
-		back = new JButton("back");
+		ImageIcon backicon = new ImageIcon("src/main/resources/images/backButton.png");
+		back = new JButton(backicon);
 		startmenu = new JButton("Start Menu");
-		options =new JButton("options");
+		startmenu.setFont(new Font("Arial", Font.PLAIN, 18));
 		
 		optionspanel.add(back, BorderLayout.WEST);
 		optionspanel.add(startmenu, BorderLayout.CENTER);
-		optionspanel.add(options, BorderLayout.EAST);
 		
 		buttons.add(optionspanel, BorderLayout.SOUTH);
 		
@@ -66,14 +64,11 @@ public abstract class AbstractScreen{
 		return startmenu;
 	}
 	
-	public JButton getoptions() {
-		return options;
-	}
 	
 	public void BacktoStart() {
 		System.out.println("Received start screen");
 		
-		MenuScreen menu = new MenuScreen();
+		new MenuScreen();
 	}
 	
 	/**
