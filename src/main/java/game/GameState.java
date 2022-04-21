@@ -9,11 +9,10 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-
+import game.levels.GameOver;
 import game.levels.Level0;
 import game.levels.Level1;
 import game.levels.Level2;
@@ -21,7 +20,6 @@ import game.levels.Level3;
 
 public class GameState {
 	
-	private boolean gameOver;
 	private int currentLevel;
 	private Player player1;
 	private Player player2;
@@ -280,17 +278,10 @@ public class GameState {
 		}
 	}
 	
-	public boolean getGameOver() {
-		return gameOver;
-	}
-	
 	public int getCurrentLevel() {
 		return currentLevel;
 	}
 	
-	public void setGameOver(boolean gameover) {
-		gameOver = gameover;
-	}
 	
 	public ArrayList<Platform> getAllPlatforms() {
 		return allPlatforms;
@@ -323,7 +314,6 @@ public class GameState {
 	}
 	
 	private void checkForLevelComplete() {
-		
 		if (shouldStartNextLevel) {
 			shouldStartNextLevel = false;
 			nextLevel();
@@ -336,12 +326,14 @@ public class GameState {
 				levelFinished = false;
 				startNextLevel();
 			} else {
-				gameOver=true; //When both players are dead the game is over.
+				gameOver(); //When both players are dead the game is over.
+				gameStarted = false;
 			}
 		}
 	}
 	
 	public void nextLevel() {
+		currentLevel = Math.max(0, currentLevel);
 		currentLevel++;
 		level(currentLevel);
 	}
@@ -349,35 +341,8 @@ public class GameState {
 	public void startNextLevel() {
 		shouldStartNextLevel = true;
 	}
-	
-	//TODO: This should only be called once, not every render() call
 	public void gameOver() {
-		setGameOver(true);
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-        Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
-        
-        getBatch().begin();
-		if (!getMultiPlayer()) {
-	    	
-			new Text(this, 700, 575, "Game over. You got " + getPlayer(getSinglePlayerID()).getScore() + " points.").draw();;
-		}
-		else {
-			int Player1Points = getPlayer(1).getScore();
-			int Player2Points = getPlayer(2).getScore();
-			new Text(this, 700, 575, "Game over. Player 1  got " + Player1Points + ".").draw();;
-			new Text(this, 700, 475, "Game over. Player 2  got " + Player2Points + ".").draw();;
-			if (Player1Points > Player2Points) {
-				new Text(this, 700, 375, "Player 1 won!").draw();;
-			}
-			else if (Player1Points < Player2Points) {
-				new Text(this, 700, 375, "Player 2 won!").draw();;
-			}
-			else {
-				new Text(this, 700, 275, "It's a draw.").draw();;
-			}
-			
-		}
-		getBatch().end();
+		level(-1);
 	}
 	
 	public void update() {
@@ -390,7 +355,11 @@ public class GameState {
 	//TODO find a better place for this information.
 	public void level(int gameLevel) {
 		clearState();
-		if (gameLevel == 1) {
+		gameStarted = true;
+		currentLevel = gameLevel;
+		if (gameLevel == -1) {
+			new GameOver(this);
+		} else if (gameLevel == 1) {
 			new Level1(this);
 		} else if (gameLevel == 2) {
 			new Level2(this);
@@ -405,7 +374,6 @@ public class GameState {
 				client.playerDied(player2);
 			}
 		}
-		gameStarted = true;
 	}
 
 	public PosServer getServer() {

@@ -3,7 +3,6 @@ package game;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
@@ -74,7 +73,7 @@ public class PosClient {
 					Player player = game.getPlayer(serverID);
 					if (player == null) return;
 					player.setScore(msg.score);
-					game.setGameOver(true);
+					game.gameOver();
 					return;
 				}
 				
@@ -141,7 +140,7 @@ public class PosClient {
 		if (msg != null) {
 			client.sendTCP(msg);
 		}
-		game.setGameOver(true);
+		game.gameOver();
 	}
 	
 	public void levelComplete() {

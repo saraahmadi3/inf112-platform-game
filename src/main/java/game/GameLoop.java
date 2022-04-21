@@ -16,9 +16,6 @@ public class GameLoop implements ApplicationListener {
     private String inputIP;
 	private Music music;
 
-    
-    
-    private int delayedEnd;
     private boolean isSynced;
     
     public GameLoop(int mode, String inputIP) {
@@ -33,7 +30,6 @@ public class GameLoop implements ApplicationListener {
         font = new BitmapFont();
         font.setColor(Color.RED);
      
-        delayedEnd = 2;
         isSynced = false;
         
         //Musikken som spilles i bakgrunnen
@@ -62,28 +58,13 @@ public class GameLoop implements ApplicationListener {
 
 
     @Override
-    /*
-     * Is called every frame, essentially used as the main game loop.
-     * Should if possible ONLY call other methods to avoid cluttering.
-     * Render uses not only the most recent frame, but also the previous one
-     * to make a smooth transition, because of this, and still frames like 
-     * the gameover screen must be rendered twice before drawing is stopped.
-     * 
-     */
     public void render() {
     	if (game == null) return;
     	
-    	if (!game.getGameOver()) {
-            clearScreen();
-            game.update();
-            updateAll();
-            drawAll();  
-    	} else if (delayedEnd>0){
-    		game.gameOver();
-    		delayedEnd--;
-    	}
- 
-    
+        clearScreen();
+        game.update();
+        updateAll();
+        drawAll();  
     	updateMultiPlayer();
     }
     

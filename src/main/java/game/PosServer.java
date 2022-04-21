@@ -110,7 +110,7 @@ public class PosServer {
 					Player player = game.getPlayer(playerID);
 					if (player == null) return;
 					player.setScore(msg.score);
-					game.setGameOver(true);
+					game.gameOver();
 					return;
 				}
 				
@@ -163,7 +163,7 @@ public class PosServer {
 		if (msg != null) {
 			server.sendToAllTCP(msg);
 		}
-		game.setGameOver(true);
+		game.gameOver();
 	}
 	
 	public void levelComplete() {

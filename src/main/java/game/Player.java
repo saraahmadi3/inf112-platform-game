@@ -81,7 +81,6 @@ public class Player extends AbstractObject {
 	//should be called when the player dies, removes one life.
 	public void loseLife() {
 		lives--;
-		changeScoreBy(-50);
 		if (getLives()>0) {
 			super.setXandY(50, 15);
 			canDoubleJump=false;
