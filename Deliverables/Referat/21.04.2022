@@ -1,0 +1,10 @@
+Tilstede: Dani, Kristian, Sara.
+
+Kristian fikset hvordan gameover skjermen aktiveres, og ga muligheten for å starte et nytt spill rett fra game over skjermen.
+Sara endret hvordan data sendes fra menyen til spillet, noe som tilater oss å introdusere volumkontroll i menyen.
+Dani skrev brukerhistorer og fikset på andre deler av deliverables.
+
+Til neste møte har vi lyst til å få game over skjermen til å se litt finere ut, Dani har jobbet med denne før og kan ta ansvar.
+Sara har også ambisjoner om å kanskje legge til en lyd når man endrer lydvolum slik at man får en indikasjon om hva som er riktig nivå.
+Vi bør også se om vi kan få programet til å kjøre riktig på mac, noe vi har hatt noe problemer med, Adrian har en mac og kan ta ansvar for dette.
+Kanskje også litt mer testing på linux hadde vært lurt, selv om vi tror dette skal fungere nå.
