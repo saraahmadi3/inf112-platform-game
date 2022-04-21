@@ -17,11 +17,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
 import game.Main;
+import game.StartVariabels;
 
 public abstract class AbstractScreen{
 	
 	private JButton back;
 	private JButton startmenu;
+	public static StartVariabels var;
 	
 	/**
 	 * adds a button (JButton) to a JPanel, with a string to be added onto the button.
@@ -68,7 +70,7 @@ public abstract class AbstractScreen{
 	public void BacktoStart() {
 		System.out.println("Received start screen");
 		
-		new MenuScreen();
+		new MenuScreen(var);
 	}
 	
 	/**

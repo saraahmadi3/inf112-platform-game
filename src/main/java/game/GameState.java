@@ -44,9 +44,10 @@ public class GameState {
 	private PosServer server;
 	private double totalDeltaTime;
 	private double delayDifference;
+	private static StartVariabels var;
 	
 
-	public GameState(GameLoop gameLoop, int gameLevel, int mode, String inputIP) {
+	public GameState(GameLoop gameLoop, int gameLevel, StartVariabels var) {
 		
 		this.gameLoop = gameLoop;
 		levelFinished = false;
@@ -56,8 +57,9 @@ public class GameState {
 		waitingRemovalSprites = new ArrayList<GameObjects>();
 		allPlatforms = new ArrayList<Platform>();
 		allPlayers = new ArrayList<Player>();
-		this.mode=mode;
-		this.inputIP=inputIP;
+		this.var = var;
+		this.mode=var.getMode();
+		this.inputIP=var.getIP();
 		jukebox = new HashMap<String, Sound>();
 		
 		System.out.println("Mode: "+mode);
@@ -69,15 +71,15 @@ public class GameState {
 	}
 
 	public GameState() {
-		this(null,1, 0, null);
+		this(null,1, var);
 	}
 	
 	public GameState(GameLoop gameLoop) {
-		this(gameLoop, 1, 0, null);
+		this(gameLoop, 1, var);
 	}
 	
 	public GameState(int gameLevel) {
-		this(null, gameLevel, 0, null);
+		this(null, gameLevel, var);
 	}
 	
 	private void startMode(int mode) {

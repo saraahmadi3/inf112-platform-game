@@ -61,8 +61,10 @@ public class EnterIPScreen extends AbstractScreen implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		super.dispose(frame);
 		if (e.getSource()==submit) {
+			var.setMode(6);
 			inputIP =input.getText();
-			Main.startGame(6, inputIP);
+			var.setIP(inputIP);
+			Main.startGame();
 		}else if (e.getSource()==super.getback()) {
 			System.out.println("Received go back");
 			new ClientChoiceScreen();

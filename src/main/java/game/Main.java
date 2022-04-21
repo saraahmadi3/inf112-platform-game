@@ -6,16 +6,19 @@ import screens.MenuScreen;
 
 public class Main {
 	
+	private static StartVariabels var;
+	
     public static void main(String[] args) {
-    	new MenuScreen();
+    	var = new StartVariabels();
+    	new MenuScreen(var);
     }
     
-    public static void startGame (int mode, String inputIP) {
+    public static void startGame () {
         Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
         cfg.setTitle("Game");
         cfg.setWindowedMode(1080, 720);
         
-        GameLoop loop = new GameLoop(mode, inputIP);
+        GameLoop loop = new GameLoop(var);
         
         new Lwjgl3Application(loop, cfg);
         

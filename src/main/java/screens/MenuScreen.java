@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 import game.Main;
+import game.StartVariabels;
 
 public class MenuScreen extends AbstractScreen implements ActionListener {
 
@@ -23,7 +24,9 @@ public class MenuScreen extends AbstractScreen implements ActionListener {
 	private static JFrame frame;
 	boolean start;
 
-	public MenuScreen() {
+
+	public MenuScreen(StartVariabels var) {
+		super.var=var;
 		
 		//make new main window for the game menu
 		frame = new JFrame();
@@ -65,10 +68,13 @@ public class MenuScreen extends AbstractScreen implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		float currentVolume = (float)(volume.getValue()/100);
+		var.setVolume(currentVolume);
 		super.dispose(frame);
 		if(e.getSource() == playSingleplayer) {
+			var.setMode(0);
 			System.out.println("Received Singleplayer");
-			Main.startGame(0, null);
+			Main.startGame();
 
 		}
 		if(e.getSource() == playMultiplayer) {

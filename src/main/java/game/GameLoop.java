@@ -12,15 +12,13 @@ public class GameLoop implements ApplicationListener {
     private SpriteBatch batch;
     private BitmapFont font;
     private GameState game;
-    private int mode;
-    private String inputIP;
+    private StartVariabels var;
 	private Music music;
 
     private boolean isSynced;
     
-    public GameLoop(int mode, String inputIP) {
-    	this.mode=mode;
-    	this.inputIP=inputIP;
+    public GameLoop(StartVariabels var) {
+    	this.var=var;
     }
     
     @Override
@@ -38,7 +36,7 @@ public class GameLoop implements ApplicationListener {
         music.setLooping(true);
         music.play();
         
-        game = new GameState (this, 1, mode, inputIP);
+        game = new GameState (this, 1, var);
         game.setBatchAndFont(batch, font);
     }
 

@@ -45,8 +45,9 @@ public class MultiplayerChoiceScreen extends AbstractScreen implements ActionLis
 	public void actionPerformed(ActionEvent e) {
 		super.dispose(frame);
 		if (e.getSource() == SingleScreenMultiplayer) {
+			var.setMode(2);
 			System.out.println("Received Single screen Multiplayer");
-			Main.startGame(2, null);
+			Main.startGame();
 		}
 		if (e.getSource() == NetworkMultiplayer) {
 			System.out.println("Received Multiplayer over a Network");
@@ -56,7 +57,7 @@ public class MultiplayerChoiceScreen extends AbstractScreen implements ActionLis
 		if (e.getSource() == super.getback()) {
 			System.out.println("Received go back");
 			
-			new MenuScreen();
+			new MenuScreen(super.var);
 		}
 		if (e.getSource() == super.getstart()) {
 			BacktoStart();
