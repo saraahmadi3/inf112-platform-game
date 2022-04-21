@@ -36,6 +36,7 @@ public class Coin extends AbstractObject{
 		if (checkForHit(player)){
 			player.changeScoreBy(25);
 			super.getGameState().killSprite(this);
+			super.getGameState().playSound("link4.ogg");
 			return true;
 		}
 		return false;
