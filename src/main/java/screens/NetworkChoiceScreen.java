@@ -16,8 +16,10 @@ public class NetworkChoiceScreen extends AbstractScreen implements ActionListene
 	private final JButton server;
 	private final JButton client;
 	private static JFrame frame;
-	boolean start;
 
+	/**
+	 * creates new NetworkChoiceScreen object. Opens a new JFrame with interactive buttons
+	 */
 	public NetworkChoiceScreen() {
 		
 		//make new main window for the game menu

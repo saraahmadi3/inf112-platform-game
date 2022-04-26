@@ -20,6 +20,9 @@ public class EnterIPScreen extends AbstractScreen implements ActionListener {
 	private final JLabel textInfo;
 	private static String inputIP;
 	
+	/**
+	 * creates new EnterIPScreen object. Opens a new JFrame with interactive elements
+	 */
 	public EnterIPScreen() {
 		
 		//make new main window for the game menu
