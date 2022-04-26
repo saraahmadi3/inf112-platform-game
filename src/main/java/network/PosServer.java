@@ -1,6 +1,7 @@
 package network;
 
 import game.*;
+import gameObjects.Player;
 
 import java.util.HashSet;
 

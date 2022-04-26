@@ -1,5 +1,8 @@
 package network;
+
 import game.*;
+import gameObjects.Player;
+
 import java.io.IOException;
 import java.net.InetAddress;
 
