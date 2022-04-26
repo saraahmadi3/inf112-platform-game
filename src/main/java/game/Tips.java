@@ -28,8 +28,13 @@ public class Tips extends Text {
 			+ "Tip: Using the double jump at the right time is crucial. Use it as soon as possible to gain the most height, or wait to get more distance." + " ".repeat(spaces);
 	
 
+
 	public Tips(GameState game) {
-		super(game, 1250, 700, TIP);
+		this(game, TIP);
+			
+	}
+	public Tips(GameState game, String tips) {
+		super(game, 1250, 700, tips);
 	}
 	
 	@Override

@@ -376,6 +376,9 @@ public class GameState {
 				client.playerDied(player2);
 			}
 		}
+		//Uncomment these lines to jump directly to GameOverScreen.
+//		clearState();
+//		new GameOver(this);
 	}
 
 	public PosServer getServer() {
