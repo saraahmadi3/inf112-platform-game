@@ -194,7 +194,10 @@ public abstract class AbstractObject implements GameObjects {
 	public void draw(SpriteBatch batch, BitmapFont font) {
 		if (getSprite() != null) {
 			batch.draw(getSprite(), (float) getX(), (float) getY());
-		} else {
+		} else if (this instanceof Text) {
+			Text txt = (Text) this; 
+			font.setColor(txt.getColor());
+			font.getData().setScale(txt.getFontSize());
 			font.draw(batch, getSymbol(), (float) getX(), (float) getY());
 		}
 	}
