@@ -12,11 +12,9 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import game.levels.GameOver;
-import game.levels.Level0;
-import game.levels.Level1;
-import game.levels.Level2;
-import game.levels.Level3;
+import game.levels.*;
+import network.*;
+
 
 public class GameState {
 	
