@@ -15,8 +15,10 @@ public class ClientChoiceScreen extends AbstractScreen implements ActionListener
 	private final JButton discoverhost;
 	private final JButton enterIP;
 	private static JFrame frame;
-	boolean start;
 
+	/**
+	 * creates new ClientShoiceScreen object. Opens a new JFrame with interactive buttons
+	 */
 	public ClientChoiceScreen() {
 		
 		//make new main window for the game menu

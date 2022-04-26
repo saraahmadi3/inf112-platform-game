@@ -16,8 +16,10 @@ public class MultiplayerChoiceScreen extends AbstractScreen implements ActionLis
 	private final JButton SingleScreenMultiplayer;
 	private final JButton NetworkMultiplayer;
 	private static JFrame frame;
-	boolean start;
-
+	
+	/**
+	 * creates new MultiplayerChoiceScreen object. Opens a new JFrame with interactive buttons
+	 */
 	public MultiplayerChoiceScreen() {
 		
 		//make new main window for the game menu
