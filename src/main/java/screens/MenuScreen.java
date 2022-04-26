@@ -43,8 +43,14 @@ public class MenuScreen extends AbstractScreen implements ActionListener {
 		playMultiplayer.addActionListener(this);
 		
 		
-		JLabel space = new JLabel("<html><br></html>");
-		JLabel volumeLabel = new JLabel("<html>Volume</html>");
+		
+		//panel for volume settings
+		JPanel volpanel = new JPanel();
+		//Jslider needs to be the sole item in a panel 
+		JPanel sliderpanel = new JPanel();
+		
+		
+		JLabel volumeLabel = new JLabel("Volume");
 	
 		volume = new JSlider(0,100,100);
 		volume.setMinorTickSpacing(10);  
@@ -53,13 +59,16 @@ public class MenuScreen extends AbstractScreen implements ActionListener {
 		volume.setPaintLabels(true);  
 		
 		
-		buttons.add(space);
-		buttons.add(volumeLabel);
-		buttons.add(volume);
+		
+		sliderpanel.add(volume);
+		volpanel.add(volumeLabel);
+		volpanel.add(sliderpanel);
+		
+		//add volume panel to the main panel 
+		buttons.add(volpanel);
 		
 		
-		buttons.add(volumeLabel);
-	
+
 		
 		//add buttons to the window
 		setUpWindow(frame, buttons);
