@@ -17,6 +17,7 @@ import game.levels.Level0;
 import game.levels.Level1;
 import game.levels.Level2;
 import game.levels.Level3;
+import game.levels.Level4;
 
 public class GameState {
 	
@@ -367,6 +368,8 @@ public class GameState {
 			new Level2(this);
 		} else if (gameLevel == 3) {
 			new Level3(this);
+		} else if (gameLevel == 4) {
+			new Level4(this);
 		} else {
 			new Level0(this);
 			if (server != null) {

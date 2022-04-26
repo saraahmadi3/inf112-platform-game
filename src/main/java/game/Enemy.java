@@ -12,26 +12,33 @@ public class Enemy extends AbstractObject {
 	private double relativeDistance;
 	
 	
-	
-	public Enemy(GameState game, Platform platform, String imgFile) {
+	public Enemy(GameState game, Platform platform, String imgFile, int offset) {
 		this.platform = platform;
 		super.setGameState(game);
 		game.addSprite(this);
 		
-		super.setX(platform.getXMid());
+		super.setX(platform.getXMid()+offset);
 		super.setY(platform.getY()+platform.getHeight());
 		
-		relativeDistance = platform.getWidth()/2;
+		relativeDistance = (platform.getWidth()/2)+offset;
 		
-		goingRight=true;
+		if (offset%2==0) {
+			goingRight=false;
+		} else {
+			goingRight=true;
+		}
+				
 		super.setHeight(16);
 		super.setWidth(16);
 		super.setSprite(imgFile);
-		
 	}
-
+	
+	public Enemy(GameState game, Platform platform, int offset) {
+		this (game, platform, "ene.png", offset);
+	}
+	
 	public Enemy(GameState game, Platform platform) {
-		this (game, platform, "ene.png");
+		this (game, platform, "ene.png", 0);
 	}
 	
 	public void update() {	
