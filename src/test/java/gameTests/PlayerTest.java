@@ -10,10 +10,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import game.GameObjects;
+import gameObjects.*;
 import game.GameState;
-import game.Platform;
-import game.Player;
+
 
 class PlayerTest {
 	
