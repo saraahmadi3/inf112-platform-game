@@ -1,5 +1,11 @@
 package game;
 
+/**
+ * class responsible for all the initial Starting Variables need to start the game.
+ * 
+ * @author saraa
+ *
+ */
 public class StartVariabels {
 	
 	private static String IPinput;
@@ -8,7 +14,7 @@ public class StartVariabels {
 	
 	public StartVariabels() {
 		
-	}
+		}
 	
 	public void setIP(String input) {
 		this.IPinput =input;

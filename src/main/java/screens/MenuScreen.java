@@ -20,11 +20,13 @@ public class MenuScreen extends AbstractScreen implements ActionListener {
 
 	private final JButton playSingleplayer;
 	private final JButton playMultiplayer;
-	private final JSlider volume;
 	private static JFrame frame;
-	boolean start;
+	private JSlider volume;
+	
 
-
+	/**
+	 * creates new MenuScreen object. Opens a new JFrame with interactive elements
+	 */
 	public MenuScreen(StartVariabels var) {
 		super.var=var;
 		
@@ -42,14 +44,22 @@ public class MenuScreen extends AbstractScreen implements ActionListener {
 		playMultiplayer = super.addButton(buttons, "Multiplayer");
 		playMultiplayer.addActionListener(this);
 		
-		
-		
+		addVolume(buttons);
+					
+		//add buttons to the window
+		setUpWindow(frame, buttons);
+
+	}
+	/**
+	 * Adds a volume slider with a label to a JPanel
+	 * @param panel
+	 */
+	public void addVolume(JPanel panel) {
 		//panel for volume settings
 		JPanel volpanel = new JPanel();
-		//Jslider needs to be the sole item in a panel 
+		//JSlider needs to be the sole item in a panel 
 		JPanel sliderpanel = new JPanel();
-		
-		
+				
 		JLabel volumeLabel = new JLabel("Volume");
 	
 		volume = new JSlider(0,100,100);
@@ -65,14 +75,7 @@ public class MenuScreen extends AbstractScreen implements ActionListener {
 		volpanel.add(sliderpanel);
 		
 		//add volume panel to the main panel 
-		buttons.add(volpanel);
-		
-		
-
-		
-		//add buttons to the window
-		setUpWindow(frame, buttons);
-
+		panel.add(volpanel);
 	}
 	
 	@Override

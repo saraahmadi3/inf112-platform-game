@@ -12,12 +12,10 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import game.levels.GameOver;
-import game.levels.Level0;
-import game.levels.Level1;
-import game.levels.Level2;
-import game.levels.Level3;
-import game.levels.Level4;
+import game.levels.*;
+import network.*;
+import gameObjects.*;
+
 
 public class GameState {
 	
@@ -368,7 +366,7 @@ public class GameState {
 			new Level2(this);
 		} else if (gameLevel == 3) {
 			new Level3(this);
-		} else if (gameLevel == 4) {
+		}else if (gameLevel == 4) {
 			new Level4(this);
 		} else {
 			new Level0(this);

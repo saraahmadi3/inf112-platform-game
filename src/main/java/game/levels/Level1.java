@@ -1,16 +1,7 @@
 package game.levels;
 
-import game.BoostPlatform;
-import game.Coin;
-import game.Door;
-import game.Enemy;
 import game.GameState;
-import game.GhostPlatform;
-import game.Key;
-import game.MovingPlatform;
-import game.Platform;
-import game.Player;
-import game.Tips;
+import gameObjects.*;
 
 public class Level1 implements Levels {
 

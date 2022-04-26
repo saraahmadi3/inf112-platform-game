@@ -1,4 +1,6 @@
-package game;
+package gameObjects;
+
+import game.*;
  
 public class Platform extends AbstractObject {
 	/**

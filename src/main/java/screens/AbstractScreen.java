@@ -43,7 +43,11 @@ public abstract class AbstractScreen{
 		return button;
 	}
 	
-	public void addOptions(JPanel buttons) {
+	/**
+	 * adds a JPanel with option buttons to the end of another JPanel panel
+	 * @param panel
+	 */
+	public void addOptions(JPanel panel) {
 		JPanel optionspanel = new JPanel();
 		
 		ImageIcon backicon = new ImageIcon("src/main/resources/images/backButton.png");
@@ -54,9 +58,10 @@ public abstract class AbstractScreen{
 		optionspanel.add(back, BorderLayout.WEST);
 		optionspanel.add(startmenu, BorderLayout.CENTER);
 		
-		buttons.add(optionspanel, BorderLayout.SOUTH);
+		panel.add(optionspanel, BorderLayout.SOUTH);
 		
 	}
+	
 	
 	public JButton getback() {
 		return back;
@@ -66,7 +71,9 @@ public abstract class AbstractScreen{
 		return startmenu;
 	}
 	
-	
+	/**
+	 * opens a new menuScreen
+	 */
 	public void BacktoStart() {
 		System.out.println("Received start screen");
 		
@@ -74,20 +81,24 @@ public abstract class AbstractScreen{
 	}
 	
 	/**
-	 * sets up a frame with a set of buttons.
+	 * sets up a frame with a a JPanel
 	 * defult: close: EXIT_ON_CLOSE, window dimensions: 500x350
 	 * @param frame
 	 * @param buttons
 	 */
-	public void setUpWindow(JFrame frame, JPanel buttons) {
+	public void setUpWindow(JFrame frame, JPanel panel) {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(buttons);
+		frame.add(panel);
 		frame.setMinimumSize(new Dimension(500, 350));
 		frame.setPreferredSize(new Dimension(500, 350));
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * disposes a frame and runs the garbage collector five times to prevent errors when opening new screens or the game 
+	 * @param frame
+	 */
 	public void dispose(JFrame frame) {
 		frame.setVisible(false);
 		frame.dispose();

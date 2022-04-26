@@ -8,18 +8,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import game.BoostPlatform;
-import game.Door;
-import game.Enemy;
-import game.GameObjects;
+import gameObjects.*;
 import game.GameState;
-import game.GhostPlatform;
-import game.Key;
-import game.MovingPlatform;
-import game.Platform;
-import game.Player;
-import game.Text;
-import game.Tips;
+
 
 /**
  * @author adria

@@ -1,8 +1,8 @@
 package game.levels;
 
-import game.GameOverKeyPress;
+import gameObjects.GameOverKeyPress;
 import game.GameState;
-import game.Text;
+import gameObjects.Text;
 
 public class GameOver implements Levels {
 	
@@ -32,3 +32,4 @@ public class GameOver implements Levels {
 	}
 
 }
+
