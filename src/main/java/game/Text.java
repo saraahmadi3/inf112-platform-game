@@ -10,7 +10,7 @@ public class Text extends AbstractObject{
 	
 	
 	public Text(GameState game, double x, double y, String txt) {
-		this(game, x, y, txt, 1, new Color(255, 0, 0, 255));
+		this(game, x, y, txt, 1, Color.RED);
 	}
 	
 	public Text(GameState game, double x, double y, String txt, float scale, Color color) {
