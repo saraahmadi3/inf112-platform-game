@@ -45,6 +45,7 @@ public class BoostPlatform extends Platform{
 		
 		if ((player.getCurrentPlatform() == this && player.getGrounded()) || super.checkForHit(player)){
 			player.boost(boostFactor);
+			super.getGameState().playSound("boostplatform.ogg");
 		}
 	}
 	

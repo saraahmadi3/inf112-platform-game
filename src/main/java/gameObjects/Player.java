@@ -87,10 +87,10 @@ public class Player extends AbstractObject {
 			super.setXandY(50, 15);
 			canDoubleJump=false;
 			gV = 0;
-			super.getGameState().playSound("magnet_off.ogg");
+			super.getGameState().playSound("playerloseslife.ogg");
 		} else {
 			killPlayer();
-			super.getGameState().playSound("magnet_off2.ogg");
+			super.getGameState().playSound("playerdies.ogg");
 			if (super.getGameState().isServer()) {
 				super.getGameState().getServer().playerDied(this);
 			} else if (super.getGameState().isClient()) {

@@ -45,7 +45,7 @@ public class Key extends AbstractObject {
 		if (checkForHit(player)){
 			if(player.pickUpKey()) {
 				super.getGameState().killSprite(this);
-				super.getGameState().playSound("unlink2.ogg");
+				super.getGameState().playSound("key.ogg");
 				return true;
 			}
 		}
