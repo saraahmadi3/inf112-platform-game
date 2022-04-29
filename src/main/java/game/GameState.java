@@ -17,7 +17,11 @@ import game.levels.*;
 import network.*;
 import gameObjects.*;
 
-
+/**
+ * GameState is responsible for the state of the game at all moments. it sets off the game with the correct mode and level and keeps track of all sprites
+ * @author saraa
+ *
+ */
 public class GameState {
 	
 	private int currentLevel;
@@ -46,7 +50,13 @@ public class GameState {
 	private double delayDifference;
 	private static StartVariabels var;
 	
-
+	/**
+	 * Creates a GameState object, given a GameLoop, an int for the game level and a starting variable. 
+	 * starts a game with the correct starting variables from var
+	 * @param gameLoop
+	 * @param gameLevel
+	 * @param var
+	 */
 	public GameState(GameLoop gameLoop, int gameLevel, StartVariabels var) {
 		
 		this.gameLoop = gameLoop;
@@ -76,19 +86,40 @@ public class GameState {
 		startMode(mode);
 		
 	}
-
+	/**
+	 * basic constructor for GameState, with default values and no GameLoop. Primarily used for testing.
+	 */
 	public GameState() {
 		this(null,1, var);
 	}
-	
+	/**
+	 * alternative constructor for GameState, which takes a GameLoop. uses gameLevel 1, and StartVariables null. Primarily used for testing.
+	 * @param gameLoop
+	 */
 	public GameState(GameLoop gameLoop) {
 		this(gameLoop, 1, var);
 	}
 	
+	/**
+	 * alternative constructor for GameState, which takes a Gamelevel. uses GameLoop null and StartVariables null. Primarily used for testing.
+	 * @param gameLevel
+	 */
 	public GameState(int gameLevel) {
 		this(null, gameLevel, var);
 	}
 	
+	/**
+	 * Starts a game given a mode from 0-6:
+	 * 
+	 * 0: single player game, with playerId 1
+	 * 1: single player game, with playerId 2
+	 * 2: multi player game, with 2 players on the same screen
+	 * 3: network multiplayer. automatically tries to set up the game. if other player on the network, will automatically try to connect to same game
+	 * 4: network multiplayer. Start game as a server. must wait for another client to connect.
+	 * 5: network multiplayer. Start game as a client. automattically tries to connect to another server on the same network.
+	 * 6: network multiplayer. Start game as a client. must connect to a server using their IP address manually.
+	 * @param mode
+	 */
 	private void startMode(int mode) {
 		if (mode == 0) {
 			setSinglePlayerID(1);
@@ -115,6 +146,10 @@ public class GameState {
 		}
 	}
 	
+	/**
+	 * checks if a player can use both the arrow keys and A,S,W,D keys or not. returns false if the mode is 2 (2 players on the same screen)
+	 * @return
+	 */
 	public boolean canUseBothKeys() {
 		if (mode == 2)
 			return false;
@@ -125,7 +160,9 @@ public class GameState {
 	public double getTotalDeltaTime() {
 		return totalDeltaTime;
 	}
-	
+	/**
+	 * starts a single player game at the current level
+	 */
 	public void startSinglePlayer() {
 		setMultiPlayer(false);
 		if (currentLevel == 0) {
@@ -156,6 +193,11 @@ public class GameState {
 		return deltaTime;
 	}
 	
+	/**
+	 * adjust for delay in multiplayer games with network solutions.
+	 * @param deltaTime
+	 * @return
+	 */
 	private double adjustForDelay(double deltaTime) {
 		double oldDeltaTime = deltaTime;
 		
@@ -181,6 +223,9 @@ public class GameState {
 		return deltaTime;
 	}
 
+	/**
+	 * add all sprites to a list to be removed
+	 */
 	public void clearState() {
 		//totalDeltaTime = 0;
 		waitingRemovalSprites.addAll(allSprites);
@@ -204,7 +249,10 @@ public class GameState {
 		return gameLoop;
 	}
  
-	//Adds the sprite in waitlist to be added to the main list when allowed, avoids ConcurrentModificationException.
+	/**
+	 * Adds the sprite s in waitlist to be added to the main list when allowed, avoids ConcurrentModificationException.
+	 * @param s
+	 */
 	public void addSprite (GameObjects s) {
 		waitingSprites.add(s);
 		
@@ -275,6 +323,11 @@ public class GameState {
 		}
 	}
 	
+	/**
+	 * checks if player p is alive. returns true if the player is in the AllPlayers list
+	 * @param p
+	 * @return
+	 */
 	public boolean playerIsAlive (Player p) {
 		return (getAllPlayers().contains(p));
 	}
@@ -304,7 +357,10 @@ public class GameState {
 		return allPlayers; 
 	}
 
-
+	/**
+	 * adds to the score of the player if the player completes a level
+	 * @param playerId
+	 */
 	public void levelComplete(int playerId) {
 		if (server != null || client != null) {
 			getPlayer(playerId).changeScoreBy(250);
@@ -322,6 +378,10 @@ public class GameState {
 		getPlayer(playerId).changeScoreBy(50);
 	}
 	
+	/**
+	 * checks if the level is finished. either by having all players die, then proceed to gameover, 
+	 * or having all players complete the level then proceed to the next level
+	 */
 	private void checkForLevelComplete() {
 		if (shouldStartNextLevel) {
 			shouldStartNextLevel = false;
@@ -341,19 +401,27 @@ public class GameState {
 		}
 	}
 	
+	/**
+	 * moves on to the next level
+	 */
 	public void nextLevel() {
 		currentLevel = Math.max(0, currentLevel);
 		currentLevel++;
 		level(currentLevel);
 	}
 	
+	/**
+	 * sets shouldStartNextLevel to true
+	 */
 	public void startNextLevel() {
 		shouldStartNextLevel = true;
 	}
 	public void gameOver() {
 		level(-1);
 	}
-	
+	/**
+	 * adds all new sprites, removes all dead sprites and checks if the level is complete. 
+	 */
 	public void update() {
 		addAllNewSprites();
 		removeAllDeadSprites();
@@ -402,7 +470,15 @@ public class GameState {
 	public boolean isClient() {
 		return client!=null;
 	}
-	 
+	
+	/**
+	 * start multiplayer game with network given a string s
+	 * s=A: network multiplayer. automatically tries to set up the game. if other player on the network, will automatically try to connect to same game
+	 * s=S: network multiplayer. Start game as a server. must wait for another client to connect.
+	 * s=C: network multiplayer. Start game as a client. automatically tries to connect to another server on the same network.
+	 * s=M: network multiplayer. Start game as a client. must connect to a server using their IP address manually.
+	 * @param s
+	 */
 	public void startMultiPlayer(String s) {
 		setSinglePlayerID(0); //This value should not be accessed anyways.
 		setMultiPlayer(true); 
@@ -447,7 +523,10 @@ public class GameState {
 		}
 	}
 	
-	//Lydeffekter
+	/**
+	 * playes the sound from fileName
+	 * @param fileName
+	 */
 	public void playSound(String fileName) {
 		if (fileName != null && !fileName.equals("testMode")) {
 			try {
