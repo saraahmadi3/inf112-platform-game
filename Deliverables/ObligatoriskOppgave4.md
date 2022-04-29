@@ -61,6 +61,8 @@ Dersom spilleren bruker cheat-funksjonen er det også mulig å bevege seg så fo
 
 ### Deloppgave 3
 
+[Klassediagrammet](https://git.app.uib.no/inf112-oblig/inf112.22v.libgdx-template/-/blob/master/Deliverables/Images/KlassediagramOblig4.png) er lastet opp som en png-fil, for å lettere kunne zoome inn på det. Merk at du må åpne det i en ny fane for å kunne zoome i det.
+
 ##### Fikset siden sist 
 - GameOver-funksjonen har blitt endret fra å være en funksjon som returnerer et bilde med poengsummen til spillerne, til å være et eget level, som tillater oss å bruke objekter fra spillet til dekor. 
 - Et siste level har blitt lagt til.
