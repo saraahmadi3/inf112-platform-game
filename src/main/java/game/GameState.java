@@ -5,6 +5,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -57,8 +58,15 @@ public class GameState {
 		allPlatforms = new ArrayList<Platform>();
 		allPlayers = new ArrayList<Player>();
 		this.var = var;
-		this.mode=var.getMode();
-		this.inputIP=var.getIP();
+		
+		//When testing there's no var
+		if (Objects.isNull(var)){
+			this.mode=0;
+		}else {
+			this.mode=var.getMode();
+			this.inputIP=var.getIP();
+		}
+		
 		jukebox = new HashMap<String, Sound>();
 		
 		System.out.println("Mode: "+mode);

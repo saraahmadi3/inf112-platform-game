@@ -428,10 +428,10 @@ class GameObjectTest {
 		GhostPlatform ghostP = new GhostPlatform(game, -500, -10, 1150, 20, ghostDelay);
 		MovingPlatform movingP = new MovingPlatform(game, -500, -10, 1150, 20, 250, 0, 50, null);
 		BoostPlatform boostP = new BoostPlatform(game, -500, -10, 1150, 20, boostFactor, null); 
-		Enemy boostPlatEnemy = new Enemy(game, boostP, null);
-		Enemy movingPlatEnemy = new Enemy(game, movingP, null);
-		Enemy regularPlatEnemy = new Enemy(game, regularP, null);
-		Enemy ghostPlatEnemy = new Enemy(game, ghostP, null);
+		Enemy boostPlatEnemy = new Enemy(game, boostP, 0);
+		Enemy movingPlatEnemy = new Enemy(game, movingP, 0);
+		Enemy regularPlatEnemy = new Enemy(game, regularP, 0);
+		Enemy ghostPlatEnemy = new Enemy(game, ghostP, 0);
 		
 		game.addSprite(regularPlatEnemy);
 		game.addSprite(regularP);
